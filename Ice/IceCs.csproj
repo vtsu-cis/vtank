@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B8547B9A-0FB1-441F-81E6-0E364AEE7D46}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IceCs</RootNamespace>
+    <AssemblyName>IceCs</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkSubset>
+    </TargetFrameworkSubset>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Release\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Glacier2, Version=3.4.1.0, Culture=neutral, PublicKeyToken=cdd571ade22f2f16, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\lib\Ice\bin\Glacier2.dll</HintPath>
+    </Reference>
+    <Reference Include="Ice, Version=3.4.1.0, Culture=neutral, PublicKeyToken=cdd571ade22f2f16, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\lib\Ice\bin\Ice.dll</HintPath>
+    </Reference>
+    <Reference Include="IceSSL, Version=3.4.1.0, Culture=neutral, PublicKeyToken=cdd571ade22f2f16, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\lib\Ice\bin\IceSSL.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CaptainVTank.cs" />
+    <Compile Include="ClockSync.cs" />
+    <Compile Include="Exception.cs" />
+    <Compile Include="GameSession.cs" />
+    <Compile Include="HealthMonitor.cs" />
+    <Compile Include="IGame.cs" />
+    <Compile Include="Main.cs" />
+    <Compile Include="MainSession.cs" />
+    <Compile Include="MainToGameSession.cs" />
+    <Compile Include="MapEditorSession.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VTankObjects.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CaptainVTank.ice" />
+    <None Include="ClockSync.ice" />
+    <None Include="Exception.ice" />
+    <None Include="GameSession.ice" />
+    <None Include="HealthMonitor.ice" />
+    <None Include="IGame.ice" />
+    <None Include="Main.ice" />
+    <None Include="MainSession.ice" />
+    <None Include="MainToGameSession.ice" />
+    <None Include="MapEditorSession.ice" />
+    <None Include="VTankObjects.ice" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PreBuildEvent>REM "$(ProjectDir)"compile-slice</PreBuildEvent>
+  </PropertyGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties ZerocIce_Home="$(ICEROOT)" ZerocIce_IncludePath="." ZerocIce_Streaming="False" ZerocIce_Prefix="False" ZerocIce_Enabled="True" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

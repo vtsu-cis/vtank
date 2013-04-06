@@ -1,0 +1,40 @@
+<HTML>
+<head><title>Menubar</title></head>
+
+<BODY TOPMARGIN=4 BGCOLOR=#FFFFFF TEXT=#000000 VLINK=#000000 LINK=#000000 ALINK=#000000>
+<FONT FACE="Arial, Lucida, Helvetica">
+
+<TABLE WIDTH="100%" ALIGN=CENTER CELLPADDING=1 CELLSPACING=0>
+<TR>
+<TD WIDTH="100%" ALIGN=CENTER>
+<A HREF="doc-0003.htm">
+<img align=center src="contents.gif" BORDER=0 ALT="Contents"></A>
+
+
+<A HREF="doc-0013.htm">
+<img align=center src="back.gif" BORDER=0 ALT="Previous"></A>
+
+<A HREF="doc-0016.htm">
+<img align=center src="forward.gif" BORDER=0 ALT="Next"></A>
+</TD>
+</TR>
+<TR>
+
+<!-- A narrow row representing the horizontal rule -->
+<TD COLSPAN=2 HEIGHT=2 BGCOLOR="#C0C0C0">
+</TD>
+</TR>
+</TABLE>
+
+<H2>Menubar</H2> 
+Gardener's menubar looks like this:<P>
+
+<IMG SRC="menu_bar.jpg" ALT="Gardener Menu" VSPACE="" ALIGN="LEFT" BORDER="0" WIDTH ="500"> <br clear=all>
+
+<P>
+The menubar contains seven different menu drop downs which contain a multitude of different tools, commands, and options. To go into more detail about the menubar please follow the link below.
+<P>
+<A HREF="doc-0022.htm">Using Menubar Commands</A>
+
+
+</FONT></BODY></HTML>

@@ -1,0 +1,11 @@
+#!/bin/bash
+# Script to start Echelon easily.
+
+# Set the absolute path to the interpreter, or just 'python' if it's on PATH.
+INTERPRETER=python
+#$INTERPRETER central_server/Echelon.py -s $1 $2 $3 $4 $5 $6
+nohup $INTERPRETER central_server/Echelon.py -s $1 $2 $3 $4 $5 $6  >> log.txt & # /dev/null 2>&1 &
+
+sleep 1
+
+ps aux | grep Echelon.py

@@ -1,0 +1,8 @@
+
++ Finish applying PC-Lint to the source files.
+
++ Write more elaborate unit tests.
+
++ Figure out how to get CC.NET to read the output of the unit tests.
+
++ Rename files to give them more consistent names.

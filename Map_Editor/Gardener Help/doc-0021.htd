@@ -1,0 +1,39 @@
+<HTML>
+<head><title>Opening A Map</title></head>
+
+<BODY TOPMARGIN=4 BGCOLOR=#FFFFFF TEXT=#000000 VLINK=#000000 LINK=#000000 ALINK=#000000>
+<FONT FACE="Arial, Lucida, Helvetica">
+
+<TABLE WIDTH="100%" ALIGN=CENTER CELLPADDING=1 CELLSPACING=0>
+<TR>
+<TD WIDTH="100%" ALIGN=CENTER>
+<A HREF="doc-0003.htm">
+<img align=center src="contents.gif" BORDER=0 ALT="Contents"></A>
+
+
+<A HREF="doc-0019.htm">
+<img align=center src="back.gif" BORDER=0 ALT="Previous"></A>
+
+<A HREF="doc-0022.htm">
+<img align=center src="forward.gif" BORDER=0 ALT="Next"></A>
+</TD>
+</TR>
+<TR>
+
+<!-- A narrow row representing the horizontal rule -->
+<TD COLSPAN=2 HEIGHT=2 BGCOLOR="#C0C0C0">
+</TD>
+</TR>
+</TABLE>
+
+<H2>Opening A Map</H2>
+ 
+When it comes to opening a map in Gardener, there's two places to turn to. The user can go the the menubar and select file->open or the user can select the open button on the toolbar.<P>
+
+
+<IMG SRC="file_open.jpg" ALT="File open" VSPACE="" ALIGN="LEFT" BORDER="0"><br clear=all>
+
+<IMG SRC="tool_open.jpg" ALT="Toolbar open" VSPACE="" ALIGN="LEFT" BORDER="0"><P>
+
+After this selection has been made the standard open file dialog will be displayed. You'll only be able to select .vtmap files. Once one is selected, click ok and then the map will be loaded on to the canvas for you editing needs.
+</FONT></BODY></HTML>

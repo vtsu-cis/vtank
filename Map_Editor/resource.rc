@@ -1,0 +1,7 @@
+gardener ICON "data/resources/Gardener.ico"
+
+// This resource script appears to define a manifest which conflicts with the
+// manifest created by Visual Studio. Not sure what's happening with that at
+// the moment. We can resolve it all later if necessary.
+//
+// #include "wx/msw/wx.rc"

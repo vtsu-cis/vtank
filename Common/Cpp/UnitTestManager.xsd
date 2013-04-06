@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema targetNamespace="http://vortex.cis.vtc.edu/xml/UnitTestManager_0.0"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns="http://vortex.cis.vtc.edu/xml/UnitTestManager_0.0" elementFormDefault="qualified"
+  xml:lang="en-US">
+
+  <xs:element name="TestOutput">
+    <xs:annotation>
+      <xs:documentation>The root element is a container for all information related to the
+        results of running a collection of tests. This includes both meta information as well as
+        the individual results themselves.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="MetaData" type="MetaDataType"/>
+        <xs:element name="Results" type="ResultsType"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="MetaDataType">
+    <xs:annotation>
+      <xs:documentation>The test meta data is information about the test run in general. This
+        information applies to all the results and represents the environment in which all the
+        tests were executed (for example: date, time, host OS, etc). Currently the content model
+        for this complex type is quite minimal.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Title" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ResultsType">
+    <xs:annotation>
+      <xs:documentation>The overall results are a sequence of TestResult elements with one
+        element for each individual test.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="TestResult" type="TestResultType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TestResultType">
+    <xs:annotation>
+      <xs:documentation>Every test result is a list of failure messages with a possible
+        exception or bad return message. This content model represents the output of a single
+        test function.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Failure" type="FailureType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:choice minOccurs="0" maxOccurs="1">
+        <xs:element name="Exception" type="ExceptionType"/>
+        <xs:element name="BadReturn" type="xs:string"/>
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="title" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="FailureType">
+    <xs:annotation>
+      <xs:documentation>A test failure is a problem that does not terminate the test function
+        (so multiple failures might come from a single test function). Failures can optionally
+        be decorated with location information that represents where the failure occured. The
+        content of this type is intended to be a message from the test function indicating what
+        failed.</xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="file" type="xs:string"/>
+        <xs:attribute name="line" type="xs:nonNegativeInteger"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="ExceptionType">
+    <xs:annotation>
+      <xs:documentation>A test function might raise a single exception (which terminates the
+        test function. Note that the exceptions reported here are, by definition, not handled
+        inside the test function. Exceptions can be optionally labeled with a type. The content
+        of this type is intended to be the message contained inside the exception object
+        (UnitTestManager::UnitExceptions and std::exceptions contain such
+        messages).</xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="type" type="xs:string"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  
+</xs:schema>

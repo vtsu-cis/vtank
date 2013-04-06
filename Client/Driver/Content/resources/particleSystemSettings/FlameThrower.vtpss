@@ -1,0 +1,38 @@
+Texture: fire2
+
+Capacity: 1000
+Duration: 0.40
+DurationRandomness: 0.1
+
+GlobalForce: [0, 0, 0]
+MinForceSensitivity: 0
+MaxForceSensitivity: 0
+InertiaSensitivity: 0
+
+DirFromRotation: No
+InitialSpeed: 0
+Direction: [0, 0, 0]
+
+MinStartHorizontalVelocity: 50
+MaxStartHorizontalVelocity: 70
+MinStartVerticalVelocity: -20
+MaxStartVerticalVelocity: 50
+
+MinEndHorizontalVelocity: 100
+MaxEndHorizontalVelocity: 150
+MinEndVerticalVelocity: -80
+MaxEndVerticalVelocity: 80
+
+MinStartSize: 50
+MaxStartSize: 100
+MinEndSize: 5
+MaxEndSize: 15
+
+MinRotateSpeed: 1
+MaxRotateSpeed: 2
+
+MinColor: [128, 128, 38, 255]
+MaxColor: [255, 255, 255, 255]
+
+SourceBlend: SourceAlpha
+DestinationBlend: One

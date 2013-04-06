@@ -1,0 +1,71 @@
+#!/bin/sh -l
+# chkconfig: 2345 89 39
+# description: Glacier2 router for the main server.
+# processname: glacier2router
+#
+# Modify the glacier2 service.
+# Options: start|stop|restart
+/etc/rc.d/init.d/functions
+
+# CONSTANTS
+GLACIER2=/vtank/Glacier2/start-echelon-router
+PID=$(/sbin/pidof glacier2router)
+
+VERB=$1
+if [ "$VERB" = "" ];
+then
+	echo "Usage: $0 start|stop|restart"
+	exit 1
+fi
+
+function start {
+	if [ "$PID" != "" ];
+	then
+		echo "Glacier2 is already running."
+		return 0
+	fi
+	sh $GLACIER2
+	return $?
+}
+
+function stop {
+	if [ "$PID" = "" ];
+	then
+		echo "Glacier2 is not running."
+		return 0
+	fi
+	
+	kill -9 $PID
+	return $?
+}
+
+function restart {
+	stop
+	start
+	return $?
+}
+
+case "$VERB" in 
+	start)
+		start
+		RETVAL=$?
+	;;
+
+	stop)
+		stop
+		RETVAL=$?
+	;;
+	
+	restart)
+		restart
+		RETVAL=$?
+	;;
+	
+	*)
+		echo "Usage: $0 start|stop|restart"
+		exit 1
+	;;
+esac
+
+exit $RETVAL
+

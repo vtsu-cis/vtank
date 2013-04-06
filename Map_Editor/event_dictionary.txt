@@ -1,0 +1,19 @@
+#This file contains the lookup information for events stored in .vtmap files.
+#The image given should be just the name, and extension of the image, never a directory.
+#The 0 index is reserved for the default which is no event.
+#Format: 00:imagename.ext, where 00 is the highest number in the list +1, this is the id
+#				    and the imagename.ext is the image that corresponds to the event
+0:blank.png
+1:spawn_point.png
+2:red_team_spawn_area.png
+3:blue_team_spawn_area.png
+4:red_flag.png
+5:blue_flag.png
+6:king_of_the_hill_area.png
+7:utility_spawn.png
+8:base_blue_1.png
+9:base_blue_2.png
+10:base_blue_3.png
+11:base_red_3.png
+12:base_red_2.png
+13:base_red_1.png

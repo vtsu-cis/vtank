@@ -1,0 +1,10 @@
+.svn
+.svn\*
+Thumbs.db
+IceCs.pdb
+Client.pdb
+Glacier2.pdb
+Ice.pdb
+IceCs.pdb
+Client.exe.config
+*.pdb

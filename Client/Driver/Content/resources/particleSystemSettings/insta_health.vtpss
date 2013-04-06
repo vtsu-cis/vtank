@@ -1,0 +1,38 @@
+Texture: health_particle
+
+Capacity: 100
+Duration: .8
+DurationRandomness: 0
+
+GlobalForce: [15, 15, 15]
+MinForceSensitivity: 0.75
+MaxForceSensitivity: 1
+InertiaSensitivity: 1
+
+DirFromRotation: No
+InitialSpeed: 0
+Direction: [0, 0, 0]
+
+MinStartHorizontalVelocity: 200
+MaxStartHorizontalVelocity: 200
+MinStartVerticalVelocity: -200
+MaxStartVerticalVelocity: 200
+
+MinEndHorizontalVelocity: 200
+MaxEndHorizontalVelocity: 200
+MinEndVerticalVelocity: -200
+MaxEndVerticalVelocity: 200
+
+MinStartSize: 30
+MaxStartSize: 30
+MinEndSize: 30
+MaxEndSize: 30
+
+MinRotateSpeed: 0
+MaxRotateSpeed: 0
+
+MinColor: [173, 216, 230, 255]
+MaxColor: [255, 25, 25, 255]
+
+SourceBlend: SourceAlpha
+DestinationBlend: One

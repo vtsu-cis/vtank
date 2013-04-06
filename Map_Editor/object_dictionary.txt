@@ -1,0 +1,40 @@
+#This file contains the lookup information for objects stored in .vtmap files.
+#The image given should be just the name, and extension of the image, never a directory.
+#The 0 index is reserved for the default which is no object.
+#Format: 00:imagename.ext, where 00 is the highest number in the list +1
+0:blank.png
+1:rock.png
+2:dead_tree.png
+3:oil_drums.png
+4:spruce.png
+5:bomb.png
+6:chainlink_corner.png
+7:chainlink_top.png
+8:chainlink_side.png
+9:building.png
+10:bench.png
+11:plane.png
+12:bunker.png
+13:snowtree.png
+14:snowrock.png
+15:pillar.png
+16:cactus.png
+17:cherry.png
+18:elm.png
+19:oak.png
+20:pyramid.png
+21:aztec.png
+22:aztec_statue.png
+23:chainlink_up.png
+24:chainlink_down.png
+25:chainlink_left.png
+26:chainlink_right.png
+27:lamp_down.png
+28:lamp_up.png
+29:lamp_left.png
+30:lamp_right.png
+31:grass.png
+32:barrier_horizontal.png
+33:barrier_vertical.png
+34:car.png
+35:aztec_pillar.png

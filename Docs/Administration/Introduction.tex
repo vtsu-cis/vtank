@@ -1,0 +1,67 @@
+\chapter{Introduction}
+\label{intro}
+VTank is an on-line multi-player tank game. While the player need only run an installer to play VTank, administrators have several components to set up before this instance of the VTank world becomes playable. This document targets technically sophisicated users interested in setting up and configuring all parts of VTank. This document focuses on what's required to install and configure VTank servers and environments. However, this document will not address the design or architecture of the VTank world. For a detailed technical overview on the VTank world, please view the main PDF available at: \url{http://vtank.cis.vtc.edu/development/}.
+
+\section{Obtaining the source code}
+\label{src}
+
+The source code of VTank is required in order to compile and build certain parts of the game. As of this writing, the method for obtaining the source code for VTank is to use a Subversion client to check out the following url:
+
+\command{svn://svn.cis.vtc.edu/VTank/trunk/}
+
+VTank may move to an alternate version control engine in the future. The latest method of obtaining the source code is available at the following URL under the ``Source Code'' section:
+
+\url{http://vtank.cis.vtc.edu/development}
+
+\section{Environment Variables}
+\label{env-variables}
+
+There are several times throughout the VTank install process where environment variables should be added or modified. This section shows how to do that, and instructs on which variables should be added.
+
+\label{procedure-modify-properties}
+The following procedure shows how to modify/add environment variables:
+\begin{enumerate}
+	\item Open up the Start menu.
+	\item Right-click on ``My Computer'' (or just ``Computer'' on Windows 7 and Vista) and go to Properties.
+	\item \emph{Windows 7}: On the left-hand side, left-click on ``Advanced system settings.''\\
+	\emph{Windows XP}: Go to the ``Advanced'' tab.
+	\item On the bottom of the System Properties, left-click on the ``Environment Variables...'' button.
+\end{enumerate}
+
+This screen shows a list of environment variables for your computer. Each variable may contain multiple entries separated by a semi-colon (\command{;}) mark. The following environment variables should be added or modified:
+
+\begin{itemize}
+	\item \command{ICEROOT} - The location of where you installed Ice. For example, if you installed Ice to \command{C:/lib/Ice}, \command{ICEROOT} should be set to \command{C:/lib/Ice}.
+	\item \command{PATH} - Modify your \command{PATH} system variable. Scroll to the end of the variable's value. At the end of it, place this string:\
+		\command{;\%ICEROOT\%/bin;}
+	\item \command{PYTHONPATH} - If this variable already exists, modify it. If not, create it. Append to the variable the following string:\
+		\command{\%ICEROOT\%/python}
+\end{itemize}
+
+\section{Visual Studio}
+
+As of this writing, 3.1 is the most recent version of XNA. XNA 3.1 does not support Visual Studio 2010. At least Visual Studio 2008 is required in order to compile Theater, the game server. If you do not wish to compile the client, you may use Visual Studio 2010, but Visual Studio 2008 is at minimum required to compile parts of VTank necessary to run an instance of VTank.
+
+Visual Studio is a commercial product. If you work in an educational environment you may have access to a student license. If you are a student with a \command{.edu} mailing address, you may get Visual Studio 2008 or 2010 for free at:
+
+\url{https://www.dreamspark.com/}
+
+Otherwise, Visual C++ Express is adequate to compile Theater, and Visual C\# express is adequate to compile Captain VTank (if you desire to do so).
+
+\section{Ice}
+
+Ice is object-oriented middleware which sits between all networked objects in the VTank world. Echelon, Theater, the client, the map editor, the administrative client, the website, and every other networked component of VTank uses Ice. Therefore, it's the first dependency that must be installed.
+
+\subsection{Installation (Windows)}
+
+ZeroC provides an installer for Ice on Windows. In addition, the installer installs a plug-in for Visual Studio which is required to build the VTank project. Ice's latest installer can be found at their website in the ``Downloads'' section located at:
+
+\url{http://zeroc.com}
+
+The installer's name will likely be formatted as:
+
+\command{Ice-\#.\#.\#.msi}
+
+Where the three numbers are version numbers. As of this writing, Ice uses version 3.4.1. It's generally safe to install a minor version (e.g. 3.4.*), but migration from 3.4 to 3.5 may produce compatibility problems.
+
+{\bf It is currently required that Ice is installed under \command{C:/lib/Ice}}

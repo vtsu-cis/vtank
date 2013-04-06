@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Map_Editor" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/Map_Editor" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-DDEBUG" />
+				</Compiler>
+				<Linker>
+					<Add library="../Ice/libIceCppd.a" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/Map_Editor" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O1" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="../Ice/libIceCpp.a" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions `wx-config --cflags`" />
+			<Add option="-DTARGET=LINTARGET" />
+			<Add directory="../Common/Cpp" />
+			<Add directory="../Ice" />
+			<Add directory="$(#ice)/include" />
+		</Compiler>
+		<Linker>
+			<Add option="`wx-config --libs`" />
+			<Add library="libIce" />
+			<Add library="libIceUtil" />
+			<Add library="libGlacier2" />
+			<Add library="libboost_thread.a" />
+			<Add directory="$(#ice)/lib" />
+		</Linker>
+		<Unit filename="../Common/Cpp/Map.cpp" />
+		<Unit filename="../Common/Cpp/Map.hpp" />
+		<Unit filename="../Common/Cpp/vtassert.cpp" />
+		<Unit filename="../Common/Cpp/vtassert.hpp" />
+		<Unit filename="AboutDialog.cpp" />
+		<Unit filename="AboutDialog.hpp" />
+		<Unit filename="Doxyfile" />
+		<Unit filename="GameModeDialog.cpp" />
+		<Unit filename="GameModeDialog.hpp" />
+		<Unit filename="Library.cpp" />
+		<Unit filename="Library.hpp" />
+		<Unit filename="Map.hpp" />
+		<Unit filename="MapEditorApp.cpp" />
+		<Unit filename="MapEditorApp.hpp" />
+		<Unit filename="MapEditorFrame.cpp" />
+		<Unit filename="MapEditorFrame.hpp" />
+		<Unit filename="MapPropertiesDialog.cpp" />
+		<Unit filename="MapPropertiesDialog.hpp" />
+		<Unit filename="Map_Editor-sample.cfg" />
+		<Unit filename="NewMapDialog.cpp" />
+		<Unit filename="NewMapDialog.hpp" />
+		<Unit filename="ScrolledWindow.cpp" />
+		<Unit filename="ScrolledWindow.hpp" />
+		<Unit filename="ServerCommunication.cpp" />
+		<Unit filename="ServerCommunication.hpp" />
+		<Unit filename="ServerDialog.cpp" />
+		<Unit filename="ServerDialog.hpp" />
+		<Unit filename="Support.cpp" />
+		<Unit filename="Support.hpp" />
+		<Unit filename="ToolboxWindow.cpp" />
+		<Unit filename="ToolboxWindow.hpp" />
+		<Unit filename="config.cpp" />
+		<Unit filename="config.hpp" />
+		<Unit filename="resource.h" />
+		<Unit filename="tile_dictionary.txt" />
+		<Extensions>
+			<envvars />
+			<code_completion />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

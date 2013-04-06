@@ -1,0 +1,250 @@
+body {
+	background-image: url(img/checker1.png);
+        background-repeat: repeat-y repeat-x;
+	background-color: #351718;
+	font-size: 12px;
+        /*font-family: Verdana, Arial, SunSans-Regular, Sans-Serif; */
+     /* color:#834031; */
+	font-family: Fantasy;
+	color: #3D1D18;
+        padding: 0px 0px;
+        margin:0px auto;
+	text-align: center;
+	height: 100%;
+}
+
+a {
+        color: blue;
+        text-decoration: none;
+}
+div#wrapper {
+/*	background-image: url(img/checker1.png);
+	background-repeat: repeat-y repeat-x;*/
+	background-color: #492222;
+/*      background-color:  #291415;*/
+	margin-left: auto;
+	margin-right: auto;
+	width: 1004px;
+	min-height: 900px; 
+	text-align: left;
+}
+div#borderwrapper{
+	background: transparent url(img/SiteBorder1.png) repeat-y center 0;
+	margin-left: auto;
+	margin-right: auto;
+	width: 1024px;
+}
+div#top {
+	padding: 0px;
+	padding-top: 3px;
+	height: 120px;
+	text-align: center;
+        background-color: #291415;
+
+}
+div#top h1 {
+        margin: 1px;
+	font-size: 4em;
+}
+
+div#top h2 {
+	font-size: 3em;
+        margin: 2px;
+}
+div#subhead {
+        text-align:right;
+        background-color: #291415;
+        color: #ccc;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        padding-right: 10px;
+}
+div#blahwrapper {
+	float: left;
+}
+div#leftblah {
+	background-image: url(img/leftblahbg3.png);
+	width: 200px;
+        min-height: 450px;
+	margin-top: 20px;
+	padding-top: 0px;
+        background-color:  #291415;
+        padding: 20px;
+	float: left;
+}
+div#navigation{
+}
+div#subnavigation,
+div#userblock,
+div#toc {
+        margin-top: 20px;
+}
+div#toc {
+	overflow: hidden;
+}
+div#userblock,
+div#toc {
+	background-color: #eee;
+	border: 1px solid gray;
+	padding: 5px;
+}
+div#navigation ul {
+        list-style-type: none;
+        padding: 0px;
+        margin: 0px;
+}
+div#navigation li {
+        padding: 0px;
+        margin: 0px;
+}
+div#navigation a {
+        font-size: 16px;
+        border: 1px solid gray;
+        display: block;
+        padding: 2px;
+        margin-top: 3px;
+	background-color: #eee;
+	color: #000;
+	padding-left: 10px;
+	width: 185px;
+}
+div#navigation a:hover {
+        background-color: #ddd;
+}
+
+div#content {
+	padding: 20px;
+	padding-left: 35px;
+        background-color: #ADADAD;
+        overflow: auto;
+        min-height: 600px;
+	margin-left: 245px;
+	margin-right: 10px;
+	margin-top: 10px;
+        border: 2px solid #291410;
+     /*   border-top-style: groove;
+        border-bottom-style: ridge;
+        border-right-style: ridge;*/
+
+}
+div#content h1 {
+/*
+	border: 5px groove #291410;
+	border-top-style: ridge;
+	border-bottom-style: groove;
+	border-right-style: ridge;
+	*/padding: 5px;
+	text-align: center;
+	font-weight: bold;
+	color: #000;
+	background-color: #DBDBDB;
+}
+div#content p {
+}
+
+div#toc h2 {
+        font-size: 1em;
+}
+div#toc ul {
+        padding-left: 10px;
+	margin-left: 0px;
+}
+div#toc li {
+	padding-left: 0px;
+}
+div#footer {
+/*	margin-left: 10px;
+	margin-right: 10px;*/
+	height: 70px;
+	background-color: #291415;
+}
+div#footer p{
+	float: left;
+}
+div#footer img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	vertical-align: center;
+	padding-top: 2em;
+}
+
+ul.news li {
+        padding-bottom: 20px;
+}
+
+ul.news .subject {
+        font-weight: bold;
+}
+
+ul.news .comments {
+        padding-top: 5px;
+}
+
+.error, .errorlist {
+        color: red;
+        font-weight: bold;
+}
+
+
+.wiki_title {
+	font-size: 2em;
+	background-color: #ddddee;
+	padding: 5px;
+	padding-left: 30px;
+}
+
+.sphwiki_body h1 {
+	font-size: 1.5em;
+	background-color: #e0e0f5;
+	padding: 3px;
+}
+
+.sphwiki_body h2 {
+}
+
+.sphwiki_body h3 {
+}
+.sphboard_categories {
+	border-spacing: .5em .5em;
+}
+.sphboard_categories td{
+	border: 1px solid #111;
+	padding: .5em .5em;
+}
+
+.memberquote {
+  margin-left: 1em;
+  font-size: smaller;
+}
+
+.djangoimg {
+	border: 0px;
+}
+
+blockquote {
+  border-left: 5px solid #ccc;
+  margin-left: 1.5em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  padding-left: 5px;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  min-height: 2em;
+}
+
+pre code, .code {
+	background-color:#eee;
+	display:block;
+	padding: 5px;
+	border: 1px dotted black;
+	overflow: scroll;
+}
+div.languageswitcher, div.languageswitcher select  {
+  font-size: xx-small;
+}
+div.languageswitcher select {
+  border: 1px solid gray;
+  background: inherit;
+}
+

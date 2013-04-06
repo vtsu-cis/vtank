@@ -1,0 +1,225 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FILE    : Janitor.tex
+% SUBJECT : Document describing design issues in the VTank Janitor.
+% AUTHOR  : (C) Copyright 2009 by Vermont Technical College
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Janitor}
+\label{janitor}
+
+\section{Requirements}
+
+\VTank\ requires that there be a database containing objects used by the game that are specific to a tank. These objects include: armor, weapons, and projectiles. The purpose of the \VTank\ janitor is to maintain these objects by giving a user the ability to add, edit and delete them from the database. This section describes the Janitor.
+
+\subsection{Functional Requirements}
+
+The \VTank\ Janitor must authenticate a user's user name and password before they can begin manipulating objects. Once authenticated, the Janitor must create an ICE Janitor session.  The Janitor session is used for communication with the database for making changes and data retrieval. The user is presented with a form containing tabs for each object with the data for that tab loaded. Each tab has a text box for each of its attributes as well as a table with a list of all objects currently in the database of the given tab. If a particular object requires another object as part of its attributes, then a table or tables will also be present containing the particular object(s) that is/are necessary. Above each table and adjacent to the table's label, there must be a check box labeled `Display Pending.'  Clicking an object in the table will load its attributes into the appropriate text boxes.  The ID attribute for each object will be displayed, but will be disabled as it is a primary key in the database and should never be altered from the Janitor.  Under the table(s) there must be three buttons: add, edit, and delete.  There must be a menu at the top, above the tabs.  This menu must contain a logout button to the far right and a user name label to the left of it.  All communication for authentication and database access must be performed through ICE.  The Janitor must employ callbacks, which can be called by the server to inform the Janitor that the database has been modified and force the reloading of data.
+
+The following user interface mock-ups show the intended layout of some of the forms used by the Janitor. Figure~\ref{fig:janitor-login} shows the login form used by the Janitor.
+
+\begin{figure}[htbp]
+  \centering
+  \scalebox{0.5}{\includegraphics*{Figures/JanitorLogin.png}}
+  \caption{Janitor's Login Form}
+  \label{fig:janitor-login}
+\end{figure}
+
+Figure~\ref{fig:janitor-weapon-display} shows the form that displays the weapons currently available for game use.
+
+\begin{figure}[htbp]
+  \centering
+  \scalebox{0.5}{\includegraphics*{Figures/JanitorWeapon.png}}
+  \caption{Janitor's Weapon Display Form}
+  \label{fig:janitor-weapon-display}
+\end{figure}
+
+Figure~\ref{fig:janitor-weapon-editing} shows the form that allows the user to edit the weapons.
+
+\begin{figure}[htbp]
+  \centering
+  \scalebox{0.5}{\includegraphics*{Figures/JanitorWeapon_EditView.png}}
+  \caption{Janitor's Weapon Editing Form}
+  \label{fig:janitor-weapon-editing}
+\end{figure}
+
+
+\subsection{Use Cases}
+
+The following adds an object to the database.
+
+\begin{usecase}
+  {ADD}
+  {Editing User}
+  {The Janitor is running, the user is authenticated, and the add button is clicked.}
+\begin{enumerate}
+\item The add button is clicked.
+\item Text box data is checked for validity
+\item Disable the current object table, delete, and add button.
+\item Display buttons: Accept Changes and Discard Changes
+\item Enable the current tab's text boxes.
+\end{enumerate}
+\end{usecase}
+
+The following case locks an object into editing mode.
+
+\begin{usecase}
+  {EDIT}
+  {Editing User}
+  {The Janitor is running, the user is authenticated, and the edit button is clicked.}
+\begin{enumerate}
+\item The edit button is clicked.
+\item Disable the current object table, delete, and add button.
+\item Display buttons: Accept Changes and Discard Changes
+\item Enable the current tab's text boxes.
+\end{enumerate}
+\end{usecase}
+
+The following case deletes an object to the database.
+
+\begin{usecase}
+  {DELETE}
+  {Editing User}
+  {The Janitor is running, the user is authenticated, and the delete button is clicked.}
+\begin{enumerate}
+\item The delete button is clicked.
+\item A request is sent to delete the currently selected object
+\item The selected object is deleted.
+\end{enumerate}
+\end{usecase}
+
+The following case displays items in the pending state and hides their live versions.
+
+\begin{usecase}
+  {DISPLAY PENDING (UNCHECKED)}
+  {Editing User}
+  {The Janitor is running, the user is authenticated, and the display pending check box is unchecked.}
+\begin{enumerate}
+\item The display pending check box is clicked.
+\item A request is sent to get the pending items.
+\item The table is updated to show the pending versions and hide the live versions.
+\item The pending items are highlighted green, while items that will be deleted are highlighted red.
+\end{enumerate}
+\end{usecase}
+
+The following case hide items in the pending state and hides their live versions.
+
+\begin{usecase}
+  {DISPLAY PENDING (CHECKED)}
+  {Editing User}
+  {The Janitor is running, the user is authenticated, and the display pending check box is checked.}
+\begin{enumerate}
+\item The display pending check box is clicked.
+\item A request is sent to get the live items.
+\item The table is updated to show the live versions and hide the pending versions.
+\end{enumerate}
+\end{usecase}
+
+The following case unlocks an object in editing mode and reverts any changed attributes.
+
+\begin{usecase}
+  {DISCARD CHANGES}
+  {Editing User}
+  {The Janitor is running, the user is authenticated, the Janitor is locked in the adding or editing mode, and the discard changes button is clicked.}
+\begin{enumerate}
+\item The discard changes button is clicked.
+\item Hide the buttons: Accept Changes and Discard Changes
+\item Enable the current object table, delete, and add button.
+\item Disable the current tab's text boxes.
+\item Revert any changes to the text boxes.
+\end{enumerate}
+\end{usecase}
+
+The following case unlocks an object in editing mode and sends the changes to the database.
+
+\begin{usecase}
+  {ACCEPT CHANGES}
+  {Editing User}
+  {The Janitor is running, the user is authenticated,  the Janitor is locked in editing mode, and the accept changes button is clicked.}
+\begin{enumerate}
+\item The accept changes button is clicked.
+\item Hide the buttons: Accept Changes and Discard Changes
+\item A new object is created with the data depending on which tab is currently being used.
+\item The new object is sent to the database.
+\item Enable the current object table, delete, and add button.
+\item Disable the current tab's text boxes.
+\end{enumerate}
+\end{usecase}
+
+The following case unlocks an object in editing mode and sends the changes to the database when the item being edited has been deleted.
+
+\begin{usecase}
+  {ACCEPT CHANGES [ITEM DELETION PENDING]}
+  {Editing User}
+  {The Janitor is running, the user is authenticated,  the Janitor is locked in editing mode, the current item has been deleted and is in the pending db and the accept changes button is clicked.}
+\begin{enumerate}
+\item The accept changes button is clicked.
+\item Prompt the user if they wish to undelete the item or discard changes.
+\item Hide editing buttons: Accept Changes and Discard Changes
+\item If undelete selected:
+  \begin{enumerate}
+  \item Send an undelete request
+  \item A new object is created with the data depending on which tab is currently being used.
+  \item The new object is sent to the database.
+  \item Enable the current object table, delete, and add button.
+  \item Disable the current tab's text boxes.
+  \end{enumerate}
+\end{enumerate}
+\end{usecase}
+
+The following case logs a user out of a janitor session.
+
+\begin{usecase}
+  {LOGOUT}
+  {Editing User}
+  {The Janitor is running, the user is authenticated,  and the user clicks the logout button.
+}
+\begin{enumerate}
+\item The logout button is clicked.
+\item The Janitor session is closed.
+\item The Janitor form is closed and the login screen is displayed.
+\end{enumerate}
+\end{usecase}
+
+The following case logs a user into a janitor session.
+
+\begin{usecase}
+  {LOGIN}
+  {Editing User}
+  {The Janitor is running, the user is not authenticated,  and the user clicks the login button.}
+\begin{enumerate}
+\item The login button is clicked.
+\item A Janitor session is opened if authentication is successful.
+\item The Janitor login form is closed and the Janitor form is displayed.
+\end{enumerate}
+\end{usecase}
+
+\subsection{Non-Functional Requirements}
+
+\subsubsection*{Platform}
+
+The \VTank\ Janitor will mainly run on Windows, but will also need to run on Linux using Mono.
+
+\subsubsection*{Performance}
+
+The \VTank\ Janitor will only perform as well as the internet connection between the Janitor client and the server / database will allow.  The user should not have to wait more than a few seconds for an authentication request or to get data from the database.
+
+\subsubsection*{Security}
+
+The \VTank\ Janitor should keep the user's ID and password  secure. It should not store this information in a file nor transmit it over the network unencrypted, therefore SSL should be used. 
+
+\subsubsection*{User Characteristics}
+
+It can be assumed that the users of the Janitor are competent computer users and are either \VTank\ developers or are trained in the use of the Janitor. It can be assumed that they are familiar with the platform on which the Janitor is running and that they will expect the Janitor to behave according to the established standards for that platform. 
+
+\subsubsection*{Scale}
+
+The \VTank\ Janitor's object tables need to handle an arbitrary amount of entries from the database, but the total amount of memory used should not exceed 2 GiB (on a 32 bit system).
+
+\subsubsection*{Data Formats}
+
+The \VTank\ Janitor does not need to handle any sort of specific data formats.
+
+\subsubsection*{Internationalization}
+
+Initially the \VTank\ Janitor only needs to support US English. Support for other languages and cultures is not required but may be a future enhancement.

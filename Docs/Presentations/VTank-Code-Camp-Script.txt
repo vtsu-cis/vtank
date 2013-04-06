@@ -1,0 +1,746 @@
+Script for the VTank presentation. Gives ideas for what to talk about each slide.
+1) VTank
+- Welcome to the presentation.
+- Thank them for coming.
+- Let's jump right into it.
+
+2) What is VTank?
+* Point 1: Online multi-player 3D game written in .NET
+	- Start with: "VTank is an online multi-player 3D game targetting the 
+        .NET 2.0 platform."
+	- Continue: "We used Microsoft's XNA Framework for the game. XNA is a wrapper
+		around DirectX, and targets the Windows, XBox 360, and Zune platforms. VTank
+		is currently only available on Windows."
+	- Mention that porting to other platforms like Silverlight might be a possibility 
+        in the future.
+
+* Point 2: Top-down or chase perspective
+	- Mention that VTank is playable from the birds-eye perspective, 
+        where the camera looks at the tank from the sky, or from the chase view, 
+        where the camera follows a few feet behind the tank.
+	- The chase camera is not officially supported yet; it has a few bugs to work out.
+
+* Point 3: Customizable tanks
+	- Start out with: "Players are allowed to create and manage a number of tanks."
+	- They're allowed to choose their own tank model, choose a weapon, 
+        trade off speed for armor (or vice versa), change the color of their tank, 
+        and name the tank.
+
+* Point 4: Product of the Summer of Software Engineering (SoSE) program
+	- VTank was developed during the Summer of Software Engineering, or "saucey", 
+        program. (Move to the next slide and explain SoSE)
+
+3) Summer of Software Engineering
+* Point 1: Students get together to develop software in a professional environment
+	- "'Saucey' is where ..." (continue reading bullet point)
+    - Define "professional environment."
+        + Professional environment, in our case, means using industry-standard tools
+            like version control, writing real-world software and maintaining the 
+            code base over time.
+
+* Point 2: Focuses on best practice development
+    - 
+
+* Point 3: Running since 2006
+    - Talk about the previous projects.
+        + In 2006, one student was on board. He wrote a program that prints out serial
+            tags containing information about the school's computers. The tags can be
+            later scanned into a device. This project was never completed due to 
+            time constraints.
+        + In 2007, two students wrote a personnel look-up engine for
+            Vermont Technical College. This was developed over the year, and the 
+            website version of the client is on-line and working.
+        + In 2008, three students wrote the original VTank. This version is completely
+            different from the one we wrote this summer. (This transitions nicely into
+            the next slide)
+
+4) How VTank Started
+* Point 1: Someone offered $50.00 for an online multi-player version of an old 
+    Atari game
+    - "A little more than a year ago, the IT guy at the main VTC campus offered 
+        anyone $50.00 if they could re-create an old Atari tank game."
+    - I think it was called "Battle Tank", but I'm not sure.
+    - We played around with this idea, and eventually decided to go for it.
+
+* Point 2: Cross-platform using C++ and OpenGL
+    - The requirements specified that VTank was to be a cross-platform game written in
+        C++. Because it's cross-platform, OpenGL was the most suitable graphics 
+        library for the job.
+    - We wanted it to run on Windows, Linux, and Mac.
+    - We successfully compiled it for Windows and Linux, but had no Mac machine to 
+        try it on.
+    - We used a library called "GL Framework" to make cross-platform programming easier.
+        It also had some basic support for multi-threading.
+    
+* Point 3: Custom binary protocol
+    - We wrote a custom communications channel which involved creating and parsing
+        incoming and outgoing packets.
+    - We created two versions of the channel: The test channel, and the real channel.
+        The test channel simulated communication with a real server.
+    
+* Point 4: Almost everything written from scratch
+    - "We used a few low-level libraries in the client, but most of the tools and 
+        libraries were written from scratch."
+	- Wrote a wrapper for OpenGL to create windows in a cross-platform-friendly way.
+    - We called this wrapper "GL Window".
+    
+	** Sub-point: Including GUI components like text fields
+        - We implemented GUI components like text fields, buttons, labels, and lists as
+            part of the wrapper's library.
+        - The code that draws the components, their backgrounds, their borders, and the
+            text on the components was all written from scratch.
+        - Needless to say, it was very time-consuming.
+        
+5) Lessons Learned
+* Point 1: Don't write everything from scratch
+    - Running out of time before even fleshing out the meat of the game was a strong
+        indicator that we should have used a framework that abstracts most of the
+        low level stuff for us.
+	- There are countless libraries that can do the job just as well, if not better,
+        than our own implementation.
+    
+	** Sub-point: Spent more time writing the tools than the game
+        - "We spent more time writing tools to support the game than writing the actual
+            game."
+        
+* Point 2: Writing for multi-platform was too taxing
+    - It wasn't worth trying to code VTank to run on multiple platforms. It's a 
+        better idea, we discovered, to target a single platform first, then port it to
+        other platforms once we actually get a game, if we wanted to.
+    
+* Point 3: Original VTank project was a bust, but was valuable for the experience
+    - We didn't end up getting a game out before the end of the "saucey" program. In 
+        fact, it wasn't even close to playable.
+    - But it gave us a lot of valuable experience we wouldn't have had otherwise. We had
+        no idea what we were doing in the game programming realm, so if nothing else,
+        we learned how *not* to program games.
+    - The failures in the original attempt built the foundation for the next attempt's
+        requirements.
+    
+6) The New VTank
+* Point 1: Utilizes Microsoft XNA Framework 3.1
+    - We decided to use Microsoft's XNA framework. It abstracts the difficulties of 
+        3D programming, such as loading models, drawing models, and vector math.
+    
+* Point 2: Internet Communications Engine (Ice) for network infrastructure
+    - We use Internet Communications Engine, or Ice, for the network infrastructure. 
+        It's how every component of the VTank architecture talks to every other
+        component.
+    - We'll talk about Ice in more detail a little later.
+    
+* Point 3: Stuck with Windows at first
+    - We targetted a single platform: Windows. Since we used XNA, which is a .NET 
+        library, it made sense to not set a specific version of Windows as the target
+        platform, but rather a specific version of .NET.
+    - In this case, we targetted .NET 2.0, since it had everything we needed, and is
+        much more lightweight than later versions.
+    
+	** Sub-point: Solid set of development tools
+        - Sticking with Windows also let us us use some powerful tools and libraries 
+            that we wouldn't have had access to otherwise, such as Visual Studio, XNA, 
+            and the various libraries and packages that integrated themselves nicely.
+	
+7) Gameplay
+* Point 1: An action/arcade style tank game
+	- VTank is a fast-paced arcade-style game. More often than not, it's about 
+        destroying opponents before they destroy you.
+	- Supports multiple playstyles and game modes.
+
+* Point 2: Controls follow standards set by other popular games
+    - "Controls follow standards set by other popular games such as Counter-Strike."
+	- You aim your weapon by moving the mouse around -- the turret will follow the 
+        position of the mouse.
+    - Clicking will fire a projectile in the direction you're aiming.
+	- By default, the tank moves forward and in reverse with the 'W' and 'S' keys,
+        respectively. It rotates left and right with the 'A' and 'D' keys.
+
+* Point 3: Various game modes (e.g. Deathmatch, Capture the Flag)
+    - VTank isn't restricted to an all-out brawl -- objectives are a significant part
+        of the game.
+    - Modes like Deathmatch focus on racking up the most individual kills, while modes
+        like Capture the Flag focus on retrieving an object and returning it to the
+        base.
+    
+8) Screenshot: Gameplay 1
+    - Here's a picture of my tank being destroyed by another player.
+    - The game is being played from the top-down perspective.
+    - Point out a few GUI components:
+        + The respawn timer indicates the number of seconds before you respawn and can
+            continue playing. By default, it takes about 5 seconds to respawn.
+        + At the top in small letters is the time left before the server switches to a
+            new map.
+        + When players chat with each other, or when events happen, like one player 
+            destroying another, they appear down here. Here, we can see that I was
+            destroyed by a player named "JTank."
+
+9) Screenshot: Gameplay 2
+    - Here's a picture of a battle happening between two tanks, taken from the chase
+        perspective.
+    - It plays exactly the same as top-down perspective. The only difference is that it
+        changes how you aim the turret, and it changes your field of vision.
+
+10) Internet Communications Engine (Ice)
+* Point 1: Cross-platform multi-lingual middleware
+	- "Ice is cross-platform middleware -- it's the glue that holds the various 
+        components of VTank together. It's how the client communicates with the 
+        master server, and how the client communicates with the game server, and so on."
+    - It supports most mainstream object-oriented languages, including C++, Java, PHP,
+        and Python.
+    
+* Point 2: Object-oriented design
+    - Ice takes an object-oriented approach with design. When you call an object through
+        Ice's RPC, it's as if interacting with an initialized object somewhere else in 
+        the local code, when in reality it looks for the object on the target server.
+    
+* Point 3: Design communication infrastructure in 'Slice' definition files
+    - The infrastructure of the network is designed in a language specifically meant for
+        Ice called 'slice'.
+    
+	** Sub-point: Compile to any supported language
+        - Slice files compile to any Ice-supported language.
+        - The idea is to define the protocol once, then compile the slice definition for
+            both the client and the server.
+            + The server implements interfaces defined in the slice definition, and the
+                client calls a function inside of the interface.
+	
+11) Slice (Example)
+- "Here's an example of a slice file, with slice keywords highlighted in blue."
+- The interface declaration is wrapped inside of this 'module' tag. In slice, the
+    'module' keyword is equivalent to 'namespace' for C++, or 'package' for Java.
+- Inside of the module MyModule, an interface named 'MyInterface' is declared.
+- This works basically the same as Java or C# interface, where you declare methods and 
+    leave it to the class which inherits the interface to implement the method.
+- MyInterface has one method declared, ToUpper. It takes a string, and returns a string.
+- Here's an example of how the server might use this slice file. I wrote it using C#
+    syntax, but you can do it in any Ice-supported language.
+- Assume that a class wraps this method and inherits MyInterface.
+- Here, we are forced to implement the ToUpper method. All it does is take the parameter
+    and return the string converted to upper-case letters. Not a very useful networking
+    method, I know.
+- Here's the client version, using the same slice file. I did the example in Python
+    syntax, but again, it doesn't matter what language or platform you use.
+- Above this line of code, there would be some basic initialization to create the proxy
+    that points to the server and all that.
+- This line of code calls the 'ToUpper' method on the server. I passed in the string
+    "hi" in lower-case letters. When we print out the result that we receive from the
+    server, as you might have expected, it prints out "HI" in capital letters.
+
+12) Why Ice?
+* Point: Ice met the requirements perfectly:
+    - We had more than once choice for remote procedure call systems, but we felt that
+        Ice met our requirements better than others.
+    
+	** Sub-point 1: Free, open-source, licensed under GPL
+        - VTank is a free, open-source, and licensed under GPL, and so is Ice.
+    
+	** Sub-point 2: Built to meet the requirements for a MMO game
+        - The company 'ZeroC' was contracted to build middleware that meant the 
+            requirements of their massively multi-player online, or MMO, game. 
+            Ice was the result of that. 
+        - Since VTank has similar characteristics to a MMO game, Ice seemed to suit
+            VTank well.
+	
+	** Sub-point 3: Need to host servers on Windows and Linux
+        - Since we hosted servers on both Windows and Linux, we needed a system that
+            could support both.
+        
+	** Sub-point 4: Supports all languages we use
+        - In addition to multi-platform requirements, we have a server in Python, 
+            another server in C++, clients in .NET, and one client in Java. Luckily
+            for us, Ice supports all of these languages.
+        
+13) Architecture
+- This is the architecture of the entirety of VTank.
+- The main server here is where every other client in the VTank universe goes to
+    interact with other clients. It acts as the central repository for account data
+    and game data.
+- It stores that data in the backend database. The database in this case is stored on
+    the same machine, or at least close enough that it's encapsulated within the same
+    firewall rules.
+- The database exclusively interacts with the main server, and isn't accessible from
+    outside of the firewall.
+- On the edge of the firewall is a Glacier2 Router. Glacier2 is a component of Ice.
+- Glacier2 is a firewall service that lets clients and servers communicate across
+    NAT boundaries and firewalls.
+- Opening one port lets any number of clients access any number of servers behind the
+    firewall.
+- We'll talk about Glacier2 more a little later.
+- Up here the game server peeks outside of it's firewall a little to establish a 
+    connection with the main server. Each game server that wants to host games has to 
+    register itself to the main server's list of on-going games.
+- All other connections to the game server are done through a Glacier2 router as well,
+    and the only type of client that connects to a game server is a regular VTank 
+    client.
+- The VTank clients start by logging into the main server and retrieving a list of
+    on-going games, including the host name of the game server hosting that game.
+    It's up to the client at this point to establish a connection to the game server.
+    Then, it can start playing the game.
+- The other clients here have different functions not related to game servers. 
+- Captain VTank -- the administrative tool -- interacts with the main server to do
+    execute management tasks, like reading statistics or punishing cheaters.
+- Janitor is a tool that makes it easy to modify some aspects of game data, like what
+    effect certain weapons have on the game. Since the database is closed off from the
+    rest of the world, it has to go through the main server.
+- When the map editor tool creates maps, it uploads them to the main server, which then
+    stores the map in it's database.
+- The website acts as an interface for new users to create game accounts, and, again,
+    since the database is closed off from the rest of the world, it must ask the main
+    server to do the actual account creation.
+- I'll go over each of these components in a little more detail.
+
+14) Main Server
+* Point 1: Master server -- manages all types of clients
+	- Like I mentioned earlier, the main server acts as the central point of interaction
+        for every other client.
+    
+	** Sub-point: Including game servers
+        - That includes game servers, too.
+        - Clients have to ask the main server if it's okay to join a certain game server.
+        - If it is, the main server tells the game server that a certain user is about
+            to join.
+        - In other words, clients can't join games until they first connect to the
+            main server.
+        - This is because the main server tracks things like account data, tank data, 
+            and whether or not users are banned. The game servers don't track that.
+    
+* Point 2: Uses MySQL to store account and tank data
+	- An instance of MySQL is set up on the same machine as the main server for quick
+        and secure database transactions.
+    
+	** Sub-point: Acts as middle-man to the database
+        - Like I said earlier, the main server is the only possible way other clients
+            can make modifications to account or game data.
+    
+* Point 3: Written in Stackless Python
+	- The main server was written in Stackless Python, 
+        a third-party extension of Python.
+	
+15) Stackless Python
+* Point 1: Strong support for concurrent programming
+	- Stackless lets programmers write code as if it were for a thread-based program,
+        but without the complexity of using traditional OS threads.
+    
+	** Sub-point: Stackless microthreads avoid the thread overhead
+		- Microthreads aren't run simultaneously with other code, like what you would
+            see with traditional threads, and as a result, is much cheaper and safer
+            to use.
+        
+* Point 2: Why did we use Stackless Python?
+	- Here's why we used Stackless Python:
+    
+	** Sub-point 1: Main server has low performance requirements
+		- While the main server has a lot of stuff to manage, it doesn't have an 
+            expectaction or requirement of instantaneous response time, so despite the
+            fact that Python is slower than, say, C++, and programs with real threads
+            written properly can perform better, we can ignore that in favor of
+            easier programming.
+        
+	** Sub-point 2: Simple & quick to write code in Python
+		- One of Python's selling points is that it's that Python code is very readable,
+            and it's also very quick to write Python code, at some expense to 
+            performance.
+        
+	** Sub-point 3: Easier to get going than using traditional threads
+        - Finally, microthreads are much easier to work with than traditional threads.
+            You don't have to worry about things like synchronization and deadlock, or
+            at least, not as much.
+        
+16) The Database
+* Point 1: Using MySQL instance
+	- We chose MySQL as our primary database, mostly because...
+    
+	** Sub-point: Reason: Easily deployable, scalable
+        - It's easy to deploy, and if VTank suddenly got a huge userbase, it's easy to
+            scale, so even though a close-to-enterprise-level database like MySQL might
+            be overkill for our currently tiny userbase, we don't have to worry about
+            the database being overwhelmed anytime soon if the numbers rise sharply.
+		
+* Point 2: InnoDB storage engine
+	- The default MySQL storage engine, MyISAM, didn't support our needs for 
+        referential integrity, so we went with InnoDB.
+    - We considered using PostgreSQL, which is similar to the InnoDB engine, but like
+        I said earlier, MySQL is easier to deploy, plus we were more familiar with
+        MySQL anyways.
+    
+* Point 3: Completely blocked off from the public
+    - For security reasons, it's impossible to access the database directly unless you
+        tunnel into the machine.
+    
+// N/A: 17) Database Schema
+    
+18) Game Server
+* Point 1: Each instance runs simulation
+	- Each instance of the game server runs exactly one simulation -- that is, if you wanted to host
+        more than one game on one machine, you would have to run the game server executable more than
+        once.
+    
+* Point 2: Can be any number of game servers
+	- There can be an unlimited number of game servers -- or at least, as many as the main server
+        could possibly support, and the client is allowed to choose which one he wants to play on.
+    
+* Point 3: Written in C++
+	- We wrote the game server in C++ since the game server has high performance requirements -- it 
+        handles up to 64 simultaneous players, players which are constantly moving around and shooting.
+    
+	** Sub-point: Heavy use of threadpool library
+        - The game server makes heavy use of the threadpool library.
+		
+19) Threadpool
+* Point 1: Cross-platform third-party extension of Boost
+	- Threadpool is a library that leverages boost threads to make it easier to manage a lot of threads.
+    
+* Point 2: Convenient to dispatch asynchronous tasks
+	- Threadpool makes it easy to dispatch tasks asynchronously. A given pool is capable of running
+        asynchronously -- within the same process -- and it's capable of running independant of the
+        current process.
+    - In the latter case, it specializes in distributing any number of given tasks between the available
+        threads in the thread pool; if there's only one thread available to the pool, it executes each
+        task one at a time.
+    
+* Point 3: First-in-first-out or first-in-last-out policy
+	- Threadpool's can schedule tasks either by a first-in-first-out policy, a first-in-last-out policy,
+        or it can execute the tasks by priority regardless of the order.
+    
+20) Threadpool (Example Usage)
+- Here's an example of how you might use threadpool.
+- Here we have three functions which take no arguments and have no return values.
+- Pretend they're executing some arbitrary task.
+- Inside this function we create a threadpool on the stack and initialize it to a capacity of 2 threads.
+    That means two tasks at a time can be executed in parallel.
+- By default, a threadpool is created with the first-in-first-out policy and it doesn't automatically
+    resize itself if it's running low on threads -- it just waits for one to free up.
+- We add the three functions to the threadpool's scheduler here.
+- As soon as they are added to the schedule, it starts execution.
+- Because it's the first-in-first-out policy, the first task added will be executed first, then the second
+    will execute in parallel to the first. Finally, once the first task finishes, the third task is
+    executed.
+- Now, the function will exit here, and the threadpool will be destructed. By default, when a pool is
+    destructed, it blocks the current thread of execution until all of the tasks have finished running.
+
+21) Client
+* Point 1: Manage tanks, play the game
+    - The primary VTank client is the one that the vast majority of regular users will be using.
+    - The regular client provides an interface that lets players manage their list of tanks.
+    - Once they create and select a tank, they're allowed to start playing the game.
+    
+* Point 2: Login with account created at the website
+    - Players log in with the same account that they created on the website, though their account
+        is never actually revealed in-game. Instead, it only shows their tank names.
+     
+* Point 3: Written in .NET
+	- The client was written in .NET targetting the 2.0 platform. Most users will probably already have
+        at least .NET 2.0 -- I believe it comes installed with Vista.
+    
+	** Sub-point: Microsoft XNA Framework for graphics API
+		- Like I mentioned earlier, we use the XNA framework for the graphics engine. 
+        
+* Point 4: Neoforce Controls for the GUI
+	- Since we didn't want to end up writing a custom GUI library again, we found a pretty good GUI
+        library called Neoforce.
+    - Neoforce is a XNA-specific GUI engine. It draws components by creating them from a set of
+        images and tiling them together, rather than relying specifically on Windows API calls.
+        + As a result, Neoforce is supported on both Windows and XBox 360. I believe it's also
+            compatible with Zune, but I'm not sure.
+        
+22) Screenshot: Tank edit screen
+- Here's Neoforce in action.
+- The screen it's showing is the 'tank edit' screen.
+- I'm editing an existing tank called 'TheBehemoth' (point at name field)
+- I can change it's model, it's weapon, it's color, and I can change the armor-to-speed ratio.
+- I can move the slider here to trade armor for speed. When the armor bar is full, I take much
+    less damage from projectiles, but I also move very slowly.
+    + When the speed bar is full, I move really fast, but take a lot of extra damage.
+- When you change your tank model or your weapon, it updates this preview picture here.
+
+23) Patcher
+* Point 1: Automatically searches for updated files and downloads them
+	- The patcher's job is to automatically search for updates to the game executables
+        and data files and if necessary, download the updated files.
+    
+	** Sub-point: Interacts with IcePatch2 server
+		- It interacts with another component of Ice called IcePatch2.
+        - IcePatch2 is just a directory synchronization tool -- that is, it synchronizes
+            the directory on the server and all of the files and sub-directories with
+            the directory on the client.
+        - We leverage IcePatch2 to distribute updates.
+        
+* Point 2: Capable of updating itself
+	- Before the patcher runs, another executable first checks to see if there are any
+        updates to the patcher, and if so, downloads that update first. Afterwards, 
+        whether there's a new version or not, it launches the patcher.
+		
+* Point 3: Interface for game options, starting the game
+	- The patcher is more than just a progress bar for updates. It's also the place 
+        where users can modify game options, visit the website, or launch the game.
+    
+* Point 4: Written in C++
+	- The IcePatch2 client API was only available in C++, so we didn't have much of a 
+        choice here.
+    
+	** Sub-point: wxWidgets GUI library
+        - We used the wxWidgets library. wxWidgets is a cross-platform GUI toolkit. We used it
+            because we were already familiar with it.
+        - Last year, when we were trying to be cross-platform, we used wxWidgets to create the
+            map editor.
+		
+24) Patcher (Screenshot)
+- Here's a screenshot of the latest version of the patcher. When it starts, the 'PLAY' and
+    'OPTIONS' button are disabled. The user isn't allowed to start the game or modify
+    game configurations until the patcher finishes looking for and downloading updates.
+- The 'ABOUT' button just tells them information about the patcher, like the version,
+- and the 'WEBSITE' button launches the user's default browser and takes them to the VTank
+    web page.
+- Here's our logo. Eventually we'd like to replace this area with site news, so that users
+    can easily see things like patch notes or the latest VTank news or events.
+
+25) Map Editor
+* Point 1: Preserved from last year's SoSE
+    - The map editor started during last year's saucey program.
+    - It was the only thing close to a successful product for that summer.
+    - This year, we hired a guy to enhance the map editor to fit the requirements.
+    
+* Point 1: Create and upload playable maps
+	- The map editor's purpose is to let users create maps, which are the worlds that VTank
+        players play on.
+    - The map editor is also capable of uploading the maps to the main server.
+    
+* Point 2: Meant for developers, guests can use it too
+    - 
+    
+    ** Sub-point: Only developers can upload maps
+        - 
+    
+* Point 3: Written in C++
+    - As I mentioned earlier, we were trying our best to remain cross-platform last year.
+    - As a result, the map editor was written entirely in C++,
+    
+    ** Sub-point: Used wxWidgets
+        - using the wxWidgets library for the GUI.
+        - It successfully compiles on either Windows or Linux.
+        
+26) Screenshot: Map Editor
+- Here's a screenshot of the most recent version of the map editor.
+- I won't go over all of the items; there's too many to cover.
+- You can see that the map is made of a bunch of 2D images.
+- These little red numbers in the corner of the tile indicate the height of each tile.
+- In the game, the client draws the tile like a wall if it has a height greater than
+    zero.
+- Over here is where you select tiles to place. In this case, I'm not looking at pieces of
+    terrain; I'm looking at game objects, like trees, rocks, and barrels.
+- All you do is click the object you want to place, then click anywhere on the map to place it.
+- This is just a 2D representation of the map, but in the game, it appears in 3D.
+- Finally, these little blue dots are special event-type tiles. They indicate a spawn point, that
+    is, where tanks appear when they start playing. The game server looks for these spawn points
+    when it reads the map so it knows where to position players.
+
+27) Captain VTank
+* Point 1: Interface for administration, in-depth statistics
+    - Captain VTank is the administrative tool for VTank. It lets you perform management actions,
+        like booting players, and it also lets you view game statistics provided by the main
+        server.
+    
+* Point 2: Requires highest possible privileges
+    - To use Captain VTank, one has to have administrative privileges.
+    
+    ** Sub-point: It can do anything.
+        - Captain VTank is capable of doing anything -- it can permanently bar certain accounts
+            from playing the game, it can kick off game servers, it can view e-mail addresses,
+            it can change passwords, and so on.
+        - Only the most trusted, capable users are allowed to use it.
+
+* Point 3: Written in Java
+    - I wrote Captain VTank in Java. It didn't have to be in Java, I just felt like messing around
+        with a visual editor plugin for Eclipse.
+        
+28) Screenshot: Captain VTank
+- Here's what Captain VTank looks like right now after you've logged in.
+- It's basic and it's missing a lot of features, but I didn't have a lot of time to spend on 
+    working with it. I was pretty busy with the game server and the other clients.
+- You can view the list of users here. It indicates what they're doing right now, including
+    whether they're currently playing a game.
+- Right-clicking on a user gives you a few options; here I'm about to ban a player named 'Exolun'.
+- Clicking on his name gathers more details about this player, like the date and time he created
+    his account, the last time he logged in, and his e-mail address.
+- It shows game servers, which is the second user here.
+- It also shows myself, 'Andysib', correctly indicating that I'm using Captain VTank.
+- There's a little console down here because some people prefer to perform actions unix-style
+    without going through a bunch of menus and dialogs, so admins can do things either way.
+
+29) Janitor
+* Point 1: Interface for game data modification
+    - Janitor is the interface for game data modification.
+    - It can change things such as how much damage a certain weapon does to other players.
+    
+* Point 2: Requires 'developer' privileges
+    - It requires developer privileges. If you mess with data in the Janitor, it's not a huge deal:
+        we can easily revert the changes. Therefore, we're a little more lax about who we
+        might let use the Janitor.
+    
+* Point 3: Meant to abstract the difficulties of working with the database directly --
+    anyone can use it.
+    - Like I mentioned earlier, it's purpose is to make it easy for IT people with no SQL
+        experience to make changes to database rows and columns.
+    
+* Point 4: Doesn't quite exist yet.
+    - Janitor doesn't really exist yet. We have a tool that was supposed to do the job, but it's
+        a little outdated, and it doesn't actually do anything yet.
+    - We consider it lower priority since we can still modify the game data, it just takes someone
+        with SQL experience to do it.
+    
+30) Website
+* Point 1: Back-end in Python using Django framework
+    - Uses a mod_python/apache setup hosted on a linux server
+    - mod_python embeds the Python interpreter into Apache, which makes it faster than usual 
+        Python CGI scripts.
+    - We chose Django because we wanted to write the website in Python, and Django is a relatively easy-to-use
+        and well-known framework.
+    
+* Point 2: Forum for community interaction
+    - It has a forum to support an active user community.
+		+ Forum functionality is basic, but has most standard features that you might expect from a forum.
+    
+* Point 3: Interface for account registration
+    - Sends an account creation request to the main server when someone registers an
+		account to create the user's in-game credentials.
+    - It's ultimately up to the main server whether or not the account can be
+        created.
+    - The website integrates itself with the main server in other ways, too. For instance,
+        on every page you can see a list of active game servers, what map is being played,
+        and how many players are playing.
+    
+* Point 4: URL: http://vtank.cis.vtc.edu/
+    - Here's the website: VTank dot cis dot vtc dot edu.
+    
+31) Screenshot: Website
+
+32) Glacier2
+* Point 1: Acts as a proxy between server and client
+    - Glacier2 acts as a proxy between the servers behind the firewall and the clients,
+        who are using unknown firewall configurations.
+    
+* Point 2: Sits on the edge of the server firewall
+    - Having a Glacier2 router makes it so you only have to open one port ever for any number
+        of servers behind the firewall.
+    
+    ** Sub-point: Provides extra security
+        - As a result, extra security is provided for the server.
+    
+* Point 3: Callback utility -- clients don't need to modify their own firewall rules
+    - VTank uses two-way connections frequently, that is, the client opens a connection to 
+        the server, and the server opens one up to the client.
+    - Since most clients are behind routers or firewalls, it's not always possible for the
+        server to establish a connection back to the client.
+    - Glacier2 handles this by simulating a two-way connection -- the client only ever opens
+        one connection stream to the Glacier2 router.
+    
+33) Graphics
+* Point 1: 3D models are created in a specific way
+    - 
+    
+    ** Sub-point: Documentation targets Blender
+        -
+        
+* Point 2: Exported using a specific Blender-to-FBX script
+    -
+    
+* Point 3: Ideal situation: Generate .fbx files from .blend files at compile time
+    - 
+    
+34) Screenshot: Blender, opened Minigun model
+
+35) CruiseControl.NET
+* Point 1: Continuous integration environment
+    -
+    
+    ** Sub-point: .NET implementation of CruiseControl
+        -
+        
+* Point 2: Performs full rebuild on every commit
+    -
+    
+* Point 3: Know right away when builds fail (CCTray)
+    -
+    
+36) Screenshot: CruiseControl.NET Preview
+
+37) Distribution
+* Point 1: .NET applications are a pain to distribute
+    -
+    
+    ** Sub-point: Especially with the added overhead of XNA
+        -
+        
+* Point 2: Nullsoft Installer Script (NSIS) installer automatically checks version of
+    .NET
+    - 
+    
+    ** Sub-point: Downloads newer if necessary
+        -
+        
+38) Distribution cont.
+* Point 1: Installs Patcher, not the client
+    - 
+    
+* Point 2: Patcher will do a full download on first run
+    -
+    
+* Point 3: Rationale: Only one installer ever
+    -
+    
+39) The Patching Process
+* Number 1: CC.NET updates it's local files with new code
+    -
+    
+* Number 2: The build server executes a full rebuild
+    -
+    
+* Number 3: A script runs to update the patch directory
+    -
+    
+* Number 4: The IcePatch2 server is restarted
+    -
+    
+* Point: New patch is not released if the build breaks
+    -
+    
+40) Testing
+* Point 1: MSTest framework for .NET code
+    -
+    
+* Point 2: Weekly customer reviews
+    -
+    
+* Point 3: Mock client stress tests
+    -
+    
+    ** Sub-point: See how many concurrent clients we can handle
+        -
+        
+41) Documentation
+* Point 1: Developer documentation compiled to PDF from LaTeX mark-up
+    -
+    
+    ** Sub-point: Used TeXnicCenter -- LaTeX IDE
+        -
+        
+* Point 2: Code documentation is formatted for Doxygen
+    -
+
+* Point 3: CC.NET generates latest HTML documentation
+    - 
+    
+42) The Future of VTank
+* Point 1: Statistics and player ranking
+    -
+    
+* Point 2: In-game power-ups
+    -
+    
+* Point 3: Functional AI players
+    -
+    
+* Point 4: Enhanced map editor
+    -
+    
+43) The Website
+    - 

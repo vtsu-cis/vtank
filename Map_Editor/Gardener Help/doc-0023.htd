@@ -1,0 +1,268 @@
+<HTML>
+<head><title>Using toolbar commands</title></head>
+
+<BODY TOPMARGIN=4 BGCOLOR=#FFFFFF TEXT=#000000 VLINK=#000000 LINK=#000000 ALINK=#000000>
+<FONT FACE="Arial, Lucida, Helvetica">
+
+<TABLE WIDTH="100%" ALIGN=CENTER CELLPADDING=1 CELLSPACING=0>
+<TR>
+<TD WIDTH="100%" ALIGN=CENTER>
+<A HREF="doc-0003.htm">
+<img align=center src="contents.gif" BORDER=0 ALT="Contents"></A>
+
+
+<A HREF="doc-0003.htm">
+<img align=center src="back.gif" BORDER=0 ALT="Previous"></A>
+
+<A HREF="doc-0027.htm">
+<img align=center src="forward.gif" BORDER=0 ALT="Next"></A>
+</TD>
+</TR>
+<TR>
+
+<!-- A narrow row representing the horizontal rule -->
+<TD COLSPAN=2 HEIGHT=2 BGCOLOR="#C0C0C0">
+</TD>
+</TR>
+</TABLE>
+
+<H2>Using toolbar commands</H2>
+<CENTER><IMG SRC="tool_bar.jpg" BORDER="0"></CENTER><P>
+
+This topic describes the function of the toobar tools.<P>
+
+<H3>Tools</H3>
+
+<TABLE>
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<IMG SRC="newmap.png" BORDER="0">
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+ This button brings up the new map dialog that allows the user to create a new map.
+</FONT></TD></TR>
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<IMG SRC="open.png" BORDER="0">
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+ This button allows the user to select a map and then open it.
+</FONT></TD></TR>
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<IMG SRC="saveas.png" BORDER="0">
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+ This button allows the user to save the current map open under a new name.
+</FONT></TD></TR>
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<IMG SRC="save.png" BORDER="0">
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+ This button allows the user to save the current map open.
+</FONT></TD></TR>
+
+<TR><TD WIDTH=30></TD><TD COLSPAN=2>
+<FONT FACE="Arial, Lucida, Helvetica">
+<HR COLOR=#C0C0C0>
+</FONT></TD>
+</TR>
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<IMG SRC="server.png" BORDER="0">
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+ This button opens the server dialog that allows the user to upload, download, remove and view the maps.
+</FONT></TD></TR>
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<IMG SRC="mapprop.png" BORDER="0">
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+This button displays the current map's properties.
+</FONT></TD></TR>
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<IMG SRC="gamemodes.png" BORDER="0">
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+This button allow the user to set game modes for the loaded map
+</FONT></TD></TR>
+
+<TR><TD WIDTH=30></TD><TD COLSPAN=2>
+<FONT FACE="Arial, Lucida, Helvetica">
+<HR COLOR=#C0C0C0>
+</FONT></TD>
+</TR>
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<IMG SRC="terrainlayer.png" BORDER="0">
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+This button allows the user to work on the terrain layer.
+</FONT></TD></TR>
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<IMG SRC="objectlayer.png" BORDER="0">
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+This button allows the user to work on the object layer.
+</FONT></TD></TR>
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<IMG SRC="eventlayer.png" BORDER="0">
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+This button allows the user to work on the event layer. 
+</FONT></TD></TR>
+
+<TR><TD WIDTH=30></TD><TD COLSPAN=2>
+<FONT FACE="Arial, Lucida, Helvetica">
+<HR COLOR=#C0C0C0>
+</FONT></TD>
+</TR>
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<IMG SRC="cut.png" BORDER="0">
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+This buttton allows the user to cut tiles out of the map. 
+</FONT></TD></TR>
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<IMG SRC="copy.png" BORDER="0">
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+This button allows the user to copy tiles from the map. 
+</FONT></TD></TR>
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<IMG SRC="paste.png" BORDER="0">
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+This button allows the user to paste tiles previously cut or copied.
+</FONT></TD></TR>
+
+<TR><TD WIDTH=30></TD><TD COLSPAN=2>
+<FONT FACE="Arial, Lucida, Helvetica">
+<HR COLOR=#C0C0C0>
+</FONT></TD>
+</TR>
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<IMG SRC="pointer.png" BORDER="0">
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+This button allows the user to draw tiles, tile by tile.
+</FONT></TD></TR>
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<IMG SRC="fill.png" BORDER="0">
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+This button allows the user to fill selected tiles with a selected terrain, object, or event. 
+</FONT></TD></TR>
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<IMG SRC="selectgrp.png" BORDER="0">
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+This button allows the user to select multiple tiles.
+</FONT></TD></TR>
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<IMG SRC="fillgrp.png" BORDER="0">
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+This button allows the user to draw multiple tiles at a time.
+</FONT></TD></TR>
+
+<TR><TD WIDTH=30></TD><TD COLSPAN=2>
+<FONT FACE="Arial, Lucida, Helvetica">
+<HR COLOR=#C0C0C0>
+</FONT></TD>
+</TR>
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<IMG SRC="gridtoggle.png" BORDER="0">
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+This button allows for the grid to be toggled on or off.
+</FONT></TD></TR>
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<IMG SRC="collisiontoggle.png" BORDER="0">
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+This button allows for the collision to be toggled on or off. 
+</FONT></TD></TR>
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<IMG SRC="heighttoggle.png" BORDER="0">
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+This button allows for the height indicators to be toggled on or off.
+</FONT></TD></TR>
+</TABLE>
+</FONT></BODY></HTML>

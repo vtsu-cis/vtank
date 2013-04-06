@@ -1,0 +1,243 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FILE    : GameServer.tex
+% SUBJECT : Document describing design issues in the VTank game server.
+% AUTHOR  : (C) Copyright 2009 by Vermont Technical College
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{\GameServer}
+\label{gameserver}
+
+\section{Requirements}
+
+\GameServer\ is where clients using the official \VTank\ game client actually play the game. \GameServer, the game server, starts by connecting to \MainServer, the main server, by sharing a secret that only official game servers can know. That secret is determined in both server's configuration file. If the secret is correct, the game server is allowed to join \MainServer's list of active game servers.
+
+\subsection{Functional Requirements}
+
+Once authenticated with the main server, the game server maintains an open connection to it in order to exchange messages. \MainServer\ will communicate ``player joined'' and ``player left'' messages. In other words, it's entirely up to \MainServer\ what players are allowed to join and who should not be playing.
+
+When a player wishes to join a game, \MainServer\ first checks if it's appropriate to do that: it must check if the game server is overloaded or if the game server is disabled (by an administrator). If allowed, both the client and \GameServer\ are given a hashed, randomly generated key. The client is responsible for sending this key to the game server in order to identity itself. If the client's key matches with the key given by the main server, the client is allowed to join the game.
+
+\GameServer\ is responsible for managing the actual game. When a player moves around, fires a projectile, joins the game, leaves the game, enters a chat message, or dies, the game server must accept this information and run calculations determining:
+\begin{itemize}
+\item What action was performed,
+\item if the action was legal, and
+\item the result of the action.
+\end{itemize}
+The game server must then communicate it's conclusion to every other client.
+
+\GameServer\ must check if players are cheating. If a client suddenly moves across the map in one movement packet, something is wrong. It's important to keep in mind that a client suddenly teleporting to a location where it seems impossible for him to be is most likely the result of the client's connection temporarily lagging. The best way to deal with these events is to assume the worst: reset the position of the client back to one that makes sense. It's not unusual for online games to do this. If the client continues to misbehave, make sure to log the behavior and kick the client off. An administrator should be able to review the log and take action against the user if necessary.
+
+\subsection{Non-Functional Requirements}
+
+\subsubsection*{Platform}
+
+\GameServer\ is written in C++ with the target platform being Windows Server 2003 and Windows Server 2008. There are plans to make \GameServer\ run on Linux in the future.
+
+\subsubsection*{Performance}
+
+\GameServer\ has high performance needs. High latency due to poor processing speed results in an unplayable game. If the average response time to each client is over 100 milliseconds, the player will find it very noticable and will make it much more difficult to play the game.
+
+\subsubsection*{Security}
+
+In-game actions are not secured because the actions have nothing to do with personal information. Adding a layer of security on the socket will only increase latency.
+
+There may be a case where a player intercepts and modifies packets sent from another player. While this has been discussed, no solution has been proposed for dealing with this.
+
+\subsubsection*{User Characteristics}
+
+\GameServer\ will be run and managed by administrators, who are expected to be competent in the operating system used. The user must be familiar with passing command-line arguments into programs, editing configuration files, and must have some experience securing their system (particularly the firewall configuration).
+
+\subsubsection*{Scale}
+
+\MainServer\ is allowed to accept an array of \GameServer\ instances. That means advanced technologies like grid computing are not necessary initially: if one server gets overloaded with users, another machine in a different location can host a game. If \VTank\ gets to the point where this is not solving issues, this strategy is expected to change.
+
+\subsubsection*{Data Formats}
+
+\GameServer\ uses Ice to parse properties from a configuration file. Values in the Ice configuration file are set up like:
+
+\# Comment about the pair.
+key=value
+
+\subsubsection*{Internationalization}
+
+\GameServer\ configuration files, log outputs and debug outputs are all written in US English. There are no plans to change this currently.
+
+\section{Design \& Architecture}
+
+Ice is heavily involved in the design and architecture of \GameServer\ because Ice handles all input and output for client sessions. Additionally, Ice is used to communicate with \MainServer. Figure~\ref{fig:theatre_architecture} points out that MTG\_Service - Main-to-Game Service, the class through which communication to \MainServer\ takes place - is separated from the ServerService class, which handles communication to clients. 
+
+These are kept in separate communicators because clients in the same Ice communicator have potential to interfere with each other. For example, if \GameServer\ gets overloaded with clients and runs out of threads, it could stop responding to \MainServer, which causes a timeout and essentially ends the game. Because the communicators are kept separate however, thread starvation in the client pool will not affect the communication with \MainServer.
+
+It has been discussed that \GameServer\ may accept Ice datagram packets in the future, which use UDP. Since the client must not have to open a firewall port in order to play the game, \GameServer\ should not distribute messages via UDP. Since most traffic travels out of \GameServer, and not to \GameServer, it's been argued that there's little benefit to doing this.
+
+\newpage
+\begin{figure}
+	\centering
+	\scalebox{0.50}{\includegraphics*{Figures/theatre_architecture.png}}
+	\caption{Object architecture of \GameServer.}
+	\label{fig:theatre_architecture}
+\end{figure}
+
+\section{Compiling}
+
+\GameServer\ is written in C++ and relies on Ice, Boost, and Threadpool. For information on these libraries (and installing them), visit the Tools and Libraries section.
+
+\subsection{Windows}
+
+Double-click on the \filename{VTank.sln} file available under: \filename{svn://svn.cis.vtc.edu/VTank/trunk/}. First configure which build you desire: Debug or Release. Then, right-click on the \GameServer\ project and click on the \filename{Build...} option. This will build \GameServer\ and all of it's dependencies.  
+
+
+
+\subsection{Linux}
+
+\GameServer\ is compiled with an Sconstruct script. Sconstruct is a python based make system that is similar to a makefile.  This script can be found in the same folder as the game server at:
+
+\filename{VTank/trunk/Server/Game/Driver/sconstruct}
+
+To use this script, you must have Scons and the dependency libraries installed on your machine. After installing the dependencies and scons, you will have to edit the Sconstruct file to reflect the location of your dependencies.
+
+There are seven constants at the top of the Sconstruct file, which should be tailored to your system's dependency locations before you attempt to compile.  
+
+These seven are:
+
+\begin{enumerate}
+\item TARGET -- The output target for your compiled files.
+\item GAMESERVER -- The location of the Driver folder for the game server.
+\item ICE -- The location of your Ice include folder.
+\item VTANK\_COMMON -- The location of the vtank/Common/Cpp folder on your machine, note that this means you have to have a checkout of vtank, or just this folder from \filename{svn://svn.cis.vtc.edu/VTank/trunk/Common/Cpp} to use these source to compile \GameServer\\.
+\item VTANK\_ICE -- The location of the vtank/Ice folder on your machine.  Just like vtank/Common, you must have these files as well to compile \GameServer\\.  They are located at \filename{svn://svn.cis.vtc.edu/VTank/trunk/Ice/}.
+\item BOOST -- The location of your boost header files.
+\item THREADPOOL -- The location of your threadpool header files.
+\end{enumerate}
+
+Further down in the file, find the environment settings line, which should start like this:
+\begin{verbatim}env = Environment(..)\end{verbatim}
+
+There are a couple settings lists inside this function that must be tailored to your system:
+
+\begin{enumerate}
+\item CPPPATH -- This is a list containing the directories of your include and header files, this should many of your variables you set at the top, including ICE, VTANK\_ICE, VTANK\_COMMON, BOOST, GAMESERVER, THREADPOOL, in addition to your system's default include directory for C++.
+\item LIBPATH -- This is a list containing the location of the required library files.  You must put your system's default C++ library directory here, as well as your Ice-x.x.x/lib/ folder and your Ice-x.x.x/cpp/lib folder.  These are located off of your Ice installation root.
+\end{enumerate}
+
+Now go down to the Program compilation line, which looks something like this:
+\begin{verbatim}env.Program(...)\end{verbatim}
+
+Make sure that LIBPATH in this function is the same as the one in Environment, then review the LIBS list and confirm that all of the required library files are listed there.  At the time of this writing they are:
+
+\begin{enumerate}
+\item libIce.so
+\item libIceUtil.so
+\item libGlacier2.so 
+\item libboost \_thread-mt.so
+\item libIce.so.33
+\end{enumerate}
+
+Once you are confident of your settings, issue the following command from the directory the Sconstruct script is in:
+
+\command{scons}
+
+Once invoked, Scons will automatically find your sconstruct script in the directory, read it, and proceed to buid \GameServer\ if your script is configured correctly.  If everything was properly configured, your build will complete successfully.  Once completed, refer to the Linux Running \GameServer\ section (below) for instructions on how to configure and run \GameServer\ in Linux.
+ 
+\section{Running}
+
+\subsection{Windows}
+
+While \GameServer\ has a lot of requirements for compilation, it's very simple to execute an instance of \GameServer\ on Windows. \GameServer\ will have two executables: one for executing \GameServer\ normally (in a console window), and one for executing \GameServer\ as a service. It's up to the administrator of the Windows Server 200X machine to decide whether or not to run \GameServer\ as a service.
+
+Starting, restarting, or stopping \GameServer\ is very simple in either case. Windows services can be viewed under the Start->Administration->Services menu. Right-clicking on the \GameServer\ field allows the administrator to start, restart, or stop the instance.
+
+\subsection{Linux}
+
+\textbf{Configure \GameServer}
+
+
+Once you have finished compiling \GameServer\ navigate to the Server/Game/Driver directory open up the file named Config.Theatre with your preferred text editor.
+
+Find the line that looks like this:
+\begin{verbatim}GameSessionFactoryProxy=GameSessionFactory:tcp -h theater.cis.vtc.edu -p 31335\end{verbatim}
+Change it to reflect the hostname (or IP of your machine).
+
+Now find the ServerName line, which should be just below it:
+\begin{verbatim}ServerName=Theater\end{verbatim}
+Change it to a name of your choosing.  This is the game name that will show up in the game listing in the game and on the website.
+
+Now go down to the Glacier2Host line, which looks like this:
+\begin{verbatim}Glacier2Host=theater.cis.vtc.edu\end{verbatim}
+Change it to reflect your hostname or IP.
+
+\textbf{Set up Glacier2}
+
+The next thing you must do is compile the slice files for your Glacier2 router. Before doing so, you must have an environment variable called ICEROOT to tell the script the location of your Ice installation.
+
+From the terminal, issue the following command:
+\command{ICEROOT=/opt/Ice-3.3.1; export ICEROOT}
+**Note that your Ice installation may be located elsewhere.
+
+Once your ICEROOT variable is set, run the \filename{compile-slice.sh} script, which is located in the \filename{VTank/Ice} directory.
+
+After your slice files have compiled successfully, go to the \filename{Vtank/Glacier2} folder and start your glacier2 router with the \filename{start-theatre-router} script.
+
+\textbf{Start the Server:}
+
+Once \GameServer\ is configured and your glacier2 router is running, issue the following command from the output directory.
+
+\command{nohup ./Theater. \&}
+**The name of your executable may vary.
+
+The nohup command tells \GameServer\ to run in the background, effectively allowing it to run as a daemon.
+
+If everything went smoothly, you should have a process with the same name as your executable running, and your game should be visible on the game list and the website.
+
+\section{Security}
+
+\subsection{Overview}
+
+At Vermont Tech, \GameServer\ is currently running on a Windows server, also bearing the name \GameServer. \GameServer\ was hardened using the guidelines defined in the SoSE Windows Server 2003 security documentation.  The following list contains the categories addressed by the hardening procedure:
+
+\begin{enumerate}
+\item Security Configuration Wizard Policy
+\item Password Policy Settings
+\item Audit Policy Settings
+\item Windows Firewall Settings
+\item User Account Settings
+\end{enumerate}
+
+\subsection{Security Configuration Wizard Policy}
+
+The initial security settings on \GameServer\ are based on the security policy \GameServer\.xml, which was created using the Security Configuration Wizard.  The policy was applied using the principle of least privilige, then built upon by adding more detailed settings using the configuration tools for each of the corresponding categories.
+
+\subsection{Password Policy Settings}
+
+\GameServer\ now enforces password complexity, locks a user account out for 15 minutes after 20 invalid login attempts.  No password aging or password history settings are enabled.
+
+\subsection{Audit Policy Settings}
+\GameServer\ now collects audit logs based on the following settings:
+\begin{itemize}
+\item Account logon events -- Success
+\item Account management -- Success
+\item Directory service access -- Success, Failure
+\item Logon events -- Success
+\item Object access -- Success
+\item Policy change -- Success
+\item Privilege use -- Not auditing
+\item Process tracking -- Failure
+\item System events -- Success, Failure
+\end{itemize}
+
+\subsection{Windows Firewall Settings}
+Windows Firewall is enabled with the following exceptions:
+\begin{itemize}
+\item Port 123 UDP (Time Protocol Port)
+\item Port 4063 TCP  (VTank Communication Port)
+\item Port 4064 TCP  (VTank Communication Port)
+\item Port 42424 TCP (ASP.NET port)
+\item Port 3389 (Remote Desktop)
+\item "Echo request" is enabled. (Ping)
+\end{itemize}
+
+\subsection{User Account Settings}
+In order to reduce the risk of a compromised Administrator account, the Default administrator account on \GameServer\ is disabled.  Day to day administration tasks are carried out by a seconday adminstrator account.  A tertiary administrator account was also created, for usage in the event that the normal admin account is compromised, or locked out.  While the complete disabling of the Administrator account creates the possibility of an account lockout DOS account on other admin accounts, the Administrator account can be re-enabled by rebooting the server in safe mode.
+
+The default Guest account is also disabled.

@@ -1,0 +1,38 @@
+Texture: particle
+
+Capacity: 1000
+Duration: 0.5
+DurationRandomness: 0
+
+GlobalForce: [0, 0, -100]
+MinForceSensitivity: 1
+MaxForceSensitivity: 1
+InertiaSensitivity: 1
+
+DirFromRotation: No
+InitialSpeed: 0
+Direction: [0, 0, 0]
+
+MinStartHorizontalVelocity: 5
+MaxStartHorizontalVelocity: 10
+MinStartVerticalVelocity: -15
+MaxStartVerticalVelocity: -25
+
+MinEndHorizontalVelocity: 15
+MaxEndHorizontalVelocity: 25
+MinEndVerticalVelocity: -45
+MaxEndVerticalVelocity: -50
+
+MinStartSize: 10
+MaxStartSize: 15
+MinEndSize: 0
+MaxEndSize: 1
+
+MinRotateSpeed: 0
+MaxRotateSpeed: 0
+
+MinColor: [115, 225, 255, 255]
+MaxColor: [115, 225, 255, 255]
+
+SourceBlend: SourceAlpha
+DestinationBlend: One

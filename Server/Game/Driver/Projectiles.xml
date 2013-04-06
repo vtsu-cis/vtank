@@ -1,0 +1,418 @@
+<?xml version="1.0"?>
+<projectiles>
+  <projectile>
+    <!-- Data -->
+    <id>0</id>
+    <name>Minigun Bullet</name>
+    
+    <!-- Art -->
+    <modelName>minibullet</modelName>
+    
+    <scale>1.0</scale>
+    <particleEffectName>MinigunTracer</particleEffectName>
+    <impactParticleName></impactParticleName>
+    <impactSoundEffect></impactSoundEffect>
+    <expirationParticleName></expirationParticleName>
+    
+    <emitters>
+      <emitter>
+        <emitterName>Emitter0</emitterName>
+        <effectName></effectName>
+      </emitter>
+    </emitters>
+    
+    <animations>
+    </animations>
+    
+    <!-- Combat -->
+    <areaOfEffectRadius>0</areaOfEffectRadius>
+    <areaOfEffectUsesCone>false</areaOfEffectUsesCone>
+    <areaOfEffectDecay>0</areaOfEffectDecay>
+    
+	  <coneRadius>0</coneRadius>
+    <coneOriginWidth>0</coneOriginWidth>
+    <coneDamagesEntireArea>false</coneDamagesEntireArea>
+
+    <collisionRadius>8</collisionRadius>
+    
+    <minDamage>4</minDamage>
+    <maxDamage>7</maxDamage>
+    
+    <isInstantaneous>false</isInstantaneous>
+    <initialVelocity>2000</initialVelocity>
+    <terminalVelocity>2000</terminalVelocity>
+    <acceleration>0</acceleration>
+    <range>1800</range>
+    <rangeVariation>0</rangeVariation>
+    
+    <jumpRange>0</jumpRange>
+    <jumpDamageDecay>0</jumpDamageDecay>
+    <jumpCount>0</jumpCount>
+	
+	<objectDamageFactor>1.0</objectDamageFactor>
+    
+    <environmentEffectID></environmentEffectID>
+  </projectile>
+  <projectile>
+    <!-- Data -->
+    <id>1</id>
+    <name>Rocket</name>
+
+    <!-- Art -->
+    <modelName>rocket</modelName>
+
+    <scale>1.0</scale>
+    <particleEffectName>RocketTrail</particleEffectName>
+    <impactParticleName>RocketExplosion</impactParticleName>
+    <expirationParticleName></expirationParticleName>
+
+    <emitters>
+      <emitter>
+        <emitterName>Emitter0</emitterName>
+        <effectName></effectName>
+      </emitter>
+    </emitters>
+
+    <animations>
+    </animations>
+
+    <!-- Combat -->
+    <areaOfEffectRadius>0</areaOfEffectRadius>
+    <areaOfEffectUsesCone>false</areaOfEffectUsesCone>
+    <areaOfEffectDecay>0</areaOfEffectDecay>
+
+    <coneRadius>0</coneRadius>
+    <coneOriginWidth>0</coneOriginWidth>
+    <coneDamagesEntireArea>false</coneDamagesEntireArea>
+
+    <minDamage>20</minDamage>
+    <maxDamage>28</maxDamage>
+
+    <collisionRadius>8</collisionRadius>
+
+    <isInstantaneous>false</isInstantaneous>
+    <initialVelocity>1000</initialVelocity>
+    <terminalVelocity>1500</terminalVelocity>
+    <acceleration>250</acceleration>
+    <range>2300</range>
+    <rangeVariation>0</rangeVariation>
+
+    <jumpRange>0</jumpRange>
+    <jumpDamageDecay>0</jumpDamageDecay>
+    <jumpCount>0</jumpCount>
+	
+	<objectDamageFactor>1.0</objectDamageFactor>
+
+    <environmentEffectID></environmentEffectID>
+  </projectile>
+  <projectile>
+    <!-- Data -->
+    <id>2</id>
+    <name>Missile</name>
+
+    <!-- Art -->
+    <modelName>missile</modelName>
+
+    <scale>1.0</scale>
+    <particleEffectName></particleEffectName>
+    <impactParticleName>MissileExplosion</impactParticleName>
+    <expirationParticleName></expirationParticleName>
+
+    <emitters>
+      <emitter>
+        <emitterName>Emitter0</emitterName>
+        <effectName></effectName>
+      </emitter>
+    </emitters>
+
+    <animations>
+    </animations>
+
+    <!-- Combat -->
+    <areaOfEffectRadius>128</areaOfEffectRadius>
+    <areaOfEffectUsesCone>false</areaOfEffectUsesCone>
+    <areaOfEffectDecay>0.3</areaOfEffectDecay>
+
+    <coneRadius>0</coneRadius>
+    <coneOriginWidth>0</coneOriginWidth>
+    <coneDamagesEntireArea>false</coneDamagesEntireArea>
+
+    <minDamage>67</minDamage>
+    <maxDamage>73</maxDamage>
+
+    <collisionRadius>8</collisionRadius>
+
+    <isInstantaneous>false</isInstantaneous>
+    <initialVelocity>1500</initialVelocity>
+    <terminalVelocity>1500</terminalVelocity>
+    <acceleration></acceleration>
+    <range>2500</range>
+    <rangeVariation>0</rangeVariation>
+
+    <jumpRange>0</jumpRange>
+    <jumpDamageDecay>0</jumpDamageDecay>
+    <jumpCount>0</jumpCount>
+	
+	<objectDamageFactor>1.0</objectDamageFactor>
+
+    <environmentEffectID></environmentEffectID>
+  </projectile>
+  <projectile>
+    <!-- Data -->
+    <id>3</id>
+    <name>Laser Beam</name>
+
+    <!-- Art -->
+    <modelName></modelName>
+
+    <scale>1.0</scale>
+    <particleEffectName>LaserBeam</particleEffectName>
+    <impactParticleName></impactParticleName>
+    <expirationParticleName></expirationParticleName>
+
+    <emitters>
+      <emitter>
+        <emitterName></emitterName>
+        <effectName></effectName>
+      </emitter>
+    </emitters>
+
+    <animations>
+    </animations>
+
+    <!-- Combat -->
+    <areaOfEffectRadius>0</areaOfEffectRadius>
+    <areaOfEffectUsesCone>false</areaOfEffectUsesCone>
+    <areaOfEffectDecay>0</areaOfEffectDecay>
+
+    <coneRadius>0</coneRadius>
+    <coneOriginWidth>0</coneOriginWidth>
+    <coneDamagesEntireArea>false</coneDamagesEntireArea>
+
+    <minDamage>10</minDamage>
+    <maxDamage>10</maxDamage>
+
+    <collisionRadius>8</collisionRadius>
+
+    <isInstantaneous>true</isInstantaneous>
+    <initialVelocity>15000</initialVelocity>
+    <terminalVelocity>15000</terminalVelocity>
+    <acceleration></acceleration>
+    <range>5000</range>
+    <rangeVariation></rangeVariation>
+
+    <jumpRange>0</jumpRange>
+    <jumpDamageDecay>0</jumpDamageDecay>
+    <jumpCount>0</jumpCount>
+	
+	<objectDamageFactor>1.75</objectDamageFactor>
+
+    <environmentEffectID></environmentEffectID>
+  </projectile>
+  <projectile>
+    <!-- Data -->
+    <id>4</id>
+    <name>Mortar</name>
+
+    <!-- Art -->
+    <modelName>mortar</modelName>
+
+    <scale>1.0</scale>
+    <particleEffectName>ArtilleryTracer</particleEffectName>
+    <impactParticleName>MissileExplosion</impactParticleName>
+    <expirationParticleName></expirationParticleName>
+
+    <emitters>
+      <emitter>
+        <emitterName></emitterName>
+        <effectName></effectName>
+      </emitter>
+    </emitters>
+
+    <animations>
+    </animations>
+
+    <!-- Combat -->
+    <areaOfEffectRadius>150</areaOfEffectRadius>
+    <areaOfEffectUsesCone>false</areaOfEffectUsesCone>
+    <areaOfEffectDecay>0.75</areaOfEffectDecay>
+
+    <coneRadius>0</coneRadius>
+    <coneOriginWidth>0</coneOriginWidth>
+    <coneDamagesEntireArea>false</coneDamagesEntireArea>
+
+    <minDamage>57</minDamage>
+    <maxDamage>61</maxDamage>
+    
+    <collisionRadius>8</collisionRadius>
+
+    <isInstantaneous>false</isInstantaneous>
+    <initialVelocity>1800</initialVelocity>
+    <terminalVelocity>1800</terminalVelocity>
+    <acceleration></acceleration>
+    <range>2500</range>
+    <rangeVariation>0</rangeVariation>
+
+    <jumpRange>0</jumpRange>
+    <jumpDamageDecay>0</jumpDamageDecay>
+    <jumpCount>0</jumpCount>
+	
+	<objectDamageFactor>0.8</objectDamageFactor>
+
+    <environmentEffectID>0</environmentEffectID>
+  </projectile>
+  <projectile>
+    <!-- Data -->
+    <id>5</id>
+    <name>Grenade</name>
+
+    <!-- Art -->
+    <modelName>grenade</modelName>
+
+    <scale>1.0</scale>
+    <particleEffectName>ArtilleryTracer</particleEffectName>
+    <impactParticleName>MissileExplosion</impactParticleName>
+    <expirationParticleName></expirationParticleName>
+
+    <emitters>
+      <emitter>
+        <emitterName></emitterName>
+        <effectName></effectName>
+      </emitter>
+    </emitters>
+
+    <animations>
+    </animations>
+
+    <!-- Combat -->
+    <areaOfEffectRadius>125</areaOfEffectRadius>
+    <areaOfEffectUsesCone>false</areaOfEffectUsesCone>
+    <areaOfEffectDecay>1</areaOfEffectDecay>
+
+    <coneRadius>0</coneRadius>
+    <coneOriginWidth>0</coneOriginWidth>
+    <coneDamagesEntireArea>false</coneDamagesEntireArea>
+
+    <minDamage>40</minDamage>
+    <maxDamage>47</maxDamage>
+
+    <collisionRadius>8</collisionRadius>
+
+    <isInstantaneous>false</isInstantaneous>
+    <initialVelocity>1800</initialVelocity>
+    <terminalVelocity>1800</terminalVelocity>
+    <acceleration></acceleration>
+    <range>1800</range>
+    <rangeVariation>0</rangeVariation>
+
+    <jumpRange>0</jumpRange>
+    <jumpDamageDecay>0</jumpDamageDecay>
+    <jumpCount>0</jumpCount>
+
+    <environmentEffectID></environmentEffectID>
+  </projectile>
+  <projectile>
+    <!-- Data -->
+    <id>6</id>
+    <name>Shell</name>
+
+    <!-- Art -->
+    <modelName>grenade</modelName>
+
+    <scale>1.0</scale>
+    <particleEffectName>MinigunTracer</particleEffectName>
+    <impactParticleName></impactParticleName>
+    <expirationParticleName></expirationParticleName>
+
+    <emitters>
+      <emitter>
+        <emitterName></emitterName>
+        <effectName></effectName>
+      </emitter>
+    </emitters>
+
+    <animations>
+    </animations>
+
+    <!-- Combat -->
+    <areaOfEffectRadius>0</areaOfEffectRadius>
+    <areaOfEffectUsesCone>false</areaOfEffectUsesCone>
+    <areaOfEffectDecay>0</areaOfEffectDecay>
+
+    <coneRadius>3</coneRadius>
+    <coneOriginWidth>0</coneOriginWidth>
+    <coneDamagesEntireArea>false</coneDamagesEntireArea>
+
+    <minDamage>8</minDamage>
+    <maxDamage>11</maxDamage>
+
+    <collisionRadius>8</collisionRadius>
+
+    <isInstantaneous>false</isInstantaneous>
+    <initialVelocity>1800</initialVelocity>
+    <terminalVelocity>1800</terminalVelocity>
+    <acceleration></acceleration>
+    <range>900</range>
+    <rangeVariation></rangeVariation>
+
+    <jumpRange>0</jumpRange>
+    <jumpDamageDecay>0</jumpDamageDecay>
+    <jumpCount>0</jumpCount>
+	
+	<objectDamageFactor>1.0</objectDamageFactor>
+
+    <environmentEffectID></environmentEffectID>
+  </projectile>
+  <projectile>
+    <!-- Data -->
+    <id>7</id>
+    <name>Flames</name>
+
+    <!-- Art -->
+    <modelName></modelName>
+
+    <scale>1.0</scale>
+    <particleEffectName>FlameThrower</particleEffectName>
+    <impactParticleName></impactParticleName>
+    <expirationParticleName></expirationParticleName>
+
+    <emitters>
+      <emitter>
+        <emitterName></emitterName>
+        <effectName></effectName>
+      </emitter>
+    </emitters>
+
+    <animations>
+    </animations>
+
+    <!-- Combat -->
+    <areaOfEffectRadius>0</areaOfEffectRadius>
+    <areaOfEffectUsesCone>false</areaOfEffectUsesCone>
+    <areaOfEffectDecay>0</areaOfEffectDecay>
+
+    <coneRadius></coneRadius>
+    <coneOriginWidth></coneOriginWidth>
+    <coneDamagesEntireArea>false</coneDamagesEntireArea>
+
+    <minDamage>7</minDamage>
+    <maxDamage>9</maxDamage>
+
+    <collisionRadius>8</collisionRadius>
+
+    <isInstantaneous>false</isInstantaneous>
+    <initialVelocity>1000</initialVelocity>
+    <terminalVelocity>1000</terminalVelocity>
+    <acceleration></acceleration>
+    <range>600</range>
+    <rangeVariation></rangeVariation>
+
+    <jumpRange>0</jumpRange>
+    <jumpDamageDecay>0</jumpDamageDecay>
+    <jumpCount>0</jumpCount>
+	
+	<objectDamageFactor>0.95</objectDamageFactor>
+
+    <environmentEffectID></environmentEffectID>
+  </projectile>
+</projectiles>

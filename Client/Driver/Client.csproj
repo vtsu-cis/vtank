@@ -1,0 +1,342 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <ProjectGuid>{26B89063-0E04-4706-9B45-B4E0DD3949A4}</ProjectGuid>
+    <ProjectTypeGuids>{6D335F3A-9D43-41b4-9D22-F6F17C4BE596};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Client</RootNamespace>
+    <AssemblyName>Client</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <XnaFrameworkVersion>v3.1</XnaFrameworkVersion>
+    <XnaPlatform>Windows</XnaPlatform>
+    <XnaCrossPlatformGroupID>4afb58ec-dd2f-4caf-b918-d0b87a5a4073</XnaCrossPlatformGroupID>
+    <ApplicationIcon>VTankLogo-Icon.ico</ApplicationIcon>
+    <Thumbnail>GameThumbnail.png</Thumbnail>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <StartupObject>
+    </StartupObject>
+    <ManifestCertificateThumbprint>5075EA7BD46ED360801A05472D183AC16C420CA9</ManifestCertificateThumbprint>
+    <ManifestKeyFile>Client_TemporaryKey.pfx</ManifestKeyFile>
+    <GenerateManifests>false</GenerateManifests>
+    <SignManifests>false</SignManifests>
+    <SignAssembly>false</SignAssembly>
+    <TargetZone>LocalIntranet</TargetZone>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <PublishUrl>C:\Documents and Settings\ceb03060\My Documents\published\testGame\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;WINDOWS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoStdLib>true</NoStdLib>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <PlatformTarget>x86</PlatformTarget>
+    <XnaCompressContent>false</XnaCompressContent>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\x86\Release</OutputPath>
+    <DefineConstants>TRACE;WINDOWS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoStdLib>true</NoStdLib>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <PlatformTarget>x86</PlatformTarget>
+    <XnaCompressContent>true</XnaCompressContent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DirectShowLib-2005, Version=2.1.0.0, Culture=neutral, PublicKeyToken=67e7b740cdfc2d3f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\DirectShowLib-2005.dll</HintPath>
+    </Reference>
+    <Reference Include="Glacier2, Version=3.4.1.0, Culture=neutral, PublicKeyToken=cdd571ade22f2f16, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\lib\Ice\bin\Glacier2.dll</HintPath>
+    </Reference>
+    <Reference Include="Ice, Version=3.4.1.0, Culture=neutral, PublicKeyToken=cdd571ade22f2f16, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\lib\Ice\bin\Ice.dll</HintPath>
+    </Reference>
+    <Reference Include="IceSSL, Version=3.4.1.0, Culture=neutral, PublicKeyToken=cdd571ade22f2f16, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\lib\Ice\bin\IceSSL.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.DirectX.DirectSound, Version=1.0.2902.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="Microsoft.Xna.Framework, Version=3.1.0.0, Culture=neutral, PublicKeyToken=6d5c3888ef60e27d, processorArchitecture=x86" />
+    <Reference Include="Microsoft.Xna.Framework.Game, Version=3.1.0.0, Culture=neutral, PublicKeyToken=6d5c3888ef60e27d, processorArchitecture=x86" />
+    <Reference Include="mscorlib">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="TomShane.Neoforce.Controls, Version=0.3.1007.1822, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\GameForms\lib\TomShane.Neoforce.Controls.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="src\callbacks\ClockSync.cs" />
+    <Compile Include="src\callbacks\GameCallback.cs" />
+    <Compile Include="src\config\Options.cs" />
+    <Compile Include="src\driver\Program.cs" />
+    <Compile Include="src\events\IEvent.cs" />
+    <Compile Include="src\events\Invocation.cs" />
+    <Compile Include="src\events\InvocationBuffer.cs" />
+    <Compile Include="src\events\types\AddUtilityEvent.cs" />
+    <Compile Include="src\events\types\ApplyUtilityEvent.cs" />
+    <Compile Include="src\events\types\BaseCapturedEvent.cs" />
+    <Compile Include="src\events\types\ChatMessageEvent.cs" />
+    <Compile Include="src\events\types\CreateProjectileEvent.cs" />
+    <Compile Include="src\events\types\CreateProjectilesEvent.cs" />
+    <Compile Include="src\events\types\DamageBaseByEnvironmentEvent.cs" />
+    <Compile Include="src\events\types\DamageBaseEvent.cs" />
+    <Compile Include="src\events\types\DestroyProjectileEvent.cs" />
+    <Compile Include="src\events\types\FlagCapturedEvent.cs" />
+    <Compile Include="src\events\types\FlagDespawnedEvent.cs" />
+    <Compile Include="src\events\types\FlagDroppedEvent.cs" />
+    <Compile Include="src\events\types\FlagPickedUpEvent.cs" />
+    <Compile Include="src\events\types\FlagReturnedEvent.cs" />
+    <Compile Include="src\events\types\FlagSpawnedEvent.cs" />
+    <Compile Include="src\events\types\PlayerDamagedByEnvironmentEvent.cs" />
+    <Compile Include="src\events\types\PlayerDamagedEvent.cs" />
+    <Compile Include="src\events\types\PlayerJoinedEvent.cs" />
+    <Compile Include="src\events\types\PlayerLeftEvent.cs" />
+    <Compile Include="src\events\types\PlayerMoveEvent.cs" />
+    <Compile Include="src\events\types\PlayerRespawnedEvent.cs" />
+    <Compile Include="src\events\types\PlayerRotateEvent.cs" />
+    <Compile Include="src\events\types\RefreshPlayerListEvent.cs" />
+    <Compile Include="src\events\types\ResetAngleEvent.cs" />
+    <Compile Include="src\events\types\ResetBasesEvent.cs" />
+    <Compile Include="src\events\types\ResetPositionEvent.cs" />
+    <Compile Include="src\events\types\RotateMapEvent.cs" />
+    <Compile Include="src\events\types\SetBaseHealthEvent.cs" />
+    <Compile Include="src\events\types\SpawnEnvironmentEffectEvent.cs" />
+    <Compile Include="src\events\types\TurretSpinningEvent.cs" />
+    <Compile Include="src\service\ServiceManager.cs" />
+    <Compile Include="src\service\services\ResourceManager.cs" />
+    <Compile Include="src\service\services\StateManager.cs" />
+    <Compile Include="src\service\services\VTank.cs" />
+    <Compile Include="src\states\EditTankState.cs" />
+    <Compile Include="src\states\GamePlayState.cs" />
+    <Compile Include="src\states\LoadingScreenState.cs" />
+    <Compile Include="src\states\LoginScreenState.cs" />
+    <Compile Include="src\states\ServerListState.cs" />
+    <Compile Include="src\states\State.cs" />
+    <Compile Include="src\states\TankCreationState.cs" />
+    <Compile Include="src\states\TankListState.cs" />
+    <Compile Include="src\events\EventBuffer.cs" />
+    <Compile Include="src\service\services\Logger.cs" />
+    <Compile Include="src\util\game\data\ActiveUtility.cs" />
+    <Compile Include="src\util\game\data\ConfigSetting.cs" />
+    <Compile Include="src\util\game\data\EnvironmentProperty.cs" />
+    <Compile Include="src\util\game\data\GameContext.cs" />
+    <Compile Include="src\util\game\data\ProjectileData.cs" />
+    <Compile Include="src\util\game\data\Rank.cs" />
+    <Compile Include="src\util\game\data\Tip.cs" />
+    <Compile Include="src\util\game\data\Weapon.cs" />
+    <Compile Include="src\util\game\data\XmlConfig.cs" />
+    <Compile Include="src\util\game\gameobjects\Base.cs" />
+    <Compile Include="src\util\game\gameobjects\Flag.cs" />
+    <Compile Include="src\util\game\gameobjects\LazerBeam.cs" />
+    <Compile Include="src\util\game\gameobjects\PlayerTank.cs" />
+    <Compile Include="src\util\game\gameobjects\Projectile.cs" />
+    <Compile Include="src\util\game\gameobjects\TracerBullet.cs" />
+    <Compile Include="src\util\game\gameobjects\UtilityIcon.cs" />
+    <Compile Include="src\util\game\map\Map.cs" />
+    <Compile Include="src\util\game\map\Minimap.cs" />
+    <Compile Include="src\util\game\map\MiniMapTile.cs" />
+    <Compile Include="src\util\game\map\Tile.cs" />
+    <Compile Include="src\util\gui\Buff.cs" />
+    <Compile Include="src\util\gui\BuffBar.cs" />
+    <Compile Include="src\util\gui\ChatArea.cs" />
+    <Compile Include="src\util\gui\ChatInput.cs" />
+    <Compile Include="src\util\gui\Countdown.cs" />
+    <Compile Include="src\util\gui\CrashErrorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\util\gui\CrashErrorForm.designer.cs">
+      <DependentUpon>CrashErrorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\util\gui\DrawableTile.cs" />
+    <Compile Include="src\util\gui\GameConsole.cs" />
+    <Compile Include="src\util\gui\HealthBar.cs" />
+    <Compile Include="src\util\gui\HelpOverlay.cs" />
+    <Compile Include="src\util\gui\HUD.cs" />
+    <Compile Include="src\util\gui\HUD_Bar.cs" />
+    <Compile Include="src\util\gui\GameTips.cs" />
+    <Compile Include="src\util\gui\MouseCursor.cs" />
+    <Compile Include="src\util\gui\ScoreBoard.cs" />
+    <Compile Include="src\util\gui\TextObject.cs" />
+    <Compile Include="src\util\gui\TexturedTileGroup.cs" />
+    <Compile Include="src\util\helpers\Constants.cs" />
+    <Compile Include="src\util\helpers\FrameCounter.cs" />
+    <Compile Include="src\util\helpers\Hash.cs" />
+    <Compile Include="src\util\helpers\KeyPressHelper.cs" />
+    <Compile Include="src\util\helpers\MovieRunner.cs" />
+    <Compile Include="src\util\helpers\RankLoader.cs" />
+    <Compile Include="src\util\helpers\RendererAssetLoader.cs" />
+    <Compile Include="src\util\helpers\TileParser.cs" />
+    <Compile Include="src\util\helpers\TipLoader.cs" />
+    <Compile Include="src\util\helpers\Toolkit.cs" />
+    <Compile Include="src\util\helpers\VideoPlayer.cs" />
+    <Compile Include="src\util\helpers\WeaponLoader.cs" />
+    <Compile Include="src\util\managers\BaseManager.cs" />
+    <Compile Include="src\util\managers\EnvironmentEffectManager.cs" />
+    <Compile Include="src\util\managers\FlagManager.cs" />
+    <Compile Include="src\util\managers\PlayerManager.cs" />
+    <Compile Include="src\util\managers\ProjectileManager.cs" />
+    <Compile Include="src\util\managers\UtilityManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="config_skeleton.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="EnvironmentProperties.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Game.ico" />
+    <Content Include="GameThumbnail.png" />
+    <Content Include="Projectiles.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Ranks.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="VTankLogo-Icon.ico" />
+    <Content Include="Weapons.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <NestedContentProject Include="Content\Content.contentproj">
+      <Project>54cb906a-ce27-4113-82e9-0dbda145fc17</Project>
+      <Visible>False</Visible>
+    </NestedContentProject>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Xna.Framework.3.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft XNA Framework Redistributable 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Ice\IceCs.csproj">
+      <Project>{B8547B9A-0FB1-441F-81E6-0E364AEE7D46}</Project>
+      <Name>IceCs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Audio\Audio.csproj">
+      <Project>{65BF691E-119E-4069-9DB0-5520087ECD4B}</Project>
+      <Name>Audio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GameForms\GameForms.csproj">
+      <Project>{FCA01C54-3EB6-4319-AA83-245B43A35BE0}</Project>
+      <Name>GameForms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Network\Network.csproj">
+      <Project>{88C2E3B5-05E6-437E-9915-6FD276128FEF}</Project>
+      <Name>Network</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Renderer\Renderer\Renderer.csproj">
+      <Project>{D8993E71-380D-4048-944B-3C76F9D7E77B}</Project>
+      <Name>Renderer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SkinnedModel\SkinnedModelWindows.csproj">
+      <Project>{0D41E29B-829F-4255-BCA5-64DC2677DA6D}</Project>
+      <Name>SkinnedModelWindows</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="src\util\gui\CrashErrorForm.resx">
+      <DependentUpon>CrashErrorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>start "Copying Dictionary Files..." /B "$(ProjectDir)"copy_dictionaries.bat
+copy "$(ProjectDir)"config.client "$(TargetDir)"
+copy "$(ProjectDir)"changelog.txt "$(TargetDir)"
+copy "$(SolutionDir)"\version.ini "$(TargetDir)"
+if not exist "$(TargetDir)"Music mkdir "$(TargetDir)"Music
+if not exist "$(TargetDir)"Music\official mkdir "$(TargetDir)"Music\official
+copy "$(ProjectDir)"Content\audio\music\official\*.* "$(TargetDir)"Music\official</PostBuildEvent>
+  </PropertyGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties ZerocIce_Home="$(ICEROOT)" ZerocIce_Components="Glacier2 ; Ice ; IceSSL" ZerocIce_IncludePath="" ZerocIce_Streaming="False" ZerocIce_Enabled="True" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

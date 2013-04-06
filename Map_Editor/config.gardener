@@ -1,0 +1,11 @@
+# The default Glacier2 router used to create sessions to the login factory interface.
+VTankRouter=VTank/router:tcp -p 4063 -h glacier2a.cis.vtc.edu -t 10000
+
+# The maximum message size allowed is increased to support bigger maps.
+Ice.MessageSizeMax=20971520
+
+# Active connection management is not possible through Glacier2
+Ice.ACM.Client=0
+
+# Retry is not possible through Glacier2
+Ice.RetryIntervals=-1

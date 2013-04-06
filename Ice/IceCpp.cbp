@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="IceCpp" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="libIceCppd" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/Debug/" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="libIceCpp" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/Release/" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add directory="." />
+			<Add directory="$(#ice)/include" />
+		</Compiler>
+		<Unit filename="CaptainVTank.cpp" />
+		<Unit filename="CaptainVTank.h" />
+		<Unit filename="ClockSync.cpp" />
+		<Unit filename="ClockSync.h" />
+		<Unit filename="Exception.cpp" />
+		<Unit filename="Exception.h" />
+		<Unit filename="GameSession.cpp" />
+		<Unit filename="GameSession.h" />
+		<Unit filename="IGame.cpp" />
+		<Unit filename="IGame.h" />
+		<Unit filename="JanitorCallback.cpp" />
+		<Unit filename="JanitorCallback.h" />
+		<Unit filename="JanitorSession.cpp" />
+		<Unit filename="JanitorSession.h" />
+		<Unit filename="Main.cpp" />
+		<Unit filename="Main.h" />
+		<Unit filename="MainSession.cpp" />
+		<Unit filename="MainSession.h" />
+		<Unit filename="MainToGameSession.cpp" />
+		<Unit filename="MainToGameSession.h" />
+		<Unit filename="MapEditorSession.cpp" />
+		<Unit filename="MapEditorSession.h" />
+		<Unit filename="VTankObjects.cpp" />
+		<Unit filename="VTankObjects.h" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

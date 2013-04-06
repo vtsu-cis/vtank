@@ -1,0 +1,38 @@
+Texture: smoke
+
+Capacity: 500
+Duration: .5
+DurationRandomness: 0
+
+GlobalForce: [0, 0, 100]
+MinForceSensitivity: 0.75
+MaxForceSensitivity: 1
+InertiaSensitivity: 0
+
+DirFromRotation: No
+InitialSpeed: 1
+Direction: [0, 0, 1]
+
+MinStartHorizontalVelocity: 0
+MaxStartHorizontalVelocity: 0
+MinStartVerticalVelocity: 1
+MaxStartVerticalVelocity: 1
+
+MinEndHorizontalVelocity: 0
+MaxEndHorizontalVelocity: 0
+MinEndVerticalVelocity: 1
+MaxEndVerticalVelocity: 1
+
+MinStartSize: 90
+MaxStartSize: 110
+MinEndSize: 30
+MaxEndSize: 40
+
+MinRotateSpeed: 0
+MaxRotateSpeed: 0
+
+MinColor: [218, 165, 32, 255]
+MaxColor: [255, 255, 0, 255]
+
+SourceBlend: SourceAlpha
+DestinationBlend: One

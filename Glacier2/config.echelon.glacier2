@@ -1,0 +1,31 @@
+#
+# Set the Glacier2 instance name.
+#
+Glacier2.InstanceName=VTank
+
+#
+# The client-visible endpoint of Glacier2. This should be an endpoint
+# visible from the public Internet, and it should be secure.
+# 
+Glacier2.Client.Endpoints=tcp -p 4063
+
+#
+# The server-visible endpoint of Glacier2. This endpoint is only
+# required if callbacks are needed (leave empty otherwise). This
+# should be an endpoint on an internal network (like 192.168.x.x), or
+# on the loopback, so that the server is not directly accessible from
+# the Internet.
+#
+Glacier2.Server.Endpoints=tcp
+
+# Configure the session manager.
+Glacier2.SessionManager=SessionFactory:tcp -h localhost -p 31337
+
+Glacier2.PermissionsVerifier=VTank/NullPermissionsVerifier
+
+#
+# The timeout for inactive sessions. If any client session is inactive
+# for longer than this value, the session expires and is removed. The
+# unit is seconds.
+#
+Glacier2.SessionTimeout=60

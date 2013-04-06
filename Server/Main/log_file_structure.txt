@@ -1,0 +1,8 @@
+Log file structure
+==================
+File format: %Y-%m-%d.log (e.g. 2008-01-19.log)
+
+logs
+-	players
+-	chat
+-	misc

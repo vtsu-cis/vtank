@@ -1,0 +1,165 @@
+\chapter{Echelon}
+\label{Echelon}
+\section{Preface}
+
+Echelon is the VTank world's central node. Echelon is the master server which controls static account information (e.g. username, password, e-mail) and volatile data about the game (tanks, rankings, statistics). All players must initially log into VTank in order to play the game.
+
+Echelon stores each players' tank within it's database. A player may log in from any machine and use the client to add, modify, or delete tanks from his account.
+
+\section{Installation (Windows)}
+
+\subsection{Python}
+\label{echelon-install-python}
+
+Echelon is coded in the Python programming language. Echelon also makes use of the Stackless Python library. Therefore, a specific interpreter must be installed from the Stackless website. Further, Echelon makes use of Python version 2.6.5, so that specific interpreter should be installed to avoid problems.
+
+The Stackless Python interpreter installer is available at:
+
+\url{http://www.stackless.com/binaries/python-2.6.5-stackless.msi}
+
+Note that this version of the interpreter is compatible with regular Python code. Uninstalling an existing Python 2.6.5 instance and replacing it with Stackless 2.6.5 will have no (known) effect on existing code.
+
+After all other dependencies have been installed, further configuration is required. See section \ref{sec:echelon-config} for more details.
+
+\subsection{MySQL}
+
+Echelon uses MySQL as it's back-end database. MySQL can be downloaded and installed using this guide as a resource:
+
+\url{http://dev.mysql.com/doc/refman/5.1/en/windows-installation.html}
+
+Alternatively, MySQL is installed with the default XAMPP package. This is useful for quickly deploying a MySQL database. XAMPP is available at:
+
+\url{http://www.apachefriends.org/en/xampp-windows.html}
+
+Further configuration is required in order to get MySQL running successfully with VTank. See section \ref{sec:echelon-config} for more details.
+
+\subsection{MySQL-Python}
+
+MySQL-Python is a Python-based library which allows the developer to implement a MySQL client. The current version of MySQL-Python is v1.2.3c1. The project page for MySQL-Python is available at:
+
+\url{http://sourceforge.net/projects/mysql-python/}
+
+A binary package for Windows is not provided by the default SourceForge project. However, one is provided by the VTank site, available at:
+
+\url{http://vtank.cis.vtc.edu/downloads/MySQL-python-1.2.3c1.win32-py2.6.exe}
+
+If for some reason the above link is unavailable, this mirror may be used:
+
+\url{http://www.thescotties.com/mysql-python/test/MySQL-python-1.2.3c1.win32-py2.6.exe}
+
+Simply double-click the executable file and let it run it's course to install MySQL-Python. No further configuration of this library is required.
+
+\subsubsection*{Test if it works}
+
+To test if it was installed correctly, open up the Stackless Python interpreter, and type the following code:
+
+\command{import MySQLdb}
+
+If the installation of MySQL-Python was successful, nothing will happen.
+
+\subsection{Echelon (Server)}
+
+Echelon is written in Python and therefore requires no further effort than ensuring that Stackless Python and the rest of Echelon's dependencies (listed above) are installed and configured correctly. Echelon can be run directly from the Stackless Python interpreter.
+
+First, obtain the Echelon source code. For information on doing this, please see section \ref{src}. Two directories \emph{must} be checked out:
+
+\label{echelon-structure}
+The Echelon source code is available under the following version controlled directory:
+
+\command{VTank/trunk/Server/Main}
+
+The following Ice scripts are required in order to run Echelon successfully:
+
+\command{VTank/trunk/Ice}
+
+The following document(s) are required to set up the Echelon database:
+
+\command{VTank/trunk/Docs/Database}
+
+It is ideal if the structure of the folders is maintained once they are checked out. That is, your directory would hopefully look like this:
+
+\begin{command}
+- VTank
+-- trunk
+--- Server
+---- Main
+--- Ice
+\end{command}
+
+The number of hyphens indicate the depth of the directory tree. If this structure is maintained, Echelon should have no problem running with it's default configuration. Once the Echelon code is checked out and all of it's dependencies are installed, it is almost ready to be run.
+
+\section{Configuration}
+\label{sec:echelon-config}
+
+\subsection{Ice}
+
+It is strongly recommended that you put the Ice/bin/ folder on your system's PATH environment variable. Python needs to be able to find the Ice DLLs in order to execute the Echelon server.
+
+Either user or system variables may be used. A reboot may be required.
+
+\subsection{Python}
+
+The PYTHONPATH variable needs to be modified to look for the Ice Python source code.
+
+\subsection{MySQL}
+
+First, the structure of the VTank database must be imported. This process is relatively simple. The schema for the database is available under VTank/trunk/Docs/Database/MySQL\_Database\_Layout.sql.
+
+Through the command prompt, the following command will import the database layout into MySQL:
+
+\command{mysql -u[username] -p \\   < [checkout directory]/VTank/trunk/Docs/Database/MySQL\_Database\_Layout.sql}
+
+Where:
+\begin{itemize}
+	\item \command{[username]} is a user which has privileges to create databases/tables (e.g. ``root''); and
+	\item \command{[checkout directory]} is where you checked out the VTank source code to.
+\end{itemize}
+
+The \command{-p} switch means that a password is required to perform the operation (such as if your ``root'' account has a password). You will be prompted to enter the password once you enter the command. If your ``root'' account has no password, the \command{-p} switch can be omitted.
+
+The above command assumes that the \command{mysql} binary is on your PATH environment variable. This is usually not the case. To execute the command successfully, navigate to the directory where ``mysql.exe'' exists first.
+
+VTank requires access to a MySQL account which can perform \command{SELECT}, \command{INSERT}, \command{DELETE}, and \command{UPDATE} commands. If the database is sealed off from the world by a firewall, then it's acceptable to use the default ``root'' account with no password (though it's recommended to later update the root account to have a password). A reference on creating new users in MySQL is available at:
+
+\url{http://dev.mysql.com/doc/refman/5.1/en/adding-users.html}
+
+\subsection{Echelon}
+
+Configuring Echelon itself is fairly straightforward. Go into the folder where Echelon was checked out. Edit the file ``config.cfg''. You may specify any number of properties that suit you. A few of the important ones will be explained here.
+
+\begin{itemize}
+	\item \emph{allow\_unapproved\_game\_servers}: Set to '1' if game servers who are not ``approved'' may connect to your server anyway. Recommended value is '1'.
+	\item Database section:
+		\begin{itemize}
+			\item \emph{user}: The database user to execute MySQL actions.
+			\item \emph{passwd}: User's password (if any).
+			\item \emph{host\_ip}: IP address to the database (this will likely be ``localhost'').
+			\item \emph{port}: Port number which the MySQL server listens on.
+			\item \emph{database\_name}: Name of the database. This will be ``VTank'' unless you renamed the database.
+		\end{itemize}
+\end{itemize}
+
+Modify \command{start\_echelon.bat} and modify any interesting properties. In particular, the \command{PATH\_TO\_PYTHON} variable will probably need to be modified if Python.exe is not on your \command{PATH} variable.
+
+\section{Maintenance}
+
+\emph{To start Glacier2:}
+
+Glacier2 is required to accept clients on Echelon. A script has been provided to start Glacier2 for you. This script can be located in the source directory under:
+
+\command{VTank/trunk/Glacier2}
+
+Run the \command{start\_echelon\_router.bat} script to start the router.
+
+\emph{To stop Glacier2:}
+
+Close the window that pops up after opening \command{start\_echelon\_router.bat}.
+
+\emph{To start Echelon:}
+
+Double-click \command{start\_echelon.bat}.
+
+\emph{To stop Echelon:}
+
+Close the window that pops up after opening \command{start\_echelon.bat}.
+

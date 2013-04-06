@@ -1,0 +1,71 @@
+#!/bin/bash
+#This script is a basic procedural backup script for Echelon.
+#July 25, 2009 by Michael Smith
+
+#Declaring Variables
+SERVER='silica.cis.vtc.edu'
+PORT='9002'
+RESOURCE='backup'
+BACKUPDIR='/home/backup'
+LOGFILE='/home/backup/log.txt'
+ERRORS=false
+MAIL1='msmith@summerofsoftware.org'
+MAIL2='cbeattie@summerofsoftware.org'
+MAIL3='asibley@summerofsoftware.org'
+MAIL4='pchapin@summerofsoftware.org'
+
+#Change to the Backup directory.
+cd $BACKUPDIR
+
+#Error handler function
+function errhandler {
+	if [ $? !=  0 ]; then 
+	{
+		echo "Failed $1." >> $LOGFILE
+		ERRORS=true
+	} fi
+}
+
+#Begin backup of critical files-----------------------------------------
+echo "Backing up VTank resources, $(date +%b%d_%Y)" >> $LOGFILE
+
+echo "Dumping VTank Database..." >> $LOGFILE
+mysqldump --databases VTank >  VTank_$(date +%b%d_%Y).sql 2>> $LOGFILE
+errhandler "VTank Database dump"
+
+echo "Copying Website Data..." >> $LOGFILE
+cp -r /home/projects/sct Lsitebackup_$(date +%b%d_%Y) 2>> $LOGFILE 
+errhandler "Website backup"
+
+#Begin file compression------------------------------------------------
+echo "Compressing Files..." >> $LOGFILE
+tar czf Lsitebackup_$(date +%b%d_%Y).tgz Lsitebackup_$(date +%b%d_%Y)/ 2>> $LOGFILE
+errhandler "to compress files"
+
+gzip VTank_$(date +%b%d_%Y).sql 2>> $LOGFILE
+errhandler "to compress database"
+
+#Begin Rsync------------------------------------------------------------
+echo "Initiating Rsync..." >> $LOGFILE
+rsync --port=$PORT VTank_$(date +%b%d_%Y).sql.gz $SERVER::$RESOURCE 2>> $LOGFILE
+errhandler "to transfer database"
+
+
+rsync --port=$PORT Lsitebackup_$(date +%b%d_%Y).tgz $SERVER::$RESOURCE 2>> $LOGFILE
+errhandler "to transfer Website files"
+
+#Clean up files-------------------------------------------------------
+echo "Cleaning Up Files..." >> $LOGFILE
+rm -f VTank_$(date +%b%d_%Y).sql.gz 2>> $LOGFILE
+rm -f Lsitebackup_$(date +%b%d_%Y).tgz 2>> $LOGFILE
+rm -rf Lsitebackup_$(date +%b%d_%Y) 2>> $LOGFILE
+
+echo "Done Backup Procedure." >> $LOGFILE
+
+if [ "$ERRORS" == "true" ]; then
+{
+	/usr/sbin/sendmail $MAIL1,$MAIL2,$MAIL3,$MAIL4 < failuremail.txt
+} fi
+
+echo " " >> $LOGFILE
+

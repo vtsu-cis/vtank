@@ -1,0 +1,8 @@
+TimeBetweenParticles: 0.005
+LifeSpan: 2.0
+Continuous: Yes
+Radius: 5
+VaryX: No
+VaryY: No
+VaryZ: No
+ParticleSystemName: FlameThrower

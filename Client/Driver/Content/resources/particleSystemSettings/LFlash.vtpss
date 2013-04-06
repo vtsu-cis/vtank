@@ -1,0 +1,38 @@
+Texture: fire
+
+Capacity: 40
+Duration: 0.5
+DurationRandomness: .05
+
+GlobalForce: [0, 0, 0]
+MinForceSensitivity: 0
+MaxForceSensitivity: 0
+InertiaSensitivity: 0
+
+DirFromRotation: Yes
+InitialSpeed: 150
+Direction: [0, 0, 0]
+
+MinStartHorizontalVelocity: 50
+MaxStartHorizontalVelocity: 70
+MinStartVerticalVelocity: 50
+MaxStartVerticalVelocity: -50
+
+MinEndHorizontalVelocity: 60
+MaxEndHorizontalVelocity: 80
+MinEndVerticalVelocity: -60
+MaxEndVerticalVelocity: 60
+
+MinStartSize: 7
+MaxStartSize: 10
+MinEndSize: 7
+MaxEndSize: 10
+
+MinRotateSpeed: 0
+MaxRotateSpeed: 0
+
+MinColor: [255, 255, 255, 255]
+MaxColor: [255, 255, 255, 255]
+
+SourceBlend: SourceAlpha
+DestinationBlend: One

@@ -1,0 +1,65 @@
+# Insert the target from the working directory.  If running from the same directory, use "./"
+TARGET  = "./"
+GAMESERVER = "/usr/local/sbin/vtank/Server/Game/Driver/"
+ICE	= "/opt/Ice-3.3.1/include/"
+VTANK_COMMON = "/usr/local/sbin/vtank/Common/Cpp/"
+BOOST = "/usr/include/boost"
+VTANK_ICE = "/usr/local/sbin/vtank/Ice/"
+THREADPOOL = "/usr/include/threadpool"
+
+# Define what source files to compile.
+OBJ_LIST = [
+'../../../Ice/CaptainVTank.cpp',
+'../../../Ice/ClockSync.cpp',
+'../../../Ice/Exception.cpp',
+'../../../Ice/GameSession.cpp',
+'../../../Ice/IGame.cpp',
+'../../../Ice/JanitorCallback.cpp',
+'../../../Ice/JanitorSession.cpp',
+'../../../Ice/Main.cpp',
+'../../../Ice/MainSession.cpp',
+'../../../Ice/MainToGameSession.cpp',
+'../../../Ice/MapEditorSession.cpp',
+'../../../Ice/VTankObjects.cpp',
+'../../../Common/Cpp/Map.cpp',
+'gamemanager.cpp', 
+'logger.cpp',
+'loginsessionfactory.cpp',
+'main.cpp',
+'mapmanager.cpp', 
+'master.cpp', 
+'mtgcallback.cpp', 
+'mtgservice.cpp', 
+'node.cpp', 
+'nodemanager.cpp', 
+'notifier.cpp',
+'player.cpp',
+'playermanager.cpp',
+'pointmanager.cpp',
+'projectilemanager.cpp',
+'server.cpp',
+'SHA1.cpp', 
+'tank.cpp', 
+'tankmanager.cpp',
+'utility.cpp']
+
+# Loop through each object and ensure that it is prepended with the TARGET path.
+for object in OBJ_LIST:
+	if not object.startswith(TARGET):
+		object = "./%s/%s" % (TARGET, object);
+		
+#Specifying the environment to make the program aware of its include directories.
+env = Environment(	CPPPATH = ['/usr/include', ICE, VTANK_ICE, VTANK_COMMON, BOOST, GAMESERVER, THREADPOOL], 
+					LIBPATH = ["/usr/local/lib", "/usr/lib", "/opt/Ice-3.3.1/lib/", "/opt/Ice-3.3/cpp/lib/"],
+					#LIBS = ['boost', 'boost', 'Ice'] )
+				)
+
+#Set the compiler flag + output directory
+IFLAG = '-I ' + TARGET;
+
+# Build the objects.
+env.Object(OBJ_LIST, CCFLAGS=IFLAG);
+OUT_LIST = [ string.replace(".cpp", ".o") for string in OBJ_LIST ]
+
+#Build the program
+env.Program(TARGET + "Theater", OUT_LIST, LIBPATH = ["/usr/local/lib", "/usr/lib", "/opt/Ice-3.3.1/lib/", "/opt/Ice-3.3.1/cpp/lib/"], LIBS = ['libIce.so','libIceUtil.so', 'libGlacier2.so', 'libboost_thread-mt.so'], CCFLAGS='');

@@ -1,0 +1,40 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FILE    : Introduction.tex
+% SUBJECT : Document describing the VTank system in general terms.
+% AUTHOR  : (C) Copyright 2009 by Vermont Technical College
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Introduction}
+\label{introduction}
+
+\VTank\ is a 3D multi-player networked tank game. It is a project of Vermont Technical College's ``Summer of Software Engineering'' (SoSE) initiative. The purpose of SoSE is to give students experience working with a realistic software development project using industry standard best practices.
+
+\VTank\ was initially developed during the summers of 2008 and 2009 by Andy Sibley, Trevor Willis, and Andrew Palmer with consultation from CIS faculty member Peter Chapin. Chris Beattie was the project manager and founder of the SoSE project. At the time of this writing (March 2009) \VTank\ is still under active development. However, it is planned that by the end of the Summer of 2010, \VTank\ will be deployable to the VTC community for general consumption.
+
+\VTank\ consists of several interacting programs.
+
+\begin{enumerate}
+\item \textbf{Client (\Client)}
+
+The client (written in C\# using Microsoft's XNA gaming framework) is used by the players to play the game.
+
+\item \textbf{Main Server (\MainServer)}
+
+The main server (written in Stackless Python) manages player accounts and coordinates the activity of the entire \VTank\ system.
+
+\item \textbf{Game Server (\GameServer)}
+
+The game server (written in C++)  manages the game world dynamics.
+
+\item \textbf{Map Editor (\MapEditor)}
+
+The map editor (written in C++ using wxWidgets) allows its user to create and edit the ``maps'' that describe the game world.
+
+\item \textbf{Captain \VTank}
+
+This program (written in C\#) allows administrative access to the \VTank\ system. It can be used to manage accounts administratively, kick troublesome users off the system, and perform various similar actions.
+
+\end{enumerate}
+
+This document describes the entire \VTank\ system's requirements, design, and implementation. If you plan to work on \VTank\ development you should read this entire document. If you are a \VTank\ administrator or user you may wish to read Chapter~\ref{deployment} describing how to deploy a \VTank\ system.

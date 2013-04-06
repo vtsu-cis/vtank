@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!-- FILE        : sose-c-style.html
+     AUTHOR      : Peter C. Chapin
+     LAST REVISED: 2009-05-23
+     SUBJECT     : SoSE Style Guide for C/C++ Programs. -->
+     
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<head>
+    <title>SoSE Style Guide for C/C++ Programming</title>
+</head>
+<body>
+    <h1>SoSE Style Guide for C/C++ Programming</h1>
+
+    <p><b>Version 1.0</b>. Last Revised: March 30, 2008</p>
+
+    <p>This document describes the style guide for C and C++ programming used by the Summer of
+    Software Engineering project at <a href="http://www.vtc.edu/">Vermont Technical
+    College</a>.</p>
+
+    <p>This guide is not intended to cover all aspects of style that might be defined. One can
+    still write poorly styled programs while following this guide. Thus SoSE programmers should
+    remain aware of style issues beyond those described by this guide, and are encouraged to
+    also apply a consistent and appropriate style to elements that are not covered by this
+    guide. This guide is intended to cover essential issues so that code produced by SoSE enjoys
+    a certain minimum level of consistency across SoSE developers. Such consistency promotes
+    readibility and understandability of code.</p>
+
+    <p>In this document the word "SHALL" is used to indicate a requirement of this guide. The
+    word "SHOULD" is used to indicate a recommendation of this guide. The word "MAY" is used to
+    indicate an allowable option.</p>
+
+    <hr>
+    <h2>Indentation and Spacing</h2>
+
+    <ul>
+      <li><p>The braces that open and close a function SHALL appear in column one on lines by
+      themselves.</p>
+<pre>
+  /* CORRECT */
+  int main(void)
+  {
+      printf("Hello, World!\n");
+      return 0;
+  }
+</pre>
+      </li>
+
+      <li><p>Every statement in a block SHALL be indented by four spaces beyond the code in the
+      enclosing block. Except for function defintions as described above, braces SHALL follow
+      the style shown below (this includes class definitions and exception handling blocks).</p>
+      
+<pre>
+  /* CORRECT (Closing brace aligns with keyword that opens block) */
+  if (x == y) {
+      printf("They are equal!\n");
+  }
+</pre>
+      </li>
+      
+      <li><p>Else clauses on <tt>if</tt> statements that have them SHALL be formatted like
+      other control blocks.</p>
+      
+<pre>
+  /* CORRECT */
+  if (x == y) {
+      printf("They are equal!\n");
+  }
+  else {
+      printf("They are not equal!\n");
+  }
+</pre>
+      </li>
+
+      <li><p>As a special exception, case labels inside a switch statement SHALL not be indented
+      in the manner as described for blocks. However, the statements inside each case SHALL be
+      indented.</p>
+      
+<pre>
+  /* CORRECT */
+  switch (Value) {
+  case 1:
+      printf("Value == 1!\n");
+      break;
+  }
+</pre>
+      </li>
+
+      <li><p>Structure and class definitions SHALL be treated like any other block. The public,
+      private, and protected headers (C++ only) SHALL be treated the same way case labels are
+      treated.</p>
+      
+<pre>
+  /* CORRECT */
+  class Example {
+  public:
+      Example();
+     ~Example();  // Note indentation exception for destructor declaration.
+  private:
+      int x, y, z;
+  };
+</pre>
+      </li>
+      
+      <li><p>Binary operators except for '.', '->', '::', '.*', and '->*' SHOULD be surrounded
+      by spaces, however no space SHOULD separate a unary operator from its operands. A space or
+      new line SHOULD follow every comma and semicolon but not precede any comma or semicolon.
+      No space SHOULD follow a '(' character or precede a ')' character. A space SHOULD follow
+      each reserved word and the closing ')' of conditions in <tt>for</tt>, <tt>while</tt>,
+      <tt>switch</tt>, and <tt>if</tt> statements. These rules MAY be violated in complex
+      expressions if doing so would clarify the expression. (Although: consider breaking complex
+      expressions into separate steps instead)</p>
+      
+<pre>
+  /* CORRECT */
+  for (i = 0; i &lt; 10; ++i) {
+      x = a[i] + (b.m - c->m) / 2;
+      x = ( ((a + b.m) * b.m)/2 - (x - n::y) ) / 3;  // Rule violations to clarify meaning.
+  }
+</pre>
+
+      <li><p>Spaces MAY be used to align related constructs on adjacent lines.</p>
+      
+<pre>
+  /* CORRECT */
+  int      item;
+  char     buffer[10];
+  index_t  current_index = 0;
+</pre>
+    </ul>
+
+    <hr>
+    <h2>Names</h2>
+    
+    <p>It is understood that names used by third party libraries or in generated code may
+    violate the rules below. Obviously such names must be used as required. The rules below
+    pertain to names strictly under SoSE's control.</p>
+
+    <ul>
+    
+      <li><p>Names SHALL be meaningful and, except in special cases as described elsewhere in
+      this guide, SHALL be normal English words spelled correctly. Variables that are the
+      indicies of <tt>for</tt> loops MAY have one of the single letter names i, j, k, etc. If a
+      <tt>for</tt> loop is using a pointer (or iterator) as a loop index, that variable MAY be
+      given a name such as p, p1, p2, etc. However, even loop index variables SHOULD be given
+      meaningful names.</p>
+
+      <p>Names such as 'x' and 'y' MAY be considered meaningful in certain cases (such as in a
+      program that is manipulating cartesian coordinates). However, the single letter variable
+      names 'l', 'o', and 'O' SHALL never be used.</p>
+
+      <p>Names that are traditional in the problem domain MAY be considered meaningful. For
+      example, a two dimensional array holding the coefficients of a system of linear equations
+      can be called 'A' because of the widespread use of the matrix equation 'Ax = b' in the
+      literature of such systems. In addition names that appear in references MAY also be
+      acceptable even if they would not normally be meaningful. For example, if the description
+      of an algorithm in a book uses 'x' and 'y', you can also use 'x' and 'y' as names in
+      order to make the connection between your code and the book easier to follow. In this
+      situation you SHALL also provide a proper reference in the comments.</p></li>
+      
+      <li><p>Names consisting of more than one word SHALL have the individual words separated
+      by an underscore character (<tt>buffer_index</tt>).</p></li>
+
+      <li><p>Macros SHALL be given names consisting of entirely upper case letters with
+      underscores separating each word (<tt>MAXIMUM_BUFFER_SIZE</tt>). Names introduced with
+      <tt>typedef</tt> SHOULD use a <tt>_t</tt> suffix (<tt>index_t</tt>). Names of structures,
+      enumerations, unions, classes, and namespaces SHALL use upper case letters at the
+      beginning of each word without underscores separating each word (<tt>BufferCache</tt>).
+      All other names SHALL consist of entirely lower case letters with underscores separating
+      each word (<tt>buffer_index</tt>).</p></li>
+
+    </ul>
+
+    <hr>
+    <h2>File Layout</h2>
+
+    <ul>
+
+      <li><p>At the top of each source file there SHALL be a SoSE standard comment header
+      containing (at least) the name of the file, a brief description of the file's contents,
+      and a copyright declaration. The main file of the program SHALL have a proper reference to
+      the GNU Public License.</p></li>
+
+      <li><p>At the top of each function there SHALL be a comment header that contains the
+      purpose of each parameter, the meaning of the return value, the pre and post conditions
+      (if any), and a description of what the function does. The function <tt>main</tt> and
+      trivial functions are exempt from this rule.</p></li>
+      
+      <li><p>The file and function level comments described above SHALL be created using Doxygen
+      format. <i>TO DO: Should we be specific about the format of Doxygen comments?</i></p></li>
+
+      <li><p>Source lines SHOULD be limited to 96 characters. Longer lines are acceptable if
+      they help to clarify the code. Short variable names SHOULD NOT be used in order to keep
+      line lengths less than 96 characters.</p></li>
+
+      <li><p>Tab characters SHALL NOT be used in the source file. Instead, indentation SHALL be
+      made using spaces.</p></li>
+
+      <li><p>The source file SHOULD be formatted so that it looks appropriate with a constant
+      width font.</p></li>
+      
+      <li><p><i>TO DO: Should we define a convention for file names?</i></p></li>
+
+    </ul>
+
+    <hr>
+    <address>
+&copy; Copyright 2009 by Summer of Software Engineering.<br>
+Last Revised: <b>May 23, 2009</b>
+</address>
+</body>
+</html>

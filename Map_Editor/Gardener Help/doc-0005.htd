@@ -1,0 +1,52 @@
+<HTML>
+	<HEADER>
+		<TITLE>Welcome to Gardener</TITLE>
+	</HEADER>
+<BODY TOPMARGIN=4 BGCOLOR=#FFFFFF TEXT=#000000 VLINK=#000000 LINK=#000000 ALINK=#000000>
+<FONT FACE="Arial, Lucida, Helvetica">
+
+<TABLE WIDTH="100%" ALIGN=CENTER CELLPADDING=1 CELLSPACING=0>
+<TR>
+<TD WIDTH="100%" ALIGN=CENTER>
+<A HREF="doc-0003.htm">
+<img align=center src="contents.gif" BORDER=0 ALT="Contents"></A>
+
+
+<A HREF="doc-0003.htm">
+<img align=center src="back.gif" BORDER=0 ALT="Previous"></A>
+
+<A HREF="doc-0008.htm">
+<img align=center src="forward.gif" BORDER=0 ALT="Next"></A>
+</TD>
+</TR>
+<TR>
+
+<!-- A narrow row representing the horizontal rule -->
+<TD COLSPAN=2 HEIGHT=2 BGCOLOR="#C0C0C0">
+</TD>
+</TR>
+</TABLE>
+
+<H2>Welcome to Gardener</H2>
+Welcome to Gardener, the offical VTank map editor.<P>
+
+With Gardener, you will be able to:<P>
+
+<UL>
+<LI> Easily create a VTank map;
+<LI> Upload, download, and manage maps on the VTank game server;
+<LI> Cut, copy and paste tiles for quick editing.
+</UL>
+<P>
+
+Gardener provides tools to help make creating your maps as straightforward
+as possible. Specialised dialogs allow quick editing of map attributes,
+such as game modes and map properties.<P>
+
+If you have an existing VTank map, you can open and edit it in Gardener.<P>
+
+And of course, Gardener is cross-platform - edit your maps on
+Windows, Linux or Mac OS X.<P>
+
+</FONT></BODY>
+</HTML>

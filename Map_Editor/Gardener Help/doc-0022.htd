@@ -1,0 +1,419 @@
+<HTML>
+<head><title>Using menubar commands</title></head>
+
+<BODY TOPMARGIN=4 BGCOLOR=#FFFFFF TEXT=#000000 VLINK=#000000 LINK=#000000 ALINK=#000000>
+<FONT FACE="Arial, Lucida, Helvetica">
+
+<TABLE WIDTH="100%" ALIGN=CENTER CELLPADDING=1 CELLSPACING=0>
+<TR>
+<TD WIDTH="100%" ALIGN=CENTER>
+<A HREF="doc-0003.htm">
+<img align=center src="contents.gif" BORDER=0 ALT="Contents"></A>
+
+
+<A HREF="doc-0003.htm">
+<img align=center src="back.gif" BORDER=0 ALT="Previous"></A>
+
+<A HREF="doc-0023.htm">
+<img align=center src="forward.gif" BORDER=0 ALT="Next"></A>
+</TD>
+</TR>
+<TR>
+
+<!-- A narrow row representing the horizontal rule -->
+<TD COLSPAN=2 HEIGHT=2 BGCOLOR="#C0C0C0">
+</TD>
+</TR>
+</TABLE>
+
+<H2>Using menubar commands</H2>
+<CENTER><IMG SRC="menu_bar.jpg" BORDER="0"></CENTER><P>
+
+This topic describes the function of the menubar commands.<P>
+
+<CENTER>
+<A HREF="#filemenu">File</A> |
+<A HREF="#editmenu">Edit</A> |
+<A HREF="#viewmenu">View</A> |
+<A HREF="#layermenu">Layer</A> |
+<A HREF="#optionsmenu">Options</A> |
+<A HREF="#toolsmenu">Tools</A> |
+<A HREF="#helpmenu">Help</A>
+</CENTER><P>
+
+<H3><A NAME="filemenu">File menu</A></H3>
+
+<TABLE>
+
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<B>New (Ctrl+N)</B>
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+ Creates a new VTank map, invoking the <A HREF="doc-0028.htm">New Map Dialog</A>.
+</FONT></TD></TR>
+
+
+<TR><TD WIDTH=30></TD><TD COLSPAN=2>
+<FONT FACE="Arial, Lucida, Helvetica">
+<HR COLOR=#C0C0C0>
+</FONT></TD>
+</TR>
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<B>Open (Ctrl+O)</B>
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+ Opens an existing VTank map.
+</FONT></TD></TR>
+
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<B>Save (Ctrl+S)</B>
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+ Saves the open map.
+</FONT></TD></TR>
+
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<B>Save As</B>
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+ Saves the open map under a new name.
+</FONT></TD></TR>
+
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<B>Close</B>
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+ Closes the open map.
+</FONT></TD></TR>
+
+<TR><TD WIDTH=30></TD><TD COLSPAN=2>
+<FONT FACE="Arial, Lucida, Helvetica">
+<HR COLOR=#C0C0C0>
+</FONT></TD>
+</TR>
+
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<B>Quit</B>
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+ Exits Gardener
+</FONT></TD></TR>
+
+</TABLE>
+
+<P>
+
+<H3><A NAME="editmenu">Edit menu</A></H3>
+
+<TABLE>
+
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<B>Cut (Ctrl+X)</B>
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+ Cut tiles when tiles are selected.
+</FONT></TD></TR>
+
+
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<B>Copy (Ctrl+C)</B>
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+ Copy any selected tiles.
+</FONT></TD></TR>
+
+
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<B>Paste (Ctrl+V)</B>
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+ Paste any tiles that were cut or copied in the selected area
+</FONT></TD></TR>
+
+
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<B>Delete (Del)</B>
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+ Delete tiles that are currently selected.
+</FONT></TD></TR>
+
+
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<B>Select All (Ctrl+A)</B>
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+ Select the entire map.
+</FONT></TD></TR>
+
+</TABLE>
+
+<H3><A NAME="viewmenu">View menu</A></H3>
+
+<TABLE>
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<B>Display Grid</B>
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+ Toggles the grid on the canvas on or off.
+</FONT></TD></TR>
+
+
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<B>Display Collision</B>
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+ Toggles the collision on or off.
+</FONT></TD></TR>
+
+
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<B>Display Height</B>
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+ Toggles the height display of each tile on or off. Off by default.
+</FONT></TD></TR>
+
+
+
+<TR><TD WIDTH=30></TD><TD COLSPAN=2>
+<FONT FACE="Arial, Lucida, Helvetica">
+<HR COLOR=#C0C0C0>
+</FONT></TD>
+</TR>
+
+
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<B>Fullscreen (F11)</B>
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+Maximizes gardener's window.
+</FONT></TD></TR>
+
+</TABLE>
+
+<H3><A NAME="layermenu">Layer menu</A></H3>
+
+<TABLE>
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<B>Terrain (T)</B>
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+ Switches the selector to terrain tiles.
+</FONT></TD></TR>
+
+
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<B>Object (O)</B>
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+ Switches the selector to object tiles.
+</FONT></TD></TR>
+
+
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<B>Event (E)</B>
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+ Switches the selector to event tiles.
+</FONT></TD></TR>
+</TABLE>
+
+<H3><A NAME="optionsmenu">Options menu</A></H3>
+
+<TABLE>
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<B>Map Properties (Ctrl+M)</B>
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+ Displays the map properties dialog box to the user allowing them to adjust map width, height, and name.
+</FONT></TD></TR>
+
+
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<B>Game Modes (Ctrl+G)</B>
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+ Displays the game modes dialog box to the user allowing them to pick which game modes their map will support.
+</FONT></TD></TR>
+
+
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<B>Server (Ctrl+L)</B>
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+ Displays the server dialog box to the user, after logging in users may download, upload, and remove maps from VTank.
+</FONT></TD></TR>
+</TABLE>
+
+<H3><A NAME="toolsmenu">Tools menu</A></H3>
+
+<TABLE>
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<B>Pointer (1)</B>
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+Selects the pointer tool as the current editing tool. The pointer tool allows the user to place tiles and collision by simply clicking or clicking and dragging.
+</FONT></TD></TR>
+
+
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<B>Fill (2)</B>
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+Selects the fill tool as the current editing tool. The fill tool will fill in any selected area with the currently selected terrain, object, or event.
+</FONT></TD></TR>
+
+
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<B>Select (3)</B>
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+Selects the selection tool as the current editing tool. The purpose of this tool is to select areas of tiles for cutting, copying, or filling.
+</FONT></TD></TR>
+
+
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<B>Rectangle (4)</B>
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+Selects the rectangle tool as the current editing tool. The rectangle tool is used to draw terrains, objects, or events in large areas.
+</FONT></TD></TR>
+</TABLE>
+
+<H3><A NAME="helpmenu">Help menu</A></H3>
+
+<TABLE>
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<B>About</B>
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+ Shows the about dialog explaining a little about us here at SoSE.
+</FONT></TD></TR>
+
+
+
+<TR><TD WIDTH=30></TD><TD COLSPAN=2>
+<FONT FACE="Arial, Lucida, Helvetica">
+<HR COLOR=#C0C0C0>
+</FONT></TD>
+</TR>
+
+
+
+<TR><TD WIDTH=30>
+<TD VALIGN=TOP WIDTH=158>
+<FONT FACE="Arial, Lucida, Helvetica">
+<B>Help</B>
+</FONT></TD>
+<TD VALIGN=TOP>
+<FONT FACE="Arial, Lucida, Helvetica">
+ Shows the online help contents.
+</FONT></TD></TR>
+</TABLE>
+
+</FONT></BODY></HTML>

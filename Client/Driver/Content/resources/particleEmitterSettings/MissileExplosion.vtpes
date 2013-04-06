@@ -1,0 +1,8 @@
+Continuous: No
+LifeSpan: .35
+TimeBetweenParticles: 0.0035
+Radius: 3
+VaryX: Yes
+VaryY: Yes
+VaryZ: Yes
+ParticleSystemName: MissileExplosion

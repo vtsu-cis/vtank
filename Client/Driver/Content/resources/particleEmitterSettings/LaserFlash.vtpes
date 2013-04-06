@@ -1,0 +1,8 @@
+Continuous: Yes
+LifeSpan: 0.01
+TimeBetweenParticles: 0.0001
+Radius: 5
+VaryX: No
+VaryY: No
+VaryZ: No
+ParticleSystemName: LFlash

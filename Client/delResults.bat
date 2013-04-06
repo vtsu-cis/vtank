@@ -1,0 +1,1 @@
+IF EXIST C:\ccnet\projects\VTank\Debug\ClientTestResults.trx DEL C:\ccnet\projects\VTank\Debug\ClientTestResults.trx

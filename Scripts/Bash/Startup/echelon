@@ -1,0 +1,74 @@
+#!/bin/sh -l
+# chkconfig: 2345 90 37
+# description: Main Server for VTank.
+# processname: echelon
+#
+# Modify the echelon service.
+# Options: start|stop|restart
+/etc/rc.d/init.d/functions
+
+# CONSTANTS
+ECHELON=/vtank/Server/Main/start_echelon
+PID=$(cat /vtank/Server/Main/echelon.pid)
+
+VERB=$1
+if [ "$VERB" = "" ];
+then
+	echo "Usage: $0 start|stop|restart"
+	exit 1
+fi
+
+function start {
+#TODO:  Get the PID file to work properly.
+#	if [ "$PID" != "" ];
+#	then
+#		echo "Echelon is already running."
+#		return 0
+#	fi
+	cd /vtank/Server/Main
+	./start_echelon
+	return $?
+}
+
+function stop {
+	if [ "$PID" = "" ];
+	then
+		echo "Echelon is not running."
+		return 0
+	fi
+	
+	kill -9 $PID
+	echo "" > /vtank/Server/Main/echelon.pid
+	return $?
+}
+
+function restart {
+	stop
+	start
+	return $?
+}
+
+case "$VERB" in 
+	start)
+		start
+		RETVAL=$?
+	;;
+
+	stop)
+		stop
+		RETVAL=$?
+	;;
+	
+	restart)
+		restart
+		RETVAL=$?
+	;;
+	
+	*)
+		echo "Usage: $0 start|stop|restart"
+		exit 1
+	;;
+esac
+
+exit $RETVAL
+

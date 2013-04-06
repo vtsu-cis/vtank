@@ -1,0 +1,6 @@
+#!/bin/bash
+# Start the Glacier2 router.
+
+echo Running glacier2router daemon with config.echelon.glacier2...
+
+glacier2router --Ice.Config=config.echelon.glacier2 --daemon

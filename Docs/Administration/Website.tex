@@ -1,0 +1,632 @@
+\chapter{Website}
+\section{Preface}
+The \VTank\ website is python-driven solution that uses the Django framework, and a platform called SCT.  The site runs natively on Linux, while it can technically be ported to Windows, this guide will only cover the Linux portion, which SoSE uses.
+
+\section{Installation}
+
+\subsection{Yum Update Manager}
+Yum is a Red Hat Linux/CentOS package manager, that makes the acquisition and installation of certain packages easier.  Yum is generally a standard feature in a vanilla CentOS installation, so you may not need to install it.  To check if yum is installed, open a termina and type 'yum'.  
+
+\vspace{1pc}
+
+If it says this when you type 'yum': 
+
+\command{-bash: yum: command not found}
+
+You must install yum, if you see the yum help output, you are in the clear (skip this section).
+
+\vspace{1pc}
+
+To install yum, start by getting a copy of the red hat package from their site.  
+
+Their website is at:
+
+\url{http://yum.baseurl.org}
+
+\vspace{1pc}
+
+Acquire the RPM using the wget command like so:
+
+\command{wget http://yum.baseurl.org/download/3.2/yum-3.2.0-1.src.rpm}
+
+\vspace{1pc}
+
+Once downloaded, the red hat package manager can handle the installation.
+
+\command{rpm --install yum-3.2.0-1.src.rpm}
+
+\subsection{GCC Compiler}
+The GNU C Compiler is another tool that is necessary for installing further website dependencies.  Test to see if you have gcc, by typing 'gcc' in a terminal.  If you see usage information, you are set.  Otherwise, use yum to install it with the following command:
+
+\command{yum install GCC}
+
+\subsection{Flex Libraries}
+If GCC wasn't installed, you will most likely need the Flex gui libraries as well.  Flex should be available in the Yum CentOS repositories, use yum to install with this command:
+
+\command{yum install flex}
+
+\vspace{1pc}
+
+Otherwise it can be installed relatively cleanly using the source package.
+
+Download it at sourceforge like so:
+
+\command{wget http://prdownloads.sourceforge.net/flex/flex-2.5.33.tar.gz?use\_mirror=kent}
+
+\vspace{1pc}
+
+Extract the tarball
+
+\command{tar -xvf flex-2.5.33.tar.gz}
+
+\vspace{1pc}
+
+Enter the directory
+
+\command{cd flex-2.5.33}
+
+\vspace{1pc}
+
+Configure the installation to your system automatically
+
+\command{./configure}
+
+\vspace{1pc}
+
+Build the program
+
+\command{make}
+
+\vspace{1pc}
+
+Install with make install
+
+\command{make install}
+
+\subsection{Python}
+Django is compatible with Python 2.3 or higher, this document currently recommends Python 2.5 as the highest usable version for compatibility reasons.  If you are using Centos 5.2-5.5, most likely you already have Python 2.4 installed, which is most likely an acceptable version if you do not want to go through the install process.
+
+\vspace{1pc}
+
+First, download python
+
+\command{wget http://www.python.org/ftp/python/2.5.4/Python-2.5.4.tgz}
+
+\vspace{1pc}
+
+Next, extract the archive
+
+\command{tar -xvf Python-2.5.4.tgz}
+
+\vspace{1pc}
+
+Enter the directory
+
+\command{cd Python-2.5.4}
+
+\vspace{1pc}
+
+Configure the installation to your machine
+
+\command{./configure}
+
+\vspace{1pc}
+
+Build the source code
+
+\command{make}
+
+\vspace{1pc}
+
+Install it
+
+\command{make install}
+
+\subsection{MySQL}
+A your CentOS installation may include a MySQL server, but most likely it only included a client.  Install MySQL Server using Yum.
+
+\command{yum install mysql-server}
+
+\vspace{1pc}
+
+You may also need to install the mysql development package as well
+
+\command{yum install mysql-devel}
+
+\subsection{Apache}
+Apache may be available through Yum, but since it likely isn't, we will install from source.
+
+\vspace{1pc}
+
+First, download Apache
+
+\command{wget http://apache.multihomed.net/httpd/httpd-2.2.11.tar.gz}
+
+\vspace{1pc}
+
+Next, extract the archive
+
+\command{tar -xvf httpd-2.2.11.tar.gz}
+
+\vspace{1pc}
+
+Change to the httpd directory
+
+\command{cd httpd-2.2.11}
+
+\vspace{1pc}
+
+Configure the program to your system
+
+\command{./configure}
+
+\vspace{1pc}
+
+Build the source code
+
+\command{make}
+
+\vspace{1pc}
+
+Install the program
+
+\command{make install}
+
+\subsection{mod python}
+If your yum repositories contain mod\_python, it will install cleanly with a simple yum command:
+
+\vspace{1pc}
+
+\command{yum install mod\_python}
+
+\vspace{1pc}
+
+Test this by running the Python interpreter and importing mod\_python.
+
+\command{import mod\_python}
+
+\vspace{1pc}
+
+If Python did not return a "module not found" error, then you're all set.  Otherwise, mod\_python most likely installed itself to a previous version of Python.  You will have to download and install it manually, specifying the correct version of Python upon installation.
+
+Download the package
+
+\command{wget http://www.hightechimpact.com/Apache/httpd/modpython/mod\_python-3.3.1.tgz}
+
+\vspace{1pc}
+
+Extract it
+
+\command{tar -xvf mod\_python-3.3.1.tgz}
+
+\vspace{1pc}
+
+Enter the directory
+
+\command{cd mod\_python-3.3.1}
+
+\vspace{1pc}
+
+Next, configure it to your system.  You may need to provide the path to your version of python's executable if you have multiple versions of python installed.  Otherwise, mod\_python will (often incorrectly) pick a version of python on its own.
+
+\command{./configure --with-python=/Path/To/Your/Python/Executable}
+
+\vspace{1pc}
+
+Build from source
+
+\command{make}
+
+\vspace{1pc}
+
+Install the program
+
+\command{make install}
+
+\vspace{1pc}
+
+Once installed, follow the instructions at the mod\_python website to test it with Apache.  The website is located at \url{http://www.modpython.org/live/current/doc-html/inst-testing.html}
+
+\subsection{mysql-python}
+MysqlDB may be included in your yum repository.  
+
+If you know where your Python libraries are stored, however, you can simply extract the archive in the directory.
+
+\vspace{1pc}
+
+First, locate your Python libraries folder.  There are several ways to do this, here is one way:
+
+\command{whereis python}
+
+This command should produce output similar to the following:
+
+\begin {verbatim}
+python: /usr/bin/python2.4 /usr/bin/python /usr/lib/python2.4
+/usr/local/bin/python2.5-config /usr/local/bin/python2.5 /usr/local/bin/python
+/usr/local/lib/python2.5 /usr/include/python2.4 /usr/share/man/man1/python.1.gz
+\end{verbatim}
+
+In the case of this installation, your Python2.5 libraries are located in /usr/local/lib/python2.5.  Navigate to your libraries directory with the cd command, and execute the following steps.
+
+\vspace{1pc}
+
+Download the archive
+
+\command{wget http://voxel.dl.sourceforge.net/sourceforge/mysql-python/MySQL-python-1.2.3c1.tar.gz}
+
+\vspace{1pc}
+
+Extract he archive
+
+\command{tar -xvf MySQL-python-1.2.3c1.tar.gz}
+
+\vspace{1pc}
+
+That should do it.  You can test whether the installation worked by running the Python interpreter and entering the following command:
+
+\command{import MySQLdb}
+
+If Python did not return a "module not found" error, then you're all set.
+
+\subsection{Python Setuptools}
+Setuptools is a python utility for installing python programs.  Many python program come with a script called setup.py by convention, which indicates a setuptools installer.  
+
+Your yum repository should have setuptools available, install it with this command
+
+\command{yum install python-setuptools}
+
+\subsection{Django}
+Django is also relatively easy to install, and is copy/paste capable, like MySQL-python.
+
+\vspace{1pc}
+
+First, get the archive for Django from their website:
+
+\command{wget http://www.djangoproject.com/download/1.0.2/tarball/}
+
+\vspace{1pc}
+
+Extract the archive
+
+\command{tar xzvf Django-1.0.2-final.tar.gz}
+
+\vspace{1pc}
+
+Enter the directory
+
+\command{cd Django-1.0.2-final}
+
+\vspace{1pc}
+
+Copy the "django" directory to your /usr/local/lib/my\_python\_version/site-packages directory.
+
+\command{cp django/ /usr/local/lib/python2.5/site-packages}
+
+\vspace{1pc}
+
+If your copy/paste installation worked, you should be able to open a python terminal and type:
+
+\command{import django}
+
+If it does not return an import error, your installation worked correctly.
+
+\subsection{PyCrypto}
+The PyCrypto is a dependency for SCTtools, which is a Django based framework for forums and wikis, so the rest of the installation steps are only applicable if you intend to install SCTtools.  Pycrypto also uses a Python script installer, which is fairly user-friendly.
+
+\vspace{1pc}
+
+First, download pycrypto
+
+\command{wget http://www.amk.ca/files/python/crypto/pycrypto-2.0.1.tar.gz}
+
+\vspace{1pc}
+
+Extract the archive
+
+\command{tar -xvf pycrypto-2.0.1.tar.gz}
+
+\vspace{1pc}
+
+Enter the directory
+
+\command{cd pycrypto-2.0.1}
+
+\vspace{1pc}
+
+Install pycrypto
+
+\command{python setup.py install}
+
+\vspace{1pc}
+
+If the installation went off without any errors, you can now test it with the script provided by pycrypto (In the same directory as setup.py).
+
+\command{python test.py}
+
+\vspace{1pc}
+
+\subsection{Python Imaging Library}
+PIL also uses a Python script to install.
+
+\vspace{1pc}
+
+First, download python imaging library
+
+\command{wget http://effbot.org/downloads/Imaging-1.1.6.tar.gz}
+
+\vspace{1pc}
+
+Extract the archive
+
+\command{tar -xvf Imaging-1.1.6.tar.gz}
+
+\vspace{1pc}
+
+Enter the directory
+
+\command{cd Imaging-1.1.6}
+
+\vspace{1pc}
+
+Install python imaging library
+
+\command{python setup.py install}
+
+\vspace{1pc}
+
+If the installation went off without any errors, you can now test it with the test script
+
+\command{python selftest.py}
+
+\subsection{VTank Website}
+The VTank site is backed up in a large archive that includes both SCT (Sphene Community Tools), a framework for community wikis and forums, as well as the site content itself.
+
+\vspace{1pc}
+
+First, acquire the VTank site archive.
+
+TODO: Put acquisition method here
+
+\vspace{1pc}
+
+First, change to the /home directory
+
+\command{cd /home}
+
+\vspace{1pc}
+
+Now, create the directory where the site will reside
+
+\command{mkdir projects}
+
+\vspace{1pc}
+
+Next, copy the VTank archive to this directory, renaming it for the extraction (so we don't have to later).
+
+\command{cp /path/to/VTankSite.tgz /home/projects/sct.tgz}
+
+\vspace{1pc}
+
+Extract the archive
+
+\command{tar -xvf sct.tgz}
+
+\vspace{1pc}
+
+\vspace{1pc}
+
+Now we will also have to migrate the VTank database.
+
+First, acquire the VTank database dump.
+
+TODO: Put acquisition method here
+
+\vspace{1pc}
+
+Next, open up the .sql file with a text editor.
+
+\command{vim vtankdump.sql}
+
+\vspace{1pc}
+
+Now add these lines just below the top comment block:
+
+\command{CREATE DATABASE VTank;}
+
+\command{USE VTank;}
+
+\vspace{1pc}
+
+Now import the database into MySQL
+
+\command{mysql < vtankdump.sql}
+
+\vspace{1pc}
+
+That's it.  Now we will have to configure Apache and mod\_python to host the site.
+
+\section{Configuration}
+
+\subsection{Apache and mod\_python}
+The bulk of the configuration for the website comes in the form of Apache/mod\_python configuration.
+
+\vspace{1pc}
+
+First, find your apache installation's httpd.conf file.  With the standard installation, it should be located at /usr/local/apache2/httpd.conf.
+
+\vspace{1pc}
+
+Change to the directory
+
+\command{cd /usr/local/apache2/conf}
+
+\vspace{1pc}
+
+Open the file with the vim text editor
+
+\command{vim httpd.conf}
+
+\vspace{1pc}
+
+Navigate down the file until you see a comment block starting with this header:
+
+\begin{verbatim}
+#
+# Dynamic Shared Object (DSO) Support
+#
+\end{verbatim}
+
+Just below the comment block, add this line:
+
+\command{LoadModule python\_module modules/mod\_python.so}
+
+\vspace{1pc}
+
+Next, find the comment block where you specify your document root.  It should begin with a line similar to this.
+
+\begin{verbatim}
+# DocumentRoot: The directory out of which you will serve your
+\end{verbatim}
+
+Add this line just below the comment block:
+
+\command{DocumentRoot "/home/projects/sct/VTankforum"}
+
+\vspace{1pc}
+
+Next, find this comment block:
+
+\begin{verbatim}
+#
+# This should be changed to whatever you set DocumentRoot to.
+#
+\end{verbatim}
+
+Add this entire block below it:
+
+\begin{verbatim}
+<Directory "/home/projects/sct/VTankforum">
+    AddHandler mod_python .py
+    PythonHandler indextest
+    PythonDebug On
+
+    #
+    # Possible values for the Options directive are "None", "All",
+    # or any combination of:
+    #   Indexes Includes FollowSymLinks SymLinksifOwnerMatch ExecCGI MultiViews
+    #
+    # Note that "MultiViews" must be named *explicitly* --- "Options All"
+    # doesn't give it to you.
+    #
+    # The Options directive is both complicated and important.  Please see
+    # http://httpd.apache.org/docs/2.2/mod/core.html#options
+    # for more information.
+    #
+    Options Indexes FollowSymLinks
+
+    #
+    # AllowOverride controls what directives may be placed in .htaccess files.
+    # It can be "All", "None", or any combination of the keywords:
+    #   Options FileInfo AuthConfig Limit
+    #
+    AllowOverride None
+
+    #
+    # Controls who can get stuff from this server.
+    #
+    Order allow,deny
+    Allow from All
+    PythonPath "['/home/projects/sct/VTankforum'] + sys.path"
+</Directory>
+
+<Location "/">
+    SetHandler python-program
+    PythonHandler django.core.handlers.modpython
+    SetEnv DJANGO_SETTINGS_MODULE community.settings
+    PythonOption django.root /community
+    PythonDebug On
+</Location>
+\end{verbatim}
+
+\subsection{Website Settings Configuration}
+There are two files that the website that control the settings.  
+
+These files are located at /home/projects/sct/VTankforum/community/settings\_local.py and /home/projects/sct/VTankforum/community/settings.py
+
+Open them with your favorite text editor to browse and edit settings.
+
+Here are a few important settings that you may need to change:
+
+\begin{itemize}
+\item Settings.py: DEBUG and TEMPLATE\_DEBUG  -- These should be set to False by default, set them to true if you are adding new features on a test machine, and want to see the mod python and django error output.
+\item Settings.py: ADMINS -- A tuple of admin names and email addresses.  You can add additional admins in the same format as the existing one, or modify the current one.
+\item settings\_local.py: DATABASE\_NAME, DATABASE\_USER, etc -- The lines applicable to the database.  It's important that your database settings match your MySQL settings.  (It should already if you extracted the site)
+
+\end{itemize}
+
+
+\section{Maintenance}
+
+Once you have configured the server, you will want to start it via Apache.  There is also a Django test server that can be used to verify whether your Django installation is working as well.  Should your Apache/mod\_python server fail to work on the first try, you may need to debug a little using the other server.
+
+\subsection{Starting, Stopping, and restarting Apache}
+
+Starting apache is simple.  Under the apache installation directory (/usr/local/apache2) there is a folder called bin where the binaries reside.  To start the server, use this command:
+
+\command{/usr/local/apache2/bin/apachectl -k start}
+
+\vspace{1pc}
+
+For restarting, use this command:
+
+\command{/usr/local/apache2/bin/apachect2 -k restart}
+
+\vspace{1pc}
+
+To stop the server, use either of these commands:
+
+\command{/usr/local/apache2/bin/apachect2 -k stop}
+
+OR
+
+\command{/usr/local/apache2/bin/apachect2 -k graceful-stop}
+
+The difference between the two is that with graceful-stop, apache informs child processes to exit as it shuts down.  Usage of this command is good practice, particularly since we are using intertwined processes in the form of django/mod\_python.
+
+\subsection{Testing Django with the manage.py server}
+
+It may be necessary to test Django with the built in test server that comes with our project, particularly if Apache doesn't work on the first try.  
+
+To run the test server, use this command:
+
+\command{python2.5 manage.py testserver}
+
+Point your browser to 127.0.0.1:8000 . If you see the website, you know your Django installation is working properly.
+
+\subsection{Adding Apache as a startup process}
+
+Apache is a well supported piece of software for Linux.  As such, your apache installation should be registered with your core Linux services.  We simply need to add it to the startup service list.
+
+To find out whether apache is on the list already use this command:
+
+\command{/sbin/chkconfig --list | grep apache2}
+
+\vspace{1pc}
+
+The chkconfig --list command displays your services that are enabled, and their run levels.  The output should look something like this, if it's on:
+
+\command{apache2         0:off   1:off   2:on    3:on    4:on    5:on    6:off}
+
+\vspace{1pc}
+
+To enable apache as a startup process, use this command.
+
+\command{/sbin/chkconfig --level 2345 apache2 on}
+
+Verify your success with the command listed earlier.
+
+\subsection{Administering Django with the admin subsite}
+
+A key component of any Django project is the admin interface.  The admin interface makes it easier to deal administer users, forum categories, privilege levels, and the navigation panel if the website. 
+
+To access the admin site, go to your\_domain\_name.com/admin and enter your super user credentials.  Once logged in, you will see a variety of administration options.  Please note that a few of these (such as monitors and themes) are not applicable to the VTank site, and should not be tampered with.  

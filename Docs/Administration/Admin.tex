@@ -1,0 +1,84 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FILE    : Admin.tex
+% SUBJECT : Master document for the VTank Administration documentation.
+% AUTHOR  : (C) Copyright 2010 by Vermont Technical College
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ++++++++++++++++++++++++++++++++
+% Preamble and global declarations
+% ++++++++++++++++++++++++++++++++
+\documentclass{report}
+
+
+% --------
+% Packages
+% --------
+\usepackage[pdftex]{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{amsmath, amssymb}
+
+% The following are settings for the listings package
+\lstset{language=Java,
+        basicstyle=\small,
+        stringstyle=\ttfamily,
+        commentstyle=\ttfamily,
+        xleftmargin=0.25in,
+        showstringspaces=false}
+
+
+% ------------------
+% Layout adjustments
+% ------------------
+\pagestyle{headings}
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1.75ex plus0.5ex minus0.5ex}
+
+
+% ------
+% Macros
+% ------
+\input{macros}
+
+
+% +++++++++++++++++++
+% The document itself
+% +++++++++++++++++++
+\begin{document}
+
+
+% ----------
+% Title page
+% ----------
+\title{VTank Administration Document}
+\author{Summer of Software Engineering}
+\date{Summer 2010}
+\maketitle
+
+
+% -----------------
+% Table of contents
+% -----------------
+\pagenumbering{roman}
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+
+
+% ----------------
+% Document content
+% ----------------
+\input{Introduction}
+\input{Echelon}
+\input{Theater}
+\input{Website}
+\input{Addendum}
+
+% ------------------------------
+% Appendix and related materials
+% ------------------------------
+
+%\appendix
+
+\end{document}

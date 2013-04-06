@@ -1,0 +1,131 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FILE    : WeaponSystem.tex
+% SUBJECT : Document describing the VTank weapon system, and its XML based
+% specification system for weapons and projectiles.
+% AUTHOR  : (C) Copyright 2010 by Vermont Technical College
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Weapon System}
+\label{Weapon System}
+
+\section{Introduction}
+VTank's weapon system was created in an effort to streamline the addition of new weapons into the game.  The goal of the weapon system is to minimize weapon-specific coding for primary weapons, in order to allow for the addition of a myriad of new weapons, with virtually no coding required.  
+
+\section{XML Specification Properties}
+The VTank weapon specification markup follows a similar format for weapons, projectiles, and environmental effects.  There are three files that describe all of these for VTank, \WeapProps\, \ProjProps\, and \EnvProps\, each encapsulating multiple weapons or projectiles or environmental effects.  The convention this document will use for describing these properties is:
+
+\begin{description}
+\item \command{<propertyName>} (number required)  Description of the property.
+\end{description}
+
+Required properties (1) that are children of optional properties (0-1 or 0-*) are not required in the absence of their parent properties. 
+
+\subsection{Weapon Properties}
+\begin{description}
+\item \command{<Weapon Properties>} (1) The root element in \WeapProps\ that describes the entire collection of weapons.  Nothing in \WeapProps\ should be outside of the ending and closing tag of this element. 
+
+\item \command{<weapon>} (0-*) Encapsulates an entry for a single weapon.  Will have many optional/mandatory entries describing the weapon.
+
+\item \command{<id>} (1) The ID of this weapon.  Should be unique and incrementing in accordance with other weapon entries.
+
+\item \command{<name>} (1) The name of this weapon.
+
+\item \command{<weaponFireSound>} (0-1)  The sound this weapon produces when fired.
+
+\item \command{<weaponChargingSound>} (0-1)  The sounds this weapon makes when charging up.  
+
+\item \command{<model>} (1) The name of the model associated with this weapon.
+
+\item \command{<deadModel>} (0-1)  The name of the dead version of this model, for usage when the tank is destroyed.  
+
+\item \command{<muzzleEffectName>} (0-1)  The name of the muzzle flash particle effect associated with this weapon.  
+
+\item \command{<customColor>} (0-1)  Indicates that the weapon uses a custom color, rather than the default. (The tank's color.)
+
+\item \command{<colorMesh>} (0-1)  The model mesh that color should be applied to ingame.
+
+\item \command{<emitters>} (0-1) Encapsulates a collection of zero or more emitters.  Emitters are used as mount points for particle effects ingame.
+\item \command{<emitter>} (0-*)  A child of the emitters element, representing a single emitter.  Describes a point that may host particle effects 
+\item \command{<emitterName>} (1) The name of a given emitter.  The name given will be used as a reference for the attachment of particle effects ingame.
+\item \command{<effectName>} (1)  The particle effect associated with this emitter.
+
+\item \command{<animations>} (0-1)  Encapsulates a collection of zero or more animations.  While models only contain one track of animation, specific sets of frams may make up a single animation.
+\item \command{<animation>} (0-*)  A child of the emitters element, representing a single animation contained in the model.
+\item \command{<name>} (1)  The name of this animation.  By convention 'still' indicates that the starting/ending frame is the resting state of the model, to be played constantly (if applicable).  'firing' indicates the animation to be played when the weapon fires.
+\item \command{<startingFrame>} (1)  The frame where this animation starts.
+\item \command{<endingFrame>} (1)  The frame where this animation ends.
+\item \command{<handlerClass>} (1)  The class that handles the playing of this animation.  
+
+\item \command{<projectileID>} (1)  The id associated with the projectile this weapon fires.
+\item \command{<cooldown>} (1)  The cooldown of this weapon, I.E. the delay between each shot.
+\item \command{<launchAngle>} (0-1)  The angle that this weapon fires at.  If absent or left blank, implies an angle of 0 degrees, or parallel to the ground.
+\item \command{<maxChargeTime>} (0-1)  The time required to charge this weapon to its maximum damage.
+\item \command{<projectilesPerShot>} (0-1)  The number of projectiles launched each time the weapon is fired.  If absent or left blank, it implies one projectile.
+\item \command{<intervalBetweenEachProjectile>} (0-1)  The delay between each projectile, for usage with weapons that fire multiple projectiles.  Should not be used unless using multiple projectiles per shot.
+\item \command{<overheatTime>} (0-1)  The time it takes for this weapon to overheat.  Absent or blank for no overheating.
+\item \command{<overheatAmountPerShot>} (0-1) The amount (as a percentage) that each shot overheats the weapon.  Overrides \command{<overheatTime>} if present  Absent or blank for no overheating.  
+\item \command{<overheatRecoverySpeed>} (0-1) The speed that this weapon recovers at, as a floating point value to be multiplied against delta time (time between frames).  1.0 indicates normal recovery speed, while 2.0 would be 2x speed.
+\item \command{<overHeatRecoverStartTime>} (0-1)  The interval between firing and recovery.  If absent or blank when overheating is specified, implies that recovery starts immediately.
+\end{description}
+
+\subsection{Projectile Properties}
+
+\begin{description}
+\item \command{<projectileProperties>} (1)  The parent element of the \ProjProps\ file.  Nothing should be outside of this tag.
+\item \command{<id>} (1)  The ID of this projectile.  Should be unique and increment relative to other entries.
+\item \command{<name>} (1) The name of this projectile.
+\item \command{<modelName>} (0-1)  The name of the model associated with this projectile.  If left blank, implies that only the particle effect listed under particleEffectName will be used to represent the particle. 
+\item \command{<scale>} (0-1)  The scale of this projectile.  If left absent or blank, implies a scale of 1.0 (normal).
+\item \command{<particleEffectName>} (0-1)  The name of the particle effect associated with this projectile.  If this element coexists with modelName, this particle effect will emanate from the model.
+\item \command{<impactParticleName>} (0-1)  The particle effect to be triggered when the projectile impacts with a collidable or damageable object.
+\item \command{<expirationParticleName>} (0-1)  The particle effect to be triggered when the projectile expires (reaches its max range).
+
+\item \command{<emitters>} (0-1) Encapsulates a collection of zero or more emitters.  Emitters are used as mount points for particle effects ingame.
+\item \command{<emitter>} (0-*)  A child of the emitters element, representing a single emitter.  Describes a point that may host particle effects 
+\item \command{<emitterName>} (1) The name of a given emitter.  The name given will be used as a reference for the attachment of particle effects ingame.
+\item \command{<effectName>} (1)  The particle effect associated with this emitter.
+
+\item \command{<animations>} (0-1)  Encapsulates a collection of zero or more animations.  While models only contain one track of animation, specific sets of frams may make up a single animation.
+\item \command{<animation>} (0-*)  A child of the emitters element, representing a single animation contained in the model.
+\item \command{<name>} (1)  The name of this animation.  By convention 'still' indicates that the starting/ending frame is the resting state of the model, to be played constantly (if applicable).  'firing' indicates the animation to be played when the weapon fires.
+\item \command{<startingFrame>} (1)  The frame where this animation starts.
+\item \command{<endingFrame>} (1)  The frame where this animation ends.
+\item \command{<handlerClass>} (1)  The class that handles the playing of this animation.  
+\item \command{<areaOfEffectRadius>} (0-1)  Indicates the radius of the projectile's area of effect damage.  If this element coexists with areaOfEffectUsesCone, this field indicates the width of the distant end of the cone.
+\item \command{<areaOfEffectUsesCone>} (0-1)  Indicates whether the areaOfEffect for this projectile should take a cone shape (triangle in reality).  If using a cone, the areaOfEffectRadius will become the length of the far side of the triangle, while the height of the triangle will be formed by the range of the weapon. 
+\item \command{<areaOfEffectDecay>} (0-1)  Defines the the damage at the edge of the AoE radius as a percentage of the whole. 1.0 indicates 100\%, where .5 indicates 50\%.  If absent or left blank, implies full damage inside the AoE radius.
+\item \command{<coneRadius>} (0-1)  The radius of a cone used to produce weapon scatter.  Much like the AoE cone, this triangle is formed by taking this radius as the far width of the triangle (bottom), and the range as the height.  If this property is specified, projectiles will deviate randomly within this cone when fired.
+\item \command{<coneOriginWidth>} (0-1)  When using areaOfEffectUsesCone, defines the width of the origin of the cone in pixels.  Using an origin larger than 0 will produce a quadrilateral instead of a triangle.  If left blank or absent, implies a width of 0, if used without areaOfEffectUsesCone
+\item \command{<coneDamagesEntireArea>} (0-1)  Relevant when areaOfEffectUsesCone is specified, this property explicitly states that the entire area of the cone will receive damage.  Useful for weapons that emit point blank damage to a region in front of or around them.
+\item \command{<minDamage>} (1)  The minimum damage this weapon will inflict, where the damage a weapon inflicts is a random value between the min and max damage.
+\item \command{<maxDamage>} (1)  The maximum damage this weapon will inflict.
+\item \command{<isInstantaneous>} (0-1)  Indicates whether this projectile has a flight time.  Nullfies all velocity/accelleration related fields if used.
+\item \command{<initialVelocity>} (0-1)  Velocity in pixels per second that this projectile will be moving at the moment it is fired.
+\item \command{<terminalVelocity>} (0-1)  Velocity that this projectile will accelerate to.
+\item \command{<acceleration>} (0-1)  The acceleration in pixels per second that this projectile will accelerate.
+\item \command{<range>} (0-1)  The range of this projectile (in pixels).
+\item \command{<rangeVariation>} (0-1)  The variation in pixels that this projectile may end at.  Given a variation, the projectile will expire/land at a random point within range +/- rangeVaration.
+\item \command{<jumpRange>} (0-1)  The range within which this projectile may 'jump' to deal additional damage. (Chain Lightning effect)
+\item \command{<jumpDamageDecay>} (0-1)  The reduction in damage applied at each damage jump.
+\item \command{<jumpCount>} (0-1)  The number of times this projectile may jump.
+\item \command{<environmentEffectID>} (0-1)  The id of any environment effect associated with this projectile.  This may include things such as burn marks, or fires left on the ground.
+\end{description}
+\subsection{Environment Properties}
+
+\begin{description}
+\item \command{<EnvironmentProperties>} (1)  The parent element of \EnvProps\ encapsulates zero or more environmental effects that trigger from projectiles.
+\item \command{<environmentProperty>} (0-*)  A single environmental effect entry.
+\item \command{<id>} (1)  The id of this environment effect, should be unique and incrementing.
+\item \command{<name>} (1)  The name of this environment effect.
+\item \command{<triggersUponImpactWithEnvironment>} (0-1)  Indicates whether this effect triggers when it impacts with a collidable or damagable object.
+\item \command{<triggersUponImpactWithPlayer>} (0-1)  Indicates whether this effect triggers when it impacts with a player.
+\item \command{<triggersUponExpiration>} (0-1) Indicates whether this effect triggers when the projectile expires.
+\item \command{<particleEffect>} (1)  The particle effect associated with this environmental effect.
+\item \command{<duration>} (0-1)  The duration of this environmental effect.
+\item \command{<interval>} (0-1)  The interval between damage applications, for environmental effects that damage players.
+\item \command{<areaOfEffectRadius>} (0-1)  The radius of the circle that this effect influences.
+\item \command{<areaOfEffectDecay>} (0-1)  Like projectile's AoE decay, specifies the damage at the edge of the radius, as a floating point percentage of damagePerInterval.
+\item \command{<minDamage>} (0-1)  The minimum damage this effect will deal per tick (at each interval).
+\item \command{<maxDamage>} (0-1)  The maximum damage this effect will deal per tick.
+\end{description}

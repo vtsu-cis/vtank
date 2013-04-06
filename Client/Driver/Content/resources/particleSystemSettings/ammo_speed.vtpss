@@ -1,0 +1,38 @@
+Texture: ammoSpeed
+
+Capacity: 200
+Duration: .5
+DurationRandomness: 0
+
+GlobalForce: [0, 0, 100]
+MinForceSensitivity: 0.75
+MaxForceSensitivity: 1
+InertiaSensitivity: 0
+
+DirFromRotation: No
+InitialSpeed: 50
+Direction: [0, 0, 1]
+
+MinStartHorizontalVelocity: 0
+MaxStartHorizontalVelocity: 0
+MinStartVerticalVelocity: 100
+MaxStartVerticalVelocity: 100
+
+MinEndHorizontalVelocity: 0
+MaxEndHorizontalVelocity: 0
+MinEndVerticalVelocity: 200
+MaxEndVerticalVelocity: 200
+
+MinStartSize: 70
+MaxStartSize: 90
+MinEndSize: 10
+MaxEndSize: 20
+
+MinRotateSpeed: 0
+MaxRotateSpeed: 0
+
+MinColor: [144, 238, 144, 255]
+MaxColor: [0, 255, 0, 255]
+
+SourceBlend: SourceAlpha
+DestinationBlend: One

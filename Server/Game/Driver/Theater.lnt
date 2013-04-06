@@ -1,0 +1,35 @@
+
+// Environment Setup
+//==================
+-dDEBUG
+-dTARGET=WINTARGET
+-d_DLL
+-d_MT
+-i%BOOSTROOT%
+-i%THREADPOOLROOT%
+-i%ICEROOT%\include
+-i..\..\..\Ice
+-i..\..\..\Common\Cpp
++libdir(%BOOSTROOT%)
++libdir(%THREADPOOLROOT%)
++libdir(%ICEROOT%\include)
++libdir(..\..\..\Ice)
+
+// General Options
+//================
+-e537    // Okay to #include the same header multiple times.
+-e830    // Turn off 'Location cited in prior message' messages. We are interactive.
+-e831    // ... turn this one off too (it is similar to 830).
+-e1551   // Okay to throw exception in a destructor.
+-e1712   // Okay to leave default constructor undefined.
+-e1788   // Okay to reference an object by only it's ctor and dtor (RAI classes do this).
+-e1904   // Okay to use C style comments.
+-e1932   // Okay to use non-abstract base classes.
+-hs      // Put a space between the messages so we have a prayer of being able to read them.
+
+
+// Driver Options
+//===============
+
+// ...
+

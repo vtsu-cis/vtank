@@ -1,0 +1,18 @@
+// This file contains a list of VTank source files that have been "de-linted." As VTank evolves
+// these files should be adjusted to remain lint free from now on. Once this list is complete,
+// the "Global Wrap-Up" at the end of the PC-Lint run will be meaningful.
+//
+AboutDialog.cpp
+config.cpp
+GameModeDialog.cpp
+..\Common\Cpp\Map.cpp
+MapEditorApp.cpp
+MapEditorFrame.cpp
+MapPropertiesDialog.cpp
+NewMapDialog.cpp
+ScrolledWindow.cpp
+ServerCommunication.cpp
+ServerDialog.cpp
+Support.cpp
+ToolboxWindow.cpp
+..\Common\Cpp\vtassert.cpp

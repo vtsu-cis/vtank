@@ -1,0 +1,37 @@
+
+// Put VTank-wide options for PC-Lint here and project specific options in project lint files.
+
+
+// C++ Standard Library Options
+//=============================
+// Okay to ignore return values from the following.
+-esym(534, "std::basic_string<char,std::char_traits<char>,std::allocator<char>>::append")
+-esym(534, "std::basic_string<char,std::char_traits<char>,std::allocator<char>>::erase")
+
+
+// Boost Options
+//==============
+-wlib(0)                    // PC-Lint reports some errors in the Boost headers. (PC-Lint bugs?)
+-esym(1509, "noncopyable")  // Okay for boost::noncopyable to have a non-virtual destructor.
+
+
+// PC-Lint Bug Workarounds
+//========================
+
+// The following came from the PC-Lint forum. I'm not sure of the proper solution.
+//
+// Deal with problems in Microsoft Visual Studio C++ include file ktmtypes.h Need to suppress
+// "Symbol redeclared (TypeDiff) conflicts with Location" errors for a few symbols.
+-esym(18, _TRANSACTION_NOTIFICATION_RECOVERY_ARGUMENT::UOW)
+-esym(18, _TRANSACTION_LIST_ENTRY::UOW)
+-esym(18, _KCRM_TRANSACTION_BLOB::UOW)
+-esym(38, _KCRM_TRANSACTION_BLOB::*)
+
+// Microsoft enabled TR1 support by default. However, certain templates in its TR1 library cause
+// PC-Lint to emit redefinition errors. See
+//
+//      http://www.gimpel.com/Discussion.cfm?ThreadID=2996
+//
+// To workaround this, disable TR1 support in PC-Lint's eyes. This is not really a PC-Lint bug
+// (I don't think) but it is handled here because it is "bug-like."
+--u_HAS_TR1

@@ -1,0 +1,70 @@
+#!/bin/sh -l
+# chkconfig: 2345 99 40
+# description: Apache2 web server.
+# processname: apache2
+#
+# Modify the apache2 service.
+# Options: start|stop|restart
+/etc/rc.d/init.d/functions
+
+# CONSTANTS
+APACHE2=/usr/local/apache2/bin/apachectl
+PID=$(/sbin/pidof /usr/local/apache2/bin/httpd)
+
+VERB=$1
+if [ "$VERB" = "" ];
+then
+	echo "Usage: $0 start|stop|restart"
+	exit 1
+fi
+
+function start {
+	if [ "$PID" != "" ];
+	then
+		echo "Apache is already running."
+		return 0
+	fi
+	$APACHE2 -k start
+	return $?
+}
+
+function stop {
+	if [ "$PID" = "" ];
+	then
+		echo "Apache is not running."
+		return 0
+	fi
+	
+	$APACHE2 -k stop
+	return $?
+}
+
+function restart {
+	$APACHE2 -k restart
+	return $?
+}
+
+case "$VERB" in 
+	start)
+		start
+		RETVAL=$?
+	;;
+
+	stop)
+		stop
+		RETVAL=$?
+	;;
+	
+	restart)
+		restart
+		RETVAL=$?
+	;;
+	
+	*)
+		echo "Usage: $0 start|stop|restart"
+		exit 1
+	;;
+esac
+
+exit $RETVAL
+

@@ -1,0 +1,79 @@
+#The name of the texture resource loaded by the content manager to use
+
+Texture: sample
+
+# This is the maximum amount of particles the system can hold.
+#  Note this is not the maximum number of drawable particles,
+#  particles are held for 3 frames after they are done drawing 
+#  so that they are not overwritten while active in the GPU.
+#  
+#  The number of particles drawn per frame can be found with the 
+#  following formula:
+#  
+#  Drawn: Capacity - (3*AverageFrameTime)/(TimeInBetweenParticles)
+
+Capacity: 100
+
+#The maximum life of each particle
+Duration: 2
+
+# A random percentage of this amount will be removed from the 
+# duration so the minimum time a particle will be drawn is 
+# Duration - DurationRandomness
+
+DurationRandomness: 0
+
+# The direction and magnatude of the worlds global force, 
+# reverse gravity in this example.
+
+GlobalForce: [0, 0, 0]
+
+# The Min and Max force sensitivity that each particle will have
+# This is a number from 0 to 1 representing the percentage of
+# the Global Force's influence.
+MinForceSensitivity: 0
+MaxForceSensitivity: 1
+
+#The general initial velocity direction and magnitude to give each particle
+DirFromRotation: No
+InitialSpeed: 0
+Direction: [0, 0, 0]
+
+# A number between 0 and 1 indicating the percentage of the emitters 
+# velocity that will transfer to the particle. 
+InertiaSensitivity: 1
+
+# The Min and Max starting velocities that will be applied after the 
+# intertia and global force.*/
+MinStartHorizontalVelocity: -70
+MaxStartHorizontalVelocity: 70
+MinStartVerticalVelocity: -70
+MaxStartVerticalVelocity: 70
+
+# The Min and Max ending velocities. Each particle will
+# be travelling at a speed in this range when they expire.
+MinEndHorizontalVelocity: 20
+MaxEndHorizontalVelocity: 20
+MinEndVerticalVelocity: 20
+MaxEndVerticalVelocity: 20
+
+# The starting and ending particle sizes.
+MinStartSize: 5
+MaxStartSize: 15
+MinEndSize: 80
+MaxEndSize: 120
+
+#The minumum and maximum rotation speed, if both are set
+# to Zero, then rotation will not be calculated and a lot of
+# GPU processing power will be saved. 
+MinRotateSpeed: 0
+MaxRotateSpeed: 50
+
+# The range of colors used to tint each texture.
+
+MinColor: [128, 128, 128, 255]
+MaxColor: [169, 169, 169, 255]
+
+#The blend settings, read more about these on msdn.
+SourceBlend: SourceAlpha
+DestinationBlend: One

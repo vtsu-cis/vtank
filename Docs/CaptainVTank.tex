@@ -1,0 +1,97 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FILE    : CaptainVTank.tex
+% SUBJECT : Document describing design issues in Captain VTank.
+% AUTHOR  : (C) Copyright 2009 by Vermont Technical College
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Captain \VTank}
+\label{captainvtank}
+
+\section{Requirements}
+
+Captain \VTank\ is the administrative client for \VTank. Captain \VTank\ authenticates with \MainServer\ to perform high-level operations, including stopping, starting, or restarting \MainServer, managing user accounts, managing online users, managing instances of the \GameServer, monitoring server health, kicking online users, banning or suspending online or offline users, creating new users, managing server settings (max player count, timeout threshold, etc.)
+
+\subsection{Statistics}
+
+Captain \VTank\ is capable of gathering statistics on the activity of users within the \VTank\ universe. Captain \VTank\ communications with \MainServer\ to gather this information. Captain \VTank\ then interprets this information and displays it to an administrator in a human-readable way. This section encapsulates what kind of statistical information can be shown by Captain \VTank.
+
+\begin{itemize}
+	\item Recent activity.\\
+	An administrator can look at recent activity from users. ``Recent activity'' means the most recent logins from users. When a user logs into the game, the time is recorded. The administrator sees a list of users ordered by the user's time of login. Only recent users are displayed. ``Recent'' is defined as within the last 30 days. Figure~\ref{fig:captain_vtank_recent_users} shows what the layout of this tab will look like.
+	\begin{figure}
+		\centering
+		\scalebox{0.50}{\includegraphics*{Figures/captain_vtank_recent_users.png}}
+		\caption{Sketch of what Captain \VTank's recent users tab looks like.}
+		\label{fig:captain_vtank_recent_users}
+	\end{figure}
+	
+	\item Top players.\\
+	An administrator may look at the list of top players in the \VTank\ universe. In \VTank, a top player is one who collects the most points from being successful at \VTank\ by being victorious in a game battle. The list is ordered by the amount of each players' points. Figure~\ref{fig:captain_vtank_top_players} shows what the layout of this tab will look like.
+	\begin{figure}
+		\centering
+		\scalebox{0.50}{\includegraphics*{Figures/captain_vtank_top_players.png}}
+		\caption{Sketch of what Captain \VTank's top players tab looks like.}
+		\label{fig:captain_vtank_top_players}
+	\end{figure}
+\end{itemize}
+
+\subsection{Server Health}
+
+Each server must have the ability to be monitored by Captain \VTank. Captain \VTank\ has the ability to observe general server statistics -- such as CPU usage and hard drive space availability -- as well as whether certain important processes (such as watchdog processes) are running.
+
+The following attributes are monitored to determine whether a server is in good health:
+
+\begin{itemize}
+	\item CPU usage snapshot. This is represented as a floating point number between 0 and 1.
+	\item Hard drive space capacity (bytes). Represented as a long integer.
+	\item Hard drive space used (bytes). Represented as a long integer.
+	\item Processes currently running. Stored as an array of strings.
+	\item Machine's RAM capacity (bytes). Represented as a long integer.
+	\item Machine's RAM usage (bytes). Represented as a long integer.
+	\item Additional notes. A string containing any additional information which a server provides.
+\end{itemize}
+
+Captain VTank logs into Echelon as an administrative user. The administrator then requests health information about each server. Echelon collects the information and reports it back to Captain VTank. The administrator can then examine the results and determine if any action is necessary.
+
+The health information appears in a table.  A server which provides an additional note or a server which has been detected to be in poor health may be marked with a background color of yellow. Figure~\ref{fig:captain_vtank_health} demonstrates this layout. The administrator can double-click on any item in the table to open up a new dialog which displays a list of processes currently running on that server, and any additional notes included.
+
+\subsection{Functional Requirements}
+
+Captain \VTank\ is a front-end for administration. The function of the software can be summed up as authenticate with the main server, retrieve debug reports, user lists, game server lists, health reports, and configuration settings plus push requests to the main server to modify any of the above lists as necessary.
+
+\subsection{Non-Functional Requirements}
+
+\subsubsection*{Platform}
+
+Captain \VTank\ is expected to be written in .NET, but this has not been confirmed. If this is the case, the client will only run on .NET supported platforms and possibly Linux with Mono.
+
+\subsubsection*{Performance}
+
+The administrative tool does not do any intense processing during normal work. Response time from the server is not expected to take more than a second under normal conditions. It is acceptable for generations of reports (or such) to take up to a minute.
+
+\subsubsection*{Security}
+
+Security is emphasized in Captain \VTank\ more than any other project in the \VTank\ world. Many users with bad intentions would love to get their hands on an administrator's password. Therefore, the client and server must take any action necessary to prevent the password from being exposed.
+
+Captain \VTank\ uses IceSSL to communicate with \MainServer. Preferably it does this during all actions, but it isn't required since sensitive data is not transferred once the server logs in. The main server may \emph{force} SSL by disabling the non-secure object adapter.
+
+A common trick to expose passwords is through keystroke loggers, or pieces of software that run in the background which record keys pressed by the user. The most common way to install a keylogger on another's machine is by tricking them into clicking on a dangerous link. Some administrators may fall victim to this trick. The option to use a private key stored on the user's local machine would defeat keyloggers that don't know to look for the file which stored the private key. This should be considered in Captain \VTank.
+
+\subsubsection*{User Characteristics}
+
+Administrators are expected to be adept computer users experienced in some IT work, but do not require any programming knowledge. Administrators are also responsible for keeping their password hidden as well as keeping their machine clean of trojans or keyloggers that might steal the password.
+
+\subsubsection*{Scale}
+
+Captain \VTank\ will not have intense memory or hard drive space requirements. It could even run smoothly on any .NET- and Ice- supported mobile pohone.
+
+\subsubsection*{Data Formats}
+
+Captain \VTank\ will use a XML configuration file to read the target host name and port number for the main server.
+
+\subsubsection*{Internationalization}
+
+Captain \VTank\ dialog boxes, instructions and labels are written in US English. There are no plans for supporting any other languages at this time.
+
+\placeholder

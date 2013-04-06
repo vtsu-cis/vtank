@@ -1,0 +1,42 @@
+﻿<?xml version="1.0"?>
+<xml>
+  <ServerAddress value="glacier2a.cis.vtc.edu" />
+  <ServerPort value="4063" />
+  <DefaultAccount />
+  <MapsFolder value="maps" />
+  <options>
+    <video>
+      <Resolution value="800x600" />
+      <Windowed value="True" />
+      <TextureQuality value="High" />
+      <AntiAliasing value="Off" />
+      <ShadingEnabled value="True" />
+    </video>
+    <audio>
+      <ambientSound>
+        <Volume value="5" />
+        <Muted value="False" />
+      </ambientSound>
+      <backgroundSound>
+        <Volume value="5" />
+        <Muted value="False" />
+      </backgroundSound>
+    </audio>
+    <gameplay>
+      <ShowNames value="True" />
+      <ProfanityFilter value="False" />
+      <InterfacePlugin value="default" />
+    </gameplay>
+    <keybindings>
+      <Forward value="W" />
+      <Backward value="S" />
+      <RotateLeft value="A" />
+      <RotateRight value="D" />
+      <Menu value="Escape" />
+      <Minimap value="M" />
+      <Score value="Tab" />
+      <Camera value="Space" />
+      <Pointer value="default" />
+    </keybindings>
+  </options>
+</xml>

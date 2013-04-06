@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Theater" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/Theater" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add library="../../../Ice/libIceCppd.a" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/Theater" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="../../../Ice/libIceCpp.a" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add option="-DTARGET=LINTARGET" />
+			<Add directory="." />
+			<Add directory="../../../Common/Cpp" />
+			<Add directory="../../../Ice" />
+			<Add directory="$(#threadpool)" />
+			<Add directory="$(#ice)/include" />
+		</Compiler>
+		<Linker>
+			<Add library="libIce" />
+			<Add library="libIceUtil" />
+			<Add library="libGlacier2" />
+			<Add library="libboost_thread.a" />
+			<Add directory="$(#ice)/lib" />
+		</Linker>
+		<Unit filename="../../../Common/Cpp/Map.cpp" />
+		<Unit filename="../../../Common/Cpp/Map.hpp" />
+		<Unit filename="../../../Common/Cpp/target.hpp" />
+		<Unit filename="../../../Common/Cpp/vtassert.cpp" />
+		<Unit filename="../../../Common/Cpp/vtassert.hpp" />
+		<Unit filename="SHA1.cpp" />
+		<Unit filename="SHA1.h" />
+		<Unit filename="Theater.cbp" />
+		<Unit filename="asynctemplate.hpp" />
+		<Unit filename="gamemanager.cpp" />
+		<Unit filename="gamemanager.hpp" />
+		<Unit filename="logger.cpp" />
+		<Unit filename="logger.hpp" />
+		<Unit filename="loginsessionfactory.cpp" />
+		<Unit filename="loginsessionfactory.hpp" />
+		<Unit filename="macros.hpp" />
+		<Unit filename="main.cpp" />
+		<Unit filename="mapmanager.cpp" />
+		<Unit filename="mapmanager.hpp" />
+		<Unit filename="master.cpp" />
+		<Unit filename="master.hpp" />
+		<Unit filename="mtgcallback.cpp" />
+		<Unit filename="mtgcallback.hpp" />
+		<Unit filename="mtgservice.cpp" />
+		<Unit filename="mtgservice.hpp" />
+		<Unit filename="node.cpp" />
+		<Unit filename="node.hpp" />
+		<Unit filename="nodemanager.cpp" />
+		<Unit filename="nodemanager.hpp" />
+		<Unit filename="notifier.cpp" />
+		<Unit filename="notifier.hpp" />
+		<Unit filename="player.cpp" />
+		<Unit filename="player.hpp" />
+		<Unit filename="playermanager.cpp" />
+		<Unit filename="playermanager.hpp" />
+		<Unit filename="pointmanager.cpp" />
+		<Unit filename="pointmanager.hpp" />
+		<Unit filename="projectile.hpp" />
+		<Unit filename="projectilemanager.cpp" />
+		<Unit filename="projectilemanager.hpp" />
+		<Unit filename="server.cpp" />
+		<Unit filename="server.hpp" />
+		<Unit filename="tank.cpp" />
+		<Unit filename="tank.hpp" />
+		<Unit filename="tankmanager.cpp" />
+		<Unit filename="tankmanager.hpp" />
+		<Unit filename="timer.hpp" />
+		<Unit filename="utility.cpp" />
+		<Unit filename="utility.hpp" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

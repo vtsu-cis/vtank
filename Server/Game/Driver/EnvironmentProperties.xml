@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<environmentProperties>
+  <environmentProperty>
+    <id>0</id>
+    <name>Mortar Fire</name>
+    
+    <!--Triggers-->
+    <triggersUponImpactWithEnvironment>true</triggersUponImpactWithEnvironment>
+    <triggersUponImpactWithPlayer>true</triggersUponImpactWithPlayer>
+    <triggersUponExpiration>false</triggersUponExpiration>
+    
+    <!--Art-->
+    <soundEffect></soundEffect>
+    <particleEffect>MortarFire</particleEffect>  
+    
+    <!--Combat-->
+    <duration>2.0</duration>
+    <interval>0.5</interval>
+    <areaOfEffectRadius>150</areaOfEffectRadius> 
+    <areaOfEffectDecay>0.75</areaOfEffectDecay>
+     
+    <minDamage>7</minDamage>
+    <maxDamage>8</maxDamage>
+  </environmentProperty>
+</environmentProperties>

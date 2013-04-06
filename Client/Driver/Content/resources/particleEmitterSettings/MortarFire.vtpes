@@ -1,0 +1,8 @@
+TimeBetweenParticles: 0.01
+LifeSpan: 2.0
+Continuous: No
+Radius: 48
+VaryX: Yes
+VaryY: Yes
+VaryZ: No
+ParticleSystemName: MortarFire

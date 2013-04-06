@@ -1,0 +1,311 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FILE    : MapEditor.tex
+% SUBJECT : Document describing design issues in the VTank Map Editor.
+% AUTHOR  : (C) Copyright 2010 by Vermont Technical College
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{\MapEditor}
+\label{mapeditor}
+
+\section{Requirements}
+
+\MapEditor\ is the \VTank\ map editor. \VTank\ is an overhead shooting game played on different maps. Each map has an objective such as capture the flag, king of the hill, or death match. Each map will be large enough to support many users and therefore can be larger than a single screen. As the player moves his or her tank, the screen will scroll along the map, keeping the tank centered as much as possible. In order to make the maps a map editor is needed. This section describes that editor.
+
+\subsection{Functional Requirements}
+
+\MapEditor\ will be used to create maps to be used within the \VTank\ game. \MapEditor\ must be able to create a map, load a map, modify a map, and save a map both to and from  a \filename{*.vtmap} file and directly to and from \MainServer\ (where the actual maps being used are stored). Each map thus has a ``home location'' either in a disk file or on the server. Whenever a map is saved it is saved back to its home location.
+
+Maps are composed of tiles that define a coordinate system for the map. Each map contains information about the map's dimensions (in tiles), along with tile data for each tile. Every tile has seven things associated with it. They are as follows:
+\newpage
+\begin{itemize}
+\item A tile id
+\item An object id
+\item A event id
+\item A flag stating the collision
+\item A height (also in tiles)
+\item A type 
+\item An effect 
+\end{itemize}
+
+The tile id field is used to store an integer that corresponds to a graphical image which will appear as the tile background to the user. The object id and event id fields will work every similar by storing integers that correspond to events and objects that can be placed on top of the tile background. The collision flag is used to set whether or not a tank can drive through the tile. Height will be used to give the tile height it will be set in terms of tiles. The type field will be used to determine if a tile is land or water and effect field will be used if a particular tile background should have an effect on the tank (ex. Mud slowing down the tank speed). For a more technical explaination of the tile format see Map File Format.
+
+Tiles can have two types of collision, implicit and explicit. Implicit collision is where projectiles and tanks can't pass through the tile due to the tile having height. It's `implicit' because the map editor does not (have to) manually set the collision for this tile: it's implied that a tile with a height greater than zero cannot be passable. Explicit collision is where only tanks can't pass through. There are some tiles that have a height of zero but are still not passable (such as water). Explicit collision, then, allows projectiles to pass over the tile.
+
+\subsubsection{Tile Layers}
+
+Maps are composed of layers. There are three basic layers that make up each \VTank\ map:
+\begin{itemize}
+\item The Terrain Layer
+\item The Object Layer
+\item The Event Layer
+\end{itemize}
+The terrain layer will be the basis of any tile. It will be composed of a graphic image that creates the "background" of a tile. The terrain layer will be represented with a green box icon as shown in the tools section.
+
+The object layer will be for displaying static objects on tiles. Static objects are things such as barrels, bushes, rocks, etc. These objects will be placed on top of any existing terrain. The object layer will be represented with a blue box icon as shown in the tools section.
+
+The event layer will be used for storing spawn points and other events such as flag spawns and captures. These events will be represented by different images in \MapEditor,\ but won't be visible during game play. The event layer will be represented by a yellow box icon as shown in the tools section. Below is a table of the current events that make use of this layer.
+
+\begin{center}
+\centering
+\begin{tabular}{ | c | p{8cm} |}
+\hline
+Event 	& Description \\	[1.0ex]
+%heading
+\hline\hline
+Player Spawn Point 	& The player spawn point is where a player's tank will start in the map when the game starts or where they will start from after dying. This event will be needed in all maps. \\	[1.0ex]
+Team Spawn Area 	&	The team spawn area is where teams will start in the map when the game starts or where individuals of that team will start from after dying. This means each team needs their own team spawn area. Team spawn areas will be needed for team game modes. \\	[1.0ex]
+Flag Spawn Point 	& The Flag spawn point is where a flag will start in the map when the game starts or where the flag will return to after it has been reset. It will also double as the flag caputure point for where the enemy flag must be brought to in order to score. Flag spawn points are needed in the capture the flag game mode. \\	[1.0ex]
+King of the Hill Area		& King of the hill area is used in the King of the hill game mode. This area represents the hill where the player's tank must be in order to score points in king of the hill. \\  [1.0ex]
+\hline\hline
+\end{tabular}
+\label{table:nonlin}
+\end{center}
+
+
+\subsubsection{Map File Format}
+
+The map editor must save the map data in a specific way. In the same way that it was saved, the map file will be read into memory. Other modules in different languages may implement their own version of the module which reads in or saves maps in \MapEditor. The class responsible for loading/saving the map file must follow this exact format:
+
+\emph{Line 1}: 
+\begin{itemize}
+	\item Version byte [1 Byte]: Version of the map. Should increment every time the format of the map changes.
+	\item Title [n Bytes]: String value that holds the name of the map.
+\end{itemize}
+\emph{Line 2}: 
+\begin{itemize}
+	\item Width of the map [4 Bytes]: Number of tiles horizontally. The value is always greater than zero and is stored in binary format.
+	\item Height of the map [4 Bytes]: Number of tiles vertically. The value is always greater than zero and is stored in binary format.
+	\item Supported game modes [N Bytes]: Each game mode is a single byte-form integer between 0 and 255 (except for 12). The entire line is reserved for game mode flags, so as many game modes as are available are supported. \emph{The map module must not allow 0x0A as a possible flag}. The 0x0A byte is reserved for the newline character.
+\end{itemize}
+\emph{Line 3+}: List of tiles. There should be exactly MapWidth x MapHeight tiles. Each tile follows this exact format:
+\begin{itemize}
+	\item Tile ID [4 Bytes]: The ID of the tile in binary format. Convert the 4 bytes to it's integer form in little-endian order (the first significant byte is on the left). This field represents the terrain layer of the map.
+	\item Object ID [2 Bytes]: The ID of the object that sits on this tile in binary format. Convert the 2 bytes into it's integer form in little-endian order (the first significant byte is on the left). If both bytes are 0x00 (i.e. if the object ID is zero), that is symbolic for no object on this tile. This field represents the object layer of the map.
+	\item Event ID [2 Bytes]: The ID of the ``event'' that sits on this tile. Convert the 2 bytes to it's integer form in little-endian order (the first significant byte is on the left). This field represents the event layer of the map.
+	\item Tile collision [1 Byte]: A boolean value in binary format. The 0x00 byte means that the tile is not passable (by tanks). Any other byte means that the tile is passable (by tanks).
+	\item Tile height [1 Byte]: An integer value in binary format. The value is between 0 and 255 and can be converted to it's integer form with a simple cast.
+	\item Terrain type [1 Byte]: Type of terrain in binary format. The value is between 0 and 255. This field is reserved for future implementation.
+	\item Tile effect [1 Byte]: Effect of the tile in binary format. This value is between 0 and 255. This field is reserved for future implementation. This field will contain information about how a tile can affect a player's movement.
+\end{itemize}
+
+The total size of each tile is 12 bytes. The file size (in bytes) of each map file can be calculated like this:
+
+\begin{commands}
+Length of title + number of game modes supported + (number of tiles * 12) + 11
+\end{commands}
+
+\subsubsection{Game Modes}
+
+The following game modes are supported:
+\begin{center}
+\centering
+\begin{tabular}{ | c | c | c | p{8cm} |}
+\hline
+ID 	& Mode Name					& Teams 		& Description \\	[1.0ex]
+%heading
+\hline\hline
+0 	& Deathmatch 				& No 				& Deathmatch is a straight free-for-all kill-fest between every tank and every other tank. The player spawns at spawn points defined in the event layer randomly. \\	[1.0ex]
+1 	&	Team Deathmatch 	& Yes				& Team Deathmatch is a team free-for-all kill-fest between two or more teams. The objective is to have more kills than the other teams. Players spawn together in a team spawn area defined in the event layer. \\	[1.0ex]
+2 	& Capture the Flag  & Yes				& Capture the Flag pits two teams against each other with the objective of capturing the other player's flag and returning it to their own base. If a player is killed while holding the flag, the flag is dropped on the ground.  The team who owns the flag can run over it to return it to the base instantly, while the team who is trying to capture the flag can run over it to pick it up and continue running it home. \\	[1.0ex]
+3		& King of the Hill	& Sometimes	& King of the Hill invites every player to attempt to conquer and maintain control of an objective  for the longest period of time. When one player or team has control of the  objective, their score increments. At the end of the round, the player or team with the highest score wins the game. \\  [1.0ex]
+\hline\hline
+\end{tabular}
+\label{table:nonlin}
+\end{center}
+
+\newpage
+
+\subsubsection{Tools}
+
+\MapEditor\ will provide its users with a varity of tools for editing the maps. The following user interface mock-up shows the intended layout of \MapEditor.\  Figure~\ref{fig:map-editor} shows the basic layout of \MapEditor's\ tools and controls.
+
+\begin{figure}[htbp]
+  \centering
+  \scalebox{0.5}{\includegraphics*{Figures/mapeditormain.png}}
+  \caption{Gardener's Main Screen}
+  \label{fig:map-editor}
+\end{figure}
+\begin{table}[]
+\caption{Tools of \MapEditor\ }
+\begin{tabular}{| c | p{12cm} |}
+\hline\hline
+Icon & Description \\ [0.5ex]
+\hline 
+\includegraphics*{Figures/newmap.png} & This button brings up the new map dialog that
+																				allows the user to create a new map.\\	[1.0ex]
+\includegraphics*{Figures/open.png} & This button allows the user to select a map and
+																			then open it.\\	[1.0ex]
+\includegraphics*{Figures/saveas.png} & This button allows the user to save the current
+																				map open under a new name.\\	[1.0ex]
+\includegraphics*{Figures/save.png} & This button allows the user to save the current 
+																			map open.\\	[1.0ex]
+\includegraphics*{Figures/server.png} & This button opens the server dialog that allows
+																			the user to upload, download, remove and view the 
+																			maps. \\	[1.0ex]
+\includegraphics*{Figures/mapprop.png} & This button displays the current map's properties. \\																																			  [1.0ex]
+\includegraphics*{Figures/gamemodes.png} & This button allow the user to set game modes for 
+																			the loaded map \\ [1.0ex]
+\includegraphics*{Figures/terrainlayer.png} & This button allows the user to work on the 																																							terrain layer. \\	[1.0ex]
+\includegraphics*{Figures/objectlayer.png} & This button allows the user to work on the object 																						 														layer. \\	[1.0ex]
+\includegraphics*{Figures/eventlayer.png} & This button allows the user to work on the event 																																					layer. \\	[1.0ex]
+\includegraphics*{Figures/cut.png} & This buttton allows the user to cut tiles out of the map \\	[1.0ex]
+\includegraphics*{Figures/copy.png} & This button allows the user to copy tiles from the map. \\	[1.0ex]
+\includegraphics*{Figures/paste.png} & This button allows the user to paste tiles previously cut or copied\\	[1.0ex]
+\includegraphics*{Figures/pointer.png} & This button allows the user to draw tiles, tile by tile. \\ [1.0ex]
+\includegraphics*{Figures/fill.png} & This button allows the user to fill selected tiles with a 																																			selected graphic. \\	[1.0ex]
+\includegraphics*{Figures/selectgrp.png} & This button allows the user to select multiple tiles. 																				 															\\	[1.0ex]
+\includegraphics*{Figures/fillgrp.png} & This button allows the user to draw tiles, multiple at a time. \\																				 																[1.0ex]
+\includegraphics*{Figures/gridtoggle.png} & This button allows for the grid to be toggled on or 																																			off. \\	[1.0ex]
+\includegraphics*{Figures/collisiontoggle.png} & This button allows for the collision to be 																									 												toggled on or off. \\	[1.0ex]
+\includegraphics*{Figures/heighttoggle.png} & This button allows for the height indicators to be toggled on or off. \\	[1.0ex]
+\hline %inserts single line
+\end{tabular}
+\end{table}
+\newpage
+
+\subsection{Adding Content}
+
+\MapEditor\ uses a variety of different content, mostly images to create the overall map. This section gives a brief explanation on how to add additional content to \MapEditor\ while were in production.
+
+Terrain, Event, and Object images all work the same way in \MapEditor,\ therefore adding them to \MapEditor\ works the same also. Images for terrains, objects or events all have to be 64 x 64 pixels, because that is the standard tile size of the tiles that make up maps. The images in general go in the VTank/Map\_Editor/data/ folder then in the appropriate subfolder for terrain, objects, or events.
+
+After the images have been added, \MapEditor\ has to know of their existence. This is where the dictionaries come in to play. There are three separate dictionaries, one for terrain, objects, and events. Therefore the user adding content must open the appropriate dictionary for the images he or she added. Dictionaries can be found in the VTank/Map\_Editor folder. Next the user must read the directions at the top of the dictionary for how to add the images to the dictionary. These directions will explain the format for adding the images. Then when ready scroll to the bottom and add the images. 
+
+*Note: If adding terrain images to Gardener, in order for them to be rendered properly in game, copy the tiles into: VTank/Client/Driver/Content/textures/tiles/, and copy tiles\_dictionary.txt into VTank/Client/Driver/. Also in Visual Studio in the VTank solution, expand the Client project, right-click on Content->textures->misc->tiles, click 'Add existing item...', then highlight all of the new tiles to add them to the client content project.
+
+\subsection{Use Cases}
+
+The following case allows the user to edit an existing map.
+
+\begin{usecase}
+  {OPEN MAP}
+  {Editing User}
+  {\MapEditor\ is running and the user wishes to edit an existing map.}
+\begin{enumerate}
+\item User makes appropriate menu selection.
+\item Dialog box prompts user for the name of the map to edit. This includes the map's ``home'' (a disk file or from the server).
+\item The map is loaded. It is an error if the map does not yet exist.
+\end{enumerate}
+\end{usecase}
+
+The following case allows the user to create a new map. This is different than the OPEN MAP case because when a new map is being created certain bits of initial information must be provided. In contrast when an existing map is being edited that information is part of the map and does not need to be specified by the user.
+
+\begin{usecase}
+  {NEW MAP}
+  {Editing User}
+  {\MapEditor\ is running and the user wishes to edit a new map.}
+\begin{enumerate}
+\item User makes appropriate menu selection.
+\item Dialog box prompts user for attributes of the new map. This includes the map's home (a disk file or from the server).
+\item A blank map is loaded. It is an error if the map already exists.
+\end{enumerate}
+\end{usecase}
+
+The following case allows the user to modify the attributes of an existing map. These are the same attributes that are provide when a new map is created.
+
+\begin{usecase}
+  {CHANGE MAP ATTRIBUTES}
+  {Editing User}
+  {\MapEditor\ is running with a map loaded and the user wishes to modify the attributes of the map.}
+\begin{enumerate}
+\item User makes appropriate menu selection.
+\item Dialog box prompts user for new attributes of the map. This includes the map's home (a disk file or from the server).
+\item If possible the attributes are changed. If the map's home is changed, it is removed from its old home (after being saved to its new home).
+\end{enumerate}
+\end{usecase}
+
+The following case allows the map to be saved to its home or to a different file.
+
+\begin{usecase}
+  {SAVE MAP}
+  {Editing User}
+  {\MapEditor\ is running with at least one map loaded and the user wishes to save that map.}
+\begin{enumerate}
+\item User makes appropriate menu selection.
+\item If the user simply selects `Save' the current map is saved to its home location (either in a file or on the server). If the user selects `Save As' the user is prompted for a new file into which to save the map. This does not change the current map's home location, however.
+\end{enumerate}
+\end{usecase}
+
+The following case allows the user to manage the tiles database.
+
+\begin{usecase}
+  {MANAGE TILES}
+  {Editing User}
+  {\MapEditor\ is running. It is not necessary for any maps to be loaded.}
+\begin{enumerate}
+\item User makes appropriate menu selection.
+\item Dialog box appears that allows the user to perform various operations on the local tile database.
+  \begin{enumerate}
+    \item Display tile IDs and descriptions.
+    \item Change graphic image associated with a tile ID.
+  \end{enumerate}
+\end{enumerate}
+\end{usecase}
+
+\pcnote{We still need use cases for editing maps!}
+
+\subsection{Non-Functional Requirements}
+
+\subsubsection*{Platform}
+
+\MapEditor must support both Windows and Linux. It must be a GUI application with a reasonably native look and feel on each platform. Future support for the Mac OS X operating system is also possible.
+
+\subsubsection*{Performance}
+
+\MapEditor\ should be able to load and save maps in a time that is acceptable to an interactive user (a few seconds at most). It should be responsive to the user with no perceptible delay during in reacting to most commands. When editing a large map the bulk of the memory consumption should be due to a single copy of the map data itself.
+
+\subsubsection*{Security}
+
+\MapEditor\ should keep the user's ID and password on the main server secure. It should not store this information in a file nor transmit it over the network unencrypted. \MapEditor\ should protect itself from malicious maps and servers. For example, editing a map downloaded from an untrusted web site or from an untrusted \VTank\ server should be safe.
+
+\subsubsection*{User Characteristics}
+
+It can be assumed that the users of \MapEditor\ are competent computer users but they are not programmers or computer specialists. It can be assumed that they are familiar with the platform on which the map editor is running and that they will expect \MapEditor\ to behave according to the established standards for that platform. For example shortcut key combinations should be as expected for the platform.
+
+\subsubsection*{Scale}
+
+\MapEditor\ needs to be able to handle maps of arbitrary size since users may wish to create very large maps. It only needs to support a single user at a time. Furthermore it can be assumed that no other program is editing or using a map while \MapEditor\ is in control of it.
+
+Note that it is acceptable to limit the size of a map to that which can be conveniently held in memory. It is not necessary for \MapEditor\ to swap map data between memory and disk while the map is being edited. As a practical matter this will limit the size of a map to 2 GiB or less (on 32 bit systems).
+
+\subsubsection*{Data Formats}
+
+\MapEditor\ must read and write map files in the \VTank\ specific \filename{*.vtmap} format (the precise nature of which is left unspecified). \MapEditor\ must support tile images in at least \filename{*.png} format, but support for other tile image formats is encouraged.
+
+\subsubsection*{Internationalization}
+
+Initially \MapEditor\ only needs to support US English. Support for other languages and cultures is not required\footnote{Except for Latin, of course.} but may be a future enhancement.
+
+\section{Compiling}
+
+\MapEditor\ is supported on the following platforms. It is known to compile and work on these platforms although it may also work on variations of these platforms or closely related platforms.
+
+\begin{itemize}
+\item Windows XP with Microsoft Visual Studio 2008 (Visual C++ v9.0)
+\item openSUSE Linux 11.1 with Code::Blocks v8.02 (g++)
+\end{itemize}
+
+The following paragraphs describe how to set up \MapEditor\ for development on these platforms. Note that if you are a user of \MapEditor, you do not need to read this section.
+
+\subsection{Windows}
+
+\subsubsection{Building the \MapEditor}
+
+Once you have the prerequisite libraries in place, you are ready to build \MapEditor. Load the \filename{Map\_Editor.sln} file into Visual Studio. Notice that two configurations have been defined. The Release configuration builds an optimized version of \MapEditor\ suitable for distribution. The Debug configuration builds a debugging version for use during testing. In general you should use the debug version during development since certain run time checks (assertions, memory leak detection, etc) have been enabled only in that version.
+
+In addition to the main project for the map editor itself, the Visual Studio solution file also contains a project for \MapEditor\ unit tests. This project is named the ``check'' project. If you build the entire solution, the check project is also built.
+
+Use Visual Studio to build the configuration(s) you desire. Executable files are placed in their respective output folders. Note that the executables should be run from the \MapEditor\ root folder since otherwise they will not be able to locate their data resources in the data folder. The unit test executables can be run separately from \MapEditor and should be exercised before \MapEditor\ is used to verify that there are no problems with the \MapEditor's internal components.
+
+\subsubsection{Precompiled Headers}
+
+\MapEditor\ has been organized to take advantage of precompiled headers. Specifically the header \filename{Library.hpp} contains include directives for all C++ standard library headers and for headers from third party libraries such as wxWidgets. Each source file in the map editor includes \filename{Library.hpp} as the first header included. Map editor specific headers follow \filename{Library.hpp} as necessary. This means that every source file in the map editor sees the library environment in exactly the same was as every other source file. This promotes consistency and simplifies header management. Ironically it can also improve compilation speed by allowing the compiler to precompile the \filename{Library.hpp} header. The source file \filename{Library.cpp} exists only to manage this precompilation. \filename{Library.cpp} is not otherwise used by \MapEditor\ code.
+
+\subsection{Linux}
+
+The official way to build \MapEditor\ on Linux is to use Code::Blocks. Although not currently provided, you could also create a Makefile for \MapEditor\ and use it to build the program. This option is not discussed further here.
+
+We recommend that you build Code::Blocks from source. Compiling Code::Blocks is straightforward once you have wxWidgets compiled and installed. Download and unpack v8.02 and follow the (simple) instructions included.
+
+To actually build \MapEditor\ load the \filename{Map\_Editor.cbp} file into Code::Blocks and select the build option.

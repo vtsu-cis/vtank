@@ -1,0 +1,8 @@
+Continuous: Yes
+LifeSpan: 0.2
+TimeBetweenParticles: 0.005
+Radius: 600
+VaryX: No
+VaryY: No
+VaryZ: No
+ParticleSystemName: Smoke

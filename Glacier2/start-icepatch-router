@@ -1,0 +1,6 @@
+#!/bin/bash
+# Start the Glacier2 router.
+
+echo Running glacier2router daemon with config.icepatch.glacier2...
+
+glacier2router --Ice.Config=config.icepatch.glacier2 --daemon

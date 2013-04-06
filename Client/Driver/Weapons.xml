@@ -1,0 +1,421 @@
+<?xml version="1.0"?>
+<weapons>
+  <weapon>
+    <!-- Weapon Data -->
+    <id>1</id>
+    <name>Grenade Launcher</name>
+    <weaponFireSound>scannont1</weaponFireSound>
+    <weaponChargingSound></weaponChargingSound>
+
+    <!-- Art -->
+    <color>false</color>
+    <customColorValue>0,0,0,0</customColorValue>
+    <colorMesh>Color</colorMesh>
+    <model>grenade_launcher</model>
+    <deadModel>grenade_launcher_dead</deadModel>
+    <muzzleEffectName></muzzleEffectName>
+    <emitters>
+      <emitter>
+        <emitterName>Emitter0</emitterName>
+        <effectName></effectName>
+      </emitter>
+    </emitters>
+    <animations>
+      <animation>
+        <name>still</name>
+        <startingFrame>0</startingFrame>
+        <endingFrame>0</endingFrame>
+        <isContinuous>false</isContinuous>
+        <handlerClass></handlerClass>
+      </animation>
+      <animation>
+        <name>firing</name>
+        <startingFrame>1</startingFrame>
+        <endingFrame>30</endingFrame>
+        <isContinuous>true</isContinuous>
+        <handlerClass></handlerClass>
+      </animation>
+    </animations>
+
+    <!-- Combat -->
+    <projectileID>5</projectileID>
+    <cooldown>1.0</cooldown>
+    <launchAngle>30</launchAngle>
+    <maxChargeTime>0</maxChargeTime>
+
+    <projectilesPerShot>1</projectilesPerShot>
+    <intervalBetweenEachProjectile>0</intervalBetweenEachProjectile>
+
+    <overheatTime>0</overheatTime>
+    <overheatAmountPerShot>0</overheatAmountPerShot>
+    <overheatRecoverySpeed>0</overheatRecoverySpeed>
+    <overheatRecoverStartTime>0</overheatRecoverStartTime>
+  </weapon>
+  <weapon>
+    <!-- Weapon Data -->
+    <id>2</id>
+    <name>Heavy Cannon</name>
+    <weaponFireSound>scannont1</weaponFireSound>
+    <weaponChargingSound></weaponChargingSound>
+
+    <!-- Art -->
+    <color>false</color>
+    <customColorValue>0,0,0,0</customColorValue>
+    <colorMesh>Color</colorMesh>
+    <model>Heavy Cannon</model>
+    <deadModel>Heavy Cannon_dead</deadModel>
+    <muzzleEffectName>CannonFlash</muzzleEffectName>
+    <emitters>
+      <emitter>
+        <emitterName>Emitter0</emitterName>
+        <effectName></effectName>
+      </emitter>
+    </emitters>
+    <animations>
+      <animation>
+        <name>still</name>
+        <startingFrame>0</startingFrame>
+        <endingFrame>0</endingFrame>
+        <isContinuous>false</isContinuous>
+        <handlerClass></handlerClass>
+      </animation>
+      <animation>
+        <name>firing</name>
+        <startingFrame>1</startingFrame>
+        <endingFrame>30</endingFrame>
+        <isContinuous>true</isContinuous>
+        <handlerClass></handlerClass>
+      </animation>
+    </animations>
+
+    <!-- Combat -->
+    <projectileID>2</projectileID>
+    <cooldown>1.5</cooldown>
+    <launchAngle></launchAngle>
+    <maxChargeTime>0</maxChargeTime>
+
+    <projectilesPerShot>1</projectilesPerShot>
+    <intervalBetweenEachProjectile>0</intervalBetweenEachProjectile>
+
+    <overheatTime>0</overheatTime>
+    <overheatAmountPerShot>0</overheatAmountPerShot>
+    <overheatRecoverySpeed>0</overheatRecoverySpeed>
+    <overheatRecoverStartTime>0</overheatRecoverStartTime>
+  </weapon>
+  <weapon>
+    <!-- Weapon Data -->
+    <id>3</id>
+    <name>Mortar</name>
+    <weaponFireSound>scannont1</weaponFireSound>
+    <weaponChargingSound></weaponChargingSound>
+
+    <!-- Art -->
+    <color>false</color>
+    <customColorValue>0,0,0,0</customColorValue>
+    <colorMesh>Color</colorMesh>
+    <model>mortar</model>
+    <deadModel>mortar_dead</deadModel>
+    <muzzleEffectName></muzzleEffectName>
+    <emitters>
+      <emitter>
+        <emitterName>Emitter0</emitterName>
+        <effectName></effectName>
+      </emitter>
+    </emitters>
+    <animations>
+      <animation>
+        <name>still</name>
+        <startingFrame>0</startingFrame>
+        <endingFrame>0</endingFrame>
+        <isContinuous>false</isContinuous>
+        <handlerClass></handlerClass>
+      </animation>
+      <animation>
+        <name>firing</name>
+        <startingFrame>1</startingFrame>
+        <endingFrame>30</endingFrame>
+        <isContinuous>true</isContinuous>
+        <handlerClass></handlerClass>
+      </animation>
+    </animations>
+
+    <!-- Combat -->
+    <projectileID>4</projectileID>
+    <cooldown>1.8</cooldown>
+    <launchAngle>70.0</launchAngle>
+    <maxChargeTime>0</maxChargeTime>
+
+    <projectilesPerShot>1</projectilesPerShot>
+    <intervalBetweenEachProjectile>0</intervalBetweenEachProjectile>
+
+    <overheatTime>0</overheatTime>
+    <overheatAmountPerShot>0</overheatAmountPerShot>
+    <overheatRecoverySpeed>0</overheatRecoverySpeed>
+    <overheatRecoverStartTime>0</overheatRecoverStartTime>
+  </weapon>
+  <weapon>
+    <!-- Weapon Data -->
+    <id>4</id>
+    <name>Minigun</name>
+    <weaponFireSound>minigun</weaponFireSound>
+    <weaponChargingSound></weaponChargingSound>
+	
+    <!-- Art -->
+    <color>false</color>
+    <customColorValue>0,0,0,0</customColorValue>
+    <colorMesh>Color</colorMesh>
+    <model>Minigun</model>
+    <deadModel>Minigun_dead</deadModel>
+    <muzzleEffectName></muzzleEffectName>
+    <emitters>
+      <emitter>
+        <emitterName>Emitter0</emitterName>
+        <effectName></effectName>
+      </emitter>
+    </emitters>
+    <animations>
+      <animation>
+        <name>still</name>
+        <startingFrame>0</startingFrame>
+        <endingFrame>0</endingFrame>
+        <isContinuous>false</isContinuous>
+        <handlerClass></handlerClass>
+      </animation>
+      <animation>
+        <name>firing</name>
+        <startingFrame>1</startingFrame>
+        <endingFrame>30</endingFrame>
+        <isContinuous>true</isContinuous>
+        <handlerClass></handlerClass>
+      </animation>
+    </animations>
+
+    <!-- Combat -->
+    <projectileID>0</projectileID>
+    <cooldown>0.1</cooldown>
+    <launchAngle>0</launchAngle>
+    <maxChargeTime>0</maxChargeTime>
+
+    <projectilesPerShot>1</projectilesPerShot>
+    <intervalBetweenEachProjectile>0</intervalBetweenEachProjectile>
+
+    <overheatTime>0.0</overheatTime>
+    <overheatAmountPerShot>0.0</overheatAmountPerShot>
+    <overheatRecoverySpeed>0.0</overheatRecoverySpeed>
+    <overheatRecoveryStartTime>0.0</overheatRecoveryStartTime>
+  </weapon>
+  <weapon>
+    <!-- Weapon Data -->
+    <id>5</id>
+    <name>Rocket Launcher</name>
+    <weaponFireSound>scannont1</weaponFireSound>
+    <weaponChargingSound></weaponChargingSound>
+
+    <!-- Art -->
+    <color>false</color>
+    <customColorValue>0,0,0,0</customColorValue>
+    <colorMesh>Color</colorMesh>
+    <model>Launcher</model>
+    <deadModel>Launcher_dead</deadModel>
+    <muzzleEffectName></muzzleEffectName>
+    <emitters>
+      <emitter>
+        <emitterName>Emitter1</emitterName>
+        <effectName></effectName>
+      </emitter>
+      <emitter>
+        <emitterName>Emitter2</emitterName>
+        <effectName></effectName>
+      </emitter>
+      <emitter>
+        <emitterName>Emitter3</emitterName>
+        <effectName></effectName>
+      </emitter>
+      <emitter>
+        <emitterName>Emitter4</emitterName>
+        <effectName></effectName>
+      </emitter>
+    </emitters>
+    <animations>
+      <animation>
+        <name>still</name>
+        <startingFrame>0</startingFrame>
+        <endingFrame>0</endingFrame>
+        <isContinuous>false</isContinuous>
+        <handlerClass></handlerClass>
+      </animation>
+      <animation>
+        <name>firing</name>
+        <startingFrame>1</startingFrame>
+        <endingFrame>30</endingFrame>
+        <isContinuous>true</isContinuous>
+        <handlerClass></handlerClass>
+      </animation>
+    </animations>
+
+    <!-- Combat -->
+    <projectileID>1</projectileID>
+    <cooldown>0.5</cooldown>
+    <launchAngle>0</launchAngle>
+    <maxChargeTime>0</maxChargeTime>
+
+    <projectilesPerShot>1</projectilesPerShot>
+    <intervalBetweenEachProjectile>0</intervalBetweenEachProjectile>
+
+    <overheatTime>0</overheatTime>
+    <overheatAmountPerShot>0</overheatAmountPerShot>
+    <overheatRecoverySpeed>0</overheatRecoverySpeed>
+    <overheatRecoverStartTime>0</overheatRecoverStartTime>
+  </weapon>  
+  <weapon>
+    <!-- Weapon Data -->
+    <id>6</id>
+    <name>Laser Cannon</name>
+    <weaponFireSound>laser</weaponFireSound>
+    <weaponChargingSound></weaponChargingSound>
+
+    <!-- Art -->
+    <color>false</color>
+    <customColorValue>0,0,0,0</customColorValue>
+    <colorMesh>Color</colorMesh>
+    <model>Laser</model>
+    <deadModel>Laser_dead</deadModel>
+    <muzzleEffectName></muzzleEffectName>
+    <emitters>
+      <emitter>
+        <emitterName>Emitter0</emitterName>
+        <effectName></effectName>
+      </emitter>
+    </emitters>
+    <animations>
+      <animation>
+        <name>still</name>
+        <startingFrame>0</startingFrame>
+        <endingFrame>0</endingFrame>
+        <isContinuous>false</isContinuous>
+        <handlerClass></handlerClass>
+      </animation>
+      <animation>
+        <name>firing</name>
+        <startingFrame>1</startingFrame>
+        <endingFrame>30</endingFrame>
+        <isContinuous>true</isContinuous>
+        <handlerClass></handlerClass>
+      </animation>
+    </animations>
+
+    <!-- Combat -->
+    <projectileID>3</projectileID>
+    <cooldown>0.5</cooldown>
+    <launchAngle>0</launchAngle>
+    <maxChargeTime>3.0</maxChargeTime>
+
+    <projectilesPerShot>1</projectilesPerShot>
+    <intervalBetweenEachProjectile>0</intervalBetweenEachProjectile>
+
+    <overheatTime>0</overheatTime>
+    <overheatAmountPerShot>0</overheatAmountPerShot>
+    <overheatRecoverySpeed>0</overheatRecoverySpeed>
+    <overheatRecoverStartTime>0</overheatRecoverStartTime>
+    
+    <!-- damage = ceil((((elapsed_time / max_charge_time) * 100) / linearFactor) ^ exponent) -->
+    <linearFactor>4.0</linearFactor>
+    <exponent>1.33</exponent>
+  </weapon>
+  <weapon>
+    <id>7</id>
+    <name>Shotgun</name>
+    <weaponFireSound>scannont1</weaponFireSound>
+    <weaponChargingSound></weaponChargingSound>
+
+    <color>false</color>
+    <customColorValue>0,0,0,0</customColorValue>
+    <colorMesh>Color</colorMesh>
+    <model>shotgun</model>
+    <deadModel>shotgun_dead</deadModel>
+    <muzzleEffectName></muzzleEffectName>
+    <emitters>
+      <emitter>
+        <emitterName>Emitter0</emitterName>
+        <effectName></effectName>
+      </emitter>
+    </emitters>
+    <animations>
+      <animation>
+        <name>still</name>
+        <startingFrame>0</startingFrame>
+        <endingFrame>0</endingFrame>
+        <isContinuous>false</isContinuous>
+        <handlerClass></handlerClass>
+      </animation>
+      <animation>
+        <name>firing</name>
+        <startingFrame>1</startingFrame>
+        <endingFrame>30</endingFrame>
+        <isContinuous>true</isContinuous>
+        <handlerClass></handlerClass>
+      </animation>
+    </animations>
+
+    <projectileID>6</projectileID>
+    <cooldown>1.0</cooldown>
+    <launchAngle>0</launchAngle>
+    <maxChargeTime>0</maxChargeTime>
+
+    <projectilesPerShot>6</projectilesPerShot>
+    <intervalBetweenEachProjectile>0.01</intervalBetweenEachProjectile>
+
+    <overheatTime>0</overheatTime>
+    <overheatAmountPerShot>0</overheatAmountPerShot>
+    <overheatRecoverySpeed>0</overheatRecoverySpeed>
+    <overheatRecoverStartTime>0</overheatRecoverStartTime>
+  </weapon>
+  <weapon>
+    <id>8</id>
+    <name>Flamethrower</name>
+    <weaponFireSound></weaponFireSound>
+    <weaponChargingSound></weaponChargingSound>
+
+    <color>false</color>
+    <customColorValue>0,0,0,0</customColorValue>
+    <colorMesh>Color</colorMesh>
+    <model>Flamethrower</model>
+    <deadModel>Flamethrower_dead</deadModel>
+    <muzzleEffectName></muzzleEffectName>
+    <emitters>
+      <emitter>
+        <emitterName>Emitter0</emitterName>
+        <effectName></effectName>
+      </emitter>
+    </emitters>
+    <animations>
+      <animation>
+        <name>still</name>
+        <startingFrame>0</startingFrame>
+        <endingFrame>0</endingFrame>
+        <isContinuous>false</isContinuous>
+        <handlerClass></handlerClass>
+      </animation>
+      <animation>
+        <name>firing</name>
+        <startingFrame>1</startingFrame>
+        <endingFrame>30</endingFrame>
+        <isContinuous>true</isContinuous>
+        <handlerClass></handlerClass>
+      </animation>
+    </animations>
+
+    <projectileID>7</projectileID>
+    <cooldown>0.1</cooldown>
+    <launchAngle>0</launchAngle>
+    <maxChargeTime>0</maxChargeTime>
+
+    <projectilesPerShot>1</projectilesPerShot>
+    <intervalBetweenEachProjectile></intervalBetweenEachProjectile>
+
+    <overheatTime>8.0</overheatTime>
+    <overheatAmountPerShot>0.1</overheatAmountPerShot>
+    <overheatRecoverySpeed>2.0</overheatRecoverySpeed>
+    <overheatRecoveryStartTime>0.5</overheatRecoveryStartTime>
+  </weapon>
+</weapons>

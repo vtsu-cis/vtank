@@ -1,0 +1,89 @@
+\chapter{Theater}
+
+\section{Preface}
+
+Theater is the VTank universe's game server. It's responsible for doing all in-game calculations, such as physics, as well as managing it's players. Theater is written in C++ and runs on Windows or Linux.
+
+\section{Installation}
+
+\subsection{Boost}
+
+Boost is a library which extends the C++ standard. Boost may be compiled or it's libraries may be downloaded through an installer. If you prefer to compile Boost yourself, please visit the main VTank documentation set available at \url{http://vtank.cis.vtc.edu/development} under the ``Documentation'' section.
+
+Otherwise, please visit and download the latest version of Boost from the following website:
+
+\url{http://www.boostpro.com/download/}
+
+Run the installer once downloaded. Once the installer arrives to the ``Select Default Variants'' screen, ensure ``Visual C++ 9.0'' is selected, as well as all variants beside it. Visual C++ 7.1 and 8.0 are not required. Click ``Next''.
+
+The next screen is the ``Choose Components'' screen. Under each of the following libraries, ensure VC9.0 and all of it's sub-variants are checked:
+
+\begin{itemize}
+	\item Boost DateTime
+	\item Boost Serialization
+	\item Boost Thread
+\end{itemize}
+
+Once completed, click ``Next''. It will prompt you to choose an installation location. Where ever you choose, be sure to memorize the path. As mentioned in section \ref{sec:env-variables}, this is required for the \command{BOOSTROOT} environment variable.
+
+Boost will download and install it's components once finished.
+
+\subsection{Threadpool}
+
+Threadpool is a third-party extension to Boost which adds threadpool functionality through Boost threads. Threadpool can be downloaded from the following URL:
+
+\url{http://prdownloads.sourceforge.net/threadpool/threadpool-0_2_5-src.zip?download}
+
+Extract it where ever you would like, but be sure to note where exactly it's installed. Take the directory which contains the ``README'' files and such and add it to the environment variable \command{THREADPOOLROOT} as specified in section \ref{sec:env-variables}. Once done, the installation process for Threadpool is complete.
+
+\subsection{Theater}
+
+This section details how to compile Theater. It is assumed you are attempting to do so in Visual Studio 2008 or Visual Studio 2010.
+
+For simplicity's sake, it is recommended that you open the \command{Game\_Server.sln} file instead of the \command{VTank.sln} file. Opening only \command{Game\_Server.sln} simplifies the process by only opening projects relevant to compiling the game server (\command{IceCpp} and \command{Theater}). Once opened, assuming all dependencies were installed correctly, compiling Theater should be as simple as hitting the ``Build'' button. Be sure to select ``Release'' as the target build -- this is more efficient and produces less text to the console. If you're interested in seeing output to the console, compile it in ``Debug'' mode.
+
+If you come across any errors related to ``Ice'' or ``Glacier2'', try performing a ``Clean'' on \command{IceCpp}, then a ``Build'' on \command{IceCpp}. Afterwards, try again.
+
+Once compiled successfully, some slight configuration is required before Theater can run.
+
+\section{Configuration}
+
+Some minor configuration is required to get Theater running. First, compile Theater. Next, navigate to the directory where Theater has compiled. Where the file \command{Game\_Server.sln} resides, there should be a ``Debug'' or ``Release'' folder. Navigate to that folder. You will see among other things the game executable (\command{Theater.exe}) and the configuration file (\command{config.theatre}).
+
+Open \command{config.theatre} with a text editor. The following properties are of concern:
+
+\begin{itemize}
+	\item \command{Ice.Default.Router}: The important property here is \command{-h}. This points to the server where Echelon resides. If you are running an instance of Echelon on your own machine, replace ``echelon.cis.vtc.edu'' with ``localhost''.
+	\item \command{Port}: Changes the port your server listens on. It's recommended to leave this alone.
+	\item \command{GameSessionFactoryProxy}: This property tells clients how to find your game server. Set it to the game server's IP address or it's host name. To find your own IP address, check the website \url{http://whatismyipaddress.com}. Replace ``theatre.cis.vtc.edu'' with your IP address or host name. The \command{-p} (port) property can remain the same unless you changed the ``Port'' property.
+	\item \command{ServerName}: Change this to whatever you would like your server to be called (for example, ``Billy's Server'').
+	\item \command{Secret}: This secret is used to authenticate with your instance of Echelon. This should be identical to the secret in Echelon's configuration file.
+	\item \command{ConnectThroughGlacier2}/\command{UsingGlacier2}: Ensure both of these properties are set to ``1''. Theater currently does not accept clients except through Glacier2.
+	\item \command{Glacier2Host}: Host name or IP address of Theater's Glacier2 router. If you are running the game server and Glacier2 on your own computer, this can be the same as your \command{GameSessionFactoryProxy} property's host name/IP address.
+	\item \command{Glacier2Port}: By default Glacier2 uses port 4063. If you configure it to use something else in the Glacier2 configuration file, change this as well. Otherwise, leave it alone.
+	\item \command{MTGSession.Proxy}: Change the \command{-p} property to whatever port Echelon listens on. By default, Echelon listens on port 31337. Change the \command{-h} property to the host name or IP address of your instance of Echelon. If you're running Echelon on your own computer, set this to ``localhost''.
+\end{itemize}
+
+The other properties can remain the same unless you know what you're doing.
+
+\section{Maintenance}
+
+\emph{To start Glacier2}:
+
+Glacier2 is required to accept players through. A script is provided to run the Glacier2 router. Check out the source from the following location:
+
+\command{VTank/trunk/Glacier2/}
+
+Double-click the \command{start\_theatre\_router.bat} script to start the router.
+
+\emph{To stop Glacier2}:
+
+Close the window which was opened from the \command{start\_theatre\_router.bat} script.
+
+\emph{To start Theatre}:
+
+Double-click Theater.exe after it has been compiled. Please ensure that you have modified the configuration appropriately.
+
+\emph{To stop Theatre}:
+
+Close the window opened from Theater.exe.

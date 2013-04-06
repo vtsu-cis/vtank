@@ -1,0 +1,101 @@
+
+// Environment Setup
+//==================
+-dTARGET=WINTARGET
+-dDEBUG
+-d_DLL
+-d_MT
+-d__WXDEBUG__
+-i%WXROOT%\include
+-i%WXROOT%\lib\vc_lib\mswu
+-i"%BOOSTROOT%"
+-i%ICEROOT%\include
++libdir(%WXROOT%\include)
++libdir(%WXROOT%\lib\vc_lib\mswu)
++libdir("%BOOSTROOT%")
++libdir(%ICEROOT%)
+-i..\Common\Cpp
+-i..\Ice
++libdir(..\Ice)
+
+// General Options
+//================
+-e537    // Okay to #include the same header multiple times.
+-e641    // Okay to do arithemtic computations on enumeration variables.
+-e655    // Okay to do bitwise operations on "compatible" enums.
+-e691    // Okay to use backslashes "suspiciously" in macro arguments.
+-e716    // Okay to have infinite loops.
+-e830    // Turn off 'Location cited in prior message' messages. We are interactive.
+-e831    // ... turn this one off too (it is similar to 830).
+-e1506   // Okay to call virtual functions from constructors or destructors.
+-e1511   // Okay to hide none virtual members from base classes (wxWidgets event handlers).
+-e1524   // Okay to use new in constructor without destructor. [See note #1]
+-e1551   // Okay to throw exception in a destructor.
+-e1712   // Okay to leave default constructor undefined.
+-e1732   // Okay to use new in constructor without assignment operator. [See note #1]
+-e1733   // Okay to use new in constructor without copy constructor. [See note #1]
+-e1904   // Okay to use C style comments.
+-e1932   // Okay to use non-abstract base classes.
++macros  // Double the size of internal macro buffer. Some macros in wxWidgets requires this.
++macros  // ... and double it again.
+-hs      // Put a space between the messages so we have a prayer of being able to read them.
+
+// Notes
+// 1. We use boost::shared_ptr to ensure dynamically allocated objects are properly managed.
+//    Thus explicit management of such objects via our own copy and destroy operations is not
+//    necessary. TODO: explore using semantic annotations to inform PC-Lint of the semantics
+//    of boost::shared_ptr. If this is done, suppression of these messages can be removed to
+//    catch instances where boost::shared_ptr is not being used as it should.
+//
+//    Note also that some classes that produce these messages are not copyable anyway due to
+//    being derived from boost::noncopyable. Finally, some uses of new in constructors without
+//    explicit destructors (etc) are acceptable because the resulting pointers are passed to
+//    wxWidgets objects that manage them (TODO: express this with semantic annotations).
+
+// wxWidgets Options
+//===================
+// Okay to ignore return values from the following.
+-esym(534, "wxArrayString::Add")
+-esym(534, "wxDCBase::Blit")               // Return value not documented. What does it mean?
+-esym(534, "wxMenuBase::Append")           // Return value not documented. What does it mean?
+-esym(534, "wxMenuBase::AppendSeparator")  // Return value not documented. What does it mean?
+-esym(534, "wxSizer::Add")
+-esym(534, "wxSizer::AddSpacer")
+-esym(534, "wxString::Trim")
+-esym(534, "wxToolBarBase::AddControl")
+-esym(534, "wxToolBarBase::AddSeparator")  // Return value not documented. What does it mean?
+-esym(534, "wxToolBarBase::AddTool")	   // Return value not documented. What does it mean?
+-esym(534, "wxTopLevelWindowMSW::Show")
+-esym(534, "wxWindowBase::Disable")
+-esym(534, "wxWindow::Enable")
+-esym(534, "wxWindow::SetCursor")
+
+
+// wxWindows has many functions that take custody of their pointer arguments.
+-sem(wxFrameBase::SetMenuBar,       custodial(1))
+-sem(wxMenuBar::Append,             custodial(1))
+-sem(wxMenuBase::Append,            custodial(1))
+-sem(wxSizer::Add,                  custodial(1))
+-sem(wxTopLevelWindowBase::Destroy, custodial(t))
+-sem(wxWindowBase::SetSizer,        custodial(1))
+-sem(wxWindowBase::SetSizerAndFit,  custodial(1))
+
+// Gardener Options
+//=================
+// These macros are used in conditional compilation directives. They can't be made const.
+-esym(1923, WINTARGET)
+-esym(1923, LINTARGET)
+
+// Special semantics.
+-sem(Utility::vtank_assertion_failure, r_no)  // Actually it throws. We should say so somehow.
+
+// Some methods can't be marked const because of the way they are used as event handlers
+// by wxWidgets. Actually it seems to me that PC-Lint should be able to figure this out
+// on its own. If we ever get really motivated we might reduce this situation to a simple
+// test case and report it as a PC-Lint bug.
+//
+-esym(1961, MapEditorApp::OnInit)
+-esym(1762, MapEditorFrame::OnAbout)
+-esym(1762, MapEditorFrame::OnServerUpload)
+-esym(1762, ScrolledWindow::OnErase)
+-esym(1762, ToolboxWindow::OnErase)

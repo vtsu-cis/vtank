@@ -1,0 +1,13 @@
+//  Microsoft Visual C++ 2008, -si4 -sp4, lib-mfc.lnt lib-stl.lnt lib-w32.lnt
+//  Standard lint options
+
+au-sm123.lnt
+co-msc90.lnt
+lib-stl.lnt
+lib-w32.lnt
+options.lnt
+
+-si4
+-sp4
+-i"C:\Program Files\Microsoft Visual Studio 9.0\VC\include"
+-i"C:\Program Files\Microsoft SDKs\Windows\v6.0A\Include"

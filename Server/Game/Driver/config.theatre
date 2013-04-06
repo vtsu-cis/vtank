@@ -1,0 +1,82 @@
+# Configure the default Glacier2 router location (for Echelon).
+Ice.Default.Router=VTank/router:tcp -p 4063 -h echelon.cis.vtc.edu -t 15000
+
+# This is used to tell clients where to find the GameSessionFactory proxy.
+# Replace 'localhost' with the host name of the theatre server.
+GameSessionFactoryProxy=GameSessionFactory:tcp -h theatre.cis.vtc.edu -p 31335
+
+# Name of this particular server.
+ServerName=Williston VTC
+
+# Authentication code for the target server.
+Secret=there is no cow level
+
+# Which port to listen for clients on?
+Port=31335
+
+# Connect to Echelon via Glacier2? 0 = no, 1 = yes.
+ConnectThroughGlacier2=1
+
+# Clients must use Glacier2 connect. 0 = no, 1 = yes.
+UsingGlacier2=1
+
+# Host name of the Theatre Glacier2 server, if applicable.
+Glacier2Host=glacier2b.cis.vtc.edu
+
+# Port number of the Theatre Glacier2 server, if applicable.
+Glacier2Port=4063
+
+# Where to find the main server.
+MTGSession.Proxy=SessionFactory:tcp -p 31337 -h echelon.cis.vtc.edu
+
+# Listen for packets from Echelon.
+ClientSession.Endpoints=tcp
+
+# Listen for clients.
+GameSessionFactory.Endpoints=tcp -p 31335:udp -p 31335
+
+#
+# Warn about connection exceptions
+#
+#Ice.Warn.Connections=1
+
+#
+# Network Tracing
+#
+# 0 = no network tracing
+# 1 = trace connection establishment and closure
+# 2 = like 1, but more detailed
+# 3 = like 2, but also trace data transfer
+#
+Ice.Trace.Network=0
+
+#
+# Protocol Tracing
+#
+# 0 = no protocol tracing
+# 1 = trace protocol messages
+#
+Ice.Trace.Protocol=0
+
+#
+# No active connection management is permitted with Glacier2.
+# Connections must remain established.
+#
+Ice.ACM.Client=0
+
+#
+# Connection retry is not possible with Glacier2. Connections must
+# remain established.
+#
+Ice.RetryIntervals=-1
+
+# Thread pool server configuration.
+# The server threadpool is responsible for dispatching requests to the object adapter.
+# Thread pool client configuration.
+# The client threadpool dispatches AMI requests and incoming requests on bidirectional connections.
+GameSessionFactory.ThreadPool.Size=1
+GameSessionFactory.ThreadPool.SizeMax=20
+#GameSessionFactory.ThreadPool.SizeWarn=-1
+
+Ice.ThreadPool.Client.SizeMax=10
+Ice.ThreadPool.Server.SizeMax=10

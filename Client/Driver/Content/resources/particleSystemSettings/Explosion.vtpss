@@ -1,0 +1,38 @@
+Texture: explosion
+
+Capacity: 100
+Duration: .5
+DurationRandomness: .25
+
+GlobalForce: [0, 0, -9.81]
+MinForceSensitivity: 0.75
+MaxForceSensitivity: 1
+InertiaSensitivity: .5
+
+DirFromRotation: No
+InitialSpeed: 0
+Direction: [0, 0, 0]
+
+MinStartHorizontalVelocity: 200
+MaxStartHorizontalVelocity: 300
+MinStartVerticalVelocity: 100
+MaxStartVerticalVelocity: 400
+
+MinEndHorizontalVelocity: 0
+MaxEndHorizontalVelocity: 10
+MinEndVerticalVelocity: 0
+MaxEndVerticalVelocity: -5
+
+MinStartSize: 50
+MaxStartSize: 100
+MinEndSize: 300
+MaxEndSize: 440
+
+MinRotateSpeed: 0
+MaxRotateSpeed: 0
+
+MinColor: [128, 128, 128, 255]
+MaxColor: [169, 169, 169, 255]
+
+SourceBlend: SourceAlpha
+DestinationBlend: One

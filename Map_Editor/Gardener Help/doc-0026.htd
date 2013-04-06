@@ -1,0 +1,43 @@
+<HTML>
+<head><title>Events</title></head>
+
+<BODY TOPMARGIN=4 BGCOLOR=#FFFFFF TEXT=#000000 VLINK=#000000 LINK=#000000 ALINK=#000000>
+<FONT FACE="Arial, Lucida, Helvetica">
+
+<TABLE WIDTH="100%" ALIGN=CENTER CELLPADDING=1 CELLSPACING=0>
+<TR>
+<TD WIDTH="100%" ALIGN=CENTER>
+<A HREF="doc-0003.htm">
+<img align=center src="contents.gif" BORDER=0 ALT="Contents"></A>
+
+
+<A HREF="doc-0017.htm">
+<img align=center src="back.gif" BORDER=0 ALT="Previous"></A>
+
+<A HREF="doc-0018.htm">
+<img align=center src="forward.gif" BORDER=0 ALT="Next"></A>
+</TD>
+</TR>
+<TR>
+
+<!-- A narrow row representing the horizontal rule -->
+<TD COLSPAN=2 HEIGHT=2 BGCOLOR="#C0C0C0">
+</TD>
+</TR>
+</TABLE>
+
+<H2>Events</H2> 
+The event layer in gardener is designed to overlay the terrain and object layers in the map. Events don't show up on the map in game. They are used to determine how a map is suppose to be used in certain situations. Events are things such as spawn points, king of the hill areas, and flag capture and spawn points. When editing a map it is suggested that the user focus on the terrain and objects first, before adding events to the map.<P>
+
+As of current there are six different event tiles to use in gardener. They are as follows:<P>
+<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="100%">
+<TR><TD ALIGN="LEFT" VALIGN="TOP"><IMG SRC="spawn_point.png" ></TD><TD ALIGN="LEFT" VALIGN="TOP">The player spawn point is where a player's tank will start in the map when the game starts or where they will start from after dying.</TD></TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP"><IMG SRC="king_of_the_hill_area.png" ></TD><TD ALIGN="LEFT" VALIGN="TOP">King of the hill area is used in the King of the hill game mode. This area represents the hill where the player's tank must be in order to score points in king of the hill.</TD></TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP"><IMG SRC="red_flag.png" ></TD><TD ALIGN="LEFT" VALIGN="TOP">The Red flag spawn point is where the red flag will start in the map when the game starts or where the red flag will return to after it has been reset. It will also double as the blue flag capture point where the blue flag must be brought in order to score.</TD></TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP"><IMG SRC="blue_flag.png" ><TD ALIGN="LEFT" VALIGN="TOP">The Blue flag spawn point is where the blue flag will start in the map when the game starts or where the blue flag will return to after it has been reset. It will also double as the red flag capture point where the red flag must be brought in order to score.</TD></TD></TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP"><IMG SRC="red_team_spawn_area.png" ></TD><TD ALIGN="LEFT" VALIGN="TOP">The red team spawn area is where the red team will start in the map when the game starts or where individuals
+of the red team will start from after dying.</TD></TR>
+<TR><TD ALIGN="LEFT" VALIGN="TOP"><IMG SRC="blue_team_spawn_area.png" ></TD><TD ALIGN="LEFT" VALIGN="TOP">The blue team spawn area is where the blue team will start in the map when the game starts or where individuals
+of the blue team will start from after dying.</TD></TR>
+</TABLE>
+</FONT></BODY></HTML>

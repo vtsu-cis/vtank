@@ -1,0 +1,28 @@
+<HTML>
+	<HEADER>
+		<TITLE>Home</TITLE>
+	</HEADER>
+	<BODY>
+		<FONT FACE="Arial, Lucida, Helvetica">
+		<CENTER>
+			<img src="logo.png" width="250" height="250"></A><P>
+			<FONT SIZE="+1"><B>Version 1.0</B></FONT><P>
+			&copy; SOSE, 2009
+		</CENTER><P>
+		<P>Gardener is the offical VTank map editor. VTank is an overhead shooting game played on different maps. Each map has an objective such as capture the flag, king of the hill, or death match. Each map will be large enough to support many users and therefore can be larger than a single screen. As the player moves his or her tank, the screen will scroll along the map, keeping the tank centered as much as possible. In order to make the maps a map editor is needed.
+		<P><H2>Contents</H2><P><P>
+		<ul>
+			<A HREF="doc-0005.htm">Welcome to Gardener</A><BR>
+			<A HREF="doc-0008.htm">Contacts</A><BR>
+			<A HREF="doc-0013.htm">Gardener user interface</A><BR>
+			<A HREF="doc-0019.htm">Getting started</A><BR>
+			<A HREF="doc-0022.htm">Using menubar commands</A><BR>
+			<A HREF="doc-0023.htm">Using toolbar commands</A><BR>
+			<A HREF="doc-0027.htm">Using dialogs</A><BR>
+			<A HREF="doc-0032.htm">Keyboard shortcuts and controls</A><BR>
+			<A HREF="doc-0033.htm">How to...</A><BR>
+		</ul>
+
+</FONT>
+</BODY>
+</HTML>

@@ -1,0 +1,8 @@
+TimeBetweenParticles: 0.001
+LifeSpan: .5
+Continuous: No
+Radius: 5
+VaryX: No
+VaryY: No
+VaryZ: No
+ParticleSystemName: Flash

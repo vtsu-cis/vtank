@@ -1,0 +1,8 @@
+Continuous: Yes
+LifeSpan: 0.01
+TimeBetweenParticles: 0.0001
+Radius: 1
+VaryX: Yes
+VaryY: Yes
+VaryZ: Yes
+ParticleSystemName: LaserBeam

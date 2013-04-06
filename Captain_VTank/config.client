@@ -1,0 +1,40 @@
+#
+# The proxy to the Glacier2 router for all outgoing connections. This
+# must match the value of Glacier2.Client.Endpoints in config.glacier2.
+#
+Ice.Default.Router=VTank/router:tcp -p 4063 -h glacier2a.cis.vtc.edu -t 10000
+
+#
+# We don't need any endpoints for the client if we use a
+# router. Incoming requests are received through connections
+# established from the client to the router.
+#
+Callback.Client.Endpoints=tcp
+
+#
+# No active connection management is permitted with Glacier2.
+# Connections must remain established.
+#
+Ice.ACM.Client=0
+
+#
+# Connection retry is not possible with Glacier2. Connections must
+# remain established.
+#
+Ice.RetryIntervals=-1
+
+# 
+# Trace level for the network. Valid values are 0, 1, and 2.
+# 0 = No tracing.
+# 1 = Some tracing.
+# 2 = Verbose tracing.
+#
+Ice.Trace.Network=0
+
+#
+# Trace level for the Ice protocol. Valid values are 0, 1, and 2.
+# 0 = No tracing.
+# 1 = Some tracing.
+# 2 = Verbose tracing.
+#
+Ice.Trace.Protocol=0

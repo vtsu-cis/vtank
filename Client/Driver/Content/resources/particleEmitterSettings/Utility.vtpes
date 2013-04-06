@@ -1,0 +1,8 @@
+Continuous: No
+LifeSpan: .5
+TimeBetweenParticles: 0.0035
+Radius: 30
+VaryX: No
+VaryY: No
+VaryZ: No
+ParticleSystemName: fillInCode

@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Gardener", "Gardener.vcproj", "{6364876F-49FE-49E0-BDC6-071F2F8478CC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3D8CD05B-754C-49C5-8CA1-78B7B1FF4C18} = {3D8CD05B-754C-49C5-8CA1-78B7B1FF4C18}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GardenerTests", "check\GardenerTests.vcproj", "{5E6A1E46-921A-4041-B3D9-181B13971074}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IceCpp", "..\Ice\IceCpp.vcproj", "{3D8CD05B-754C-49C5-8CA1-78B7B1FF4C18}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6364876F-49FE-49E0-BDC6-071F2F8478CC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6364876F-49FE-49E0-BDC6-071F2F8478CC}.Debug|Win32.Build.0 = Debug|Win32
+		{6364876F-49FE-49E0-BDC6-071F2F8478CC}.Release|Win32.ActiveCfg = Release|Win32
+		{6364876F-49FE-49E0-BDC6-071F2F8478CC}.Release|Win32.Build.0 = Release|Win32
+		{5E6A1E46-921A-4041-B3D9-181B13971074}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5E6A1E46-921A-4041-B3D9-181B13971074}.Debug|Win32.Build.0 = Debug|Win32
+		{5E6A1E46-921A-4041-B3D9-181B13971074}.Release|Win32.ActiveCfg = Release|Win32
+		{5E6A1E46-921A-4041-B3D9-181B13971074}.Release|Win32.Build.0 = Release|Win32
+		{3D8CD05B-754C-49C5-8CA1-78B7B1FF4C18}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3D8CD05B-754C-49C5-8CA1-78B7B1FF4C18}.Debug|Win32.Build.0 = Debug|Win32
+		{3D8CD05B-754C-49C5-8CA1-78B7B1FF4C18}.Release|Win32.ActiveCfg = Release|Win32
+		{3D8CD05B-754C-49C5-8CA1-78B7B1FF4C18}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

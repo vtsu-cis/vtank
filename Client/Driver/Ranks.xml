@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<ranks>
+  <rank>
+	<id>0</id>
+	<title>Private</title>
+	<abbreviation>PVT</abbreviation>
+	<filename></filename>
+  </rank>
+  <rank>
+	<id>1</id>
+	<title>Private E2 </title>
+	<abbreviation>PV2</abbreviation>
+	<filename>pv2</filename>
+  </rank>
+  <rank>
+	<id>2</id>
+	<title>Private First Class</title>
+	<abbreviation>PFC</abbreviation>
+	<filename>pfc</filename>
+  </rank>
+  <rank>
+	<id>3</id>
+	<title>Corporal</title>
+	<abbreviation>CPL</abbreviation>
+	<filename>cpl</filename>
+  </rank>
+  <rank>
+	<id>4</id>
+	<title>Sergeant</title>
+	<abbreviation>SGT</abbreviation>
+	<filename>sgt</filename>
+  </rank>
+  <rank>
+	<id>5</id>
+	<title>Staff Sergeant</title>
+	<abbreviation>SSG</abbreviation>
+	<filename>ssg</filename>
+  </rank>
+  <rank>
+	<id>6</id>
+	<title>Sergeant First Class</title>
+	<abbreviation>SFC</abbreviation>
+	<filename>sfc</filename>
+  </rank>
+  <rank>
+	<id>7</id>
+	<title>Master Sergeant</title>
+	<abbreviation>MSG</abbreviation>
+	<filename>msg</filename>
+  </rank>
+  <rank>
+	<id>8</id>
+	<title>First Sergeant</title>
+	<abbreviation>1SG</abbreviation>
+	<filename>1sg</filename>
+  </rank>
+  <rank>
+	<id>9</id>
+	<title>Sergeant Major</title>
+	<abbreviation>SGM</abbreviation>
+	<filename>sgm</filename>
+  </rank>
+  <rank>
+	<id>10</id>
+	<title>Second Lieutenant</title>
+	<abbreviation>2LT</abbreviation>
+	<filename>2lt</filename>
+  </rank>
+  <rank>
+	<id>11</id>
+	<title>First Lieutenant</title>
+	<abbreviation>1LT</abbreviation>
+	<filename>1lt</filename>
+  </rank>
+	<rank>
+	<id>12</id>
+	<title>Captain</title>
+	<abbreviation>CPT</abbreviation>
+	<filename>cpt</filename>
+  </rank>
+  <rank>
+	<id>13</id>
+	<title>Major</title>
+	<abbreviation>MAJ</abbreviation>
+	<filename>maj</filename>
+  </rank>
+  <rank>
+	<id>14</id>
+	<title>Lieutenant Colonel</title>
+	<abbreviation>LTC</abbreviation>
+	<filename>ltc</filename>
+  </rank>
+  <rank>
+	<id>15</id>
+	<title>Colonel</title>
+	<abbreviation>COL</abbreviation>
+	<filename>col</filename>
+  </rank>
+  <rank>
+	<id>16</id>
+	<title>Brigadier General</title>
+	<abbreviation>BG</abbreviation>
+	<filename>bg</filename>
+  </rank>
+  <rank>
+	<id>17</id>
+	<title>Major General</title>
+	<abbreviation>MG</abbreviation>
+	<filename>mg</filename>
+  </rank>
+  <rank>
+	<id>18</id>
+	<title>Lieutenant General</title>
+	<abbreviation>LTG</abbreviation>
+	<filename>ltg</filename>
+  </rank>
+  <rank>
+	<id>19</id>
+	<title>General</title>
+	<abbreviation>GEN</abbreviation>
+	<filename>gen</filename>
+  </rank>
+</ranks>

@@ -1,0 +1,42 @@
+<HTML>
+<head><title>Creating A Map</title></head>
+
+<BODY TOPMARGIN=4 BGCOLOR=#FFFFFF TEXT=#000000 VLINK=#000000 LINK=#000000 ALINK=#000000>
+<FONT FACE="Arial, Lucida, Helvetica">
+
+<TABLE WIDTH="100%" ALIGN=CENTER CELLPADDING=1 CELLSPACING=0>
+<TR>
+<TD WIDTH="100%" ALIGN=CENTER>
+<A HREF="doc-0003.htm">
+<img align=center src="contents.gif" BORDER=0 ALT="Contents"></A>
+
+
+<A HREF="doc-0019.htm">
+<img align=center src="back.gif" BORDER=0 ALT="Previous"></A>
+
+<A HREF="doc-0021.htm">
+<img align=center src="forward.gif" BORDER=0 ALT="Next"></A>
+</TD>
+</TR>
+<TR>
+
+<!-- A narrow row representing the horizontal rule -->
+<TD COLSPAN=2 HEIGHT=2 BGCOLOR="#C0C0C0">
+</TD>
+</TR>
+</TABLE>
+
+<H2>Creating A Map</H2>
+ 
+When it comes to creating a new map in Gardener, there's two places to turn to. The user can go the the menubar and select file->new or the user can select the new button on the toolbar.<P>
+
+
+<IMG SRC="file_new.jpg" ALT="File New" VSPACE="" ALIGN="LEFT" BORDER="0"><br clear=all>
+
+<IMG SRC="tool_new.jpg" ALT="Toolbar New" VSPACE="" ALIGN="LEFT" BORDER="0"><P>
+
+After this selection has been made the New Map Dialog will be displayed. Please click below for farther instructions on creating a map.<P>
+
+<A HREF="doc-0028.htm">New Map Dialog</A>
+
+</FONT></BODY></HTML>

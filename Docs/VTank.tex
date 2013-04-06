@@ -1,0 +1,93 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FILE    : VTank.tex
+% SUBJECT : Master document for the VTank documentation set.
+% AUTHOR  : (C) Copyright 2010 by Vermont Technical College
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ++++++++++++++++++++++++++++++++
+% Preamble and global declarations
+% ++++++++++++++++++++++++++++++++
+\documentclass{report}
+
+
+% --------
+% Packages
+% --------
+\usepackage[pdftex]{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{rotating}
+
+% The following are settings for the listings package
+\lstset{language=C++,
+        basicstyle=\small,
+        stringstyle=\ttfamily,
+        commentstyle=\ttfamily,
+        xleftmargin=0.25in,
+        showstringspaces=false}
+
+
+% ------------------
+% Layout adjustments
+% ------------------
+\pagestyle{headings}
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1.75ex plus0.5ex minus0.5ex}
+
+
+% ------
+% Macros
+% ------
+\input{macros}
+
+
+% +++++++++++++++++++
+% The document itself
+% +++++++++++++++++++
+\begin{document}
+
+
+% ----------
+% Title page
+% ----------
+\title{\VTank\ Documentation}
+\author{Summer of Software Engineering}
+\date{Summer 2010}
+\maketitle
+
+
+% -----------------
+% Table of contents
+% -----------------
+\pagenumbering{roman}
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+
+
+% ----------------
+% Document content
+% ----------------
+\input{Introduction}
+\input{Architecture}
+\input{ToolsLibraries}
+\input{MainServer}
+\input{GameServer}
+\input{Client}
+\input{AIFramework}
+\input{WeaponSystem}
+\input{MapEditor}
+\input{CaptainVTank}
+\input{Backups}
+
+% ------------------------------
+% Appendix and related materials
+% ------------------------------
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+%\appendix
+
+\end{document}

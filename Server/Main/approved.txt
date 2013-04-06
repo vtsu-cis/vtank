@@ -1,0 +1,4 @@
+# List of official VTC-approved game servers.
+# Please format entries on separates lines, like:
+# hostname:port
+theatre.cis.vtc.edu:31337

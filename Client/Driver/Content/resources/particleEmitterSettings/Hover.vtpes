@@ -1,0 +1,8 @@
+Continuous: Yes
+LifeSpan: 0.5
+TimeBetweenParticles: 0.01
+Radius: 2000
+VaryX: No
+VaryY: No
+VaryZ: No
+ParticleSystemName: Hover

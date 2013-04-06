@@ -1,0 +1,44 @@
+[OPTIONS]
+Compatibility=1.1
+Full-text search=Yes
+Contents file=gardener.hhc
+Compiled file=gardener.chm
+Default Window=Help
+Default topic=doc-0003.htm
+Charset=utf-8
+Index file=gardener.hhk
+Title=Gardener
+
+[WINDOWS]
+Help=,"gardener.hhc","gardener.hhk","doc-0003.htm",,,,,,0x2420,,0x380e,,,,,0,,,
+
+[FILES]
+doc-0003.htm
+doc-0008.htm
+doc-0005.htm
+doc-0013.htm
+doc-0015.htm
+doc-0016.htm
+doc-0017.htm
+doc-0018.htm
+doc-0019.htm
+doc-0020.htm
+doc-0021.htm
+doc-0022.htm
+doc-0023.htm
+doc-0024.htm
+doc-0025.htm
+doc-0026.htm
+doc-0027.htm
+doc-0028.htm
+doc-0029.htm
+doc-0030.htm
+doc-0031.htm
+doc-0032.htm
+doc-0033.htm
+
+[ALIAS]
+#include "gardener_alias.h"
+
+[MAP]
+#include "gardener_ids.h"

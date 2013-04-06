@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VisualStudioToolFile
+	Name="Slice Compiler"
+	Version="8.00"
+	>
+	<Rules>
+		<CustomBuildRule
+			Name="slice2cpp"
+			DisplayName="slice2cpp"
+			CommandLine="slice2cpp -I. -I%ICEROOT%\slice [Inputs]"
+			Outputs="$(InputName).cpp $(InputName).h"
+			FileExtensions="*.ice"
+			ExecutionDescription="Processing $(InputName).ice"
+			>
+			<Properties>
+			</Properties>
+		</CustomBuildRule>
+	</Rules>
+</VisualStudioToolFile>

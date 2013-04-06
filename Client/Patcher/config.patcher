@@ -1,0 +1,19 @@
+#
+# Set the target where the IcePatch2 server resides.
+# 
+IcePatch2.Endpoints=tcp -h patcher.cis.vtc.edu -p 10000 -t 30000
+
+# Name of the VTank patcher instance.
+IcePatch2.InstanceName=Patcher
+
+# Where to place client files.
+IcePatch2.Directory=.
+
+# Remove existing files. 1=remove non-patched files, 0=do not remove.
+IcePatch2.Remove=0
+
+# How many bytes to fetch per request (in kilobytes). Default is 100 (kb).
+IcePatch2.ChunkSize=10
+
+# Thorough download.
+IcePatch2.Thorough=1

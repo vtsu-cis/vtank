@@ -1,0 +1,73 @@
+#!/bin/sh -l
+# chkconfig: 2345 90 37
+# description: Game Server for VTank.
+# processname: Theater
+#
+# Modify the Theater service.
+# Options: start|stop|restart
+/etc/rc.d/init.d/functions
+
+# CONSTANTS
+THEATER=/usr/local/sbin/vtank/Server/Game/Driver/
+PID=$(/sbin/pidof Theater)
+
+VERB=$1
+if [ "$VERB" = "" ];
+then
+	echo "Usage: $0 start|stop|restart"
+	exit 1
+fi
+
+function start {
+	if [ "$PID" != "" ];
+	then
+		echo "Theater is already running."
+		return 0
+	fi
+	cd $THEATER
+	nohup ./Theater &
+	return $?
+}
+
+function stop {
+	if [ "$PID" = "" ];
+	then
+		echo "Theater is not running."
+		return 0
+	fi
+	
+	kill -9 $PID
+	echo "" > /usr/local/sbin/vtank/Server/Game/Theater.pid
+	return $?
+}
+
+function restart {
+	stop
+	start
+	return $?
+}
+
+case "$VERB" in 
+	start)
+		start
+		RETVAL=$?
+	;;
+
+	stop)
+		stop
+		RETVAL=$?
+	;;
+	
+	restart)
+		restart
+		RETVAL=$?
+	;;
+	
+	*)
+		echo "Usage: $0 start|stop|restart"
+		exit 1
+	;;
+esac
+
+exit $RETVAL
+

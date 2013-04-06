@@ -1,0 +1,55 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FILE    : Backups.tex
+% SUBJECT : Document describing the backup procedures of the VTank project.
+% AUTHOR  : (C) Copyright 2009 by Vermont Technical College
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Backups}
+\section{Overview}
+The VTank backup system currently uses a set of automated scripts  Backup of critical data occurs daily and is done by a bash script executed by a daily cron job.
+
+\subsection{Critical Data}
+VTC's backup system currently includes the following data:
+
+\begin{enumerate}
+\item VTC's Subversion Repository
+\item VTC's Mantis Bugtracker Database
+\item WOW's Profile Database
+\item \MainServer\ 's VTank Databases
+\item The full VTank Website data
+\end{enumerate}
+
+\subsection{Transfer Protocols}
+Rsync is currently the transfer protocol of choice, being an efficient an effective transfer method.  Rsync via SSH will most likely be included in the future, though currently all transfers occur behind the same firewalled network.
+
+\subsection{Compression Methods}
+All singular backup files such as database dumps and .xml files are compressed using gzip, while directory trees such as the VTank website is compressed into a .tgz tarball.
+
+\section{Backup Procedure}
+Backup Scripts use following procedure:
+
+\subsection{\MainServer}
+\begin{enumerate}
+\item Change to backup directory
+\item Dump VTank Database
+\item Dump Forum Database (No longer in use)
+\item Copy Website Parent Directory
+\item Compress Files
+\item Rsync the files to the backup server
+\item Clean up local copies of the backup files.
+\end{enumerate}
+
+\subsection{\WebServer}
+\begin{enumerate}
+\item Change to backup directory
+\item Dump bugtracker database
+\item Copy WOW profiles
+\item Dump SVN repository
+\item Compress Files
+\item Rsync the files to the backup server
+\item Clean up local copies of the backup files
+\end{enumerate}
+
+There is an echo statement for each step in the procedure that is redirected to a log file, to confirm that the backup script is executing daily.  The backup system also has an error handling system, which will email \VTank\ developers in the event that a backup fails.
+

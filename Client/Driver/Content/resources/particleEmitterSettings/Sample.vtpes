@@ -1,0 +1,8 @@
+Continuous: No
+LifeSpan: 10
+TimeBetweenParticles: 0.25
+Radius: 5
+VaryX: Yes
+VaryY: Yes
+VaryZ: No
+ParticleSystemName: Sample

@@ -1,0 +1,46 @@
+<HTML>
+<head><title>Terrain</title></head>
+
+<BODY TOPMARGIN=4 BGCOLOR=#FFFFFF TEXT=#000000 VLINK=#000000 LINK=#000000 ALINK=#000000>
+<FONT FACE="Arial, Lucida, Helvetica">
+
+<TABLE WIDTH="100%" ALIGN=CENTER CELLPADDING=1 CELLSPACING=0>
+<TR>
+<TD WIDTH="100%" ALIGN=CENTER>
+<A HREF="doc-0003.htm">
+<img align=center src="contents.gif" BORDER=0 ALT="Contents"></A>
+
+
+<A HREF="doc-0017.htm">
+<img align=center src="back.gif" BORDER=0 ALT="Previous"></A>
+
+<A HREF="doc-0025.htm">
+<img align=center src="forward.gif" BORDER=0 ALT="Next"></A>
+</TD>
+</TR>
+<TR>
+
+<!-- A narrow row representing the horizontal rule -->
+<TD COLSPAN=2 HEIGHT=2 BGCOLOR="#C0C0C0">
+</TD>
+</TR>
+</TABLE>
+
+<H2>Terrain</H2> 
+The terrain layer in gardener is designed as the "lowest" level in the map. Terrain makes up the general background of the map and therefore when creating a map, the user will be asked to select a terrain tile which will blanket the entire new map. When editing a map it is suggested that the user focus on terrain first before adding objects or events.<P>
+
+As of current there are three different terrain tile sets to use with gardener. They are as follows:
+<UL>
+<LI> City / Urban 
+<LI> Outdoors
+<LI> Desolate Winter
+</UL>
+<P>
+Terrain also has a height associated with it. Height is set by holding down the shift key and scrolling up to increase the height and down to lower the height. Gardener uses a "global height" which is located on the toolbar. When the user draws terrain, the terrain's height will be equal to whatever the global height is set to. 0 is the driveable height anything else will be undrivable.<P>
+
+Below are a few samples of the terrain tiles usable in game.
+<P>
+<IMG SRC="terrain.jpg" ALT="Gardener Terrain" VSPACE="" ALIGN="LEFT" BORDER="0"> <br clear=all>
+
+
+</FONT></BODY></HTML>

@@ -1,0 +1,46 @@
+<HTML>
+<head><title>Gardener user interface</title></head>
+
+<BODY TOPMARGIN=4 BGCOLOR=#FFFFFF TEXT=#000000 VLINK=#000000 LINK=#000000 ALINK=#000000>
+<FONT FACE="Arial, Lucida, Helvetica">
+
+<TABLE WIDTH="100%" ALIGN=CENTER CELLPADDING=1 CELLSPACING=0>
+<TR>
+<TD WIDTH="100%" ALIGN=CENTER>
+<A HREF="doc-0003.htm">
+<img align=center src="contents.gif" BORDER=0 ALT="Contents"></A>
+
+
+<A HREF="doc-0003.htm">
+<img align=center src="back.gif" BORDER=0 ALT="Previous"></A>
+
+<A HREF="doc-0015.htm">
+<img align=center src="forward.gif" BORDER=0 ALT="Next"></A>
+</TD>
+</TR>
+<TR>
+
+<!-- A narrow row representing the horizontal rule -->
+<TD COLSPAN=2 HEIGHT=2 BGCOLOR="#C0C0C0">
+</TD>
+</TR>
+</TABLE>
+
+<H2>Gardener user interface</H2> 
+The main Gardener window looks like this:<P>
+
+<IMG SRC="UI.jpg" ALT="Gardener Screenshot" VSPACE="" ALIGN="LEFT" BORDER="0" WIDTH ="500" HEIGHT = "364"> <br clear=all>
+
+<P>
+
+Please click on a topic below to learn about
+Gardener's features.<P>
+
+<UL>
+<LI> <A HREF="doc-0015.htm">Menubar</A>
+<LI> <A HREF="doc-0016.htm">Toolbar</A>
+<LI> <A HREF="doc-0017.htm">Selector</A>
+<LI> <A HREF="doc-0018.htm">Canvas</A>
+</UL>
+
+</FONT></BODY></HTML>

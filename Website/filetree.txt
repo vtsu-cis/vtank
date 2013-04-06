@@ -1,0 +1,669 @@
+.
+|-- AUTHORS
+|-- BUILD
+|-- LICENSE
+|-- README
+|-- VTankforum
+|   |-- \012
+|   |-- README
+|   |-- community
+|   |   |-- __init__.py
+|   |   |-- __init__.pyc
+|   |   |-- locale
+|   |   |   |-- de
+|   |   |   |   `-- LC_MESSAGES
+|   |   |   |       |-- django.mo
+|   |   |   |       `-- django.po
+|   |   |   |-- en
+|   |   |   |   `-- LC_MESSAGES
+|   |   |   |       |-- django.mo
+|   |   |   |       `-- django.po
+|   |   |   `-- fr
+|   |   |       `-- LC_MESSAGES
+|   |   |           |-- django.mo
+|   |   |           `-- django.po
+|   |   |-- manage.py
+|   |   |-- settings.py
+|   |   |-- settings.pyc
+|   |   |-- settings_local.py
+|   |   |-- settings_local.pyc
+|   |   |-- sitetemplates
+|   |   |   |-- 404.html
+|   |   |   |-- 500.html
+|   |   |   |-- _below_navigation.html
+|   |   |   |-- _footer.html
+|   |   |   |-- _head.html
+|   |   |   |-- base.html
+|   |   |   |-- base_root.html
+|   |   |   |-- base_root.html.bak
+|   |   |   |-- body.html
+|   |   |   |-- contact.html
+|   |   |   |-- downloads.html
+|   |   |   |-- downloads.html.bak
+|   |   |   |-- feeds
+|   |   |   |   |-- wiki_description.html
+|   |   |   |   `-- wiki_title.html
+|   |   |   |-- flatpages
+|   |   |   |   `-- default.html
+|   |   |   |-- index.html
+|   |   |   |-- index.html.bak
+|   |   |   |-- registration
+|   |   |   `-- wiki
+|   |   |       `-- news.html
+|   |   |-- urlconfs
+|   |   |   |-- __init__.py
+|   |   |   |-- __init__.pyc
+|   |   |   |-- community_urls.py
+|   |   |   `-- community_urls.pyc
+|   |   |-- urls.py
+|   |   |-- urls.pyc
+|   |   `-- views.py.bak
+|   |-- sitetemplates -> community/sitetemplates/
+|   `-- static
+|       |-- ForumBanner1.png
+|       |-- HomeBanner1.png
+|       |-- WikiBanner1.png
+|       |-- adminstyles
+|       |   |-- base.css
+|       |   |-- changelists.css
+|       |   |-- dashboard.css
+|       |   |-- forms.css
+|       |   |-- global.css
+|       |   |-- layout.css
+|       |   |-- login.css
+|       |   |-- null.css
+|       |   |-- patch-iewin.css
+|       |   |-- rtl.css
+|       |   |-- test.css
+|       |   `-- widgets.css
+|       |-- blog.css -> /home/projects/sct/communitytools/static/sphene/sphblog/styles/base.css
+|       |-- board.css -> /home/projects/sct/communitytools/static/sphene/sphboard/styles/base.css
+|       |-- downloads
+|       |   `-- Gardener.zip
+|       |-- img
+|       |   |-- BackgroundVTank2.png
+|       |   |-- TopBanner1.png
+|       |   |-- TopBanner2.png
+|       |   |-- TopBanner3.png
+|       |   `-- TopBannerArmy1.png
+|       |-- sphene
+|       |   |-- community
+|       |   |   |-- default_avatar.png
+|       |   |   |-- icons
+|       |   |   |   `-- feed-icon-14x14.png
+|       |   |   |-- jqac.css
+|       |   |   |-- jquery-1.2.3.min.js
+|       |   |   |-- jquery.autocomplete.js
+|       |   |   |-- jquery.dimensions.js
+|       |   |   |-- jquery.pack.js
+|       |   |   |-- styles
+|       |   |   |   `-- base.css
+|       |   |   |-- ui.datepicker.css
+|       |   |   |-- ui.datepicker.js
+|       |   |   |-- ui.droppable.js
+|       |   |   |-- ui.mouse.js
+|       |   |   |-- ui.sortable.js
+|       |   |   `-- xmlhttp.js
+|       |   |-- emoticons
+|       |   |   |-- README.txt
+|       |   |   |-- angel.gif
+|       |   |   |-- bluemad.gif
+|       |   |   |-- confused.gif
+|       |   |   |-- cool.gif
+|       |   |   |-- crying.gif
+|       |   |   |-- eek.gif
+|       |   |   |-- grin.gif
+|       |   |   |-- mad.gif
+|       |   |   |-- sad.gif
+|       |   |   |-- smile.gif
+|       |   |   |-- tongue.gif
+|       |   |   |-- unsure.gif
+|       |   |   `-- wink.gif
+|       |   |-- sphblockframework
+|       |   |   `-- blocksorting.js
+|       |   |-- sphblog
+|       |   |   `-- styles
+|       |   |       `-- base.css
+|       |   |-- sphboard
+|       |   |   |-- icons
+|       |   |   |   |-- folder.gif
+|       |   |   |   `-- newfolder.gif
+|       |   |   `-- styles
+|       |   |       `-- base.css
+|       |   |-- sphsearch
+|       |   |   `-- styles
+|       |   |       `-- searchbase.css
+|       |   `-- sphwiki
+|       |       |-- attachment
+|       |       |   `-- 2009
+|       |       |       `-- 06
+|       |       |           |-- 03
+|       |       |           |   |-- EmptyGrocerySack.png
+|       |       |           |   `-- vtanklogo40.png
+|       |       |           `-- 09
+|       |       |               `-- 80x80falloutav-bos.gif
+|       |       |-- icons
+|       |       |   `-- edit-delete.png
+|       |       `-- styles
+|       |           `-- base.css
+|       |-- style.css
+|       |-- var
+|       |   `-- sphene -> /home/projects/sct/VTankforum//static//sphene/
+|       `-- wiki.css -> /home/projects/sct/communitytools/static/sphene/sphwiki/styles/base.css
+|-- communitytools
+|   |-- AUTHORS
+|   |-- LICENSE
+|   |-- README
+|   |-- dist
+|   |   |-- files
+|   |   |   `-- README
+|   |   `-- scripts
+|   |       |-- build.sh
+|   |       |-- compile-all-sph-messages.py
+|   |       `-- make-messages.py
+|   |-- examples
+|   |   `-- simpleproject
+|   |       |-- README
+|   |       |-- __init__.py
+|   |       |-- manage.py
+|   |       |-- settings.py
+|   |       |-- sitetemplates
+|   |       |   |-- base.html
+|   |       |   `-- registration
+|   |       |       |-- logged_out.html
+|   |       |       `-- login.html
+|   |       `-- urls.py
+|   |-- patches
+|   |   |-- disable_formfield_for_hidden_fields_trunk.diff
+|   |   |-- filefield_basename_trunk.diff
+|   |   `-- permalink_with_additional_function_arg.diff
+|   |-- sphenecoll
+|   |   `-- sphene
+|   |       |-- __init__.py
+|   |       |-- __init__.pyc
+|   |       |-- community
+|   |       |   |-- __init__.py
+|   |       |   |-- __init__.pyc
+|   |       |   |-- admin.py
+|   |       |   |-- admin.pyc
+|   |       |   |-- context_processors.py
+|   |       |   |-- context_processors.pyc
+|   |       |   |-- fields.py
+|   |       |   |-- fields.pyc
+|   |       |   |-- forms.py
+|   |       |   |-- forms.pyc
+|   |       |   |-- groupaware_templateloader.py
+|   |       |   |-- groupaware_templateloader.pyc
+|   |       |   |-- locale
+|   |       |   |   |-- de
+|   |       |   |   |   `-- LC_MESSAGES
+|   |       |   |   |       |-- django.mo
+|   |       |   |   |       `-- django.po
+|   |       |   |   |-- en
+|   |       |   |   |   `-- LC_MESSAGES
+|   |       |   |   |       |-- django.mo
+|   |       |   |   |       `-- django.po
+|   |       |   |   |-- fr
+|   |       |   |   |   `-- LC_MESSAGES
+|   |       |   |   |       |-- django.mo
+|   |       |   |   |       `-- django.po
+|   |       |   |   |-- ko
+|   |       |   |   |   `-- LC_MESSAGES
+|   |       |   |   |       |-- django.mo
+|   |       |   |   |       `-- django.po
+|   |       |   |   `-- pl
+|   |       |   |       `-- LC_MESSAGES
+|   |       |   |           |-- django.mo
+|   |       |   |           `-- django.po
+|   |       |   |-- management.py
+|   |       |   |-- management.pyc
+|   |       |   |-- middleware.py
+|   |       |   |-- middleware.pyc
+|   |       |   |-- models.py
+|   |       |   |-- models.pyc
+|   |       |   |-- permissionutils.py
+|   |       |   |-- permissionutils.pyc
+|   |       |   |-- signals.py
+|   |       |   |-- signals.pyc
+|   |       |   |-- sphpermalink.py
+|   |       |   |-- sphpermalink.pyc
+|   |       |   |-- sphsettings.py
+|   |       |   |-- sphsettings.pyc
+|   |       |   |-- sphutils.py
+|   |       |   |-- sphutils.pyc
+|   |       |   |-- templates
+|   |       |   |   `-- sphene
+|   |       |   |       |-- base.html
+|   |       |   |       `-- community
+|   |       |   |           |-- _display_username.html
+|   |       |   |           |-- _pagination.html
+|   |       |   |           |-- accounts
+|   |       |   |           |   |-- account_verification_email.html
+|   |       |   |           |   |-- account_verification_email.txt
+|   |       |   |           |   |-- forgot.html
+|   |       |   |           |   |-- forgot_password_email.txt
+|   |       |   |           |   |-- forgot_sent.html
+|   |       |   |           |   |-- logged_out.html
+|   |       |   |           |   `-- login.html
+|   |       |   |           |-- admin
+|   |       |   |           |   |-- base.html
+|   |       |   |           |   `-- permission
+|   |       |   |           |       |-- base.html
+|   |       |   |           |       |-- role_edit.html
+|   |       |   |           |       |-- role_list.html
+|   |       |   |           |       |-- role_member_add.html
+|   |       |   |           |       |-- role_member_list.html
+|   |       |   |           |       |-- rolegroup_edit.html
+|   |       |   |           |       `-- rolegroup_list.html
+|   |       |   |           |-- base.html
+|   |       |   |           |-- generic
+|   |       |   |           |   `-- advanced_list.html
+|   |       |   |           |-- permissiondenied.html
+|   |       |   |           |-- profile.html
+|   |       |   |           |-- profile_edit.html
+|   |       |   |           |-- profile_reveal_emailaddress.html
+|   |       |   |           |-- register.html
+|   |       |   |           |-- register_emailsent.html
+|   |       |   |           |-- register_hash.html
+|   |       |   |           |-- register_hash_success.html
+|   |       |   |           `-- templatetags
+|   |       |   |               `-- _sph_form.html
+|   |       |   |-- templatetags
+|   |       |   |   |-- __init__.py
+|   |       |   |   |-- __init__.pyc
+|   |       |   |   |-- sph_extras.py
+|   |       |   |   |-- sph_extras.pyc
+|   |       |   |   |-- sph_form.py
+|   |       |   |   |-- sph_pagination.py
+|   |       |   |   |-- sph_pagination.pyc
+|   |       |   |   |-- sph_switch.py
+|   |       |   |   |-- sph_tagging.py
+|   |       |   |   |-- sph_tagging.pyc
+|   |       |   |   `-- user_infos.py
+|   |       |   |-- templatetagutils.py
+|   |       |   |-- templatetagutils.pyc
+|   |       |   |-- testrunner.py
+|   |       |   |-- tests.py
+|   |       |   |-- testutils.py
+|   |       |   |-- urls.py
+|   |       |   |-- urls.pyc
+|   |       |   |-- views.py
+|   |       |   |-- views.pyc
+|   |       |   |-- widgets.py
+|   |       |   `-- widgets.pyc
+|   |       |-- contrib
+|   |       |   |-- __init__.py
+|   |       |   |-- __init__.pyc
+|   |       |   |-- libs
+|   |       |   |   |-- __init__.py
+|   |       |   |   |-- __init__.pyc
+|   |       |   |   |-- codecoverage
+|   |       |   |   |   |-- __init__.py
+|   |       |   |   |   |-- coverage.py
+|   |       |   |   |   `-- coverage_color.py
+|   |       |   |   |-- common
+|   |       |   |   |   |-- __init__.py
+|   |       |   |   |   |-- __init__.pyc
+|   |       |   |   |   |-- cache_inclusion_tag.py
+|   |       |   |   |   |-- cache_inclusion_tag.pyc
+|   |       |   |   |   |-- classmaker.py
+|   |       |   |   |   |-- text
+|   |       |   |   |   |   |-- __init__.py
+|   |       |   |   |   |   |-- __init__.pyc
+|   |       |   |   |   |   |-- bbcode.py
+|   |       |   |   |   |   `-- bbcode.pyc
+|   |       |   |   |   `-- utils
+|   |       |   |   |       |-- __init__.py
+|   |       |   |   |       |-- __init__.pyc
+|   |       |   |   |       |-- misc.py
+|   |       |   |   |       `-- misc.pyc
+|   |       |   |   |-- custom
+|   |       |   |   |   |-- __init__.py
+|   |       |   |   |   `-- custom_widgets.py
+|   |       |   |   `-- markdown
+|   |       |   |       |-- CHANGE_LOG.txt
+|   |       |   |       |-- README.txt
+|   |       |   |       |-- VERSION.txt
+|   |       |   |       |-- __init__.py
+|   |       |   |       |-- __init__.pyc
+|   |       |   |       |-- home_page.txt
+|   |       |   |       |-- markdown.py
+|   |       |   |       |-- markdown.pyc
+|   |       |   |       |-- mdx_footnotes.py
+|   |       |   |       |-- mdx_footnotes.pyc
+|   |       |   |       |-- mdx_macros.py
+|   |       |   |       |-- mdx_macros.pyc
+|   |       |   |       |-- mdx_rss.py
+|   |       |   |       |-- mdx_toc.py
+|   |       |   |       |-- mdx_toc.pyc
+|   |       |   |       |-- mdx_wikilink.py
+|   |       |   |       |-- mdx_wikilink.pyc
+|   |       |   |       `-- setup.py
+|   |       |   `-- misc
+|   |       |       `-- xsl
+|   |       |           |-- xhtml2fo-justified.xsl
+|   |       |           |-- xhtml2fo.xsl
+|   |       |           `-- xhtml2fo.xsl_old
+|   |       |-- generic
+|   |       |   |-- __init__.py
+|   |       |   |-- __init__.pyc
+|   |       |   `-- advanced_object_list
+|   |       |       |-- __init__.py
+|   |       |       |-- __init__.pyc
+|   |       |       |-- columns.py
+|   |       |       |-- columns.pyc
+|   |       |       |-- list.py
+|   |       |       `-- list.pyc
+|   |       |-- sphblockframework
+|   |       |   |-- __init__.py
+|   |       |   |-- blockregistry.py
+|   |       |   |-- blocks.py
+|   |       |   |-- models.py
+|   |       |   |-- templates
+|   |       |   |   `-- sphene
+|   |       |   |       `-- sphblockframework
+|   |       |   |           |-- _dashboard.html
+|   |       |   |           |-- base.html
+|   |       |   |           |-- blocks
+|   |       |   |           |   |-- languageswitcher.html
+|   |       |   |           |   `-- userblock.html
+|   |       |   |           `-- config.html
+|   |       |   |-- templatetags
+|   |       |   |   |-- __init__.py
+|   |       |   |   `-- sphblockframework_extras.py
+|   |       |   |-- urls.py
+|   |       |   `-- views.py
+|   |       |-- sphblog
+|   |       |   |-- __init__.py
+|   |       |   |-- __init__.pyc
+|   |       |   |-- categorytypes.py
+|   |       |   |-- feeds.py
+|   |       |   |-- feeds.pyc
+|   |       |   |-- locale
+|   |       |   |   |-- de
+|   |       |   |   |   `-- LC_MESSAGES
+|   |       |   |   |       |-- django.mo
+|   |       |   |   |       `-- django.po
+|   |       |   |   |-- en
+|   |       |   |   |   `-- LC_MESSAGES
+|   |       |   |   |       |-- django.mo
+|   |       |   |   |       `-- django.po
+|   |       |   |   |-- fr
+|   |       |   |   |   `-- LC_MESSAGES
+|   |       |   |   |       |-- django.mo
+|   |       |   |   |       `-- django.po
+|   |       |   |   |-- ko
+|   |       |   |   |   `-- LC_MESSAGES
+|   |       |   |   |       |-- django.mo
+|   |       |   |   |       `-- django.po
+|   |       |   |   `-- pl
+|   |       |   |       `-- LC_MESSAGES
+|   |       |   |           |-- django.mo
+|   |       |   |           `-- django.po
+|   |       |   |-- models.py
+|   |       |   |-- models.pyc
+|   |       |   |-- templates
+|   |       |   |   `-- sphene
+|   |       |   |       `-- sphblog
+|   |       |   |           |-- _showblogpost.html
+|   |       |   |           |-- base.html
+|   |       |   |           |-- blogindex.html
+|   |       |   |           |-- feeds
+|   |       |   |           |   |-- latestposts_description.html
+|   |       |   |           |   `-- latestposts_title.html
+|   |       |   |           |-- nocategory.html
+|   |       |   |           `-- show_blogentry.html
+|   |       |   |-- templatetags
+|   |       |   |   |-- __init__.py
+|   |       |   |   |-- __init__.pyc
+|   |       |   |   `-- sphblog_extras.py
+|   |       |   |-- urls.py
+|   |       |   |-- urls.pyc
+|   |       |   |-- utils.py
+|   |       |   |-- views.py
+|   |       |   `-- views.pyc
+|   |       |-- sphboard
+|   |       |   |-- __init__.py
+|   |       |   |-- __init__.pyc
+|   |       |   |-- admin.py
+|   |       |   |-- admin.pyc
+|   |       |   |-- boardforms.py
+|   |       |   |-- boardforms.pyc
+|   |       |   |-- categorytyperegistry.py
+|   |       |   |-- categorytyperegistry.pyc
+|   |       |   |-- categorytypes.py
+|   |       |   |-- categorytypes.pyc
+|   |       |   |-- feeds.py
+|   |       |   |-- feeds.pyc
+|   |       |   |-- forms.py
+|   |       |   |-- forms.pyc
+|   |       |   |-- lists.py
+|   |       |   |-- locale
+|   |       |   |   |-- de
+|   |       |   |   |   `-- LC_MESSAGES
+|   |       |   |   |       |-- django.mo
+|   |       |   |   |       `-- django.po
+|   |       |   |   |-- en
+|   |       |   |   |   `-- LC_MESSAGES
+|   |       |   |   |       |-- django.mo
+|   |       |   |   |       `-- django.po
+|   |       |   |   |-- fr
+|   |       |   |   |   `-- LC_MESSAGES
+|   |       |   |   |       |-- django.mo
+|   |       |   |   |       `-- django.po
+|   |       |   |   |-- ko
+|   |       |   |   |   `-- LC_MESSAGES
+|   |       |   |   |       |-- django.mo
+|   |       |   |   |       `-- django.po
+|   |       |   |   `-- pl
+|   |       |   |       `-- LC_MESSAGES
+|   |       |   |           |-- django.mo
+|   |       |   |           `-- django.po
+|   |       |   |-- management.py
+|   |       |   |-- management.pyc
+|   |       |   |-- middleware.py
+|   |       |   |-- models.py
+|   |       |   |-- models.pyc
+|   |       |   |-- renderers.py
+|   |       |   |-- renderers.pyc
+|   |       |   |-- sitemaps.py
+|   |       |   |-- sitemaps.pyc
+|   |       |   |-- templates
+|   |       |   |   `-- sphene
+|   |       |   |       `-- sphboard
+|   |       |   |           |-- _category_monitor.html
+|   |       |   |           |-- _displayBreadcrumbs.html
+|   |       |   |           |-- _displayCategories.html
+|   |       |   |           |-- _displayLatestPost.html
+|   |       |   |           |-- _displayPostForm.html
+|   |       |   |           |-- _displayUserName.html
+|   |       |   |           |-- _extended_new_thread_link.html
+|   |       |   |           |-- _latest_posts_of_user.html
+|   |       |   |           |-- _new_thread_link.html
+|   |       |   |           |-- _post_authorinfo.html
+|   |       |   |           |-- annotate.html
+|   |       |   |           |-- base.html
+|   |       |   |           |-- edit_poll.html
+|   |       |   |           |-- extended_thread_list.html
+|   |       |   |           |-- feeds
+|   |       |   |           |   |-- latestpost_description.html
+|   |       |   |           |   `-- latestpost_title.html
+|   |       |   |           |-- listCategories.html
+|   |       |   |           |-- move.html
+|   |       |   |           |-- new_list_threads.html
+|   |       |   |           |-- new_post_email.txt
+|   |       |   |           |-- post.html
+|   |       |   |           |-- showThread.html
+|   |       |   |           `-- wikimacros
+|   |       |   |               `-- news.html
+|   |       |   |-- templatetags
+|   |       |   |   |-- __init__.py
+|   |       |   |   |-- __init__.pyc
+|   |       |   |   |-- sphboard_extras.py
+|   |       |   |   `-- sphboard_extras.pyc
+|   |       |   |-- tests.py
+|   |       |   |-- urls.py
+|   |       |   |-- urls.pyc
+|   |       |   |-- views.py
+|   |       |   `-- views.pyc
+|   |       |-- sphcomments
+|   |       |   |-- __init__.py
+|   |       |   |-- categorytypes.py
+|   |       |   |-- models.py
+|   |       |   `-- templatetags
+|   |       |       |-- __init__.py
+|   |       |       `-- sphcomments_extras.py
+|   |       |-- sphlinklist
+|   |       |   |-- __init__.py
+|   |       |   |-- categorytype.py
+|   |       |   |-- locale
+|   |       |   |   |-- en
+|   |       |   |   |   `-- LC_MESSAGES
+|   |       |   |   |       |-- django.mo
+|   |       |   |   |       `-- django.po
+|   |       |   |   |-- fr
+|   |       |   |   |   `-- LC_MESSAGES
+|   |       |   |   |       |-- django.mo
+|   |       |   |   |       `-- django.po
+|   |       |   |   |-- ko
+|   |       |   |   |   `-- LC_MESSAGES
+|   |       |   |   |       |-- django.mo
+|   |       |   |   |       `-- django.po
+|   |       |   |   `-- pl
+|   |       |   |       `-- LC_MESSAGES
+|   |       |   |           |-- django.mo
+|   |       |   |           `-- django.po
+|   |       |   |-- models.py
+|   |       |   |-- templates
+|   |       |   |   `-- sphene
+|   |       |   |       `-- sphlinklist
+|   |       |   |           |-- _show_thumbnail_of_link.html
+|   |       |   |           |-- show_thread.html
+|   |       |   |           `-- thread_list.html
+|   |       |   `-- views.py
+|   |       |-- sphsearch
+|   |       |   `-- README
+|   |       |-- sphsearchboard
+|   |       |   |-- __init__.py
+|   |       |   |-- models.py
+|   |       |   |-- templates
+|   |       |   |   `-- sphene
+|   |       |   |       `-- sphsearchboard
+|   |       |   |           |-- base.html
+|   |       |   |           `-- search.html
+|   |       |   |-- templatetags
+|   |       |   |   |-- __init__.py
+|   |       |   |   `-- sphsearch_extras.py
+|   |       |   |-- urls.py
+|   |       |   `-- views.py
+|   |       `-- sphwiki
+|   |           |-- __init__.py
+|   |           |-- __init__.pyc
+|   |           |-- admin.py
+|   |           |-- admin.pyc
+|   |           |-- feeds.py
+|   |           |-- feeds.pyc
+|   |           |-- locale
+|   |           |   |-- de
+|   |           |   |   `-- LC_MESSAGES
+|   |           |   |       |-- django.mo
+|   |           |   |       `-- django.po
+|   |           |   |-- fr
+|   |           |   |   `-- LC_MESSAGES
+|   |           |   |       |-- django.mo
+|   |           |   |       `-- django.po
+|   |           |   |-- ko
+|   |           |   |   `-- LC_MESSAGES
+|   |           |   |       |-- django.mo
+|   |           |   |       `-- django.po
+|   |           |   `-- pl
+|   |           |       `-- LC_MESSAGES
+|   |           |           |-- django.mo
+|   |           |           `-- django.po
+|   |           |-- models.py
+|   |           |-- models.pyc
+|   |           |-- sitemaps.py
+|   |           |-- sitemaps.pyc
+|   |           |-- templates
+|   |           |   `-- sphene
+|   |           |       `-- sphwiki
+|   |           |           |-- _snip_header.html
+|   |           |           |-- base.html
+|   |           |           |-- diff.html
+|   |           |           |-- editAttachment.html
+|   |           |           |-- editSnip.html
+|   |           |           |-- history.html
+|   |           |           |-- listAttachments.html
+|   |           |           |-- list_tag_snips.html
+|   |           |           |-- macros
+|   |           |           |   |-- _attachment.html
+|   |           |           |   `-- _attachment_list.html
+|   |           |           |-- recentChanges.html
+|   |           |           |-- showSnip.html
+|   |           |           |-- wikicomments.html
+|   |           |           `-- wikicomments_unavailable.html
+|   |           |-- urls.py
+|   |           |-- urls.py.bak
+|   |           |-- views.py
+|   |           |-- views.pyc
+|   |           |-- wikilink_utils.py
+|   |           |-- wikilink_utils.pyc
+|   |           |-- wikimacros.py
+|   |           `-- wikimacros.pyc
+|   |-- static
+|   |   `-- sphene
+|   |       |-- community
+|   |       |   |-- default_avatar.png
+|   |       |   |-- icons
+|   |       |   |   `-- feed-icon-14x14.png
+|   |       |   |-- jqac.css
+|   |       |   |-- jquery-1.2.3.min.js
+|   |       |   |-- jquery.autocomplete.js
+|   |       |   |-- jquery.dimensions.js
+|   |       |   |-- jquery.pack.js
+|   |       |   |-- styles
+|   |       |   |   `-- base.css
+|   |       |   |-- ui.datepicker.css
+|   |       |   |-- ui.datepicker.js
+|   |       |   |-- ui.droppable.js
+|   |       |   |-- ui.mouse.js
+|   |       |   |-- ui.sortable.js
+|   |       |   `-- xmlhttp.js
+|   |       |-- emoticons
+|   |       |   |-- README.txt
+|   |       |   |-- angel.gif
+|   |       |   |-- bluemad.gif
+|   |       |   |-- confused.gif
+|   |       |   |-- cool.gif
+|   |       |   |-- crying.gif
+|   |       |   |-- eek.gif
+|   |       |   |-- grin.gif
+|   |       |   |-- mad.gif
+|   |       |   |-- sad.gif
+|   |       |   |-- smile.gif
+|   |       |   |-- tongue.gif
+|   |       |   |-- unsure.gif
+|   |       |   `-- wink.gif
+|   |       |-- sphblockframework
+|   |       |   `-- blocksorting.js
+|   |       |-- sphblog
+|   |       |   `-- styles
+|   |       |       `-- base.css
+|   |       |-- sphboard
+|   |       |   |-- icons
+|   |       |   |   |-- folder.gif
+|   |       |   |   `-- newfolder.gif
+|   |       |   `-- styles
+|   |       |       `-- base.css
+|   |       |-- sphsearch
+|   |       |   `-- styles
+|   |       |       `-- searchbase.css
+|   |       `-- sphwiki
+|   |           |-- icons
+|   |           |   `-- edit-delete.png
+|   |           `-- styles
+|   |               `-- base.css
+|   `-- vendor
+`-- filetree.txt
+
+181 directories, 485 files

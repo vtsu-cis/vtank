@@ -1,0 +1,77 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FILE    : Architecture.tex
+% SUBJECT : Document describing architecture issues in the entire VTank system.
+% AUTHOR  : (C) Copyright 2009 by Vermont Technical College
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Architecture}
+\label{architecture}
+
+\section{Overview}
+
+The overall architecture of the \VTank\ system is shown in Figure~\ref{fig:arch-VTank}. The main server provides services for the entire \VTank\ system. There is only one main server for a particular \VTank\ community. Programs that are directly used by various user classes (administrators, editors, and players) all interact with the \VTank\ system through the main server.
+
+\begin{figure}[htbp]
+  \centering
+  \scalebox{0.5}{\includegraphics*{Figures/Overall-Architecture.pdf}}
+  \caption{Overall \VTank\ Architecture}
+  \label{fig:arch-VTank}
+\end{figure}
+
+The main server stores all non-volatile data about the \VTank\ community in a back end database. This information includes account data, tank information, and game maps. All of the other programs in the \VTank\ system access this data through the main server. Thus the exact nature of the back end database is a private implementation detail for the main server.
+
+One or more game servers manage the dynamics of the game world. Multiple game servers are provided for load sharing. They are managed by the main server on behalf of user commands but players also interact directly with the game servers while playing the game.
+
+Users interact with the \VTank\ system in several ways, using different programs as appropriate. Players use the client program. Users who are creating maps (game worlds) use the map editor program. Administrators use the Captain \VTank\ program. A Janitor program also exists that allows specially designated users limited access to database administrative functions. In principal this capability could be implemented as part of Captain \VTank. However, by providing it as a separate program we can keep the user interface uncluttered and improve security.
+
+In addition there are plans to provide a web interface (not shown above) to certain administrative actions provided by the Captain \VTank\ and Janitor programs. This web interface is likely to be minimal at first, but it has the potential to completely replace Captain \VTank\ and the Janitor. A web version of the client (for example, running in Silverlight) has also been discussed.
+
+\section{Security}
+
+\VTank\ is a multi-player network game. It is the nature of such a game that not all of the players may trust each other. In addition malicious users who are not players may attempt to disrupt or control a game in progress by manipulating the network over which the game is being conducted. It is therefor desirable for \VTank\ to provide some degree of security against these threats. This section outlines the issues involved in \VTank\ security. Specific information about how security related matters have been implemented is given in later chapters.
+
+\subsection{Threat Model}
+
+The general environment in which a \VTank\ game is taking place is assumed to be potential hostile. Specifically the analysis of \VTank's security makes the following assumptions:
+
+\begin{enumerate}
+\item Players do not trust other players.
+\item Servers do not trust players (or the client programs acting on their behalf).
+\item The network is hostile and in the control of a Dolev-Yao attacker. Such an attacker has the following capabilities:
+  \begin{enumerate}
+  \item Able to read all packets everywhere simultaneously.
+  \item Able to modify any packet.
+  \item Able to inject new packets on any link.
+  \item Able to record arbitrary amounts of network data and replay it anywhere at any time.
+  \item Able to block, delay, or rearrange packets on any link.
+  \end{enumerate}
+\item The attacker has full access to the \VTank\ source code (both client and server) and any predefined constant data stored by either client or server.
+\end{enumerate}
+
+In order for a reasonable security system to be designed, some trust and some limitations on the attacker's capabilities must be assumed. Specifically:
+
+\begin{enumerate}
+\item Players trust servers (once the server has been authenticated).
+\item Servers trust each other (once they have mutually authenticated).
+\item The Dolev-Yao attacker can not:
+  \begin{enumerate}
+  \item Read or modify computations done on any legitimate machine.
+  \item Break any cryptographic algorithms used.
+  \end{enumerate}
+\end{enumerate}
+
+Note also that the data transferred between client and server or between servers is not considered confidential (with the exception of password or other authentication information). Thus encrypting that data on the network is not necessary.
+
+There are several threats that VTank should counter. Specifically:
+
+\begin{enumerate}
+\item A player should not be able to log in as another player. A player should only be able to modify his/her own profile or tank status, and then only to the degree allowed by the server. Note that an administrative user may exist who is exempt from this limitation; administrators can modify the profile and tank status of any player.
+
+\item It should not be possible to disrupt a game in progress by introducing bogus packets on the network, or by replaying previously recorded packets.
+
+\item It should not be possible for a player to use a rogue client program to cheat or otherwise gain an advantage in the game. It should not be possible for a player to use a rogue client program to disrupt a game in progress.
+\end{enumerate}
+
+Note that \VTank\ does not need to protect itself against attacks involving blocked packets. A Dolev-Yao attacker will be able to disrupt a game by causing network communication failure. However, \VTank\ clients and servers should make an attempt to detect such a situation and alert their users accordingly.
+

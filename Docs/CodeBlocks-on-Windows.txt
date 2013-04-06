@@ -1,0 +1,137 @@
+
+Code::Blocks on Windows
+=======================
+
+Officially the map editor is developed using Visual Studio 2008 on Windows and Code::Blocks on
+Linux systems. However, if you are interested in using Code::Blocks on Windows it should be
+possible to set up such a configuration. This document describes some of the issues that arise.
+Note that this document is mentioned in a footnote in the main VTank documentation. Do not
+remove or rename this document without also changing that footnote.
+
+Be aware that the Code::Blocks project file provided with VTank assumes Linux and will not work
+properly with the Windows version of Code::Blocks. Instead you will need to create a new project
+file for Code::Blocks on windows. An old version of such a file, named win-Map_Editor.cbp,
+should be available in the repository history.
+
+The actual installation of Code::Blocks on Windows is straight forward by way of the binary
+installer provided on the Code::Blocks web site. Here we assume you are using Code::Blocks
+version 8.02. Most of the complications arise in connection with compiling wxWidgets and
+configuring Code::Blocks to use wxWidgets. The instructions below give the details.
+
+Compiling wxWidgets
+-------------------
+
+The wxWidgets library must all be configured "external" to the project. This means that they
+must be compiled on your system outside the VTank folder structure and Code::Blocks must be
+configured to know where it is. Be sure to set the Code::Blocks global variables #wx to point at
+the location on your system where the wxWidgets libraries can be found.
+
+Obtain the installer wxMSW-2.8.9-Setup.exe and excute it to install the source code for
+wxWidgets. You can install the source code anywhere you like on your hard drive. No specific
+location is required (but see below on setting up Code::Blocks properly). Note that this
+installer only installs the source code; you still have to compile it before you can use the
+library. To do this using the MinGW compiler that comes with Code::Blocks proceed as follows [in
+what follows all paths are relative to the location where you installed the wxWidgets source
+code]:
+
+1. Edit the file src\mingw32.bat so that the MINGWDIR environment variable refers to the
+location of the MinGW compiler that comes with Code::Blocks. Most likely it should read
+
+SET MINGWDIR=C:\Program Files\CodeBlocks\MinGW
+
+Comment out the two commands at the bottom that pertain to 4DOS users. Execute the resulting
+batch file to create a command prompt with the right environment.
+
+2. In the MinGW bin folder, copy the file mingw32-make.exe to make.exe in the same folder.
+
+3. In build\msw execute the commands
+
+    make -f makefile.gcc BUILD=debug UNICODE=1
+    make -f makefile.gcc BUILD=release UNICODE=1
+
+This should create the debug release libraries in all the appropriate places.
+
+4. Check your compilations by going to the samples\minimal folder and running
+
+    make -f makefile.gcc BUILD=debug UNICODE=1
+
+there to build the minimal sample. You can build both the releae and debugging version of the
+minimal sample by using appropriate BUILD= values on the make command line.
+
+To verify that Code::Blocks can properly use your freshly compiled library, create a new
+Code::Blocks project using the wxWidgets wizard. When asked for the location of the wxWidgets
+library, specify $(#wx) to use the Code::Blocks global variable #wx. You will be prompted to set
+the value of this variable. Use a base path that points to the top of the wxWidgets source tree.
+You do not need to fill in any other path. Code::Blocks already knows enough about the structure
+of the wxWidgets hierarchy to find the subfolders that it needs. Accept the other project
+defaults and then build the test program.
+
+Use the sample project configuration as set up by the wxWidgets wizard as a template for other
+wxWidgets projects. You can also configure a Code::Blocks project manually for use with
+wxWidgets as follows:
+
+In the top level build options in the 'Linker Settings' tab include the following libraries in
+this order:
+
+kernel32
+user32
+gdi32
+winspool
+comdlg32
+advapi32
+shell32
+ole32
+oleaut32
+uuid
+comctl32
+wsock32
+odbc32
+
+In the 'Search Directories' tab specify the following for 'Compiler'
+
+$(#wx)\include
+$(#wx)\contrib\include
+
+For 'Resource Compiler'
+
+$(#wx)\include
+
+Next select the Debug target from the list of targets. In the 'Linker Settings' tab be sure
+the policy of "Prepend target options to project options" is selected. Add the following
+libraries to the list of link libraries:
+
+wxmsw28ud_core
+wxbase28ud
+wxpngd
+wxzlibd
+
+Use a policy of 'Append target options to project options' for the next three adjustments. Under
+'Search Directories' and 'Compiler' add
+
+$(#wx)\lib\gcc_lib\mswud
+
+Under 'Search Directories' and 'Linker' add
+
+$(#wx)\lib\gcc_lib
+
+Under 'Search Directories' and 'Resource Compiler' add
+
+$(#wx)\lib\gcc_lib\mswud
+
+Finally select the Release target and use the following link libraries under the 'Linker
+settings' tab:
+
+wxmsw28u_core
+wxbase28u
+wxpng
+wxzlib
+
+Then we have:
+
+Search Directories/Compiler: $(wx)\lib\gcc_lib\mswu
+Search Directories/Linker: $(wx)\lib\gcc_lib
+Search Directories/Resource Compiler: $(wx)\lib\gcc_lib\mswu
+
+Use the same policies for the Release additions as you did for the Debug additions. Note that it
+may also be necessary to define the symbol wxUSE_UNICODE for the Unicode support to work
+properly.

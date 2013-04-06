@@ -1,0 +1,100 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FILE    : AIFramework.tex
+% SUBJECT : Document describing design issues for the VTank AI Framework
+% AUTHOR  : (C) Copyright 2009 by Vermont Technical College
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{\AI}
+\label{AI}
+
+\section{Requirements}
+
+\AI\ is a runtime which runs one or more ``bots'' simultaneously. Each ``bot'' is represented by a class in the code which inherits from a bot type known to the framework. This allows programmers to come up with customized implementations of a bot. Implementations of bots are customized by using different logic in certain scenarios. For example, one implementation may respond to being fired at by firing back, while another implementation may decide to run away.
+
+\subsection{Functional Requirements}
+
+A programmer may utilize \AI\ by inheriting from the abstract class \command{VTankBot}. This allows the programmer to override event callbacks sent from the framework. Events are sent to the bot in the following cases:
+\begin{itemize}
+\item Common update event, sent once per ``tick''. A tick is sent every few milliseconds, as decided by the framework. Note that this event is called even if the bot is dead.
+\item A player has joined the game.
+\item A player has left the game.
+\item A player has entered a chat message.
+\item Another player entering a certain radius within the bot. The radius is decided by the framework. It may be the range of the weapon. The bot is considered to have a larger range of sight ahead of it. This radius is referred to as the viewable radius of the bot. This event is ignored if the bot is dead.
+\item Another player leaving the viewable radius of the bot. This event is ignored if the bot is dead.
+\item The bot has hit a wall. Note that the bot will continue to move forward, but unsuccessfully. The bot should rotate itself out of the wall. This event is called only once per wall collision. If the bot collides with a wall, frees itself, then collides again, only then will it re-send the collision event.
+\item A projectile hit another player. Note: The ``player'' may also include the bot itself. This occurs for any projectile event, regardless of who fired. Note that this is the only way the bot can figure out if it's dead or not.
+\item A projectile was fired by another player. This does not include the bot itself. This is useful if the bot wants to attempt to dodge the projectile. Note that this event is sent regardless of where the projectile was fired, or who it was fired at.
+\item The bot has completed a movement. The bot may ask the framework to move the tank to a certain spot on the map, and the framework's pathfinding will figure out where to go. When this action is done, this event is sent. Part of the event arguments is whether or not the event was successfully completed. For example, if the framework determines that it's impossible to move to the destination, this event will notify the bot of a failure.
+\item The bot has completed a rotation. The bot may ask the framework to rotate the tank to a certain degree or to rotate some theta value. When the action is done, this event is sent.
+\item A player has respawned. A ``respawn'' is when a player dies, then has waited a specified amount of time, then returns to life. This event is sent regardless of who the player is, including the bot itself. Note that any commands the bot has sent prior to it's death have to be re-sent.
+\item The map has rotated. Details on map rotation are available under the \GameServer\ or \Client\ (client) documentation.
+\end{itemize}
+
+\subsection{Non-functional Requirements}
+
+\subsubsection*{Platform}
+
+\AI\ is supported for any .NET-supported platform. \AI\ makes extensive use of Ice, so any platform that meets the following requirements may run the framework:
+\begin{itemize}
+\item The platform supports the .NET 2.0 Framework.
+\item The platform supports Ice.
+\end{itemize}
+
+\AI\ is currently only officially supported for Windows.
+
+\subsubsection*{Performance}
+
+\AI\ simulates a real client's actions, but unlike a real client, it has no rendering jobs to perform -- it simply performs calculations and logic checks. \AI\ has only a few significant performance requirements:
+\begin{itemize}
+\item \AI\ must not use 100\% CPU.
+\item \AI\ must report events as soon as they happen to each bot being executed; that is, there must be virtually no delay between receiving an event from the game server and sending the event notification to the bot.
+\end{itemize}
+
+\subsubsection*{Security}
+
+\AI\ has the same security requirements as the regular client, with one exception: Passwords must be stored somewhere \AI\ can see it, so that it can automatically log into the desired account. It's unreasonable to store the passwords in source code files, so it should be done in external configuration files. \AI\ should automatically encrypt the plain-text password and store the encrypted version instead of the plain-text version. It is acceptable for the account name of the bot to be stored in plain text.
+
+Since the password is sensitive information, the connection to \MainServer\ should use IceSSL. The connection to \GameServer\ may remain unencrypted.
+
+\subsubsection*{User Characteristics}
+
+There are two types of users who should use \AI:
+\begin{enumerate}
+\item A bot developer who understands a .NET language.
+\item A bot runner who manages the configuration files and runs the \AI\ executables.
+\end{enumerate}
+
+The user in the former case is expected to be a highly technical user. It's worth mentioning that the programmer does not need to have in-depth knowledge of the \VTank\ protocol; \AI\ will abstract most of the back-end. The programmer's greatest difficulty, then, is proper implementation of intelligent bot programs that can interact with other players.
+
+The user in the latter case does not have to be a technical user whatsoever, assuming that the user has a bot prepared (presumably provided by some other developer). At most, the user would have to inspect configuration files and modify trivial data such as account names and passwords.
+
+\subsubsection*{Scale}
+
+\AI\ is capable of simulatenously executing more than one bot. However, too many bots consume too much CPU and bandwidth. Because \AI\ exists to provide human players with things to shoot at (as opposed to human players joining an empty server and being bored), \AI\ is not required to have high scalability in regards to number of players. A reasonable number of bots, then, is considered to be 4. \AI\ can possibly support more than 4 simultaneous bots, but does not necessarily need to.
+
+\subsubsection*{Data Formats}
+
+The only external data relevant to programmers or users of \AI\ is the configuration file. The configuration file uses the formatting required for Ice configuration files, which holds the following format:
+
+\begin{command}
+key = value
+\end{command}
+
+\AI\ reads the configuration file upon start-up for Ice configuration and for username and password information. This is stored in the following way:
+
+\begin{command}
+ClassName = username:password
+\end{command}
+
+\command{ClassName} represents the name of the bot class. For example, if one defines a bot using the syntax, \command{class MyBot}, the key for this property would be ``MyBot''. On the right-side of the equal sign, the username is stored first, followed by a colon (which acts as the delimiter), followed by the password, which can be any number of characters of any type. After running \AI\ once, \AI\ will automatically read the password in, encrypt the password, and store the encrypted version. This is denoted by an exclamation mark as the delimiter instead of a colon. For example, this is a bot whose password is encrypted:
+
+\begin{command}
+ClassName = username!encryptedPassword
+\end{command}
+
+Note that attempting to insert an exclamation mark with an unencrypted password may result in an undefined error or an incorrect password.
+
+\subsubsection*{Internationalization}
+
+\AI\ documentation, class names, methods, and namespaces are written in US English. There are currently no plans to port \AI\ to a different language. However, it's not unreasonable for programmers to write bots in different languages.

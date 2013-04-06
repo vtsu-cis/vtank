@@ -1,0 +1,93 @@
+---------------
+Version 0.0.0.4
+---------------
+- AI Framework
+	# Implementation
+		+ AI Framework was added! People can start coding bots now.
+
+- Patcher
+	# Bug Fixes
+		+ The 'Launcher', which updates/downloads Patcher.exe, should now display a window when patching.
+
+---------------
+Version 0.0.0.3
+---------------
+- Patcher
+    # Implementation
+        + Added an launcher that updates the pacher when needed.
+
+- Client
+    # Aesthetics
+        + Replaced all existing tank and turret models with new ones.
+        + Added the Behemoth tank chassis.
+        + Added the rocket launcher.
+        + Added dead tank models.
+        + Coloration of tanks is now restricted to their color strips.
+        + Added particle effects for muzzle flares, rocket trails, tank explosions, and fires on ingame objects.
+        + Added two varieties of trees, a rock, and barrel objects to the map editor.
+        + Changed the GUI of the client to the new 'Neoforce' gui system.
+        + Changed the background image for the menu system.
+    # Implementation
+        + Added a console that is accesible with the tilde (~) key.
+        + Updated to a completely different rendering system.
+        + Rewrote everything.
+
+- Map Editor
+    # Implementation
+        + Added support for 3d objects in maps.
+        + Added several new maps.
+
+---------------
+Version 0.0.0.2
+---------------
+- Patcher
+    # Aesthetics
+        + The patcher now has a nifty new background.
+        + The patcher's buttons were slightly updated graphically.
+    # Implementation
+        + A new 'Website' button takes you to the website.
+        + The anti-aliasing fields have been corrected.
+
+- Client
+    # Aesthetics
+        + The explosion texture and animation have been cleaned up.
+        + The old GUI theme has been replaced with a customized one.
+        + The old minigun model has been replaced by a new one.
+        + Added a restriction on specular power to make the new turret mesh to look like the tank mesh.
+    # Implementation
+        + A mini-map now appears in the shape of a circle with a thin metal border.
+    # Bug Fixes
+        + Projectile trajectories are now more faithful to where the user intended to fire.
+
+---------------
+Version 0.0.0.1
+---------------
+- Patcher
+    # Aesthetics
+        + Changed the VTank logo on the main screen and About screen.
+    # Implementation
+        + The options now allow users to disable and enable shading support.
+- Client
+    # Aesthetics
+        + The client will now add light shading to some sides of tiles.
+        + Modified the interface colors to have more of a 'darker' theme.
+        + The background image has been swapped out with a SoSE-made one.
+
+---------------
+Version 0.0.0.0
+---------------
+- Patcher
+    # Implementation
+        + The 'Options' button is now enabled and working. It spawns an external options configuration program.
+    # Bug Fixes
+        + Fixed a bug where the patcher can crash when you exit.
+- Client
+    # Aesthetics
+        + Implemented height: Tiles with a height attribute now appear to pop out at the camera.
+        + Increased the scale at which 3D models are drawn. To compensate for the larger tank model, the camera was zoomed out.
+        + Explosions now appear over the position of a tank when they are blown up.
+    # Bug Fixes
+        + The scoreboard should no longer display invalid values.
+        + The garbage collector now does a better job of cleaning up objects after games.
+    # Minor Changes
+        + Slightly increased the volume of the sound effects.

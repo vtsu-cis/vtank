@@ -1,0 +1,8 @@
+Continuous: Yes
+LifeSpan: .5
+TimeBetweenParticles: 0.002
+Radius: 800
+VaryX: No
+VaryY: No
+VaryZ: No
+ParticleSystemName: Tracer

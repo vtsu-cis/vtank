@@ -1,0 +1,8 @@
+Continuous: Yes
+LifeSpan: 0
+TimeBetweenParticles: 0.0035
+Radius: 10000
+VaryX: No
+VaryY: No
+VaryZ: No
+ParticleSystemName: RedFlag

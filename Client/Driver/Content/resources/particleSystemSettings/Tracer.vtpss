@@ -1,0 +1,38 @@
+Texture: sample
+
+Capacity: 200
+Duration: 0.1
+DurationRandomness: 0
+
+GlobalForce: [0, 0, 0]
+MinForceSensitivity: 0
+MaxForceSensitivity: 0
+InertiaSensitivity: 0
+
+DirFromRotation: Yes
+InitialSpeed: 0
+Direction: [0, 0, 0]
+
+MinStartHorizontalVelocity: 0
+MaxStartHorizontalVelocity: 0
+MinStartVerticalVelocity: 0
+MaxStartVerticalVelocity: 0
+
+MinEndHorizontalVelocity: 0
+MaxEndHorizontalVelocity: 0
+MinEndVerticalVelocity: 0
+MaxEndVerticalVelocity: 0
+
+MinStartSize: 4
+MaxStartSize: 5
+MinEndSize: 1	
+MaxEndSize: 2
+
+MinRotateSpeed: 1
+MaxRotateSpeed: 4
+
+MinColor: [200, 50, 0, 255]
+MaxColor: [255, 72, 0, 255]
+
+SourceBlend: SourceAlpha
+DestinationBlend: One
