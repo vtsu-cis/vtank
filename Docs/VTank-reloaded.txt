@@ -1,0 +1,72 @@
+From Andrew.Sibley@systemsandsoftware.net Mon Mar 23 12:23:19 2015
+Date: Mon, 23 Mar 2015 12:23:07
+From: Andrew Sibley <Andrew.Sibley@systemsandsoftware.net>
+To: Peter Chapin <PChapin@vtc.vsc.edu>, Christopher Beattie <CBeattie@vtc.vsc.edu>
+Subject: RE: VTank
+
+Hey Peter,
+
+When last we talked about VTank, I expressed some interest in upgrading it to the latest XNA,
+the latest version of Ice, and a few other things. This turned into somewhat of a nightmare due
+to a lot of features in older versions of XNA that were removed in 4.0, requiring a rewrite of
+some of our graphics code. I didn't ultimately finish what I started.
+
+If we stick to whatever version of XNA and Ice is documented in our LaTeX documentation, I think
+it will be pretty simple to get the VTank client up and running. This will require running
+Visual Studio 2008 or 2010, since XNA can't be used in future versions of Visual Studio without
+manual configuration.
+
+The master server (Echelon) requires an installation of Stackless Python 2.7 or close to that.
+It communicates with a MySQL database to store information. The hardest part about getting it to
+run is installing Ice for Python. I've never been successful in getting Ice to work nicely (or
+at all) with Python on a 64-bit Windows computer, and my success varies for Unix environments.
+
+The game server (Theater) uses C++ and requires Ice and boost libraries. I think the version we
+use is documented in the LaTeX documentation. I don't think Theater will compile on non-Windows
+systems right now.
+
+Most of the other tools are simple to build and use without much effort. The one exception is
+the map editor, which uses wxWidgets, but our documentation for that does a good job explaining
+how to build it on Windows. Once Echelon and the database is set up, we have scripts under the
+trunk/Scripts/ directory that can be run to create administrative accounts or generate the
+database schema and set up basic information.
+
+I believe you're right that the latest version of the code is on that GitHub page -- I don't
+remember when we switched from SVN (internal) to Hg (SourceForge) to Git (GitHub), but I think
+that's the correct order of events.
+
+I'll contribute to getting VTank up and running in any way I can, so let me know if you decide
+to try setting it up eventually.
+
+Thanks,
+
+- Andy
+
+-----Original Message-----
+From: Peter Chapin [mailto:PChapin@vtc.vsc.edu] 
+Sent: Saturday, March 21, 2015 2:35 PM
+To: Andrew Sibley; Christopher Beattie
+Subject: VTank
+
+At a recent CIS department meeting the topic of game design came up. Apparently some prospective
+students were asking about it because they have stars in their eyes about become game
+developers.
+
+In the ensuing conversation I mentioned that VTank exists but was never really promoted or
+showcased that much. I said that it was likely the system could be rebuilt and reinstalled with
+a link on the web page, etc. The CIS department was interested in this idea.
+
+I'm not sure what is involved in maintaining a VTank system or even if the current source code
+will build with the latest versions of things. Andy I believe you said something about doing
+some work on VTank not too long ago. What are your thoughts?
+
+My understanding is that the code on GitHub is the most current.
+
+     https://github.com/summer-of-software/vtank
+
+Although I don't have much time at the moment, I could see myself trying to build the system
+this summer and maybe setting it up again.
+
+Thoughts?
+
+Peter
