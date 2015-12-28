@@ -41,7 +41,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;$(WXROOT)\lib\vc_lib\mswud&quot; ; &quot;$(WXROOT)\include&quot; ; &quot;$(ICEROOT)\include&quot; ; &quot;$(BOOSTROOT)&quot; ; ..\Ice ; ..\Common\Cpp ; ."
+				AdditionalIncludeDirectories="&quot;$(WX_HOME)\lib\vc_lib\mswud&quot; ; &quot;$(WX_HOME)\include&quot; ; &quot;$(ICE_HOME)\include&quot; ; &quot;$(BOOST_HOME)&quot; ; ..\Ice ; ..\Common\Cpp ; ."
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;TARGET=WINTARGET;DEBUG;__WXDEBUG__;_CRT_SECURE_NO_WARNINGS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -56,7 +56,7 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				AdditionalIncludeDirectories="&quot;$(WXROOT)\include&quot;"
+				AdditionalIncludeDirectories="&quot;$(WX_HOME)\include&quot;"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -65,7 +65,7 @@
 				Name="VCLinkerTool"
 				AdditionalDependencies="wxmsw28ud_core.lib wxmsw28ud_adv.lib wxmsw28ud_media.lib wxbase28ud.lib wxpngd.lib wxzlibd.lib wxjpegd.lib wxtiffd.lib wxmsw28ud_html.lib comctl32.lib rpcrt4.lib wsock32.lib Iced.lib IceUtild.lib Glacier2d.lib IceSSLd.lib"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="&quot;$(WXROOT)\lib\vc_lib&quot; ; &quot;$(BOOSTROOT)\lib&quot; ; &quot;$(ICEROOT)\lib&quot;"
+				AdditionalLibraryDirectories="&quot;$(WX_HOME)\lib\vc_lib&quot; ; &quot;$(BOOST_HOME)\stage\lib&quot; ; &quot;$(ICE_HOME)\lib&quot;"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				TargetMachine="1"
@@ -120,7 +120,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="&quot;$(WXROOT)\lib\vc_lib\mswu&quot; ; &quot;$(WXROOT)\include&quot; ; &quot;$(ICEROOT)\include&quot; ; &quot;$(BOOSTROOT)&quot; ; ..\Ice ; ..\Common\Cpp ; ."
+				AdditionalIncludeDirectories="&quot;$(WX_HOME)\lib\vc_lib\mswu&quot; ; &quot;$(WX_HOME)\include&quot; ; &quot;$(ICE_HOME)\include&quot; ; &quot;$(BOOST_HOME)&quot; ; ..\Ice ; ..\Common\Cpp ; ."
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;TARGET=WINTARGET;_CRT_SECURE_NO_WARNINGS"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
@@ -134,7 +134,7 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				AdditionalIncludeDirectories="&quot;$(WXROOT)\include&quot;"
+				AdditionalIncludeDirectories="&quot;$(WX_HOME)\include&quot;"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -143,7 +143,7 @@
 				Name="VCLinkerTool"
 				AdditionalDependencies="wxmsw28u_core.lib wxmsw28u_adv.lib wxmsw28u_media.lib wxbase28u.lib wxpng.lib wxzlib.lib wxjpeg.lib wxtiff.lib wxmsw28u_html.lib comctl32.lib rpcrt4.lib wsock32.lib Ice.lib IceUtil.lib IceSSL.lib Glacier2.lib"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="&quot;$(WXROOT)\lib\vc_lib&quot; ; &quot;$(BOOSTROOT)\lib&quot; ; &quot;$(ICEROOT)\lib&quot;"
+				AdditionalLibraryDirectories="&quot;$(WX_HOME)\lib\vc_lib&quot; ; &quot;$(BOOST_HOME)\stage\lib&quot; ; &quot;$(ICE_HOME)\lib&quot;"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				OptimizeReferences="2"
@@ -380,7 +380,7 @@
 		/>
 		<Global
 			Name="ZerocIce_Home"
-			Value="$(ICEROOT)"
+			Value="$(ICE_HOME)"
 		/>
 		<Global
 			Name="ZerocIce_Streaming"

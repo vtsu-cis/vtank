@@ -55,7 +55,7 @@
 				Name="VCCLCompilerTool"
 				ExecutionBucket="6"
 				Optimization="0"
-				AdditionalIncludeDirectories=".;&quot;$(ICEROOT)\include&quot;"
+				AdditionalIncludeDirectories=".;&quot;$(ICE_HOME)\include&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_LIB"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -132,7 +132,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories=".;&quot;$(ICEROOT)&quot;\include;&quot;$(ICEROOT)\include&quot;"
+				AdditionalIncludeDirectories=".;&quot;$(ICE_HOME)&quot;\include;&quot;$(ICE_HOME)\include&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_LIB"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
@@ -194,7 +194,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="&quot;$(ICEROOT)&quot;\include;."
+				AdditionalIncludeDirectories="&quot;$(ICE_HOME)&quot;\include;."
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -208,7 +208,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies=" Iced.lib Glacier2d.lib IceSSLd.lib IceUtild.lib"
-				AdditionalLibraryDirectories="&quot;$(ICEROOT)&quot;\lib\x64"
+				AdditionalLibraryDirectories="&quot;$(ICE_HOME)&quot;\lib\x64"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -256,7 +256,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="&quot;$(ICEROOT)\include&quot;;."
+				AdditionalIncludeDirectories="&quot;$(ICE_HOME)\include&quot;;."
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -270,7 +270,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies=" Ice.lib Glacier2.lib IceSSL.lib IceUtil.lib"
-				AdditionalLibraryDirectories="&quot;$(ICEROOT)\include&quot;\lib\x64"
+				AdditionalLibraryDirectories="&quot;$(ICE_HOME)\include&quot;\lib\x64"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -460,7 +460,7 @@
 		/>
 		<Global
 			Name="ZerocIce_Home"
-			Value="$(ICEROOT)"
+			Value="$(ICE_HOME)"
 		/>
 		<Global
 			Name="ZerocIce_IncludePath"

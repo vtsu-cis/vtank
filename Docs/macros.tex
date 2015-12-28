@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % FILE    : macros.tex
 % SUBJECT : File to hold the macros defined in the VTank project.
-% AUTHOR  : (C) Copyright 2009 by Vermont Technical College
+% AUTHOR  : (C) Copyright 2016 by Vermont Technical College
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -13,9 +13,9 @@
 \newcommand{\command}[1]{\texttt{#1}}    % For formatting commands.
 \newcommand{\filename}[1]{\texttt{#1}}   % For formatting file names.
 \newcommand{\newterm}[1]{\textit{#1}}    % For formatting terms when they are first introduced.
-\newcommand{\GameServer}{Theater}				 % Holds the game server's name.
-\newcommand{\Janitor}{Janitor}					 % Holds the database manager's name.
-\newcommand{\MainServer}{Echelon}				 % Holds the main server's name.
+\newcommand{\GameServer}{Theater}	 % Holds the game server's name.
+\newcommand{\Janitor}{Janitor}		 % Holds the database manager's name.
+\newcommand{\MainServer}{Echelon}	 % Holds the main server's name.
 \newcommand{\BackupServer}{Silica}       % Holds the backup server's name.
 \newcommand{\WebServer}{Porkbarrel}      % Holds the web server's name.
 \newcommand{\MapEditor}{Gardener}        % Holds the map editor's name.
@@ -23,24 +23,25 @@
 \newcommand{\placeholder}{\textit{placeholder\ldots}}  % To make it easy to find.
 \newcommand{\VTank}{VTank}               % For formatting ``VTank.''
 \newcommand{\xml}[1]{$<$#1$>$}           % For formatting an XML element inline.
-\newcommand{\Launcher}{Launcher}			   % Holds the launcher's name.
-\newcommand{\Patcher}{Patcher}			     % Holds the patcher's name.
+\newcommand{\Launcher}{Launcher}	 % Holds the launcher's name.
+\newcommand{\Patcher}{Patcher}		 % Holds the patcher's name.
 \newcommand{\FormWrap}{NeoForce}         % Holds the form wrapper used for the client
-\newcommand{\AI}{AI Framework}		       % Name of the AI framework.
-\newcommand{\WeapProps}{Weapons.xml}             % Name of the xml file for weapon properties.
-\newcommand{\ProjProps}{Projectiles.xml}         % Name of the xml file for projectile properties.
-\newcommand{\EnvProps}{EnvironmentProperties.xml}         % Name of the xml file for environment properties.
+\newcommand{\AI}{AI Framework}		 % Name of the AI framework.
+\newcommand{\WeapProps}{Weapons.xml}     % Name of the xml file for weapon properties.
+\newcommand{\ProjProps}{Projectiles.xml} % Name of the xml file for projectile properties.
+\newcommand{\EnvProps}{EnvironmentProperties.xml} % Name of the xml file for environment properties.
 
 % Versioning
 % The following commands encapsulate the versions used for easy editing in the future.
 \newcommand{\BoostVersion}{1.42}
-\newcommand{\IceVersion}{3.4}
+\newcommand{\DirectXSDKVersion}{June 2010}
+\newcommand{\IceVersion}{3.6.1}
 \newcommand{\MiKTeXVersion}{2.7}
 \newcommand{\PCLintVersion}{9.0}
 \newcommand{\StacklessPythonVersion}{2.6.1}
 \newcommand{\TeXnicCenterVersion}{1 Beta 7.50}
+\newcommand{\wxWidgetsVersion}{3.0.2}
 \newcommand{\XNAVersion}{3.1}
-\newcommand{\DirectXSDKVersion}{June 2010}
 
 
 % ----------------
@@ -106,26 +107,6 @@ Action  & \usebox{\UseCaseAction}  \\ \hline
 % Andy
 \long\def\asnote#1{\marginpar{AS}{\small \ \ $\langle\langle\langle$\
 {#1 -- AS}\
-    $\rangle\rangle\rangle$\ \ }} 
-    
-% Michael
-\long\def\msnote#1{\marginpar{MS}{\small \ \ $\langle\langle\langle$\
-{#1 -- MS}\
-    $\rangle\rangle\rangle$\ \ }} 
-    
-% Brian
-\long\def\msnote#1{\marginpar{BH}{\small \ \ $\langle\langle\langle$\
-{#1 -- BH}\
-    $\rangle\rangle\rangle$\ \ }} 
-    
-% Rob
-\long\def\rwnote#1{\marginpar{RW}{\small \ \ $\langle\langle\langle$\
-{#1 -- RW}\
-    $\rangle\rangle\rangle$\ \ }} 
-
-% Trevor
-\long\def\twnote#1{\marginpar{TW}{\small \ \ $\langle\langle\langle$\
-{#1 -- TW}\
     $\rangle\rangle\rangle$\ \ }} 
     
 % Isaac 

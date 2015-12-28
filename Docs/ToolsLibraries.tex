@@ -1,45 +1,71 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % FILE    : ToolsLibraries.tex
 % SUBJECT : Document describing the tools and libraries used by VTank.
-% AUTHOR  : (C) Copyright 2010 by Vermont Technical College
+% AUTHOR  : (C) Copyright 2016 by Vermont Technical College
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Tools and Libraries}
 \label{toolslibraries}
 
-This chapter describes the tools and libraries used in the \VTank\ development environment. Both where to get the necessary components and how to set them up are covered here. This chapter is only of interest to \VTank\ developers. If you are a \VTank\ player or administrator you do not need to read this chapter. Instead the details for setting up the components of a working \VTank\ system are described in Chapter~\ref{deployment} on Deployment.
+This chapter describes the tools and libraries used in the \VTank\ development environment. Both
+where to get the necessary components and how to set them up are covered here. This chapter is
+only of interest to \VTank\ developers. If you are a \VTank\ player or administrator you do not
+need to read this chapter. Instead the details for setting up the components of a working
+\VTank\ system are described in Chapter~\ref{deployment} on Deployment.
 
-The following list reflects the tools and libraries used by the \VTank\ developers. \pcnote{We should elaborate on how to set up and configure these tools and libraries as appropriate. Probably each tool and library should eventually be put into its own section.}
+The following list reflects the tools and libraries used by the \VTank\ developers.
 
 \begin{itemize}
-\item Visual Studio 2008
-\item Stackless Python
-\item XNA Framework v\XNAVersion
-\item DirectX SDK \DirectXSDKVersion
-\item Threadpool \cite{threadpool}
-\item Ice v3.4.1 \cite{ice}
+\item Boost \cite{boost}
 \item Dia \cite{dia}
-\item MySQL
-\item NUnit
-\item xWinForms
-\item NSIS
-\item XACT
+\item DirectX SDK
 \item Dynamic Model Viewer
+\item Ice \cite{ice}
 \item Map Previewer
+\item MySQL
+\item NSIS
+\item NUnit
+\item Stackless Python
+\item Threadpool \cite{threadpool}
+\item Visual Studio 2015
+\item wxWidgets \cite{wxWidgets}
+\item XACT
+\item XNA Framework
+\item xWinForms
 \end{itemize}
 
 \section{Boost}
 
-Boost is an advanced collection of C++ libraries originally intended as a testing ground for facilities that might one day become part of the C++ standard \cite{boost}. The libraries in Boost are peer reviewed and are generally of high quality. They also take advantage of many advanced C++ features to provide a degree of elegance one rarely finds in ordinary C++ libraries.
+Boost is an advanced collection of C++ libraries originally intended as a testing ground for
+facilities that might one day become part of the C++ standard \cite{boost}. The libraries in
+Boost are peer reviewed and are generally of high quality. They also take advantage of many
+advanced C++ features to provide a degree of elegance one rarely finds in ordinary C++
+libraries.
 
-The \VTank\ project uses Boost freely in the two C++ projects, \GameServer\ and \MapEditor. Building either of these projects requires that you install Boost. Developing either of these projects requires that you be familiar with at least some of the Boost libraries such as \lstinline!boost::smart_ptr! and \lstinline!boost::thread!.
+The \VTank\ project uses Boost freely in the two C++ projects, \GameServer\ and \MapEditor.
+Building either of these projects requires that you install Boost. Developing either of these
+projects requires that you be familiar with at least some of the Boost libraries such as
+\lstinline!boost::smart_ptr! and \lstinline!boost::thread!.
 
-The official version of Boost used by the \VTank\ project is version \BoostVersion. Other nearby versions are likely to work; many Boost libraries do not change much between versions. Of course for maximum compatibility with the existing \VTank\ code base we recommend that you install precisely version \BoostVersion.
+The official version of Boost used by the \VTank\ project is version \BoostVersion. Other nearby
+versions are likely to work; many Boost libraries do not change much between versions. Of course
+for maximum compatibility with the existing \VTank\ code base we recommend that you install
+precisely version \BoostVersion.
 
-Many of the Boost libraries are expressed as templates and thus are entirely contained in their header files. These libraries do not need to be explicitly compiled. They are effectively compiled each time the header files are included. However some Boost libraries, notability \lstinline!boost::thread! and \lstinline!boost::regex!, do have supporting implementation files that need to be compiled separately.
+Many of the Boost libraries are expressed as templates and thus are entirely contained in their
+header files. These libraries do not need to be explicitly compiled. They are effectively
+compiled each time the header files are included. However some Boost libraries, notability
+\lstinline!boost::thread! and \lstinline!boost::regex!, do have supporting implementation files
+that need to be compiled separately.
 
-While it may be possible to download compiled Boost binaries for Windows or Linux (for example using your Linux distribution's package manager), we recommend building Boost from scratch. Ultimately this gives you more control over the configuration of the library and it ensures that the library as built corresponds properly to the other tools and libraries you are using. We give a summary of the build instructions, with \VTank\ related notes, below. Note that we currently only describe the build on Windows. Linux development is not officially supported, but it should be easy to adapt these instructions for that environment as well.
+While it may be possible to download compiled Boost binaries for Windows or Linux (for example
+using your Linux distribution's package manager), we recommend building Boost from scratch.
+Ultimately this gives you more control over the configuration of the library and it ensures that
+the library as built corresponds properly to the other tools and libraries you are using. We
+give a summary of the build instructions, with \VTank\ related notes, below. Note that we
+currently only describe the build on Windows. Linux development is not officially supported, but
+it should be easy to adapt these instructions for that environment as well.
 
 \subsection{Windows}
 
@@ -47,85 +73,171 @@ To build Boost perform the following steps.
 
 \begin{enumerate}
 
-\item Download the Boost library from the Boost web site \cite{boost}. Unpack it to some suitable location on your system. To satisfy \VTank\ build requirements you will need to set the BOOSTROOT environment variable to point at this location. We recommend that you make this a system environment variable and reboot your machine to ensure that it takes effect globally before trying to build \VTank. Note, however, that BOOSTROOT is not required by Boost itself and so you can continue building Boost (below) without it.
+\item Download the Boost library from the Boost web site \cite{boost}. Unpack it to some
+  suitable location on your system. To satisfy \VTank\ build requirements you will need to set
+  the BOOST\_HOME environment variable to point at this location. We recommend that you make
+  this a system environment variable and reboot your machine to ensure that it takes effect
+  globally before trying to build \VTank. Note, however, that BOOST\_HOME is not required by
+  Boost itself and so you can continue building Boost (below) without it.
 
-\item Open a Visual Studio command prompt so that access to the Visual C++ command line tools is available.
+\item Open a Visual Studio Developer Command Prompt so that access to the Visual C++ command
+  line tools is available.
 
-\item In the root of the Boost source tree (\%BOOSTROOT\%) execute the command
+\item In the root of the Boost source tree (\%BOOST\_HOME\%) execute the command
 \begin{commands}
 bootstrap
 \end{commands}
 
-This command builds the \command{bjam} tool used to do the rest of the build. The resulting executable \filename{bjam.exe} is left in \%BOOSTROOT\%.
+This command builds the \command{bjam} tool used to do the rest of the build. The resulting
+executable \filename{bjam.exe} (or \filename{b2}) is left in \%BOOST\_HOME\%.
 
-\item Use \command{bjam} to build the various libraries you need. For example, to build the \lstinline!boost::thread! library use the following command
-\begin{commands}
-.$\backslash$bjam variant=debug,release link=shared,static thread
-\end{commands}
+\item Use \command{b2} to build the various libraries. For example, just issuing:
+  \begin{commands}
+    .$\backslash$b2
+  \end{commands}
 
-This command creates both debug and release variants as both shared libraries (DLLs) and static libraries\footnote{Note that the \lstinline!boost::thread! library also requires the \lstinline!boost::date\_time! library.}. The result of the build is placed under \filename{\%BOOSTROOT\%$\backslash$bin.v2} in a complex folder structure that organizes the different build variations. Note that by default \command{bjam} builds multi-thread enabled libraries. This is desired.
+  will build everything. This gives you maximum flexibility in that you can use whatever Boost
+  libraries you need without further build steps.
 
-\item Create a folder \filename{\%BOOSTROOT\%$\backslash$lib} to hold the final libraries. This folder makes it more convenient to use the libraries since they will all be in a common location with a relatively short path. Furthermore the \VTank\ build system assumes this configuration. Copy the compiled libraries of interest to this new folder.
+\item For projects that require Boost add \$(BOOST\_HOME) to the include paths and
+  \$(BOOST\_HOME)/stage/lib to the linker library paths.
 
 \end{enumerate}
-
-It is possible to use \command{bjam} to build all Boost libraries in all variations in one step. However, this generates a very large amount of output and is overkill for \VTank. Also some Boost libraries have additional dependencies and configuration requirements that must be satisfied before they will build successfully. It is easier, and less resource consuming to only build the libraries that are actually needed. You can always use \command{bjam} as above to build other Boost libraries later.
-
-Note that the Boost libraries are named according to a naming convention that distinguishes the library variants from each other. This allows all variants of all libraries to coexist in a single folder. See the Boost documentation for information on the naming convention used with the library files.
 
 \section{wxWidgets}
 
 \subsection{Windows}
 
-The GUI components of \MapEditor\ are handled using the well known wxWidgets library \cite{wxWidgets}. Version 2.8.9 of wxWidgets is the recommended version. Note that the wxWidgets installer only installs the source code of the library. After running the installer it is still necessary to compile the source using Visual C++. The most straightforward way to build the necessary library files is to change to the \filename{build/msw} folder in the wxWidgets distribution and issuing the command\footnote{If you have the QNX development system also installed on your computer, but sure to erase the contents of the MAKEFLAGS environment variable before issuing the \command{nmake} command.}:
+The GUI components of \MapEditor\ are handled using the well known wxWidgets library
+\cite{wxWidgets}. Version \wxWidgetsVersion\ of wxWidgets is the recommended version. Note that
+the wxWidgets installer only installs the source code of the library. After running the
+installer it is still necessary to compile the source using Visual C++.
+
+Unfortunately the latest version of wxWidgets at the time of this writing (version 3.0.2) does
+not support Visual Studio 2015. However, it can be made to work anyway by editing
+\filename{src/tiff/libtiff/tif\_config.h} at line 367 in the wxWidgets source. Change:
+
+\begin{verbatim}
+#define snprintf _snprintf
+\end{verbatim}
+
+to the following:
+
+\begin{verbatim}
+#if (defined(_MSC_VER) && (_MSC_VER < 1900))
+  #define snprintf _snprintf
+#endif
+\end{verbatim}
+
+When you build wxWidgets you will also notice a number of warnings related to the unrecongized
+compiler version. Presummably these issues will be fixed with the next release of wxWidgets that
+will fully support the Visual Studio 2015 compiler. See the discussion here for more
+information:
+
+\vspace{1.0ex}
+\centerline{\url{https://forums.wxwidgets.org/viewtopic.php?t=40491}}
+
+The most straightforward way to build the necessary library files is to change to the
+\filename{build/msw} folder in the wxWidgets distribution and issue the command\footnote{If you
+  have the QNX development system also installed on your computer, but sure to erase the
+  contents of the MAKEFLAGS environment variable before issuing the \command{nmake} command.}:
 
 \begin{commands}
-nmake /f makefile.vc BUILD=debug UNICODE=1
+nmake /f makefile.vc
 \end{commands}
 
-This command will build the debug static version of wxWidgets with Unicode support. We recommend using Unicode support because it enforces a more rigorous handling of characters and strings. This in turn creates a higher quality application. It will also facilitate creating an international version of \MapEditor\ in the future. Accordingly the various \MapEditor\ build control files assume a Unicode configuration.
+This command will build the debug static version of wxWidgets with Unicode support. We recommend
+using Unicode support because it enforces a more rigorous handling of characters and strings.
+This in turn creates a higher quality application. It will also facilitate creating an
+international version of \MapEditor\ in the future. Accordingly the various \MapEditor\ build
+control files assume a Unicode configuration.
 
 You should also build the release version of wxWidgets with the command
 
 \begin{commands}
-nmake /f makefile.vc BUILD=release UNICODE=1
+nmake /f makefile.vc BUILD=release
 \end{commands}
 
-The debug and release versions can coexist without conflict. In fact, the wxWidgets library can be built for multiple compilers simultaneously. Thus if you intend to also use Code::Blocks on \MapEditor, you can compile wxWidgets using the MinGW version of gcc that comes with Code::Blocks in addition to using VS2008\footnote{Although not a supported configuration you can most likely develop \MapEditor\ using Code::Blocks on Windows. See the supplementary document \filename{CodeBlocks-on-Windows.txt} for more information.}.
+The debug and release versions can coexist without conflict. In fact, the wxWidgets library can
+be built for multiple compilers simultaneously. Thus if you intend to also use Code::Blocks on
+\MapEditor, you can compile wxWidgets using the MinGW version of gcc that comes with
+Code::Blocks in addition to using Visual Studio\footnote{Although not a supported configuration
+  you can most likely develop \MapEditor\ using Code::Blocks on Windows. See the supplementary
+  document \filename{CodeBlocks-on-Windows.txt} for more information.}.
 
-You may install wxWidgets anywhere you like. However, the VS2008 project file provided with \MapEditor\ assumes that you have set an environment variable named WXROOT that points to the top folder of your wxWidgets installation. Note that this environment variable is not a required part of the wxWidgets installation; it exists only for \MapEditor\ project files.
+You may install wxWidgets anywhere you like. However, the Visual Studio project file provided
+with \MapEditor\ assumes that you have set an environment variable named WX\_HOME that points to
+the top folder of your wxWidgets installation. Note that this environment variable is not a
+required part of the wxWidgets installation; it exists only for \MapEditor\ project files.
 
 \subsection{Linux}
 
-\MapEditor\ development is supported on Linux using gcc. However, because of the large variation in Linux systems, no single set of instructions is likely to be appropriate for all possible Linux distributions. Use the instructions here as a guide. You may have to make some significant changes to them in order to get everything working on your particular system.
+\textit{This subsection needs review and may be out of date.}
 
-Both \MapEditor\ and the Code::Blocks IDE require wxWidgets. It is not essential that they use the same version of wxWidgets, but you may find it convenient for them to do so (especially if you are installing both wxWidgets and Code::Blocks manually). These instructions assume such a configuration.
+\MapEditor\ development is supported on Linux using gcc. However, because of the large variation
+in Linux systems, no single set of instructions is likely to be appropriate for all possible
+Linux distributions. Use the instructions here as a guide. You may have to make some significant
+changes to them in order to get everything working on your particular system.
 
-You may be able to install either or both of wxWidgets and Code::Blocks using your distribution's package manager. There are advantages to taking such an approach. However, if you are interested in developing \VTank, we recommend that you compile both products from source. This will give you more control over their configuration and allow you to use precisely the same versions as the other \VTank developers. In the long run, this will simplify your development. The following steps describe what must be done to manually set up wxWidgets on a typical Linux system.
+Both \MapEditor\ and the Code::Blocks IDE require wxWidgets. It is not essential that they use
+the same version of wxWidgets, but you may find it convenient for them to do so (especially if
+you are installing both wxWidgets and Code::Blocks manually). These instructions assume such a
+configuration.
+
+You may be able to install either or both of wxWidgets and Code::Blocks using your
+distribution's package manager. There are advantages to taking such an approach. However, if you
+are interested in developing \VTank, we recommend that you compile both products from source.
+This will give you more control over their configuration and allow you to use precisely the same
+versions as the other \VTank developers. In the long run, this will simplify your development.
+The following steps describe what must be done to manually set up wxWidgets on a typical Linux
+system.
 
 \begin{enumerate}
 
-\item Download \filename{wxGTK-2.8.9.tar.gz} from the wxWidgets web site. Unpack it in a suitable location (for example, \filename{/usr/local/src}).
+\item Download \filename{wxGTK-2.8.9.tar.gz} from the wxWidgets web site. Unpack it in a
+  suitable location (for example, \filename{/usr/local/src}).
 
-\item Follow the installation instructions in \filename{install-gtk.txt}. Basically this entails creating a \filename{buildgtk} subdirectory and then, inside that subdirectory configure as follows:
+\item Follow the installation instructions in \filename{install-gtk.txt}. Basically this entails
+  creating a \filename{buildgtk} subdirectory and then, inside that subdirectory configure as
+  follows:
 
 \begin{commands}
 ../configure -with-gtk --enable-unicode --enable-monolithic
 \end{commands}
 
-The \command{--enable-unicode} and \command{--enable-monolithic} options are both needed by Code::Blocks and \MapEditor.
+The \command{--enable-unicode} and \command{--enable-monolithic} options are both needed by
+Code::Blocks and \MapEditor.
 
-\item After configuring, do \command{make} and then \command{make install}. The installation will be put into \filename{/usr/local/include} and \filename{/usr/local/lib}, etc.
+\item After configuring, do \command{make} and then \command{make install}. The installation
+  will be put into \filename{/usr/local/include} and \filename{/usr/local/lib}, etc.
 
-\item Repeat the procedure in step \#2 except using a \filename{buildgtkd} subdirectory. Add \command{--enable-debug} to the configure command line. This creates the debugging version of the library. When you issue \command{make install} the debugging library will be installed alongside the non-debugging library. The two libraries can coexist.
+\item Repeat the procedure in step \#2 except using a \filename{buildgtkd} subdirectory. Add
+  \command{--enable-debug} to the configure command line. This creates the debugging version of
+  the library. When you issue \command{make install} the debugging library will be installed
+  alongside the non-debugging library. The two libraries can coexist.
 
-\item Run the \command{ldconfig} tool to build a new shared library cache reflecting the additions you just made.
+\item Run the \command{ldconfig} tool to build a new shared library cache reflecting the
+  additions you just made.
 
 \end{enumerate}
 
-NOTE: If you do make install on the release version of wxWidgets and then the debug version, it will be the debug version of the \command{wx-config} helper program that is actually installed. This means that wxWidgets projects that use \command{wx-config} will end up building against the debug version of the wxWidgets library. This may or may not be desirable. For example it turns out that Code::Blocks v8.02 does not work with the debugging wxWidgets library. You may wish to install the debugging version of wxWidgets first so that the final version of \command{wx-config} is actually the release version.
+NOTE: If you do make install on the release version of wxWidgets and then the debug version, it
+will be the debug version of the \command{wx-config} helper program that is actually installed.
+This means that wxWidgets projects that use \command{wx-config} will end up building against the
+debug version of the wxWidgets library. This may or may not be desirable. For example it turns
+out that Code::Blocks v8.02 does not work with the debugging wxWidgets library. You may wish to
+install the debugging version of wxWidgets first so that the final version of
+\command{wx-config} is actually the release version.
 
-Using wxWidgets in Code::Blocks projects is actually fairly simple. To access the headers use the string \command{`wx-config --cflags`} (note back quotes) in the `Other Options' tab of the `Compiler Settings' tab of the build options dialog. To access the libraries use the string \command{`wx-config --libs`} (note back quotes) in the `Other Linker Options' box of the `Linker Settings' tab of the build options dialog. You can make these changes at the top level of the options definition. There is no need to specialize for debug and release builds. However, be aware that this means both the debug and release versions of your program will be using whichever version of wxWidgets is reported by \command{wx-config} (see the previous paragraph for more on this issue).
+Using wxWidgets in Code::Blocks projects is actually fairly simple. To access the headers use
+the string \command{`wx-config --cflags`} (note back quotes) in the `Other Options' tab of the
+`Compiler Settings' tab of the build options dialog. To access the libraries use the string
+\command{`wx-config --libs`} (note back quotes) in the `Other Linker Options' box of the `Linker
+Settings' tab of the build options dialog. You can make these changes at the top level of the
+options definition. There is no need to specialize for debug and release builds. However, be
+aware that this means both the debug and release versions of your program will be using
+whichever version of wxWidgets is reported by \command{wx-config} (see the previous paragraph
+for more on this issue).
 
 \section{CruiseControl.NET}
 
@@ -242,76 +354,122 @@ Since building an appropriate PC-Lint configuration is itself a non-trivial unde
 
 \section{Ice-\IceVersion}
 
-Ice binaries are available for download at \url{http://zeroc.com}.
+Ice binaries are available for download at \url{http://zeroc.com}. We recommend downloading the
+offline installer and then following the platform specific instructions found here:
+\url{https://zeroc.com/downloads/ice}.
 
 \subsubsection*{Windows}
 
-Download the latest installer package for Visual Studio 2008. Install the package and make a note of where it's installed. Set the environment variable \command{ICEROOT} to the location where Ice was installed (information on how to do that is not covered in this document). Some compile scripts use the \command{ICEROOT} variable to locate certain binary or required slice files.
+Download and execute the offline installer package for Windows. Set the environment variable
+\command{ICE\_HOME} to the location where Ice was installed (information on how to do that is
+not covered in this document). Some compile scripts use the \command{ICE\_HOME} variable to
+locate certain binary or required slice files.
 
-If it installed correctly, a new plug-in should be available for Visual Studio 2008 which allows you to configure Ice. Most of the instructions below are for administrators who are configuring Ice from scratch. However, it's important (and necessary) to go through and make sure your configuration mirrors this document's configuration.
+You will also want to install the Ice Builder for Visual Studio 2015. A link to the appropriate
+page can be found on this page:
 
-Right-click on any project which uses Ice (e.g. the Network project), and at the bottom of the pop-up menu you should see ``Ice Configuration...''. Selecting the ``Ice Configuration...'' option should bring up the option dialog to configure Ice for that project. Every project which uses Ice in some way must be configured like so:
+\vspace{1.0ex}
+\centerline{\url{https://doc.zeroc.com/display/Ice36/Using+the+Windows+Binary+Distribution}}
+
+Right-click on any project which uses Ice (e.g. the Network project), and at the bottom of the
+pop-up menu you should see ``Ice Configuration...''. Selecting the ``Ice Configuration...''
+option should bring up the option dialog to configure Ice for that project. Every project which
+uses Ice in some way must be configured like so:
 
 \begin{itemize}
-  \item Set the ``Ice Home'' field to ``\command{\$(ICEROOT)}'' (without the quotation marks).
-  \item Under the ``Ice Components'' section, check the 'Ice', 'Glacier2', and 'IceSSL' fields at the bottom. This will add assembly references to these DLLs to the project.
-  \item Click the ``Close'' button.
+\item Set the ``Ice Home'' field to ``\command{\$(ICE\_HOME)}'' (without the quotation marks).
+\item Under the ``Ice Components'' section, check the `Ice', `Glacier2', and `IceSSL' fields at
+  the bottom. This will add assembly references to these DLLs to the project.
+\item Click the ``Close'' button.
 \end{itemize}
 
-These instructions are slightly different for two projects in particular: the IceCs project and the IceCpp project. In \emph{both} of those projects, ensure the following configurations are set:
+These instructions are slightly different for two projects in particular: the IceCs project and
+the IceCpp project. In \emph{both} of those projects, ensure the following configurations are
+set:
 
 \begin{itemize}
-	\item Set the ``Ice Home'' field to ``\command{\$(ICEROOT)}'' (without the quotation marks).
-	\item Under the ``Slice Compiler Options'', check the ``Streaming'' box. \emph{Note: this must be checked due to a bug in Ice 3.4.0. This bug has been patched by ZeroC and is expected to be incorporated into Ice 3.4.1}.
-	\item Under the ``Slice Include Path'', click ``Add''. Simply type a period (i.e. the current directory) and press Enter. Ensure that the check box which appears after you press Enter is unchecked.
-	\item Under the ``Ice Components'' section, check the 'Ice', 'Glacier2', and 'IceSSL' fields at the bottom. This will add references to these assembly DLLs to the project.
+\item Set the ``Ice Home'' field to ``\command{\$(ICE\_HOME)}'' (without the quotation marks).
+\item Under the ``Slice Include Path'', click ``Add''. Simply type a period (i.e. the current
+  directory) and press Enter. Ensure that the check box which appears after you press Enter is
+  unchecked.
+\item Under the ``Ice Components'' section, check the 'Ice', 'Glacier2', and 'IceSSL' fields at
+  the bottom. This will add references to these assembly DLLs to the project.
 \end{itemize}
 
-You will know if every project which uses Ice is not configured properly because it will complain about missing assembly references to Ice or Glacier2. If that occurs, check the project which reports this error, then ensure that project's Ice configuration is correct.
+You will know if every project which uses Ice is not configured properly because it will
+complain about missing assembly references to Ice or Glacier2. If that occurs, check the project
+which reports this error, then ensure that project's Ice configuration is correct.
 
 \subsubsection*{Ice with Python}
 
-The following instructions were tested with Python 2.6.4. It is not guaranteed to work the same in any other versions. 
+The following instructions were tested with Python 2.6.4. It is not guaranteed to work the same
+in any other versions.
 
 Edit the \command{PYTHONPATH} environment variable to include the following paths:
 
 \begin{itemize}
-	\item \%ICEROOT\%\verb+\+bin
-	\item \%ICEROOT\%\verb+\+python
+\item \%ICE\_HOME\%\verb+\+bin
+\item \%ICE\_HOME\%\verb+\+python
 \end{itemize}
 
-Note that you may need to use the x64 folder in your paths in the case of a 64 bit operating system:
+Note that you may need to use the x64 folder in your paths in the case of a 64 bit operating
+system:
 
 \begin{itemize}
-	\item \%ICEROOT\%\verb+\+bin\verb+\+x64
-	\item \%ICEROOT\%\verb+\+python\verb+\+x64
+\item \%ICE\_HOME\%\verb+\+bin\verb+\+x64
+\item \%ICE\_HOME\%\verb+\+python\verb+\+x64
 \end{itemize} 
 
 Run the Python interpreter and type:
 
 \command{import Ice;}
 
-You may get an error about a missing DLL. If so, the easiest way to deal with this is to add \command{\%ICEROOT\%/bin} to your \command{PATH} environment variable. Doing so will add the DLLs for Ice to your PATH. The alternate way to deal with this is to copy all of the Ice DLLs into the python/DLLs folder. It's important to remember to restart your terminal or your computer if necessary after making modifications to environment variables.
+You may get an error about a missing DLL. If so, the easiest way to deal with this is to add
+\command{\%ICE\_HOME\%/bin} to your \command{PATH} environment variable. Doing so will add the
+DLLs for Ice to your PATH. The alternate way to deal with this is to copy all of the Ice DLLs
+into the python/DLLs folder. It's important to remember to restart your terminal or your
+computer if necessary after making modifications to environment variables.
 
 \subsubsection*{Linux}
 
-\emph{Note: These instructions may not work correctly with VTank. VTank administrators now compile Ice manually on Linux machines. This documentation will be updated in the future.}
+\emph{Note: These instructions may not work correctly with VTank. VTank administrators now
+  compile Ice manually on Linux machines. This documentation will be updated in the future.}
 
-Linux machines with \filename{yum} installed can view Ice packages from the Ice repository. ZeroC provides a more detailed explanation regarding exactly how to install and update Ice automatically and from RPM packages at:
+Linux machines with \filename{yum} installed can view Ice packages from the Ice repository.
+ZeroC provides a more detailed explanation regarding exactly how to install and update Ice
+automatically and from RPM packages at:
 
-\url{http://www.zeroc.com/download.html\#linux\_rpms}
+\vspace{1.0ex}
+\centerline{\url{http://www.zeroc.com/download.html\#linux\_rpms}}
 
-The \filename{yum} installer will install all of the Ice binaries and files required to run Python under the default installation of Python. You may have to compile Ice yourself if you are not using the default installation of Python.
+The \filename{yum} installer will install all of the Ice binaries and files required to run
+Python under the default installation of Python. You may have to compile Ice yourself if you are
+not using the default installation of Python.
 
 \section{Threadpool}
 
-Threadpool is a third-party addon to the Boost library that leverages the \lstinline!boost::thread! class to create functionality similar to Stackless Python. Each 'thread' in the threadpool is actually a customized task. Rather than creating a separate thread for each task inside of the pool, the tasks are executed in a concurrent fashion. The tasks are not run in parallel to each other. Instead, it uses a scheduler to decide which tasks it should execute and when. Therefore, if a certain set of data is only accessed by one threadpool, it does not require thread safety. Every new threadpool created uses a \lstinline!boost::thread! to run the scheduler.
+Threadpool is a third-party addon to the Boost library that leverages the
+\lstinline!boost::thread! class to create functionality similar to Stackless Python. Each
+`thread' in the threadpool is actually a customized task. Rather than creating a separate thread
+for each task inside of the pool, the tasks are executed in a concurrent fashion. The tasks are
+not run in parallel to each other. \pcnote{This doesn't sound right. The documentation says the
+  tasks do execute in parallel.} Instead, it uses a scheduler to decide which tasks it should
+execute and when. Therefore, if a certain set of data is only accessed by one threadpool, it
+does not require thread safety. \pcnote{A conclusion that might be false. Check this!} Every new
+threadpool created uses a \lstinline!boost::thread! to run the scheduler.
 
 \subsubsection*{Windows}
 
-Installing the Threadpool library is relatively easy. The project is available on sourceforge at the address: \url{http://threadpool.sourceforge.net}. On the front page, scroll down to the section labelled as `Download Section'. Download the source (the package ending in `src.zip') by clicking on the link.
+Installing the Threadpool library is relatively easy. The project is available on sourceforge at
+the address: \url{http://threadpool.sourceforge.net}. On the front page, scroll down to the
+section labelled as `Download Section'. Download the source (the package ending in `src.zip') by
+clicking on the link.
 
-Threadpool can be extracted anywhere you prefer. In Visual Studio, add the Threadpool include directory and the boost directory that was extracted with Threadpool. Since Threadpool uses the Boost.Thread library, the \filename{libboost\_thread-*.lib} library is required to be linked. It is preferable to add a \%THREADPOOLROOT\% environment variable so that everyone is not required to install the source in the same location on their PC.
+Threadpool can be extracted anywhere you prefer. In Visual Studio, add the Threadpool include
+directory and the boost directory that was extracted with Threadpool. Since Threadpool uses the
+Boost.Thread library, the \filename{libboost\_thread-*.lib} library is required to be linked. It
+is preferable to add a \%THREADPOOL\_HOME\% environment variable so that everyone is not
+required to install the source in the same location on their PC.
 
 \section{MSTest Testing} 
 
