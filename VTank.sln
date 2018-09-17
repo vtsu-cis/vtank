@@ -1,27 +1,19 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IceCpp", "Ice\IceCpp.vcproj", "{3D8CD05B-754C-49C5-8CA1-78B7B1FF4C18}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IceCpp", "Ice\IceCpp.vcxproj", "{3D8CD05B-754C-49C5-8CA1-78B7B1FF4C18}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Driver\Client.csproj", "{26B89063-0E04-4706-9B45-B4E0DD3949A4}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Theater", "Server\Game\Driver\Theater.vcproj", "{A2A84F78-19A9-4BEF-A7C8-33F1C334E0FD}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Theater", "Server\Game\Driver\Theater.vcxproj", "{A2A84F78-19A9-4BEF-A7C8-33F1C334E0FD}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Gardener", "Map_Editor\Gardener.vcproj", "{6364876F-49FE-49E0-BDC6-071F2F8478CC}"
-	ProjectSection(ProjectDependencies) = postProject
-		{3D8CD05B-754C-49C5-8CA1-78B7B1FF4C18} = {3D8CD05B-754C-49C5-8CA1-78B7B1FF4C18}
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Gardener", "Map_Editor\Gardener.vcxproj", "{6364876F-49FE-49E0-BDC6-071F2F8478CC}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GardenerTests", "Map_Editor\check\GardenerTests.vcproj", "{5E6A1E46-921A-4041-B3D9-181B13971074}"
-	ProjectSection(ProjectDependencies) = postProject
-		{3D8CD05B-754C-49C5-8CA1-78B7B1FF4C18} = {3D8CD05B-754C-49C5-8CA1-78B7B1FF4C18}
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GardenerTests", "Map_Editor\check\GardenerTests.vcxproj", "{5E6A1E46-921A-4041-B3D9-181B13971074}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TheaterTests", "Server\Game\TheaterTests\TheaterTests.vcproj", "{5A91E653-41B2-4417-88F6-E16963B43824}"
-	ProjectSection(ProjectDependencies) = postProject
-		{3D8CD05B-754C-49C5-8CA1-78B7B1FF4C18} = {3D8CD05B-754C-49C5-8CA1-78B7B1FF4C18}
-		{A2A84F78-19A9-4BEF-A7C8-33F1C334E0FD} = {A2A84F78-19A9-4BEF-A7C8-33F1C334E0FD}
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TheaterTests", "Server\Game\TheaterTests\TheaterTests.vcxproj", "{5A91E653-41B2-4417-88F6-E16963B43824}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientTests", "Client\ClientTests\ClientTests.csproj", "{0354CB54-BE72-4BFB-BB08-B5F95858F852}"
 EndProject
@@ -385,56 +377,11 @@ Global
 		{D1966BE6-4A47-4B3F-8724-2CD906AE23B4}.Release|x64.ActiveCfg = Release|Any CPU
 		{D1966BE6-4A47-4B3F-8724-2CD906AE23B4}.Release|x86.ActiveCfg = Release|Any CPU
 		{D1966BE6-4A47-4B3F-8724-2CD906AE23B4}.Release|Xbox 360.ActiveCfg = Release|Any CPU
-		{88378BC1-B7CF-4B59-9EDA-8D14D3FB2B64}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{88378BC1-B7CF-4B59-9EDA-8D14D3FB2B64}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{88378BC1-B7CF-4B59-9EDA-8D14D3FB2B64}.Debug|Win32.ActiveCfg = Debug|x86
-		{88378BC1-B7CF-4B59-9EDA-8D14D3FB2B64}.Debug|x64.ActiveCfg = Debug|x86
-		{88378BC1-B7CF-4B59-9EDA-8D14D3FB2B64}.Debug|x86.ActiveCfg = Debug|x86
-		{88378BC1-B7CF-4B59-9EDA-8D14D3FB2B64}.Debug|Xbox 360.ActiveCfg = Debug|x86
-		{88378BC1-B7CF-4B59-9EDA-8D14D3FB2B64}.Release|Any CPU.ActiveCfg = Release|x86
-		{88378BC1-B7CF-4B59-9EDA-8D14D3FB2B64}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{88378BC1-B7CF-4B59-9EDA-8D14D3FB2B64}.Release|Win32.ActiveCfg = Release|x86
-		{88378BC1-B7CF-4B59-9EDA-8D14D3FB2B64}.Release|x64.ActiveCfg = Release|x86
-		{88378BC1-B7CF-4B59-9EDA-8D14D3FB2B64}.Release|x86.ActiveCfg = Release|x86
-		{88378BC1-B7CF-4B59-9EDA-8D14D3FB2B64}.Release|Xbox 360.ActiveCfg = Release|x86
-		{265AB262-23F4-4252-B9FD-AB0BF91BB7BF}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{265AB262-23F4-4252-B9FD-AB0BF91BB7BF}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{265AB262-23F4-4252-B9FD-AB0BF91BB7BF}.Debug|Win32.ActiveCfg = Debug|x86
-		{265AB262-23F4-4252-B9FD-AB0BF91BB7BF}.Debug|x64.ActiveCfg = Debug|x86
-		{265AB262-23F4-4252-B9FD-AB0BF91BB7BF}.Debug|x86.ActiveCfg = Debug|x86
-		{265AB262-23F4-4252-B9FD-AB0BF91BB7BF}.Debug|Xbox 360.ActiveCfg = Debug|x86
-		{265AB262-23F4-4252-B9FD-AB0BF91BB7BF}.Release|Any CPU.ActiveCfg = Release|x86
-		{265AB262-23F4-4252-B9FD-AB0BF91BB7BF}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{265AB262-23F4-4252-B9FD-AB0BF91BB7BF}.Release|Win32.ActiveCfg = Release|x86
-		{265AB262-23F4-4252-B9FD-AB0BF91BB7BF}.Release|x64.ActiveCfg = Release|x86
-		{265AB262-23F4-4252-B9FD-AB0BF91BB7BF}.Release|x86.ActiveCfg = Release|x86
-		{265AB262-23F4-4252-B9FD-AB0BF91BB7BF}.Release|Xbox 360.ActiveCfg = Release|x86
-		{BDEDB104-3061-4DED-A2D9-E515CA51079A}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{BDEDB104-3061-4DED-A2D9-E515CA51079A}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{BDEDB104-3061-4DED-A2D9-E515CA51079A}.Debug|Win32.ActiveCfg = Debug|x86
-		{BDEDB104-3061-4DED-A2D9-E515CA51079A}.Debug|x64.ActiveCfg = Debug|x86
-		{BDEDB104-3061-4DED-A2D9-E515CA51079A}.Debug|x86.ActiveCfg = Debug|x86
-		{BDEDB104-3061-4DED-A2D9-E515CA51079A}.Debug|Xbox 360.ActiveCfg = Debug|x86
-		{BDEDB104-3061-4DED-A2D9-E515CA51079A}.Release|Any CPU.ActiveCfg = Release|x86
-		{BDEDB104-3061-4DED-A2D9-E515CA51079A}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{BDEDB104-3061-4DED-A2D9-E515CA51079A}.Release|Win32.ActiveCfg = Release|x86
-		{BDEDB104-3061-4DED-A2D9-E515CA51079A}.Release|x64.ActiveCfg = Release|x86
-		{BDEDB104-3061-4DED-A2D9-E515CA51079A}.Release|x86.ActiveCfg = Release|x86
-		{BDEDB104-3061-4DED-A2D9-E515CA51079A}.Release|Xbox 360.ActiveCfg = Release|x86
-		{54CB906A-CE27-4113-82E9-0DBDA145FC17}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{54CB906A-CE27-4113-82E9-0DBDA145FC17}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{54CB906A-CE27-4113-82E9-0DBDA145FC17}.Debug|Win32.ActiveCfg = Debug|x86
-		{54CB906A-CE27-4113-82E9-0DBDA145FC17}.Debug|x64.ActiveCfg = Debug|x86
-		{54CB906A-CE27-4113-82E9-0DBDA145FC17}.Debug|x86.ActiveCfg = Debug|x86
-		{54CB906A-CE27-4113-82E9-0DBDA145FC17}.Debug|Xbox 360.ActiveCfg = Debug|x86
-		{54CB906A-CE27-4113-82E9-0DBDA145FC17}.Release|Any CPU.ActiveCfg = Release|x86
-		{54CB906A-CE27-4113-82E9-0DBDA145FC17}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{54CB906A-CE27-4113-82E9-0DBDA145FC17}.Release|Win32.ActiveCfg = Release|x86
-		{54CB906A-CE27-4113-82E9-0DBDA145FC17}.Release|x64.ActiveCfg = Release|x86
-		{54CB906A-CE27-4113-82E9-0DBDA145FC17}.Release|x86.ActiveCfg = Release|x86
-		{54CB906A-CE27-4113-82E9-0DBDA145FC17}.Release|Xbox 360.ActiveCfg = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C52033DF-7386-43FB-8E3F-5C3509177050}
 	EndGlobalSection
 EndGlobal

@@ -31,3 +31,5 @@ Debug
 Release
 Launcher/Distribution/*
 xnafx31_redist.msi
+
+.vs

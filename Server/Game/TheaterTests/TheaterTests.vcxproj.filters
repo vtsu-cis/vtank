@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Unit Tests">
+      <UniqueIdentifier>{e1ccc46e-2f6d-48ae-97cd-7b74db44e92d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Unit Tests">
+      <UniqueIdentifier>{4994faf8-7589-4292-bb19-885f2bf03f37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Dependent">
+      <UniqueIdentifier>{e30f271e-0da5-4d14-a727-196da1943179}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="check.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Driver\environmentmanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Cpp\UnitTestManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Driver\weaponsettings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nodemanagertests.cpp">
+      <Filter>Source Files\Unit Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Driver\gamemanager.cpp">
+      <Filter>Dependent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Ice\GameSession.cpp">
+      <Filter>Dependent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Driver\logger.cpp">
+      <Filter>Dependent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Driver\loginsessionfactory.cpp">
+      <Filter>Dependent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Cpp\Map.cpp">
+      <Filter>Dependent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Driver\mapmanager.cpp">
+      <Filter>Dependent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Driver\master.cpp">
+      <Filter>Dependent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Driver\mtgcallback.cpp">
+      <Filter>Dependent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Driver\mtgservice.cpp">
+      <Filter>Dependent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Driver\node.cpp">
+      <Filter>Dependent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Driver\nodemanager.cpp">
+      <Filter>Dependent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Driver\notifier.cpp">
+      <Filter>Dependent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Driver\player.cpp">
+      <Filter>Dependent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Driver\playermanager.cpp">
+      <Filter>Dependent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Driver\pointmanager.cpp">
+      <Filter>Dependent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Driver\projectilemanager.cpp">
+      <Filter>Dependent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Driver\server.cpp">
+      <Filter>Dependent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Driver\SHA1.cpp">
+      <Filter>Dependent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Driver\tank.cpp">
+      <Filter>Dependent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Driver\tankmanager.cpp">
+      <Filter>Dependent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Driver\utility.cpp">
+      <Filter>Dependent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Driver\utilitymanager.cpp">
+      <Filter>Dependent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Cpp\vtassert.cpp">
+      <Filter>Dependent</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Driver\environmentmanager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Driver\envproperty.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Cpp\UnitTestManager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Driver\weapon.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Driver\weaponsettings.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nodemanagertests.hpp">
+      <Filter>Header Files\Unit Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Driver\asynctemplate.hpp">
+      <Filter>Dependent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Driver\gamemanager.hpp">
+      <Filter>Dependent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Ice\GameSession.h">
+      <Filter>Dependent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Driver\logger.hpp">
+      <Filter>Dependent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Driver\loginsessionfactory.hpp">
+      <Filter>Dependent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Driver\macros.hpp">
+      <Filter>Dependent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Cpp\Map.hpp">
+      <Filter>Dependent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Driver\mapmanager.hpp">
+      <Filter>Dependent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Driver\master.hpp">
+      <Filter>Dependent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Driver\mtgcallback.hpp">
+      <Filter>Dependent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Driver\mtgservice.hpp">
+      <Filter>Dependent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Driver\node.hpp">
+      <Filter>Dependent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Driver\nodemanager.hpp">
+      <Filter>Dependent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Driver\notifier.hpp">
+      <Filter>Dependent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Driver\player.hpp">
+      <Filter>Dependent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Driver\playermanager.hpp">
+      <Filter>Dependent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Driver\pointmanager.hpp">
+      <Filter>Dependent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Driver\projectile.hpp">
+      <Filter>Dependent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Driver\projectilemanager.hpp">
+      <Filter>Dependent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Driver\server.hpp">
+      <Filter>Dependent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Driver\SHA1.h">
+      <Filter>Dependent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Driver\tank.hpp">
+      <Filter>Dependent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Driver\tankmanager.hpp">
+      <Filter>Dependent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Driver\timer.hpp">
+      <Filter>Dependent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Driver\utility.hpp">
+      <Filter>Dependent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Driver\utilitymanager.hpp">
+      <Filter>Dependent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Cpp\vtassert.hpp">
+      <Filter>Dependent</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

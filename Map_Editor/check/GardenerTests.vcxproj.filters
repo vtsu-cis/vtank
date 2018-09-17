@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Unit Tests">
+      <UniqueIdentifier>{02171b0f-fe21-41ca-96ed-d5d31bd8b1fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Unit Tests">
+      <UniqueIdentifier>{0344d74b-8d55-420b-80e6-6d1f7f50d393}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Dependent">
+      <UniqueIdentifier>{a6277d56-2cd5-41ad-94d4-d64a6dc0c375}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="check.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Cpp\UnitTestManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MapTests.cpp">
+      <Filter>Source Files\Unit Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Cpp\Map.cpp">
+      <Filter>Dependent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Common\Cpp\vtassert.cpp">
+      <Filter>Dependent</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Common\Cpp\UnitTestManager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MapTests.hpp">
+      <Filter>Header Files\Unit Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Cpp\Map.hpp">
+      <Filter>Dependent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Common\Cpp\vtassert.hpp">
+      <Filter>Dependent</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

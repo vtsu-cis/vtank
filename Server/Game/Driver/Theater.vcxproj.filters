@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\IceServant">
+      <UniqueIdentifier>{d9ece3fb-1cf9-43f6-81be-2511e6c61905}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header Files\IceServant">
+      <UniqueIdentifier>{5b93eb9e-9471-4483-8b44-b4202801a683}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameModes">
+      <UniqueIdentifier>{77475f93-dbc1-4433-aa61-00a48173f396}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\interfaces">
+      <UniqueIdentifier>{4eb2a6fc-2d46-4b02-a411-613c6c9f8e35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{a5ea4ac4-8d0a-473c-ac71-df76824bd4a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Source Files">
+      <UniqueIdentifier>{2d68dc46-89a7-43b1-bf2f-1b6ce0312371}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Header Files">
+      <UniqueIdentifier>{5e306f0d-aec5-423d-8917-a7688dba3146}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utilities">
+      <UniqueIdentifier>{797e465f-421c-4ed6-91bf-f6d52f84c196}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="environmentmanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gamemanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gamesimulation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mapmanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="master.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mtgservice.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="node.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="nodemanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="notifier.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="playermanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pointmanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="projectilemanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="server.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SHA1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tank.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tankmanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="utilitymanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="weaponsettings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="loginsessionfactory.cpp">
+      <Filter>Source Files\IceServant</Filter>
+    </ClCompile>
+    <ClCompile Include="mtgcallback.cpp">
+      <Filter>Source Files\IceServant</Filter>
+    </ClCompile>
+    <ClCompile Include="player.cpp">
+      <Filter>Source Files\IceServant</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Cpp\Map.cpp">
+      <Filter>Common\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Cpp\vtassert.cpp">
+      <Filter>Common\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="logger.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="utility.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="environmentmanager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gamemanager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gamesimulation.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mapmanager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="master.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mtgservice.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="node.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nodemanager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="notifier.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="playermanager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pointmanager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="projectile.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="projectilemanager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="server.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SHA1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tank.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tankmanager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="utilitymanager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="weapon.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="weaponsettings.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="asynctemplate.hpp">
+      <Filter>Header Files\IceServant</Filter>
+    </ClInclude>
+    <ClInclude Include="loginsessionfactory.hpp">
+      <Filter>Header Files\IceServant</Filter>
+    </ClInclude>
+    <ClInclude Include="mtgcallback.hpp">
+      <Filter>Header Files\IceServant</Filter>
+    </ClInclude>
+    <ClInclude Include="player.hpp">
+      <Filter>Header Files\IceServant</Filter>
+    </ClInclude>
+    <ClInclude Include="ctb.hpp">
+      <Filter>Header Files\GameModes</Filter>
+    </ClInclude>
+    <ClInclude Include="ctf.hpp">
+      <Filter>Header Files\GameModes</Filter>
+    </ClInclude>
+    <ClInclude Include="damageableobject.hpp">
+      <Filter>Header Files\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="event.hpp">
+      <Filter>Header Files\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="gamehandler.hpp">
+      <Filter>Header Files\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Cpp\Map.hpp">
+      <Filter>Common\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\Cpp\vtassert.hpp">
+      <Filter>Common\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="envproperty.hpp">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="eventbuffer.hpp">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="logger.hpp">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="macros.hpp">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="timer.hpp">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="utility.hpp">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="vector3.hpp">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

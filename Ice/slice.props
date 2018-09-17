@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup
+    Condition="'$(slice2cppBeforeTargets)' == '' and '$(slice2cppAfterTargets)' == '' and '$(ConfigurationType)' != 'Makefile'">
+    <slice2cppBeforeTargets>Midl</slice2cppBeforeTargets>
+    <slice2cppAfterTargets>CustomBuild</slice2cppAfterTargets>
+  </PropertyGroup>
+  <PropertyGroup>
+    <slice2cppDependsOn
+      Condition="'$(ConfigurationType)' != 'Makefile'">_SelectedFiles;$(slice2cppDependsOn)</slice2cppDependsOn>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <slice2cpp>
+      <CommandLineTemplate>slice2cpp -I. -I%ICEROOT%\slice [Inputs]</CommandLineTemplate>
+      <Outputs>%(Filename).cpp %(Filename).h</Outputs>
+      <ExecutionDescription>Processing %(Filename).ice</ExecutionDescription>
+    </slice2cpp>
+  </ItemDefinitionGroup>
+</Project>

@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{A2A84F78-19A9-4BEF-A7C8-33F1C334E0FD}</ProjectGuid>
+    <RootNamespace>Driver</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="..\..\..\Ice\slice.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>15.0.27924.0</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ReferencePath>..\Ice;$(ReferencePath)</ReferencePath>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ReferencePath>..\Ice;$(ReferencePath)</ReferencePath>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ReferencePath>..\Ice;$(ReferencePath)</ReferencePath>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ReferencePath>..\Ice;$(ReferencePath)</ReferencePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <CustomBuildStep>
+      <Message />
+      <Command />
+    </CustomBuildStep>
+    <ClCompile>
+      <AdditionalOptions>/Zm115 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.;..\..\..\Ice;$(ICE_HOME)\include;$(BOOST_HOME);$(THREADPOOL_HOME);..\..\..\Common\Cpp\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;TARGET=WINTARGET;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>master.hpp</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)master.pch</PrecompiledHeaderOutputFile>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>iced.lib;iceutild.lib;glacier2d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(BOOST_HOME)\stage\lib;$(ICE_HOME)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Message>Copying config/data files.</Message>
+      <Command>copy $(ProjectDir)config.theatre $(TargetDir)
+copy ..\..\..\Client\Driver\Weapons.xml "$(TargetDir)"
+copy ..\..\..\Client\Driver\Projectiles.xml "$(TargetDir)"
+copy ..\..\..\Client\Driver\EnvironmentProperties.xml "$(TargetDir)"
+copy ..\..\..\Client\Driver\Weapons.xml "$(ProjectDir)"
+copy ..\..\..\Client\Driver\Projectiles.xml "$(ProjectDir)"
+copy ..\..\..\Client\Driver\EnvironmentProperties.xml "$(ProjectDir)"
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/Zm115 %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>.;..\..\..\Ice;$(ICE_HOME)\include;$(BOOST_HOME);$(THREADPOOL_HOME);..\..\..\Common\Cpp\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;TARGET=WINTARGET;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>master.hpp</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)master.pch</PrecompiledHeaderOutputFile>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>ice.lib;iceutil.lib;glacier2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(BOOST_HOME)\stage\lib;$(ICE_HOME)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Message>Copying config/data files.</Message>
+      <Command>copy $(ProjectDir)config.theatre $(TargetDir)
+copy ..\..\..\Client\Driver\Weapons.xml "$(TargetDir)"
+copy ..\..\..\Client\Driver\Projectiles.xml "$(TargetDir)"
+copy ..\..\..\Client\Driver\EnvironmentProperties.xml "$(TargetDir)"
+copy ..\..\..\Client\Driver\Weapons.xml "$(ProjectDir)"
+copy ..\..\..\Client\Driver\Projectiles.xml "$(ProjectDir)"
+copy ..\..\..\Client\Driver\EnvironmentProperties.xml "$(ProjectDir)"
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Ice\IceCpp.vcxproj">
+      <Project>{3d8cd05b-754c-49c5-8ca1-78b7b1ff4c18}</Project>
+      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\Common\Cpp\Map.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\Cpp\vtassert.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="environmentmanager.cpp" />
+    <ClCompile Include="gamemanager.cpp" />
+    <ClCompile Include="gamesimulation.cpp" />
+    <ClCompile Include="logger.cpp" />
+    <ClCompile Include="loginsessionfactory.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="mapmanager.cpp" />
+    <ClCompile Include="master.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="mtgcallback.cpp" />
+    <ClCompile Include="mtgservice.cpp" />
+    <ClCompile Include="node.cpp" />
+    <ClCompile Include="nodemanager.cpp" />
+    <ClCompile Include="notifier.cpp" />
+    <ClCompile Include="player.cpp" />
+    <ClCompile Include="playermanager.cpp" />
+    <ClCompile Include="pointmanager.cpp" />
+    <ClCompile Include="projectilemanager.cpp" />
+    <ClCompile Include="server.cpp" />
+    <ClCompile Include="SHA1.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="tank.cpp" />
+    <ClCompile Include="tankmanager.cpp" />
+    <ClCompile Include="utility.cpp" />
+    <ClCompile Include="utilitymanager.cpp" />
+    <ClCompile Include="weaponsettings.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Common\Cpp\Map.hpp" />
+    <ClInclude Include="..\..\..\Common\Cpp\vtassert.hpp" />
+    <ClInclude Include="asynctemplate.hpp" />
+    <ClInclude Include="ctb.hpp" />
+    <ClInclude Include="ctf.hpp" />
+    <ClInclude Include="damageableobject.hpp" />
+    <ClInclude Include="environmentmanager.hpp" />
+    <ClInclude Include="envproperty.hpp" />
+    <ClInclude Include="event.hpp" />
+    <ClInclude Include="eventbuffer.hpp" />
+    <ClInclude Include="gamehandler.hpp" />
+    <ClInclude Include="gamemanager.hpp" />
+    <ClInclude Include="gamesimulation.hpp" />
+    <ClInclude Include="logger.hpp" />
+    <ClInclude Include="loginsessionfactory.hpp" />
+    <ClInclude Include="macros.hpp" />
+    <ClInclude Include="mapmanager.hpp" />
+    <ClInclude Include="master.hpp" />
+    <ClInclude Include="mtgcallback.hpp" />
+    <ClInclude Include="mtgservice.hpp" />
+    <ClInclude Include="node.hpp" />
+    <ClInclude Include="nodemanager.hpp" />
+    <ClInclude Include="notifier.hpp" />
+    <ClInclude Include="player.hpp" />
+    <ClInclude Include="playermanager.hpp" />
+    <ClInclude Include="pointmanager.hpp" />
+    <ClInclude Include="projectile.hpp" />
+    <ClInclude Include="projectilemanager.hpp" />
+    <ClInclude Include="server.hpp" />
+    <ClInclude Include="SHA1.h" />
+    <ClInclude Include="tank.hpp" />
+    <ClInclude Include="tankmanager.hpp" />
+    <ClInclude Include="timer.hpp" />
+    <ClInclude Include="utility.hpp" />
+    <ClInclude Include="utilitymanager.hpp" />
+    <ClInclude Include="vector3.hpp" />
+    <ClInclude Include="weapon.hpp" />
+    <ClInclude Include="weaponsettings.hpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="..\..\..\Ice\slice.targets" />
+  </ImportGroup>
+</Project>

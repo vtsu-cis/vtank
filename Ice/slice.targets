@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <PropertyPageSchema
+      Include="$(MSBuildThisFileDirectory)$(MSBuildThisFileName).xml" />
+    <AvailableItemName
+      Include="slice2cpp">
+      <Targets>_slice2cpp</Targets>
+    </AvailableItemName>
+  </ItemGroup>
+  <UsingTask
+    TaskName="slice2cpp"
+    TaskFactory="XamlTaskFactory"
+    AssemblyName="Microsoft.Build.Tasks.v4.0, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <Task>$(MSBuildThisFileDirectory)$(MSBuildThisFileName).xml</Task>
+  </UsingTask>
+  <Target
+    Name="_slice2cpp"
+    BeforeTargets="$(slice2cppBeforeTargets)"
+    AfterTargets="$(slice2cppAfterTargets)"
+    Condition="'@(slice2cpp)' != ''"
+    DependsOnTargets="$(slice2cppDependsOn);Computeslice2cppOutput"
+    Outputs="%(slice2cpp.Outputs)"
+    Inputs="%(slice2cpp.Identity);%(slice2cpp.AdditionalDependencies);$(MSBuildProjectFile)">
+    <ItemGroup
+      Condition="'@(SelectedFiles)' != ''">
+      <slice2cpp
+        Remove="@(slice2cpp)"
+        Condition="'%(Identity)' != '@(SelectedFiles)'" />
+    </ItemGroup>
+    <ItemGroup>
+      <slice2cpp_tlog
+        Include="%(slice2cpp.Outputs)"
+        Condition="'%(slice2cpp.Outputs)' != '' and '%(slice2cpp.ExcludedFromBuild)' != 'true'">
+        <Source>@(slice2cpp, '|')</Source>
+      </slice2cpp_tlog>
+    </ItemGroup>
+    <Message
+      Importance="High"
+      Text="%(slice2cpp.ExecutionDescription)" />
+    <WriteLinesToFile
+      Condition="'@(slice2cpp_tlog)' != '' and '%(slice2cpp_tlog.ExcludedFromBuild)' != 'true'"
+      File="$(TLogLocation)$(ProjectName).write.1u.tlog"
+      Lines="^%(slice2cpp_tlog.Source);@(slice2cpp_tlog-&gt;'%(Fullpath)')"
+      Encoding="Unicode" />
+    <slice2cpp
+      Condition="'@(slice2cpp)' != '' and '%(slice2cpp.ExcludedFromBuild)' != 'true'"
+      CommandLineTemplate="%(slice2cpp.CommandLineTemplate)"
+      AdditionalOptions="%(slice2cpp.AdditionalOptions)"
+      Inputs="%(slice2cpp.Identity)" />
+  </Target>
+  <PropertyGroup>
+    <ComputeLinkInputsTargets>
+            $(ComputeLinkInputsTargets);
+            Computeslice2cppOutput;
+          </ComputeLinkInputsTargets>
+    <ComputeLibInputsTargets>
+            $(ComputeLibInputsTargets);
+            Computeslice2cppOutput;
+          </ComputeLibInputsTargets>
+  </PropertyGroup>
+  <Target
+    Name="Computeslice2cppOutput"
+    Condition="'@(slice2cpp)' != ''">
+    <ItemGroup>
+      <slice2cppDirsToMake
+        Condition="'@(slice2cpp)' != '' and '%(slice2cpp.ExcludedFromBuild)' != 'true'"
+        Include="%(slice2cpp.Outputs)" />
+      <Link
+        Include="%(slice2cppDirsToMake.Identity)"
+        Condition="'%(Extension)'=='.obj' or '%(Extension)'=='.res' or '%(Extension)'=='.rsc' or '%(Extension)'=='.lib'" />
+      <Lib
+        Include="%(slice2cppDirsToMake.Identity)"
+        Condition="'%(Extension)'=='.obj' or '%(Extension)'=='.res' or '%(Extension)'=='.rsc' or '%(Extension)'=='.lib'" />
+      <ImpLib
+        Include="%(slice2cppDirsToMake.Identity)"
+        Condition="'%(Extension)'=='.obj' or '%(Extension)'=='.res' or '%(Extension)'=='.rsc' or '%(Extension)'=='.lib'" />
+    </ItemGroup>
+    <MakeDir
+      Directories="@(slice2cppDirsToMake-&gt;'%(RootDir)%(Directory)')" />
+  </Target>
+</Project>
